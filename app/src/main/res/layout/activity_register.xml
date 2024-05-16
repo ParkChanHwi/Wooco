@@ -68,7 +68,7 @@
             android:layout_marginLeft="34dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="156dp"
-            android:background="@drawable/rectangle_1"/>
+            android:background="@drawable/rectangle_9"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_name"
@@ -106,7 +106,7 @@
             android:layout_marginLeft="34dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="239dp"
-            android:background="@drawable/rectangle_1"
+            android:background="@drawable/rectangle_9"
             />
 
 
@@ -134,7 +134,7 @@
             android:layout_marginLeft="34dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="335dp"
-            android:background="@drawable/rectangle_1"
+            android:background="@drawable/rectangle_9"
             android:inputType="textPassword"/>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -187,7 +187,7 @@
             android:layout_marginLeft="34dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="443dp"
-            android:background="@drawable/rectangle_1"
+            android:background="@drawable/rectangle_9"
             android:inputType="textPassword"/>
 
     <CheckBox
