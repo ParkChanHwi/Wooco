@@ -70,7 +70,7 @@
             android:layout_marginTop="156dp"
             android:background="@drawable/rectangle_1"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,8 +79,9 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="156dp"
         android:text="중복 확인"
+        android:textColor="@color/white"
         android:background="@drawable/checkdup">
-    </Button>
+    </androidx.appcompat.widget.AppCompatButton>
 
     <TextView
         android:id="@+id/id_text_id"
@@ -120,7 +121,7 @@
         android:layout_marginTop="306dp"
         android:textStyle="bold"
         android:gravity="top"
-        android:textSize="14sp"
+        android:textSize="14dp"
         android:text="비밀번호">
     </TextView>
 
@@ -136,7 +137,7 @@
             android:background="@drawable/rectangle_1"
             android:inputType="textPassword"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -144,9 +145,10 @@
         android:layout_marginLeft="285dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="239dp"
+        android:textColor="@color/white"
         android:text="중복 확인"
         android:background="@drawable/checkdup">
-    </Button>
+    </androidx.appcompat.widget.AppCompatButton>
 
     <TextView
         android:id="@+id/in_text_id"
@@ -243,19 +245,19 @@
         android:layout_marginTop="610dp"
         >
     </CheckBox>
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_commit"
         android:layout_width="249dp"
         android:layout_height="40dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="66dp"
+        android:layout_marginLeft="80dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="680dp"
         android:text="회원가입 완료"
+        android:textColor="@color/white"
         android:background="@drawable/commitbutton"
         >
-    </Button>
+    </androidx.appcompat.widget.AppCompatButton>
 
 </RelativeLayout>
-
 
