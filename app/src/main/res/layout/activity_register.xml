@@ -62,6 +62,7 @@
 
 
         <EditText
+            android:id="@+id/id_register_name"
             android:layout_width="241dp"
             android:layout_height="40dp"
             android:layout_alignParentLeft="true"
@@ -100,6 +101,7 @@
 
 
         <EditText
+            android:id="@+id/id_register_id"
             android:layout_width="241dp"
             android:layout_height="40dp"
             android:layout_alignParentLeft="true"
@@ -128,6 +130,7 @@
 
 
         <EditText
+            android:id="@+id/id_register_pw"
             android:layout_width="307dp"
             android:layout_height="40dp"
             android:layout_alignParentLeft="true"
@@ -181,6 +184,7 @@
 
 
         <EditText
+            android:id="@+id/id_register_pwch"
             android:layout_width="307dp"
             android:layout_height="40dp"
             android:layout_alignParentLeft="true"

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/some_id"
+    android:layout_width="360dp"
+    android:layout_height="800dp"
+    android:clipToOutline="true"
+    android:background="#FFFFFF">
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="306dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="9dp"
+        android:clipToOutline="true"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/material_symbols_light_search"/>
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line_9"
+        android:layout_width="240dp"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="65dp"
+        android:background="@drawable/line_9"
+        />
+
+    <ImageView
+        android:id="@+id/arrow_3"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="29dp"
+        android:src="@drawable/arrow"
+        />
+
+    <TextView
+        android:id="@+id/코치목록"
+        android:layout_width="72dp"
+        android:layout_height="22dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="144dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="26dp"
+        android:text="@string/코치목록"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/카테고리"
+        android:layout_width="67dp"
+        android:layout_height="19dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="9dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="82dp"
+        android:text="@string/카테고리"
+        android:textSize="15sp"
+        android:textColor="#000000"
+        android:gravity="top"
+        />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="107dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <!-- 여기에 수평으로 스크롤될 요소들을 배치합니다. -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text = "대학교"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="진로/기타 고민"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="전공/과제"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="면접"
+                android:textColor="#000000"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="자소서"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="자격증"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="편입"
+                android:textColor="#000000"/>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+    <RelativeLayout
+        android:id="@+id/solar_star_"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="130dp"
+        android:clipToOutline="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/solar_star_line_duotone"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/오늘의추천멘토"
+        android:layout_width="76dp"
+        android:layout_height="12dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="44dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="132dp"
+        android:text="@string/오늘의추천멘토"
+        android:textSize="10sp"
+        android:textColor="#000000"
+        android:gravity="top"
+        />
+
+    <View
+        android:id="@+id/line_21"
+        android:layout_width="360dp"
+        android:layout_height="2dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="737dp"
+        android:background="@drawable/line_9"
+        />
+
+    <RelativeLayout
+        android:id="@+id/material_sy"
+        android:layout_width="43dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="19dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="747dp"
+        android:clipToOutline="true"
+        android:background="@drawable/material_symbols_home">
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="116dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="751dp"
+        android:clipToOutline="true"
+        android:background="@drawable/vector">
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/uiw_date"
+        android:layout_width="32dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="219dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="749dp"
+        android:clipToOutline="true"
+        android:background="@drawable/uiw_date"
+        />
+
+    <RelativeLayout
+        android:id="@+id/group_513866"
+        android:layout_width="32dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="306dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="749dp"
+        android:clipToOutline="true"
+        android:background="@drawable/group_513937"
+        />
+</RelativeLayout>

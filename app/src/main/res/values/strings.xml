@@ -18,6 +18,17 @@
         인증
     </string>
 
+    <string name="코치목록">
+        코치목록
+    </string>
+
+    <string name="카테고리">
+        카테고리
+    </string>
+
+    <string name="오늘의추천멘토">
+        오늘의 추천 멘토
+    </string>
+
 
 </resources>
-
