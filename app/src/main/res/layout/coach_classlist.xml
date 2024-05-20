@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/some_id"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToOutline="true"
+    android:background="#FFFFFF">
+
+    <ImageView
+        android:id="@+id/arrow_3"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="29dp"
+        android:src="@drawable/arrow"
+        />
+
+    <LinearLayout
+        android:id="@+id/classListBox"
+        android:layout_width="178dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/selectedbox">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="59dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:text="클래스 목록"
+            android:gravity="top"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="190dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="88dp"
+        android:rotation="90"
+        android:background="@drawable/center_line"
+        />
+
+    <LinearLayout
+        android:id="@+id/classListBox"
+        android:layout_width="178dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="233dp"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/selectedbox">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="59dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:text="상담 목록"
+            android:gravity="top"/>
+    </LinearLayout>
+
+</RelativeLayout>
