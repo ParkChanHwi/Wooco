@@ -257,3 +257,5 @@
         android:background="@drawable/group_513937"
         />
 </RelativeLayout>
+
+<!--BottomSheetDialogFragment 추가할 예정-->
