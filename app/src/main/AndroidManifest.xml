@@ -19,7 +19,7 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginView"
+            android:name=".ExampleActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

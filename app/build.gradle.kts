@@ -57,7 +57,8 @@ dependencies {
     implementation("com.google.firebase:firebase-database-ktx:20.0.4")
     implementation("com.google.firebase:firebase-auth-ktx")
 
-    // Import for calendar
+    // Import for calendar 5/22 추가한 내용
     implementation("com.prolificinteractive:material-calendarview:1.4.3")
+    implementation("com.google.android.material:material:1.5.0")
 }
 
