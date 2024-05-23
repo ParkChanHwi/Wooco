@@ -44,27 +44,6 @@
         android:background="@drawable/line_9"
         />
 
-    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/calendar_view"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="94dp"
-        app:mcv_selectionColor="#F89B00"
-        app:mcv_arrowColor="#F89B00"
-        app:mcv_showOtherDates="none"
-        app:mcv_firstDayOfWeek="sunday"
-        tools:ignore="MissingClass" />
-
-    <TimePicker
-        android:id="@+id/timePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="380dp"
-        android:layout_marginLeft="77dp"
-        android:timePickerMode="spinner"/>
-
     <View
         android:id="@+id/line_21"
         android:layout_width="440dp"
@@ -124,14 +103,4 @@
         android:background="@drawable/group_513937"
         />
 
-    <android.widget.Button
-        android:id="@+id/nextbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="580dp"
-        android:layout_marginLeft="160dp"
-        android:text="예약 하기"
-        android:textColor="@color/white"
-        android:background="#F89B00"
-        />
 </RelativeLayout>
