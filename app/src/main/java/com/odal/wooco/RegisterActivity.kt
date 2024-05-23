@@ -36,7 +36,7 @@ class RegisterActivity : AppCompatActivity() {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "createUserWithEmail:success")
 
-                        val intent = Intent(this, MainActivity::class.java)
+                        val intent = Intent(this, LoginActivity::class.java)
                         startActivity(intent)
                        // val user = auth.currentUser
                         //updateUI(user)
