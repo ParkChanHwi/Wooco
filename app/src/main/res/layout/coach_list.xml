@@ -86,6 +86,7 @@
 
             <!-- 여기에 수평으로 스크롤될 요소들을 배치합니다. -->
             <TextView
+                android:id="@+id/university_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"

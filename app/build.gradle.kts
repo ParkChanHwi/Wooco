@@ -60,5 +60,6 @@ dependencies {
     // Import for calendar 5/22 추가한 내용
     implementation("com.prolificinteractive:material-calendarview:1.4.3")
     implementation("com.google.android.material:material:1.5.0")
+
 }
 

@@ -16,6 +16,12 @@
             android:name=".RegisterActivity"
             android:exported="true" />
         <activity
+            android:name=".CoachList"
+            android:exported="true"/>
+        <activity
+            android:name=".MyBottomSheetDialogFragment"
+            android:exported="true"/>
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
