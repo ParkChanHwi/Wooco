@@ -1,6 +1,7 @@
 package com.odal.wooco
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -34,6 +35,9 @@ class RegisterActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "createUserWithEmail:success")
+
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
                        // val user = auth.currentUser
                         //updateUI(user)
                     } else {
