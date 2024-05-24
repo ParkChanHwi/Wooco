@@ -173,31 +173,93 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:padding="16dp">
 
             <!-- 사람 1 -->
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_height="70dp"
                 android:padding="8dp"
-                android:background="#EEEEEE"
-                android:layout_marginBottom="8dp">
+                android:background="@drawable/rectangle_coachlist"
+                android:layout_marginBottom="8dp"
+                >
+
+                <View
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/group_513937"
+                    />
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/center_line"
+                    android:rotation="90"
+                    android:layout_marginLeft="9dp"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Name: John Doe"
-                    android:textSize="16sp" />
+                    android:layout_marginLeft="80dp"
+                    android:text="별명 :"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Age: 25"
-                    android:textSize="14sp" />
+                    android:layout_marginLeft="118dp"
+                    android:text="차우코"/>
 
-            </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="16dp"
+                    android:text="학교 / 회사 :"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="156dp"
+                    android:layout_marginTop="16dp"
+                    android:text="강원대 00학과"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="32dp"
+                    android:text="□관심분야 :"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="158dp"
+                    android:layout_marginTop="32dp"
+                    android:text="자격증 - 기사/기능사, 진로"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/star_1"
+                    android:layout_marginLeft="324dp"
+                    android:layout_marginTop="3dp"/>
+                <TextView
+                    android:id="@+id/star_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginLeft="340dp"
+                    android:text="4.9"/>
+
+            </RelativeLayout>
+
+
         </LinearLayout>
     </ScrollView>
 
