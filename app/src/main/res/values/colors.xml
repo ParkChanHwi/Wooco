@@ -29,4 +29,8 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">#FFFCFC</item>
     </style>
+
+    <style name="nextbutton">
+        <item name="android:background">#F89B00</item>
+    </style>
 </resources>

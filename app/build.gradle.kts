@@ -40,9 +40,10 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+    //implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.firebase.common.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -55,5 +56,11 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-database-ktx:20.0.4")
     implementation("com.google.firebase:firebase-auth-ktx")
+
+    // Import for calendar 5/22 추가한 내용
+    implementation("com.prolificinteractive:material-calendarview:1.4.3")
+    implementation("com.google.android.material:material:1.5.0")
+
+
 }
 
