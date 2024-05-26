@@ -2,8 +2,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/some_id"
-    android:layout_width="360dp"
-    android:layout_height="800dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:clipToOutline="true"
     android:background="#FFFFFF">
     <RelativeLayout
@@ -11,7 +11,7 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="306dp"
+        android:layout_marginLeft="366dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="9dp"
         android:clipToOutline="true"
@@ -28,7 +28,7 @@
         android:layout_width="240dp"
         android:layout_height="1dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="85dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="65dp"
         android:background="@drawable/line_9"
@@ -50,7 +50,7 @@
         android:layout_width="72dp"
         android:layout_height="22dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="144dp"
+        android:layout_marginLeft="174dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="26dp"
         android:text="@string/코치목록"
@@ -81,11 +81,12 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <!-- 여기에 수평으로 스크롤될 요소들을 배치합니다. -->
             <TextView
+                android:id="@+id/university_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -164,14 +165,111 @@
         android:textColor="#000000"
         android:gravity="top"
         />
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="515dp"
+        android:layout_marginTop="150dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- 사람 1 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:padding="8dp"
+                android:background="@drawable/rectangle_coachlist"
+                android:layout_marginBottom="8dp"
+                >
+
+                <View
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/group_513937"
+                    />
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/center_line"
+                    android:rotation="90"
+                    android:layout_marginLeft="9dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:text="별명 :"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="118dp"
+                    android:text="차우코"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="16dp"
+                    android:text="학교 / 회사 :"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="156dp"
+                    android:layout_marginTop="16dp"
+                    android:text="강원대 00학과"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="32dp"
+                    android:text="□관심분야 :"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="158dp"
+                    android:layout_marginTop="32dp"
+                    android:text="자격증 - 기사/기능사, 진로"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/star_1"
+                    android:layout_marginLeft="324dp"
+                    android:layout_marginTop="3dp"/>
+                <TextView
+                    android:id="@+id/star_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginLeft="340dp"
+                    android:text="4.9"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
 
     <View
         android:id="@+id/line_21"
-        android:layout_width="360dp"
+        android:layout_width="440dp"
         android:layout_height="2dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="737dp"
+        android:layout_marginTop="667dp"
         android:background="@drawable/line_9"
         />
 
@@ -180,9 +278,9 @@
         android:layout_width="43dp"
         android:layout_height="40dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="19dp"
+        android:layout_marginLeft="29dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="747dp"
+        android:layout_marginTop="677dp"
         android:clipToOutline="true"
         android:background="@drawable/material_symbols_home">
     </RelativeLayout>
@@ -191,9 +289,9 @@
         android:layout_width="33dp"
         android:layout_height="33dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="116dp"
+        android:layout_marginLeft="136dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="751dp"
+        android:layout_marginTop="677dp"
         android:clipToOutline="true"
         android:background="@drawable/vector">
     </RelativeLayout>
@@ -203,9 +301,9 @@
         android:layout_width="32dp"
         android:layout_height="35dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="219dp"
+        android:layout_marginLeft="239dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="749dp"
+        android:layout_marginTop="677dp"
         android:clipToOutline="true"
         android:background="@drawable/uiw_date"
         />
@@ -215,10 +313,13 @@
         android:layout_width="32dp"
         android:layout_height="35dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="306dp"
+        android:layout_marginLeft="346dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="749dp"
+        android:layout_marginTop="677dp"
         android:clipToOutline="true"
         android:background="@drawable/group_513937"
         />
+
 </RelativeLayout>
+
+<!--BottomSheetDialogFragment 추가할 예정-->

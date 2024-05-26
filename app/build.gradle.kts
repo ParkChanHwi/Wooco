@@ -1,6 +1,7 @@
 import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
 
 plugins {
+
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.gms.google-services") // Google services Gradle plugin 추가
@@ -40,7 +41,7 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+    //implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
@@ -55,5 +56,11 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-database-ktx:20.0.4")
     implementation("com.google.firebase:firebase-auth-ktx")
+
+    // Import for calendar 5/22 추가한 내용
+    implementation("com.prolificinteractive:material-calendarview:1.4.3")
+    implementation("com.google.android.material:material:1.5.0")
+
+
 }
 
