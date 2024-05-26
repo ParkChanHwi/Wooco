@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         // val database = Firebase.database
         // val myRef =  database.getReference("message")
         // myRef.setValue("Success")
-        setContentView(R.layout.coach_list)
+        setContentView(R.layout.mentee_reserve)
 
 //        findViewById<Button>(R.id.button_go_to_register).setOnClickListener {
 //            val intent = Intent(this, RegisterActivity::class.java)

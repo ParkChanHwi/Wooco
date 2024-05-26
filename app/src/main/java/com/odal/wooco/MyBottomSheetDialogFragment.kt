@@ -17,3 +17,5 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
         return inflater.inflate(R.layout.fragment_bottom_sheet, container, false)
     }
 }
+
+// 아래 bottom sheet 띄우려다가 실패한 코드
