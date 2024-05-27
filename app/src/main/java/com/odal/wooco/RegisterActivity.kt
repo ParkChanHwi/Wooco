@@ -22,8 +22,8 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var  auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_register)
-    auth = Firebase.auth
+        setContentView(R.layout.activity_register)
+        auth = Firebase.auth
 
         // 닉네임, ID (중복 확인은 어떻게 할것인지
 
@@ -50,12 +50,12 @@ class RegisterActivity : AppCompatActivity() {
 
                         val intent = Intent(this, LoginActivity::class.java)
                         startActivity(intent)
-                       // val user = auth.currentUser
+                        // val user = auth.currentUser
                         //updateUI(user)
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                      //  updateUI(null)
+                        //  updateUI(null)
                     }
                 }
 
