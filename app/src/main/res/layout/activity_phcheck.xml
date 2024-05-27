@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/some_id"
+        android:layout_width="411dp"
+        android:layout_height="731dp"
+        android:background="#FFFFFF"
+        android:clipToOutline="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ArrowImageView"
+            android:layout_width="15dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="left"
+            android:layout_marginLeft="37dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="37dp"
+            android:src="@drawable/arrow">
+        </ImageView>
+
+        <View
+            android:id="@+id/line_8"
+            android:layout_width="240dp"
+            android:layout_height="2dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="85dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/line_8" />
+
+        <EditText
+            android:id="@+id/editTextVerificationCode"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="270dp"
+            android:padding="8dp"
+            android:background="@drawable/rectangle_9"
+            android:hint="인증번호를 입력하세요" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/rectangle_1"
+            android:layout_width="57dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="300dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="150dp"
+            android:text="인증"
+            android:textColor="@color/white"
+            android:background="@drawable/rectangle_1">
+        </androidx.appcompat.widget.AppCompatButton>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/rectangle_1_1"
+            android:layout_width="57dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="300dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="270dp"
+            android:text="03:00"
+            android:textColor="@color/white"
+            android:background="@drawable/rectangle_1">
+        </androidx.appcompat.widget.AppCompatButton>
+
+
+        <EditText
+            android:id="@+id/editTextPhone"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="150dp"
+            android:padding="8dp"
+            android:background="@drawable/rectangle_9"
+            android:hint="휴대폰 번호를 입력하세요"
+            android:inputType="phone" />
+
+        <TextView
+            android:id="@+id/i_phNum"
+            android:layout_width="99dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="120dp"
+            android:gravity="top"
+            android:text="휴대폰 번호 입력"
+            android:textAppearance="@style/i_phNum" />
+
+        <TextView
+            android:id="@+id/i_phNum2"
+            android:layout_width="99dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="240dp"
+            android:gravity="top"
+            android:text="인증번호 입력"
+            android:textAppearance="@style/i_phNum" />
+
+
+        <View
+            android:id="@+id/rectangle_9_3"
+            android:layout_width="139dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="136dp"
+            android:layout_marginTop="360dp"
+            android:background="@drawable/rectangle_9" />
+
+        <TextView
+            android:id="@+id/i_rephNum2"
+            android:layout_width="100dp"
+            android:layout_height="22dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="158dp"
+            android:layout_marginTop="361dp"
+            android:gravity="top"
+            android:text="인증번호 재요청"
+            android:textAppearance="@style/i_rephNum2" />
+
+        <View
+            android:id="@+id/rectangle_2"
+            android:layout_width="315dp"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="47dp"
+            android:layout_marginTop="506dp"
+            android:background="@drawable/rectangle_2" />
+
+        <TextView
+            android:id="@+id/i_checkL"
+            android:layout_width="67dp"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="169dp"
+            android:layout_marginTop="517dp"
+            android:gravity="top"
+            android:text="인증하기"
+            android:textAppearance="@style/i_checkL" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/i_phCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/i_phCheck"
+        android:textAppearance="@style/i_phCheck"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp" />
+
+
+
+
+
+    <!---
+        <View
+            android:id="@+id/arrow_3"
+            android:layout_width="15dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="37dp"
+            android:layout_marginTop="37dp"
+            android:background="@drawable/arrow_3"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    -->
+</androidx.constraintlayout.widget.ConstraintLayout>

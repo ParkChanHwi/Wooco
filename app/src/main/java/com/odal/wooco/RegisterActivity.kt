@@ -1,40 +1,55 @@
 package com.odal.wooco
 
+import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.CheckBox
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
+import com.google.firebase.database.core.Tag
 
 class RegisterActivity : AppCompatActivity() {
+
+    private val Tag = "RegisterActivity"
+
+    private lateinit var  auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+    setContentView(R.layout.activity_register)
+    auth = Firebase.auth
 
-        val checkAllTerms: CheckBox = findViewById(R.id.all_check)
-        val checkTerms: CheckBox = findViewById(R.id.check1)
-        val checkPrivacy: CheckBox = findViewById(R.id.check2)
-        val checkPush: CheckBox = findViewById(R.id.check3)
-        val buttonCommit: Button = findViewById(R.id.button_commit)
+        val registerBtn = findViewById<Button>(R.id.button_commit) // 회원가입 버튼
+        registerBtn.setOnClickListener {
+            val id = findViewById<EditText>(R.id.id_register_id)
+            val pw = findViewById<EditText>(R.id.id_register_pw)
 
-        // 전체 약관 동의 체크박스 클릭 시 나머지 체크박스 상태 변경
-        checkAllTerms.setOnCheckedChangeListener { _, isChecked ->
-            checkTerms.isChecked = isChecked
-            checkPrivacy.isChecked = isChecked
-            checkPush.isChecked = isChecked
+
+            auth.createUserWithEmailAndPassword(id.text.toString(), pw.text.toString())
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "createUserWithEmail:success")
+
+                        val intent = Intent(this, LoginActivity::class.java)
+                        startActivity(intent)
+                       // val user = auth.currentUser
+                        //updateUI(user)
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                      //  updateUI(null)
+                    }
+                }
+
+
         }
 
-        // 회원가입 완료 버튼 클릭 시
-        buttonCommit.setOnClickListener {
-            if (checkTerms.isChecked && checkPrivacy.isChecked) {
-                // MainActivity로 이동
-                //val intent = Intent(this, MainActivity::class.java)
-                //startActivity(intent)
-                Toast.makeText(this, "회원가입 완료", Toast.LENGTH_SHORT).show()
-            } else {
-                // 필수 약관 동의 체크박스가 체크되지 않은 경우
-                Toast.makeText(this, "필수 약관에 동의해주세요.", Toast.LENGTH_SHORT).show()
-            }
-        }
+
     }
 }

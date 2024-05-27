@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "789721039936",
+    "firebase_url": "https://wooco-3a391-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "wooco-3a391",
+    "storage_bucket": "wooco-3a391.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789721039936:android:d860cfcac3dacd25cbcba5",
+        "android_client_info": {
+          "package_name": "com.odal.wooco"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHMvNwmUU3eRyhMXwVKQnz5YIPtuaW8ro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

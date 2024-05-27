@@ -1,3 +1,34 @@
 <resources>
     <string name="app_name">Wooco</string>
+
+    <!---<string name="app_name">odal</string>-->
+
+
+    <!-- strings.xml -->
+    <string name="i_phCheck">
+        핸드폰 본인 인증
+    </string>
+
+    <!-- strings.xml -->
+    <string name="i_phNum">
+        휴대폰 번호 입력
+    </string>
+
+    <string name="i_check">
+        인증
+    </string>
+
+    <string name="코치목록">
+        코치목록
+    </string>
+
+    <string name="카테고리">
+        카테고리
+    </string>
+
+    <string name="오늘의추천멘토">
+        오늘의 추천 멘토
+    </string>
+
+
 </resources>
