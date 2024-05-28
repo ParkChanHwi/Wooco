@@ -141,10 +141,60 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
+
+    <Button
+        android:layout_width="25dp"
+        android:layout_height="16dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="310dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="280dp"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="25dp"
+        android:layout_height="16dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="310dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="280dp"
+        android:text="추가"
+        android:textSize="10dp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:layout_width="25dp"
+        android:layout_height="16dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="335dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="280dp"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="25dp"
+        android:layout_height="16dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="335dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="280dp"
+        android:text="삭제"
+        android:textSize="10dp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
     <FrameLayout
         android:layout_width="320dp"
         android:layout_height="124dp"
-        android:layout_marginTop="325dp"
+        android:layout_marginTop="300dp"
         android:layout_marginStart="43dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -154,21 +204,202 @@
             android:layout_height="124dp"
             android:src="@drawable/rectangle_yuna35" />
 
-
+        <!-- 기본 문구 카테고리: -->
         <TextView
             android:id="@+id/coach_category"
-            android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:layout_alignParentStart="true"
+            android:layout_width="70dp"
+            android:layout_height="25dp"
             android:layout_marginStart="24dp"
-            android:layout_alignParentTop="true"
             android:layout_marginTop="23dp"
-            android:textSize="18dp"
-            android:textStyle="bold"
+            android:gravity="start"
             android:text="카테고리:"
-            android:gravity="start"/>
+            android:textSize="15sp"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:id="@+id/coach_category2"
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="23dp"
+            android:gravity="start"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#000000"/>
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="124dp"
+            android:layout_marginStart="310dp"
+            android:layout_marginTop="0dp">
+
+            <LinearLayout
+                android:id="@+id/category_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="4dp">
+                <!-- 동적으로 추가될 TextView들이 들어갈 공간 -->
+            </LinearLayout>
+        </ScrollView>
 
     </FrameLayout>
+
+    <TextView
+        android:id="@+id/want_category"
+        android:layout_width="144dp"
+        android:layout_height="18dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="435dp"
+        android:text="자격증 및 기타 서류 등록"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="465dp"
+        android:background="@drawable/notify"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:layout_width="192dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="465dp"
+        android:layout_marginStart="55dp"
+        android:text="신분증 및 재학 혹은 졸업 증명서, 희망 코칭 증명 가능서류"
+        android:textSize="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:layout_width="25dp"
+        android:layout_height="16dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="310dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="465dp"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="25dp"
+        android:layout_height="16dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="310dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="465dp"
+        android:text="추가"
+        android:textSize="10dp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:layout_width="25dp"
+        android:layout_height="16dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="335dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="465dp"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="25dp"
+        android:layout_height="16dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="335dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="465dp"
+        android:text="삭제"
+        android:textSize="10dp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <FrameLayout
+        android:layout_width="320dp"
+        android:layout_height="124dp"
+        android:layout_marginTop="485dp"
+        android:layout_marginStart="43dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="320dp"
+            android:layout_height="124dp"
+            android:src="@drawable/rectangle_yuna35" />
+
+        <ImageView
+            android:id="@+id/document"
+            android:layout_width="84dp"
+            android:layout_height="79dp"
+            android:layout_marginStart="118dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/document"
+            />
+        <ImageView
+            android:id="@+id/document2"
+            android:layout_width="84dp"
+            android:layout_height="79dp"
+            android:layout_marginStart="220dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/document"
+            />
+
+        <ImageView
+            android:id="@+id/document3"
+            android:layout_width="84dp"
+            android:layout_height="79dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/document"
+            />
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="320dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="620dp"
+        android:layout_marginStart="43dp"
+        android:background="@drawable/rectangle_yuna9788"
+        android:text="⚠  자격증 및 기타 서류 미제출시 코치 등록이 거절될 수 있습니다.
+                      제출된 문서는 관리자가 검토한 후, 보안 절차에 따라 폐기될   예정입니다."
+        android:textSize="10dp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <android.widget.Button
+        android:layout_width="154dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="693dp"
+        android:layout_marginStart="122dp"
+        android:background="@drawable/rectangle_yuna8787"
+        android:text="다음"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+
+
+
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
