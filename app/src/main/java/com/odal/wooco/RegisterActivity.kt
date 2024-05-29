@@ -21,6 +21,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var nicknameEditText: EditText
     private lateinit var idEditText: EditText
     private lateinit var pwEditText: EditText
+    private lateinit var pwchEditText: EditText
 
     private var uid = ""
 
@@ -32,6 +33,7 @@ class RegisterActivity : AppCompatActivity() {
         nicknameEditText = findViewById(R.id.id_register_name)
         idEditText = findViewById(R.id.id_register_id)
         pwEditText = findViewById(R.id.id_register_pw)
+        pwchEditText = findViewById(R.id.id_register_pwch)
 
         // 뒤로가기 버튼
         val arrowImageView: ImageView = findViewById(R.id.ArrowImageView)
@@ -45,9 +47,13 @@ class RegisterActivity : AppCompatActivity() {
             val nickname = nicknameEditText.text.toString()
             val id = idEditText.text.toString()
             val pw = pwEditText.text.toString()
+            val pwch = pwchEditText.text.toString()
 
-            if (nickname.isBlank() || id.isBlank() || pw.isBlank()) {
+            if (nickname.isBlank() || id.isBlank() || pw.isBlank() || pwch.isBlank()) {
                 Toast.makeText(this, "모든 필드를 채워주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            } else if (pw != pwch) {
+                Toast.makeText(this, "비밀번호가 서로 다릅니다.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
