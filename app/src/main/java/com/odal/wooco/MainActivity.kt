@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 import com.google.firebase.database.database
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +25,16 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
+
+        findViewById<Button>(R.id.button_logout).setOnClickListener {
+            val auth = Firebase.auth
+            auth.signOut()
+
+            // Redirect to LoginActivity
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
 
     }
 }
