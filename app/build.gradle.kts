@@ -61,6 +61,8 @@ dependencies {
     implementation("com.prolificinteractive:material-calendarview:1.4.3")
     implementation("com.google.android.material:material:1.5.0")
 
+    //bottom sheet
+    implementation ("com.android.support:design:28.0.0")
+    implementation ("com.google.android.material:material:1.2.0-alpha01")
 
 }
-
