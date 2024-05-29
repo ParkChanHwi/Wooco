@@ -1,43 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_bottom_sheet"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingHorizontal="32dp"
-    android:paddingTop="24dp"
-    android:paddingBottom="40dp">
+    android:padding="16dp">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Bottom Sheet"
-        android:textColor="@android:color/black"
-        android:textSize="24sp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="- 하단에 필요한 정보를 넣을수 있습니다."
-        android:textColor="@android:color/black"
-        android:textSize="16sp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="- 정말 활용도가 높은 기능이죠? 모두 즐겁게 개발해요."
-        android:textColor="@android:color/black"
-        android:textSize="16sp" />
+        android:text="카테고리 선택"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <Button
-        android:id="@+id/button_bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#1c9d9e"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:text="좋아요!" />
+        android:text="카테고리 1"
+        android:id="@+id/btn_category_1" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="카테고리 2"
+        android:id="@+id/btn_category_2" />
+
+    <!-- 추가 카테고리 버튼들 -->
 
 </LinearLayout>
