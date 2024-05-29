@@ -3,13 +3,12 @@ package com.odal.wooco
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class CoachList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.coach_list)
+        setContentView(R.layout.menti_coachlist)
 
         findViewById<Button>(R.id.kategori1).setOnClickListener {
             Log.d("MainActivity", "TextView clicked")
