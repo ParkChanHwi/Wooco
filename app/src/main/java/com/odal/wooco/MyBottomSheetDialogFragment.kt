@@ -14,7 +14,7 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
     ): View? {
         // 레이아웃 파일을 인플레이트합니다.
         Log.d("MyBottomSheetDialogFragment", "onCreateView called")
-        return inflater.inflate(R.layout.fragment_bottom_sheet, container, false)
+        return inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet, container, false)
     }
 }
 
