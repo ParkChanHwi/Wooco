@@ -344,16 +344,15 @@
             android:layout_height="79dp"
             android:layout_marginStart="118dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/document"
-            />
+            android:src="@drawable/document" />
+
         <ImageView
             android:id="@+id/document2"
             android:layout_width="84dp"
             android:layout_height="79dp"
             android:layout_marginStart="220dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/document"
-            />
+            android:src="@drawable/document" />
 
         <ImageView
             android:id="@+id/document3"
@@ -361,9 +360,30 @@
             android:layout_height="79dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/document"
-            />
+            android:src="@drawable/document" />
+
+        <!-- ScrollView와 LinearLayout -->
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="wrap_content"
+            android:layout_height="124dp"
+            android:layout_marginStart="310dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="5dp"
+            android:padding="0dp">
+
+            <LinearLayout
+                android:id="@+id/category_container2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="4dp" />
+
+        </ScrollView>
+
     </FrameLayout>
+
+
 
     <TextView
         android:layout_width="320dp"
@@ -372,7 +392,7 @@
         android:layout_marginStart="43dp"
         android:background="@drawable/rectangle_yuna9788"
         android:text="⚠  자격증 및 기타 서류 미제출시 코치 등록이 거절될 수 있습니다.
-                      제출된 문서는 관리자가 검토한 후, 보안 절차에 따라 폐기될   예정입니다."
+                      제출된 문서는 관리자가 검토한 후, 보안 절차에 따라 폐기될 예정입니다."
         android:textSize="10dp"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
