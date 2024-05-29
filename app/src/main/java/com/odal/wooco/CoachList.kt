@@ -2,7 +2,7 @@ package com.odal.wooco
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class CoachList : AppCompatActivity() {
@@ -10,9 +10,9 @@ class CoachList : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.menti_coachlist)
 
-        findViewById<Button>(R.id.kategori1).setOnClickListener {
+        findViewById<TextView>(R.id.kategori1).setOnClickListener {
             Log.d("MainActivity", "TextView clicked")
-            val bottomSheet = MyBottomSheetDialogFragment()
+            val bottomSheet = BottomSheet()
             bottomSheet.show(supportFragmentManager, "MyBottomSheetDialogFragment")
         }
     }

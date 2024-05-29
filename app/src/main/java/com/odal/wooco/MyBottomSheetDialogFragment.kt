@@ -1,21 +1,29 @@
 package com.odal.wooco
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
+
+class BottomSheet() : BottomSheetDialogFragment() {
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // 레이아웃 파일을 인플레이트합니다.
-        Log.d("MyBottomSheetDialogFragment", "onCreateView called")
-        return inflater.inflate(R.layout.fragment_bottom_sheet, container, false)
+        super.onCreateView(inflater, container, savedInstanceState)
+        return inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet, container, false)
     }
-}
 
-// 아래 bottom sheet 띄우려다가 실패한 코드
+    // button_bottom_sheet 눌렀을 때 시트 사라지기
+//    @Deprecated("Deprecated in Java")
+//    override fun onActivityCreated(savedInstanceState: Bundle?) {
+//        super.onActivityCreated(savedInstanceState)
+//        view?.findViewById<Button>(R.id.button_bottom_sheet)?.setOnClickListener {
+//            dismiss()
+//        }
+//    }
+}
