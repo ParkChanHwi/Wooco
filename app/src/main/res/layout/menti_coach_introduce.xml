@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Coach_introduceActivity">
+    tools:context=".Menti_coach_introduceActivity">
 
     <ImageView
         android:id="@+id/ArrowImageView"
@@ -23,9 +23,10 @@
         android:layout_height="22dp"
         android:layout_marginStart="150dp"
         android:layout_marginTop="33dp"
-        android:text="나의 수업 일정"
+        android:text="코치 소개"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
