@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -14,8 +15,8 @@
         android:layout_marginStart="37dp"
         android:layout_marginTop="37dp"
         android:src="@drawable/arrow"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
 
     <TextView
         android:id="@+id/page_text_id"
@@ -26,8 +27,8 @@
         android:text="나의 수업 일정"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
 
     <View
         android:layout_width="240dp"
@@ -35,8 +36,8 @@
         android:layout_marginStart="93dp"
         android:layout_marginTop="69dp"
         android:background="@android:color/darker_gray"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
 
     <ImageView
         android:id="@+id/profile_image"
@@ -47,19 +48,18 @@
         android:elevation="4dp"
         android:scaleType="centerCrop"
         android:src="@drawable/efaultimage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
 
     <View
         android:layout_width="240dp"
         android:layout_height="1dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="93dp"
-        android:layout_alignParentTop="true"
         android:layout_marginTop="247dp"
         android:background="@android:color/darker_gray"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
 
     <TextView
         android:id="@+id/user_class_text"
@@ -72,8 +72,8 @@
         android:gravity="center"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
 
     <TextView
         android:id="@+id/user_class_text2"
@@ -86,8 +86,8 @@
         android:gravity="center"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -97,8 +97,8 @@
         android:layout_marginStart="22dp"
         android:clipToPadding="false"
         android:clipChildren="false"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
         <ImageView
             android:id="@+id/grid_icon_imageview"
@@ -120,8 +120,8 @@
         android:layout_height="124dp"
         android:layout_marginTop="325dp"
         android:layout_marginStart="43dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
         <ImageView
             android:layout_width="320dp"
@@ -180,13 +180,12 @@
     <View
         android:layout_width="428dp"
         android:layout_height="1dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+
         android:layout_marginStart="-2dp"
         android:layout_marginTop="675dp"
         android:background="@android:color/darker_gray"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
 
     <ImageView
         android:layout_width="30dp"
@@ -195,8 +194,8 @@
         android:layout_marginTop="688dp"
         android:layout_marginBottom="15dp"
         android:src="@drawable/vector"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
 
     <ImageView
         android:layout_width="30dp"
@@ -205,8 +204,8 @@
         android:layout_marginTop="688dp"
         android:layout_marginBottom="15dp"
         android:src="@drawable/vector"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
 
     <ImageView
         android:layout_width="30dp"
@@ -215,8 +214,8 @@
         android:layout_marginTop="688dp"
         android:layout_marginBottom="15dp"
         android:src="@drawable/uiw_date2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
 
     <ImageView
         android:layout_width="30dp"
@@ -225,7 +224,7 @@
         android:layout_marginTop="688dp"
         android:layout_marginBottom="15dp"
         android:src="@drawable/group_513937"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
