@@ -13,9 +13,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wooco"
         tools:targetApi="31">
-        <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".LoginActivity"> </activity>
-        <activity android:name=".SplashActivity"
+        <activity
+            android:name=".Menti_coach_introduceActivity3"
+            android:exported="false" />
+        <activity
+            android:name=".Menti_coach_introduceActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".Menti_coach_introduceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Coach_intoduceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".utils.Coach_introduceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Coach_registerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Coach_scheduleActivity"
+            android:exported="false" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
 

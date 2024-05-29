@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Menti_coach_introduceActivity">
+
+    <ImageView
+        android:id="@+id/ArrowImageView"
+        android:layout_width="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="37dp"
+        android:src="@drawable/arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/page_text_id"
+        android:layout_width="110dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="33dp"
+        android:text="코치 소개"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <View
+        android:layout_width="240dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="69dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="103dp"
+        android:layout_height="117dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="99dp"
+        android:elevation="4dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/efaultimage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="240dp"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="93dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="247dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/some_id"
+        android:layout_width="65dp"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="158dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="110dp"
+        android:text="이        름 :"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/user_class_text2"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginStart="223dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/some_id2"
+        android:layout_width="65dp"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="158dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="143dp"
+        android:text="학교/회사:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/user_class_text3"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="143dp"
+        android:layout_marginStart="223dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/some_id3"
+        android:layout_width="65dp"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="158dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="176dp"
+        android:text="학과/직무:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/user_class_text4"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="176dp"
+        android:layout_marginStart="223dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/coach_category"
+        android:layout_width="85dp"
+        android:layout_height="18dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="260dp"
+        android:text="코치 카테고리"
+        android:textStyle="bold"
+        android:background="@drawable/introduce_rectangle1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ScrollView
+        android:layout_width="345dp"
+        android:layout_height="375dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="37dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 사용자가 입력한 값을 표시할 TextView -->
+            <TextView
+                android:id="@+id/userInputTextView"
+                android:layout_width="345dp"
+                android:layout_height="375dp"
+                android:background="#FFFFFF"
+                android:padding="4dp"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/calss_inform"
+        android:layout_width="85dp"
+        android:layout_height="18dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="166dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="260dp"
+        android:text="수업 안내"
+        android:gravity="center"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/review"
+        android:layout_width="85dp"
+        android:layout_height="18dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="296dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="260dp"
+        android:text="수업 안내"
+        android:gravity="center"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <android.widget.Button
+        android:layout_width="105dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="690dp"
+        android:background="#F89B00"
+        android:text="예약하기"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <android.widget.Button
+        android:layout_width="105dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="230dp"
+        android:layout_marginTop="690dp"
+        android:background="#F89B00"
+        android:text="상담하기"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
