@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 class MentiReserve : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.mentee_reserve)
+        setContentView(R.layout.menti_reserve)
 
         val btnReserve = findViewById<Button>(R.id.reserve_button)
         btnReserve.setOnClickListener {
