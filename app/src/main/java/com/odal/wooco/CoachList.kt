@@ -3,18 +3,16 @@ package com.odal.wooco
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 
 class CoachList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.menti_coachlist)
 
-        findViewById<TextView>(R.id.kategori1).setOnClickListener {
+        findViewById<TextView>(R.id.university_text_view).setOnClickListener {
             Log.d("MainActivity", "TextView clicked")
-            val bottomSheet = BottomSheet()
+            val bottomSheet = MyBottomSheetDialogFragment()
             bottomSheet.show(supportFragmentManager, "MyBottomSheetDialogFragment")
         }
     }
