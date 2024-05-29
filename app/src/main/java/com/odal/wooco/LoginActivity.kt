@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        val intent = Intent(this, MainActivity::class.java)
+                        val intent = Intent(this, CoachList::class.java)
                         startActivity(intent)
                         finish() // 로그인 성공 시 현재 액티비티 종료
                     } else {

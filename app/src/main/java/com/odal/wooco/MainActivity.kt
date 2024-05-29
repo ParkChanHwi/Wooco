@@ -20,10 +20,10 @@ class MainActivity : AppCompatActivity() {
         // myRef.setValue("Success")
         setContentView(R.layout.menti_coachlist)
 
-//        findViewById<Button>(R.id.button_go_to_register).setOnClickListener {
-//            val intent = Intent(this, RegisterActivity::class.java)
-//            startActivity(intent)
-//        }
+        findViewById<Button>(R.id.kategori1).setOnClickListener {
+            val intent = Intent(this, CoachList::class.java)
+            startActivity(intent)
+        }
 
     }
 }
