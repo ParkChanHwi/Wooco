@@ -26,14 +26,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        findViewById<Button>(R.id.button_logout).setOnClickListener {
-            val auth = Firebase.auth
-            auth.signOut()
-
-            // Redirect to LoginActivity
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-        }
+//        findViewById<Button>(R.id.button_logout).setOnClickListener {
+//            val auth = Firebase.auth
+//            auth.signOut()
+//
+//            // Redirect to LoginActivity
+//            val intent = Intent(this, LoginActivity::class.java)
+//            startActivity(intent)
+//        }
 
 
     }
