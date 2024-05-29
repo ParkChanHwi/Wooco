@@ -50,8 +50,8 @@
         android:elevation="4dp"
         android:scaleType="centerCrop"
         android:src="@drawable/efaultimage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
 
     <View
         android:layout_width="240dp"
@@ -73,8 +73,8 @@
         android:gravity="center"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
 
     <TextView
         android:id="@+id/user_class_text2"
@@ -87,8 +87,8 @@
         android:gravity="center"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
