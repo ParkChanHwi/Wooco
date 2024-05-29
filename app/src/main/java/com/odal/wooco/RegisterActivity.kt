@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.odal.wooco.datamodels.UserDataModel
 import com.odal.wooco.utils.FirebaseRef
 
 class RegisterActivity : AppCompatActivity() {
