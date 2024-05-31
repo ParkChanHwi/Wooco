@@ -333,6 +333,7 @@
         android:layout_marginTop="677dp"
         android:clipToOutline="true"
         android:background="@drawable/uiw_date"
+        android:onClick="onUiwDateClick"
         />
 
     <ImageView
