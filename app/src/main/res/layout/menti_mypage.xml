@@ -56,6 +56,7 @@
         android:layout_alignParentTop="true"/>
 
     <android.widget.Button
+        android:id="@+id/coach_transfer"
         android:layout_width="70dp"
         android:layout_height="23dp"
         android:layout_marginTop="14dp"
@@ -88,6 +89,7 @@
         android:gravity="top"/>
 
     <android.widget.Button
+        android:id="@+id/account_set"
         android:layout_width="50dp"
         android:layout_height="20dp"
         android:layout_marginStart="280dp"
@@ -132,6 +134,7 @@
         android:textStyle="bold"/>
 
     <android.widget.Button
+        android:id="@+id/last_c_details"
         android:layout_width="116dp"
         android:layout_height="23dp"
         android:layout_marginStart="37dp"
@@ -142,6 +145,7 @@
         android:background="@color/white"/>
 
     <android.widget.Button
+        android:id="@+id/love_coach"
         android:layout_width="116dp"
         android:layout_height="23dp"
         android:layout_marginStart="37dp"
@@ -152,6 +156,7 @@
         android:background="@color/white"/>
 
     <android.widget.Button
+        android:id="@+id/my_review"
         android:layout_width="116dp"
         android:layout_height="23dp"
         android:layout_marginStart="37dp"
@@ -172,6 +177,7 @@
         android:textStyle="bold"/>
 
     <android.widget.Button
+        android:id="@+id/purchase"
         android:layout_width="116dp"
         android:layout_height="23dp"
         android:layout_marginStart="37dp"
@@ -182,6 +188,7 @@
         android:background="@color/white"/>
 
     <android.widget.Button
+        android:id="@+id/purchase_history"
         android:layout_width="116dp"
         android:layout_height="23dp"
         android:layout_marginStart="37dp"
@@ -202,6 +209,7 @@
         android:textStyle="bold"/>
 
     <android.widget.Button
+        android:id="@+id/wooco_info"
         android:layout_width="116dp"
         android:layout_height="23dp"
         android:layout_marginStart="37dp"
@@ -212,6 +220,7 @@
         android:background="@color/white"/>
 
     <android.widget.Button
+        android:id="@+id/notice"
         android:layout_width="116dp"
         android:layout_height="23dp"
         android:layout_marginStart="37dp"
@@ -222,6 +231,7 @@
         android:background="@color/white"/>
 
     <android.widget.Button
+        android:id="@+id/app_version"
         android:layout_width="116dp"
         android:layout_height="23dp"
         android:layout_marginStart="37dp"
@@ -256,6 +266,7 @@
     </ImageView>
 
     <ImageView
+        android:id="@+id/chat_1"
         android:layout_width="33dp"
         android:layout_height="33dp"
         android:layout_alignParentLeft="true"

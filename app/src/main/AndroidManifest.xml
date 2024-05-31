@@ -16,6 +16,7 @@
         <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".LoginActivity"> </activity>
         <activity android:name=".Menti_scheduleActivity" />
+        <activity android:name=".Menti_mypageActivity" />
         <activity android:name=".Coach_scheduleActivity" />
         <activity android:name=".SplashActivity"
             android:exported="true">

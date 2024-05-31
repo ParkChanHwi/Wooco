@@ -34,21 +34,21 @@ class Menti_scheduleActivity : AppCompatActivity() {
 
         // 아직 채팅방 형성 x
 //        chatBtn.setOnClickListener{
-//            val intent = Intent(this, coachChat::class.java)
+//            val intent = Intent(this, Mebti_chatActivity::class.java)
 //            startActivity(intent)
 //        }
 
         calBtn.setOnClickListener{
             Toast.makeText(this, "현재 화면입니다.", Toast.LENGTH_SHORT).show()
-//            val intent = Intent(this, Coach_scheduleActivity::class.java)
+//            val intent = Intent(this, Menti_scheduleActivity::class.java)
 //            startActivity(intent)
         }
 
-        // 아직 마이페이지 형성 x
-//        profileBtn.setOnClickListener{
-//            val intent = Intent(this, Coach_profileActivity::class.java)
-//            startActivity(intent)
-//        }
+
+        profileBtn.setOnClickListener{
+            val intent = Intent(this, Menti_mypageActivity::class.java)
+            startActivity(intent)
+        }
 
 
     }
