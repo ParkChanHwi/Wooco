@@ -1,6 +1,8 @@
 package com.odal.wooco
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -22,5 +24,11 @@ class ChatActivity : AppCompatActivity() {
 
         //액션바에 상대방 이름 보여주기
         supportActionBar?.title = receiverName
+        val arrowImageView: ImageView = findViewById(R.id.arrow_3)
+        arrowImageView.setOnClickListener {
+            val intent = Intent(this, CoachList::class.java)
+            startActivity(intent)
+        }
+
     }
 }
