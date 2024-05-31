@@ -178,53 +178,62 @@
     </FrameLayout>
 
     <View
-        android:layout_width="428dp"
-        android:layout_height="1dp"
+        android:id="@+id/line_21"
+        android:layout_width="440dp"
+        android:layout_height="2dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="667dp"
+        android:background="@drawable/line_9"
+        />
 
-        android:layout_marginStart="-2dp"
-        android:layout_marginTop="675dp"
-        android:background="@android:color/darker_gray"
-         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"/>
 
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="688dp"
-        android:layout_marginBottom="15dp"
-        android:src="@drawable/vector"
-         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"/>
 
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="688dp"
-        android:layout_marginBottom="15dp"
-        android:src="@drawable/vector"
-         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"/>
+        android:id="@+id/material_sy"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="29dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="677dp"
+        android:clipToOutline="true"
+        android:background="@drawable/outhome">
+    </ImageView>
 
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="688dp"
-        android:layout_marginBottom="15dp"
-        android:src="@drawable/uiw_date2"
-         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"/>
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="136dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="677dp"
+        android:clipToOutline="true"
+        android:background="@drawable/vector">
+    </ImageView>
 
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="345dp"
-        android:layout_marginTop="688dp"
-        android:layout_marginBottom="15dp"
-        android:src="@drawable/group_513937"
-         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"/>
+        android:id="@+id/uiw_date"
+        android:layout_width="32dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="239dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="677dp"
+        android:clipToOutline="true"
+        android:background="@drawable/uiw_date2"
+        />
+
+    <ImageView
+        android:id="@+id/group_513866"
+        android:layout_width="32dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="346dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="677dp"
+        android:clipToOutline="true"
+        android:background="@drawable/group_513937"
+        />
 
 </RelativeLayout>

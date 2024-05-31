@@ -133,7 +133,7 @@
         android:background="@drawable/line_9"
         />
 
-    <RelativeLayout
+    <ImageView
         android:id="@+id/material_sy"
         android:layout_width="33dp"
         android:layout_height="33dp"
@@ -143,9 +143,9 @@
         android:layout_marginTop="677dp"
         android:clipToOutline="true"
         android:background="@drawable/outhome">
-    </RelativeLayout>
+    </ImageView>
 
-    <RelativeLayout
+    <ImageView
         android:layout_width="33dp"
         android:layout_height="33dp"
         android:layout_alignParentLeft="true"
@@ -154,9 +154,9 @@
         android:layout_marginTop="677dp"
         android:clipToOutline="true"
         android:background="@drawable/onchat">
-    </RelativeLayout>
+    </ImageView>
 
-    <RelativeLayout
+    <ImageView
         android:id="@+id/uiw_date"
         android:layout_width="32dp"
         android:layout_height="35dp"
@@ -168,7 +168,7 @@
         android:background="@drawable/uiw_date"
         />
 
-    <RelativeLayout
+    <ImageView
         android:id="@+id/group_513866"
         android:layout_width="32dp"
         android:layout_height="35dp"
