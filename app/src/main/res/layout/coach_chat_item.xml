@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="14dp">
+
+    <!-- 상대방의 채팅 메시지 -->
+    <TextView
+        android:id="@+id/coach_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/coach_chat_rectangle"
+        android:padding="8dp"
+        android:textColor="@android:color/black"
+        android:text="I'm Good."
+        android:maxWidth="200dp"
+        android:layout_alignParentStart="true"/>
+
+    <!-- 채팅 시간 스탬프 -->
+    <TextView
+        android:id="@+id/text_timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/darker_gray"
+        android:text="11:00 AM"
+        android:layout_below="@id/coach_chat"
+        android:layout_alignStart="@id/coach_chat"/>
+</RelativeLayout>
