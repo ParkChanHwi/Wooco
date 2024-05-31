@@ -49,7 +49,7 @@ class Coach_registerActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val firestore = FirebaseFirestore.getInstance()
+            //val firestore = FirebaseFirestore.getInstance()
 
             val currentUser = auth.currentUser
             if (currentUser != null) {
@@ -66,18 +66,17 @@ class Coach_registerActivity : AppCompatActivity() {
                 // Firestore에 코치 정보 추가
                 FirebaseRef.coachInfoRef.child(uid).setValue(coachInfo)
                     .addOnSuccessListener {
-                        // Firestore에 코치 정보 추가 성공
-                        Log.d(TAG, "Coach info added to Firestore.")
+                        // Firebase에 코치 정보 추가 성공
+                        Log.d(TAG, "Coach info added to Firebase.")
 
                         val intent = Intent(this, Coach_myselfActivity::class.java)
                         startActivity(intent)
-                        finish() // 현재 액티비티 종료
 
                         // 추가적인 작업 수행 혹은 화면 이동 등
                     }
                     .addOnFailureListener { e ->
-                        // Firestore에 코치 정보 추가 실패
-                        Log.e(TAG, "Error adding coach info to Firestore.", e)
+                        // Firebase에 코치 정보 추가 실패
+                        Log.e(TAG, "Error adding coach info to Firebase.", e)
                     }
 
             }
