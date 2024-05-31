@@ -43,7 +43,7 @@ class Coach_registerActivity : AppCompatActivity() {
             val name = nameEditText.text.toString()
             val schoolOrCompany = schoolOrCompanyEditText.text.toString()
             val majorOrPosition = majorOrPositionEditText.text.toString()
-            val score = score.text.toString();
+           // val score = score.text.toString();
 
 
             if (name.isBlank() || schoolOrCompany.isBlank() || majorOrPosition.isBlank()) {
@@ -63,7 +63,7 @@ class Coach_registerActivity : AppCompatActivity() {
                     "nickname" to name,
                     "school" to schoolOrCompany,
                     "interest" to majorOrPosition,
-                    "score"    to score
+                    //"score"    to score
                 )
 
                 // Firestore에 코치 정보 추가

@@ -5,5 +5,5 @@ class CoachDataModel (
     val nickname : String? = null,
     val school : String? = null,
     val interest : String? = null,
-    val score : Double? = null
+   // val score : Double? = null
 )
