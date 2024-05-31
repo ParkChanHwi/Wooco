@@ -150,16 +150,6 @@
                 android:stateListAnimator="@null"
                 />
 
-            <android.widget.Button
-                android:id="@+id/kategori7"
-                android:layout_width="30dp"
-                android:layout_height="20dp"
-                android:text="편입"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/black"
-                android:background="@color/white"
-                android:stateListAnimator="@null"
-                />
 
         </LinearLayout>
     </HorizontalScrollView>
