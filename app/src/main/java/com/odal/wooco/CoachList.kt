@@ -43,7 +43,7 @@ class CoachList : AppCompatActivity() {
 //        }
 
         calBtn.setOnClickListener{
-            val intent = Intent(this, Coach_scheduleActivity::class.java)
+            val intent = Intent(this, Menti_scheduleActivity::class.java)
             startActivity(intent)
         }
 

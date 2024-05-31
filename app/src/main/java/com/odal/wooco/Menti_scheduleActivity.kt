@@ -40,8 +40,8 @@ class Menti_scheduleActivity : AppCompatActivity() {
 
         calBtn.setOnClickListener{
             Toast.makeText(this, "현재 화면입니다.", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, Coach_scheduleActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this, Coach_scheduleActivity::class.java)
+//            startActivity(intent)
         }
 
         // 아직 마이페이지 형성 x

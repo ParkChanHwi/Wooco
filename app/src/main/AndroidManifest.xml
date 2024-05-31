@@ -16,11 +16,11 @@
         <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".LoginActivity"> </activity>
         <activity android:name=".Menti_scheduleActivity" />
+        <activity android:name=".Coach_scheduleActivity" />
         <activity android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
