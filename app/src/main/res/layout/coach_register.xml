@@ -9,7 +9,7 @@
     tools:context=".Coach_registerActivity">
 
     <ImageView
-        android:id="@+id/ArrowImageView"
+        android:id="@+id/back"
         android:layout_width="15dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"

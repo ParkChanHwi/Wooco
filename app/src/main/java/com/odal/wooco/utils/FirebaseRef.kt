@@ -8,6 +8,8 @@ class FirebaseRef {
     companion object {
         val database = Firebase.database
         val userInfoRef = database.getReference("userInfo")
+        val coachInfoRef = database.getReference("coachInfo")
+
         val categoryRef = database.getReference("categoryInfo")
         val coachInfoRef = database.getReference("coachInfo")
     }

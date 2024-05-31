@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ImageView
+            android:id="@+id/back"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:src="@drawable/arrow"
