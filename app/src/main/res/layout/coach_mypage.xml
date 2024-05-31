@@ -60,10 +60,10 @@
         android:layout_height="23dp"
         android:layout_marginTop="14dp"
         android:layout_marginStart="330dp"
-        android:text="코치 전환"
+        android:text="맨티 전환"
         android:textSize="12sp"
         android:textColor="@color/white"
-        android:background="#0F4C81"/>
+        android:background="#F89B00"/>
 
 
 
@@ -84,7 +84,7 @@
         android:layout_marginStart="244dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="125dp"
-        android:text="회원"
+        android:text="코치"
         android:gravity="top"/>
 
     <android.widget.Button
@@ -96,29 +96,30 @@
         android:textSize="10sp"
         android:background="@drawable/account_set"/>
 
+
     <TextView
         android:id="@+id/coin_label"
-        android:layout_width="76dp"
+        android:layout_width="100dp"
         android:layout_height="25dp"
         android:layout_marginStart="156dp"
         android:layout_marginTop="177dp"
-        android:text="보유 우코인:"
-        android:background="#F89B00"
-        android:textColor="@android:color/black"
+        android:text="나의 코칭 별점:"
+        android:textColor="@color/white"
+        android:background="#0F4C81"
         android:padding="2dp"/>
 
     <!-- 사용자가 보유한 코인 수를 표시할 TextView -->
     <TextView
         android:id="@+id/coin_count"
-        android:layout_width="20dp"
+        android:layout_width="50dp"
         android:layout_height="25dp"
         android:layout_toEndOf="@id/coin_label"
         android:layout_marginStart="0dp"
         android:layout_marginTop="177dp"
         android:gravity="center"
         android:textSize="18sp"
-        android:background="#F89B00"
-        android:textColor="@android:color/black"
+        android:textColor="@color/white"
+        android:background="#0F4C81"
         android:padding="2dp"/>
 
     <TextView
@@ -136,7 +137,7 @@
         android:layout_height="23dp"
         android:layout_marginStart="37dp"
         android:layout_marginTop="307dp"
-        android:text="지난 수강 내역"
+        android:text="코칭 요청"
         android:textSize="18sp"
         android:gravity="start"
         android:background="@color/white"/>
@@ -146,20 +147,10 @@
         android:layout_height="23dp"
         android:layout_marginStart="37dp"
         android:layout_marginTop="338dp"
-        android:text="찜한 코치"
+        android:text="지난 코칭 내역"
         android:textSize="18sp"
         android:gravity="start"
         android:background="@color/white"/>
-
-    <android.widget.Button
-        android:layout_width="116dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="369dp"
-        android:text="별점 기록"
-        android:textSize="18sp"
-        android:gravity="start"
-        android:background="#FFFFFF"/>
 
     <TextView
         android:id="@+id/woocoin"
@@ -176,7 +167,7 @@
         android:layout_height="23dp"
         android:layout_marginStart="37dp"
         android:layout_marginTop="447dp"
-        android:text="구매 하기"
+        android:text="교환 하기"
         android:textSize="18sp"
         android:gravity="start"
         android:background="@color/white"/>
@@ -186,7 +177,7 @@
         android:layout_height="23dp"
         android:layout_marginStart="37dp"
         android:layout_marginTop="478dp"
-        android:text="구매 내역"
+        android:text="교환 내역"
         android:textSize="18sp"
         android:gravity="start"
         android:background="@color/white"/>
