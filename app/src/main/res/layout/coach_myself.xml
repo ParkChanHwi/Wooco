@@ -27,7 +27,7 @@
         android:src="@drawable/arrow"
         />
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -62,7 +62,7 @@
         android:gravity="top"
         />
 
-    <TextView
+    <EditText
         android:id="@+id/myself1"
         android:layout_width="340dp"
         android:layout_height="90dp"
@@ -71,9 +71,10 @@
         android:layout_marginLeft="36dp"
         android:layout_marginTop="148dp"
         android:gravity="top"
-        android:text="최대 100자"
+        android:hint="최대 250자"
         android:textSize="11dp"
         android:textColor="#747474"
+        android:maxLength="250"
         />
 
     <TextView
@@ -87,7 +88,7 @@
         android:textStyle="bold"
         android:gravity="top"
         />
-    <TextView
+    <EditText
         android:id="@+id/myself2"
         android:layout_width="340dp"
         android:layout_height="50dp"
@@ -96,9 +97,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="290dp"
         android:gravity="top"
-        android:text="최대 100자"
+        android:hint="최대 100자"
         android:textSize="11dp"
         android:textColor="#747474"
+        android:maxLength="100"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -111,7 +113,7 @@
         android:textStyle="bold"
         android:gravity="top"
         />
-    <TextView
+    <EditText
         android:id="@+id/myself3"
         android:layout_width="340dp"
         android:layout_height="99dp"
@@ -120,9 +122,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="390dp"
         android:gravity="top"
-        android:text="최대 100자"
+        android:hint="최대 250자"
         android:textSize="11dp"
         android:textColor="#747474"
+        android:maxLength="250"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -135,7 +138,7 @@
         android:textStyle="bold"
         android:gravity="top"
         />
-    <TextView
+    <EditText
         android:id="@+id/myself4"
         android:layout_width="340dp"
         android:layout_height="99dp"
@@ -144,9 +147,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="540dp"
         android:gravity="top"
-        android:text="최대 100자"
+        android:hint="최대 250자"
         android:textSize="11dp"
         android:textColor="#747474"
+        android:maxLength="250"
         />
 
 
@@ -156,7 +160,7 @@
         android:layout_height="32dp"
         android:layout_marginTop="680dp"
         android:layout_marginLeft="130dp"
-        android:text="다음"
+        android:text="등록"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:background="#0F4C81"

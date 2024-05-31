@@ -150,16 +150,6 @@
                 android:stateListAnimator="@null"
                 />
 
-            <android.widget.Button
-                android:id="@+id/kategori7"
-                android:layout_width="30dp"
-                android:layout_height="20dp"
-                android:text="편입"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/black"
-                android:background="@color/white"
-                android:stateListAnimator="@null"
-                />
 
         </LinearLayout>
     </HorizontalScrollView>
@@ -192,103 +182,11 @@
         android:textColor="#000000"
         android:gravity="top"
         />
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/coachlist_recycleView"
         android:layout_width="match_parent"
-        android:layout_height="515dp"
-        android:layout_marginTop="150dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp">
-
-            <!-- 사람 1 -->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:padding="8dp"
-                android:background="@drawable/rectangle_coachlist"
-                android:layout_marginBottom="8dp"
-                >
-
-                <View
-                    android:layout_width="54dp"
-                    android:layout_height="54dp"
-                    android:layout_marginLeft="4dp"
-                    android:background="@drawable/group_513937"
-                    />
-
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/center_line"
-                    android:rotation="90"
-                    android:layout_marginLeft="9dp"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="80dp"
-                    android:text="별명 :"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="118dp"
-                    android:text="차우코"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="80dp"
-                    android:layout_marginTop="16dp"
-                    android:text="학교 / 회사 :"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="156dp"
-                    android:layout_marginTop="16dp"
-                    android:text="강원대 00학과"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="80dp"
-                    android:layout_marginTop="32dp"
-                    android:text="□관심분야 :"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="158dp"
-                    android:layout_marginTop="32dp"
-                    android:text="자격증 - 기사/기능사, 진로"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/star_1"
-                    android:layout_marginLeft="324dp"
-                    android:layout_marginTop="3dp"/>
-                <TextView
-                    android:id="@+id/star_score"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginLeft="340dp"
-                    android:text="4.9"/>
-
-            </RelativeLayout>
-
-
-        </LinearLayout>
-    </ScrollView>
+        android:layout_height="505dp"
+        android:layout_marginTop="160dp"/>
 
     <View
         android:id="@+id/line_21"
@@ -334,7 +232,6 @@
         android:layout_marginTop="677dp"
         android:clipToOutline="true"
         android:background="@drawable/uiw_date"
-        android:onClick="onUiwDateClick"
         />
 
     <ImageView
@@ -350,3 +247,5 @@
         />
 
 </RelativeLayout>
+
+    <!--BottomSheetDialogFragment 추가할 예정-->
