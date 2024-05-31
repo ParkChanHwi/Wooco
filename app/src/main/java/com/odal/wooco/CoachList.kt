@@ -1,13 +1,10 @@
 package com.odal.wooco
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -15,20 +12,27 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.odal.wooco.utils.FirebaseRef
+import com.odal.wooco.datamodels.CoachDataModel
 
 class CoachList : AppCompatActivity() {
+
+    private lateinit var database: DatabaseReference
+    private lateinit var coachAdapter: Coach_Adapter
+    private lateinit var recyclerView: RecyclerView
+    private val itemList = mutableListOf<CoachDataModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.menti_coachlist)
 
-        val homeBtn:ImageView = findViewById(R.id.material_sy)
-        val chatBtn:ImageView = findViewById(R.id.chat_1)
-        val calBtn:ImageView = findViewById(R.id.uiw_date)
-        val profileBtn:ImageView = findViewById(R.id.group_513866)
-
+        val homeBtn: ImageView = findViewById(R.id.material_sy)
+        val chatBtn: ImageView = findViewById(R.id.chat_1)
+        val calBtn: ImageView = findViewById(R.id.uiw_date)
+        val profileBtn: ImageView = findViewById(R.id.group_513866)
 
         findViewById<Button>(R.id.kategori1).setOnClickListener {
             val bottomSheet = BottomSheet1()
@@ -55,55 +59,54 @@ class CoachList : AppCompatActivity() {
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
 
-        val recyclerView: RecyclerView = findViewById(R.id.coachlist_recycleView)
+        // Firebase Database 초기화
+        // pathString은 코치목록으로 변경
+        database = FirebaseDatabase.getInstance().reference.child("coachInfo")
 
-        val items = listOf(
-            Coach_Adapter.Item("차우코", "강원대 00학과", "자격증 - 기사/기능사, 진로", "4.9"),
-            Coach_Adapter.Item("별명 2", "학교/회사 2", "관심분야 2", "4.5"),
-            Coach_Adapter.Item("별명 2", "학교/회사 2", "관심분야 2", "4.5"),
-            Coach_Adapter.Item("별명 2", "학교/회사 2", "관심분야 2", "4.5"),
-            Coach_Adapter.Item("별명 2", "학교/회사 2", "관심분야 2", "4.5"),
-            Coach_Adapter.Item("별명 2", "학교/회사 2", "관심분야 2", "4.5"),
-            Coach_Adapter.Item("별명 2", "학교/회사 2", "관심분야 2", "4.5"),
-            Coach_Adapter.Item("별명 2", "학교/회사 2", "관심분야 2", "4.5"),
-            // Add more items as needed
-        )
-
-        val adapter = Coach_Adapter(items)
+        // RecyclerView 초기화
+        recyclerView = findViewById(R.id.coachlist_recycleView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapter
+        coachAdapter = Coach_Adapter(itemList)
+        recyclerView.adapter = coachAdapter
 
+        // Firebase에서 데이터 가져오기
+        database.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                itemList.clear()
+                for (dataSnapshot in snapshot.children) {
+                    val coach = dataSnapshot.getValue(CoachDataModel::class.java)
+                    if (coach != null) {
+                        itemList.add(coach)
+                    }
+                }
+                coachAdapter.notifyDataSetChanged()
+            }
 
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("Firebase", "Database error: ${error.message}")
+            }
+        })
 
-        homeBtn.setOnClickListener{
+        homeBtn.setOnClickListener {
             Toast.makeText(this, "현재 화면입니다.", Toast.LENGTH_SHORT).show()
-//            val intent = Intent(this, CoachList::class.java)
-//            startActivity(intent)
         }
 
         // 아직 채팅방 형성 x
-        chatBtn.setOnClickListener{
+        chatBtn.setOnClickListener {
             val intent = Intent(this, ChatActivity::class.java)
             startActivity(intent)
         }
 
         //멘티 나의 일정
-        calBtn.setOnClickListener{
+        calBtn.setOnClickListener {
             val intent = Intent(this, Menti_scheduleActivity::class.java)
             startActivity(intent)
         }
 
-
         //멘티 마이페이지
-        profileBtn.setOnClickListener{
+        profileBtn.setOnClickListener {
             val intent = Intent(this, Menti_mypageActivity::class.java)
             startActivity(intent)
         }
-
-
-
     }
-
-
-
 }

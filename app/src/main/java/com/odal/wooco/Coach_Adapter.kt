@@ -5,15 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.odal.wooco.datamodels.CoachDataModel
 
-class Coach_Adapter(private val itemList: List<Item>) : RecyclerView.Adapter<Coach_Adapter.ItemViewHolder>() {
-
-    data class Item(
-        val nickname: String,
-        val schoolOrCompany: String,
-        val interest: String,
-        val score: String
-    )
+class Coach_Adapter(val itemList: List<CoachDataModel>) : RecyclerView.Adapter<Coach_Adapter.ItemViewHolder>() {
 
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nicknameTextView: TextView = itemView.findViewById(R.id.nicknameTextView)
@@ -29,10 +23,10 @@ class Coach_Adapter(private val itemList: List<Item>) : RecyclerView.Adapter<Coa
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = itemList[position]
-        holder.nicknameTextView.text = " ${item.nickname}"
-        holder.schoolOrCompanyTextView.text = " ${item.schoolOrCompany}"
-        holder.interestTextView.text = " ${item.interest}"
-        holder.scoreTextView.text = item.score
+        holder.nicknameTextView.text = item.nickname
+        holder.schoolOrCompanyTextView.text = item.school
+        holder.interestTextView.text = item.interest
+        holder.scoreTextView.text = item.score?.toString() ?: "N/A"
     }
 
     override fun getItemCount(): Int = itemList.size

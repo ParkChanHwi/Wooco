@@ -16,16 +16,12 @@ class Coach_mypageActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.coach_mypage)
 
-        val homeBtn: ImageView = findViewById(R.id.material_sy)
         val chatBtn: ImageView = findViewById(R.id.chat_1)
         val calBtn: ImageView = findViewById(R.id.uiw_date)
         val profileBtn: ImageView = findViewById(R.id.group_513866)
         val transferBtn: Button = findViewById(R.id.menti_transfer)
+        val coachBtn: Button = findViewById(R.id.coach_register)
 
-        homeBtn.setOnClickListener{
-            val intent = Intent(this, CoachList::class.java)
-            startActivity(intent)
-        }
 
 
         chatBtn.setOnClickListener{
@@ -50,6 +46,12 @@ class Coach_mypageActivity : AppCompatActivity() {
             finish()
         }
 
+
+        coachBtn.setOnClickListener{
+            val intent = Intent(this, Coach_registerActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
 
 

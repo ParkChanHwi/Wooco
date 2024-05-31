@@ -20,11 +20,7 @@ class Coach_scheduleActivity : AppCompatActivity() {
         val calBtn: ImageView = findViewById(R.id.uiw_date)
         val profileBtn: ImageView = findViewById(R.id.group_513866)
 
-        homeBtn.setOnClickListener{
-            Toast.makeText(this, "코치 메인은 변경해야함", Toast.LENGTH_SHORT).show()
-        }
 
-        // 아직 채팅방 형성 x
 //        chatBtn.setOnClickListener{
 //            val intent = Intent(this, Coach_::class.java)
 //            startActivity(intent)

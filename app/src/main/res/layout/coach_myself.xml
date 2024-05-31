@@ -17,7 +17,7 @@
         />
 
     <ImageView
-        android:id="@+id/arrow_3"
+        android:id="@+id/back"
         android:layout_width="15dp"
         android:layout_height="15dp"
         android:layout_alignParentLeft="true"
@@ -155,7 +155,7 @@
 
 
     <android.widget.Button
-        android:id="@+id/reserve_button"
+        android:id="@+id/main"
         android:layout_width="154dp"
         android:layout_height="32dp"
         android:layout_marginTop="680dp"

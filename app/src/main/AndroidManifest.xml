@@ -20,8 +20,10 @@
         </activity>
         <activity android:name=".LoginActivity"> </activity>
         <activity android:name=".Menti_scheduleActivity" />
+        <activity android:name=".Coach_myselfActivity" />
         <activity android:name=".Menti_mypageActivity" />
         <activity android:name=".Coach_scheduleActivity" />
+        <activity android:name=".Coach_registerActivity"/>
         <activity android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>

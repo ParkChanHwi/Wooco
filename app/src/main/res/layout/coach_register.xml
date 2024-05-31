@@ -370,6 +370,7 @@
         android:layout_alignParentTop="true"/>
 
     <android.widget.Button
+        android:id="@+id/next_myself"
         android:layout_width="154dp"
         android:layout_height="32dp"
         android:layout_marginTop="693dp"
