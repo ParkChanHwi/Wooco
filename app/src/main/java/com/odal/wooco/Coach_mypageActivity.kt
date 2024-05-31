@@ -27,11 +27,11 @@ class Coach_mypageActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // 아직 채팅방 형성 x
-//        chatBtn.setOnClickListener{
-//            val intent = Intent(this, Coach_::class.java)
-//            startActivity(intent)
-//        }
+
+        chatBtn.setOnClickListener{
+            val intent = Intent(this, ChatActivity::class.java)
+            startActivity(intent)
+        }
 
         calBtn.setOnClickListener{
             val intent = Intent(this, Coach_scheduleActivity::class.java)

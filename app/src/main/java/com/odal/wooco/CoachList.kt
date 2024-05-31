@@ -82,10 +82,10 @@ class CoachList : AppCompatActivity() {
         }
 
         // 아직 채팅방 형성 x
-//        chatBtn.setOnClickListener{
-//            val intent = Intent(this, MentiChat::class.java)
-//            startActivity(intent)
-//        }
+        chatBtn.setOnClickListener{
+            val intent = Intent(this, ChatActivity::class.java)
+            startActivity(intent)
+        }
 
         //멘티 나의 일정
         calBtn.setOnClickListener{
