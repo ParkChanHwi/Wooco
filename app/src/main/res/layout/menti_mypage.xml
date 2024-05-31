@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Menti_mypageActivity">
+
+    <ImageView
+        android:id="@+id/ArrowImageView"
+        android:layout_width="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="37dp"
+        android:src="@drawable/arrow" />
+
+    <TextView
+        android:id="@+id/page_text_id"
+        android:layout_width="110dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="33dp"
+        android:text="마이 페이지"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="240dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="69dp"
+        android:background="@android:color/darker_gray" />
+
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="103dp"
+        android:layout_height="117dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="99dp"
+        android:elevation="4dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/efaultimage"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+    <View
+        android:layout_width="240dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="247dp"
+        android:background="@android:color/darker_gray"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
+
+    <android.widget.Button
+        android:layout_width="70dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginStart="330dp"
+        android:text="코치 전환"
+        android:textSize="12sp"
+        android:textColor="@color/white"
+        android:background="#0F4C81"/>
+
+
+
+    <TextView
+        android:id="@+id/mypage_name"
+        android:layout_width="88dp"
+        android:layout_height="22dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="156dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="125dp"
+        android:gravity="top"/>
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="22dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="244dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="125dp"
+        android:text="회원"
+        android:gravity="top"/>
+
+    <android.widget.Button
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="129dp"
+        android:text="계정 설정"
+        android:textSize="10sp"
+        android:background="@drawable/account_set"/>
+
+    <TextView
+        android:id="@+id/coin_label"
+        android:layout_width="76dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="177dp"
+        android:text="보유 우코인:"
+        android:background="#F89B00"
+        android:textColor="@android:color/black"
+        android:padding="2dp"/>
+
+    <!-- 사용자가 보유한 코인 수를 표시할 TextView -->
+    <TextView
+        android:id="@+id/coin_count"
+        android:layout_width="20dp"
+        android:layout_height="25dp"
+        android:layout_toEndOf="@id/coin_label"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="177dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:background="#F89B00"
+        android:textColor="@android:color/black"
+        android:padding="2dp"/>
+
+    <TextView
+        android:id="@+id/my"
+        android:layout_width="31dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="270dp"
+        android:text="MY"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <android.widget.Button
+        android:layout_width="116dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="307dp"
+        android:text="지난 수강 내역"
+        android:textSize="18sp"
+        android:gravity="start"
+        android:background="@color/white"/>
+
+    <android.widget.Button
+        android:layout_width="116dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="338dp"
+        android:text="찜한 코치"
+        android:textSize="18sp"
+        android:gravity="start"
+        android:background="@color/white"/>
+
+    <android.widget.Button
+        android:layout_width="116dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="369dp"
+        android:text="별점 기록"
+        android:textSize="18sp"
+        android:gravity="start"
+        android:background="#FFFFFF"/>
+
+    <TextView
+        android:id="@+id/woocoin"
+        android:layout_width="56dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="410dp"
+        android:text="우코인"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <android.widget.Button
+        android:layout_width="116dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="447dp"
+        android:text="구매 하기"
+        android:textSize="18sp"
+        android:gravity="start"
+        android:background="@color/white"/>
+
+    <android.widget.Button
+        android:layout_width="116dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="478dp"
+        android:text="구매 내역"
+        android:textSize="18sp"
+        android:gravity="start"
+        android:background="@color/white"/>
+
+    <TextView
+        android:id="@+id/guide"
+        android:layout_width="68dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="534dp"
+        android:text="가이드"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <android.widget.Button
+        android:layout_width="116dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="571dp"
+        android:text="우코 소개"
+        android:textSize="18sp"
+        android:gravity="start"
+        android:background="@color/white"/>
+
+    <android.widget.Button
+        android:layout_width="116dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="602dp"
+        android:text="공지사항"
+        android:textSize="18sp"
+        android:gravity="start"
+        android:background="@color/white"/>
+
+    <android.widget.Button
+        android:layout_width="116dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="633dp"
+        android:text="앱 버전"
+        android:textSize="18sp"
+        android:gravity="start"
+        android:background="#FFFFFF"/>
+
+    <View
+        android:id="@+id/line_21"
+        android:layout_width="440dp"
+        android:layout_height="2dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="667dp"
+        android:background="@drawable/line_9"
+        />
+
+
+
+    <ImageView
+        android:id="@+id/material_sy"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="29dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="677dp"
+        android:clipToOutline="true"
+        android:background="@drawable/outhome">
+    </ImageView>
+
+    <ImageView
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="136dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="677dp"
+        android:clipToOutline="true"
+        android:background="@drawable/vector">
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/uiw_date"
+        android:layout_width="32dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="239dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="677dp"
+        android:clipToOutline="true"
+        android:background="@drawable/uiw_date"
+        />
+
+    <ImageView
+        android:id="@+id/group_513866"
+        android:layout_width="32dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="346dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="677dp"
+        android:clipToOutline="true"
+        android:background="@drawable/group_5139372"
+        />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>
