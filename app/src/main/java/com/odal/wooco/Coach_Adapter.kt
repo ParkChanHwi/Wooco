@@ -26,7 +26,7 @@ class Coach_Adapter(val itemList: List<CoachDataModel>) : RecyclerView.Adapter<C
         holder.nicknameTextView.text = item.nickname
         holder.schoolOrCompanyTextView.text = item.school
         holder.interestTextView.text = item.interest
-        holder.scoreTextView.text = item.score?.toString() ?: "N/A"
+        //holder.scoreTextView.text = item.score?.toString() ?: "N/A"
     }
 
     override fun getItemCount(): Int = itemList.size
