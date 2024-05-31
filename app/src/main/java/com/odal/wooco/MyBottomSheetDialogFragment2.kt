@@ -9,7 +9,7 @@ import android.widget.ImageView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
-class BottomSheet() : BottomSheetDialogFragment() {
+class MyBottomSheetDialogFragment2() : BottomSheetDialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,

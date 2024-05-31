@@ -20,6 +20,8 @@
             android:exported="false" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".Coach_myselfActivity" />
+
         <activity
             android:name=".SplashActivity"
             android:exported="true">

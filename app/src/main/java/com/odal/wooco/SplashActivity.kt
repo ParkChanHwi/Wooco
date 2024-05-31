@@ -29,7 +29,7 @@ class SplashActivity : AppCompatActivity() {
             },3000)
         }else {  // 로그인이 되어있는 경우
             Handler().postDelayed({
-                val intent = Intent(this, CoachList::class.java)
+                val intent = Intent(this, Coach_registerActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(intent)
                 finish()

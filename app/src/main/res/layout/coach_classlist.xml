@@ -134,7 +134,7 @@
         />
 
     <RelativeLayout
-        android:id="@+id/material_sy"
+        android:id="@+id/main_home"
         android:layout_width="33dp"
         android:layout_height="33dp"
         android:layout_alignParentLeft="true"
@@ -146,6 +146,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/main_message"
         android:layout_width="33dp"
         android:layout_height="33dp"
         android:layout_alignParentLeft="true"
@@ -157,7 +158,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/uiw_date"
+        android:id="@+id/main_plan"
         android:layout_width="32dp"
         android:layout_height="35dp"
         android:layout_alignParentLeft="true"
@@ -169,7 +170,7 @@
         />
 
     <RelativeLayout
-        android:id="@+id/group_513866"
+        android:id="@+id/main_mypage"
         android:layout_width="32dp"
         android:layout_height="35dp"
         android:layout_alignParentLeft="true"

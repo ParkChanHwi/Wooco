@@ -9,7 +9,7 @@ import android.widget.ImageView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
-class BottomSheet() : BottomSheetDialogFragment() {
+class MyBottomSheetDialogFragment5() : BottomSheetDialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -17,7 +17,7 @@ class BottomSheet() : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        return inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet, container, false)
+        return inflater.inflate(R.layout.bottom_sheet_four, container, false)
     }
 
     // 뒤로가기 이미지 눌렀을 때 시트 사라지기

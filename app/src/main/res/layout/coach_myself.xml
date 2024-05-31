@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main"
     android:clipToOutline="true"
     android:background="#FFFFFF">
 
@@ -17,7 +18,7 @@
         />
 
     <ImageView
-        android:id="@+id/arrow_3"
+        android:id="@+id/back"
         android:layout_width="15dp"
         android:layout_height="15dp"
         android:layout_alignParentLeft="true"
@@ -151,12 +152,12 @@
 
 
     <android.widget.Button
-        android:id="@+id/reserve_button"
+        android:id="@+id/commit_button"
         android:layout_width="154dp"
         android:layout_height="32dp"
         android:layout_marginTop="680dp"
         android:layout_marginLeft="130dp"
-        android:text="다음"
+        android:text="등록"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:background="#0F4C81"
