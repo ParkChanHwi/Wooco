@@ -25,7 +25,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="68dp"
-        android:background="@drawable/selectedbox">
+        android:background="@drawable/unselectedbox">
 
         <TextView
             android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="212dp"
         android:layout_marginTop="68dp"
-        android:background="@drawable/unselectedbox">
+        android:background="@drawable/selectedbox">
 
         <TextView
             android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/coach_classlist_recycleView"
+        android:id="@+id/coach_consultinglist_recycleView"
         android:layout_width="match_parent"
         android:layout_height="515dp"
         android:layout_marginTop="151dp"

@@ -19,13 +19,12 @@ class MainActivity : AppCompatActivity() {
         // val database = Firebase.database
         // val myRef =  database.getReference("message")
         // myRef.setValue("Success")
-        setContentView(R.layout.menti_coachlist)
+        setContentView(R.layout.menti_classlist)
 
-        findViewById<Button>(R.id.kategori1).setOnClickListener {
-            val intent = Intent(this, CoachList::class.java)
-            startActivity(intent)
-        }
-
+//        findViewById<Button>(R.id.kategori1).setOnClickListener {
+//            val intent = Intent(this, CoachList::class.java)
+//            startActivity(intent)
+//        }
 //        findViewById<Button>(R.id.button_logout).setOnClickListener {
 //            val auth = Firebase.auth
 //            auth.signOut()

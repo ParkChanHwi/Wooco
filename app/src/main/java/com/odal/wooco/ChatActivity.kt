@@ -24,3 +24,4 @@ class ChatActivity : AppCompatActivity() {
         supportActionBar?.title = receiverName
     }
 }
+

@@ -71,7 +71,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/coach_classlist_recycleView"
+        android:id="@+id/menti_classlist_recycleView"
         android:layout_width="match_parent"
         android:layout_height="515dp"
         android:layout_marginTop="151dp"

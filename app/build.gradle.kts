@@ -65,5 +65,4 @@ dependencies {
     //bottom sheet
     implementation ("com.android.support:design:28.0.0")
     implementation ("com.google.android.material:material:1.2.0-alpha01")
-
 }
