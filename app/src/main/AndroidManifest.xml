@@ -15,6 +15,7 @@
         <activity
             android:name=".Menti_mypage_pastclassActivity"
             android:exported="false" />
+
         <activity
             android:name=".Coach_mypageActivity"
             android:exported="false" />
@@ -23,8 +24,9 @@
             android:exported="false" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".Mentischedule"/>
-        <activity android:name=".Coach_scheduleActivity" />
+        <activity android:name=".Coachschedule" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".Menti_coach_introduceActivity3"/>
         <activity
             android:name=".SplashActivity"
             android:exported="true">

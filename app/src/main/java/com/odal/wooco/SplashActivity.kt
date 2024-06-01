@@ -22,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
 
         if(uid == "null") {  // 로그인이 안되어있는 경우
             Handler().postDelayed({
-                val intent = Intent(this, Mentischedule::class.java)
+                val intent = Intent(this, Menti_coach_introduceActivity3::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(intent)
                 finish()
