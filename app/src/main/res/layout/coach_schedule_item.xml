@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context=".Mentischedule"
+    tools:context=".Coach_scheduleActivity"
 
     >
 
@@ -17,7 +17,7 @@
         >
 
         <TextView
-            android:id="@+id/menti_name2"
+            android:id="@+id/coach_name2"
             android:layout_width="100dp"
             android:layout_height="31dp"
             android:layout_marginStart="14dp"
@@ -34,7 +34,7 @@
             android:layout_marginTop="23dp"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:text="맨티"
+            android:text="코치"
             android:gravity="center"/>
 
         <TextView

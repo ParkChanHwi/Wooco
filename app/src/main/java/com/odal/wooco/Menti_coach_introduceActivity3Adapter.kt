@@ -6,21 +6,25 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MentiSheduleActivityAdapter(private val itemList: List<Item>) : RecyclerView.Adapter<MentiSheduleActivityAdapter.ItemViewHolder>() {
+class Menti_coach_introduceActivity3Adapter(private val itemList: List<Item>) : RecyclerView.Adapter<Menti_coach_introduceActivity3Adapter.ItemViewHolder>() {
 
     data class Item(
         val name: String,
-        val date: String
+        val date: String,
+        var review: String
+
     )
 
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nameTextView: TextView = itemView.findViewById(R.id.coach_name2)
-        val dateTextView: TextView = itemView.findViewById(R.id.class_day)
+        val nameTextView: TextView = itemView.findViewById(R.id.name)
+        val dateTextView: TextView = itemView.findViewById(R.id.date)
+        val reviewTextView: TextView=itemView.findViewById(R.id.review)
+
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.menti_schedule_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.menti_coach_introduce3_item, parent, false)
         return ItemViewHolder(view)
     }
 
@@ -28,6 +32,7 @@ class MentiSheduleActivityAdapter(private val itemList: List<Item>) : RecyclerVi
         val item = itemList[position]
         holder.nameTextView.text = "${item.name}"
         holder.dateTextView.text = "${item.date}"
+        holder.reviewTextView.text ="${item.review}"
     }
 
 
