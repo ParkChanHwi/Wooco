@@ -20,7 +20,7 @@ class Coach_registerActivity : AppCompatActivity() {
     private lateinit var nameEditText: EditText
     private lateinit var schoolOrCompanyEditText: EditText
     private lateinit var majorOrPositionEditText: EditText
-    private lateinit var score: EditText
+    //private lateinit var score: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +43,7 @@ class Coach_registerActivity : AppCompatActivity() {
             val name = nameEditText.text.toString()
             val schoolOrCompany = schoolOrCompanyEditText.text.toString()
             val majorOrPosition = majorOrPositionEditText.text.toString()
-            val score = score.text.toString();
+            //val score = score.text.toString();
 
 
             if (name.isBlank() || schoolOrCompany.isBlank() || majorOrPosition.isBlank()) {
@@ -60,27 +60,30 @@ class Coach_registerActivity : AppCompatActivity() {
 
                 // 코치 정보 생성
                 val coachInfo = hashMapOf(
-                    "nickname" to name,
+                    "name" to name,
                     "school" to schoolOrCompany,
                     "interest" to majorOrPosition,
-                    "score"    to score
+                    //"score"    to score
                 )
 
-                // Firestore에 코치 정보 추가
+                // Firebase에 코치 정보 추가
                 FirebaseRef.coachInfoRef.child(uid).setValue(coachInfo)
                     .addOnSuccessListener {
-                        // Firestore에 코치 정보 추가 성공
-                        Log.d(TAG, "Coach info added to Firestore.")
+                        // Firebase에 코치 정보 추가 성공
+                        Log.d(TAG, "Coach info added to Firebase.")
 
                         val intent = Intent(this, Coach_myselfActivity::class.java)
+                        intent.putExtra("name", name)
+                        intent.putExtra("school", schoolOrCompany)
+                        intent.putExtra("interest", majorOrPosition)
                         startActivity(intent)
 
 
                         // 추가적인 작업 수행 혹은 화면 이동 등
                     }
                     .addOnFailureListener { e ->
-                        // Firestore에 코치 정보 추가 실패
-                        Log.e(TAG, "Error adding coach info to Firestore.", e)
+                        // Firebase에 코치 정보 추가 실패
+                        Log.e(TAG, "Error adding coach info to Firebase.", e)
                     }
 
             }
