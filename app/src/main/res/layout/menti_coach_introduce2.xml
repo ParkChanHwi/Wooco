@@ -171,38 +171,20 @@
         android:textStyle="bold"
        />
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/menti_coach_introduce_recycler_view"
         android:layout_width="345dp"
-        android:layout_height="375dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginEnd="37dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_height="340dp"
+        android:layout_marginTop="310dp"
+        android:layout_marginStart="37dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- 사용자가 입력한 값을 표시할 TextView -->
-            <TextView
-                android:id="@+id/userInputTextView"
-                android:layout_width="345dp"
-                android:layout_height="375dp"
-                android:background="#FFFFFF"
-                android:padding="4dp"
-                android:textSize="10sp" />
-
-        </LinearLayout>
-    </ScrollView>
-
+    </androidx.recyclerview.widget.RecyclerView>
 
     <android.widget.Button
         android:layout_width="105dp"
         android:layout_height="28dp"
         android:layout_marginStart="78dp"
-        android:layout_marginTop="690dp"
+        android:layout_marginTop="670dp"
         android:background="#F89B00"
         android:text="예약하기"
         android:gravity="center"
@@ -214,7 +196,7 @@
         android:layout_width="105dp"
         android:layout_height="28dp"
         android:layout_marginStart="230dp"
-        android:layout_marginTop="690dp"
+        android:layout_marginTop="670dp"
         android:background="#F89B00"
         android:text="상담하기"
         android:gravity="center"
