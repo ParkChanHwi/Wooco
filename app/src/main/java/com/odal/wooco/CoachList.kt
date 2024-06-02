@@ -66,7 +66,7 @@ class CoachList : AppCompatActivity() {
         // RecyclerView 초기화
         recyclerView = findViewById(R.id.coachlist_recycleView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        coachAdapter = Coach_Adapter(itemList)
+        coachAdapter = Coach_Adapter(itemList, this) // Context 추가
         recyclerView.adapter = coachAdapter
 
         // Firebase에서 데이터 가져오기
