@@ -37,7 +37,7 @@ class Coach_Adapter(val itemList: List<CoachDataModel>, val context: Context) : 
 
         holder.itemLayout.setOnClickListener {
             val intent = Intent(context, Menti_coach_introduceActivity3::class.java).apply {
-                putExtra("coachId", item.name)  // item.uid를 사용해서 데이터를 전달
+                putExtra("coachId", item.uid)  // item.uid를 사용해서 데이터를 전달
                 // 필요한 경우 다른 데이터도 추가로 전달 가능
             }
             context.startActivity(intent)

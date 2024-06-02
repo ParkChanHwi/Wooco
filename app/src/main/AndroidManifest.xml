@@ -28,6 +28,7 @@
         <activity android:name=".Menti_coach_introduceActivity" />
         <activity android:name=".Menti_coach_introduceActivity2" />
         <activity android:name=".Menti_coach_introduceActivity3" />
+        <activity android:name=".MentiReserve" />
         <activity android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
