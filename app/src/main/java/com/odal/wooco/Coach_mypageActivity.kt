@@ -47,6 +47,7 @@ class Coach_mypageActivity : AppCompatActivity() {
         }
 
 
+
         coachBtn.setOnClickListener{
             val intent = Intent(this, Coach_registerActivity::class.java)
             startActivity(intent)
