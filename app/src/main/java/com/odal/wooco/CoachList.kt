@@ -35,7 +35,7 @@ class CoachList : AppCompatActivity() {
         val profileBtn: ImageView = findViewById(R.id.group_513866)
 
         findViewById<Button>(R.id.kategori1).setOnClickListener {
-            val bottomSheet = BottomSheet1()
+            val bottomSheet = BottomSheet2()
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
         findViewById<Button>(R.id.kategori2).setOnClickListener {

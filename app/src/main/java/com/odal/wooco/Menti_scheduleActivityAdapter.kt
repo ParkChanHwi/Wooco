@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MentiSheduleActivityAdapter(private val itemList: List<Item>) : RecyclerView.Adapter<MentiSheduleActivityAdapter.ItemViewHolder>() {
+class Menti_SheduleActivityAdapter(private val itemList: List<Item>) : RecyclerView.Adapter<Menti_SheduleActivityAdapter.ItemViewHolder>() {
 
     data class Item(
         val name: String,
