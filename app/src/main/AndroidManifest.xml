@@ -18,7 +18,7 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity
-            android:name=".Coach_Consultinglist"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,8 +27,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".CoachList" />
+        <activity android:name=".MentiReserve"/>
         <activity
-            android:name=".SplashActivity"
+            android:name=".Coach_Consultinglist"
             android:windowSoftInputMode="adjustResize" />
     </application>
 
