@@ -17,17 +17,17 @@ class Coach_registerActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
 
-    private lateinit var nameEditText: EditText
+    private lateinit var nicknameEditText: EditText
     private lateinit var schoolOrCompanyEditText: EditText
     private lateinit var majorOrPositionEditText: EditText
-    private lateinit var score: EditText
+    //private lateinit var score: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.coach_register)
         auth = FirebaseAuth.getInstance()
 
-        nameEditText = findViewById(R.id.editText)
+        nicknameEditText = findViewById(R.id.editText)
         schoolOrCompanyEditText = findViewById(R.id.editText2)
         majorOrPositionEditText = findViewById(R.id.editText3)
 
@@ -40,7 +40,7 @@ class Coach_registerActivity : AppCompatActivity() {
 
         val registerBtn = findViewById<Button>(R.id.next_myself) // 코치 등록 버튼
         registerBtn.setOnClickListener {
-            val name = nameEditText.text.toString()
+            val name = nicknameEditText.text.toString()
             val schoolOrCompany = schoolOrCompanyEditText.text.toString()
             val majorOrPosition = majorOrPositionEditText.text.toString()
            // val score = score.text.toString();

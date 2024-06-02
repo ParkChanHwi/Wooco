@@ -19,7 +19,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
 
-    private lateinit var nicknameEditText: EditText
+    private lateinit var nicknicknameEditText: EditText
     private lateinit var idEditText: EditText
     private lateinit var pwEditText: EditText
     private lateinit var pwchEditText: EditText
@@ -31,7 +31,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         auth = FirebaseAuth.getInstance()
 
-        nicknameEditText = findViewById(R.id.id_register_name)
+        nicknicknameEditText = findViewById(R.id.id_register_name)
         idEditText = findViewById(R.id.id_register_id)
         pwEditText = findViewById(R.id.id_register_pw)
         pwchEditText = findViewById(R.id.id_register_pwch)
@@ -45,7 +45,7 @@ class RegisterActivity : AppCompatActivity() {
 
         val registerBtn = findViewById<Button>(R.id.button_commit) // 회원가입 버튼
         registerBtn.setOnClickListener {
-            val name = nicknameEditText.text.toString()
+            val name = nicknicknameEditText.text.toString()
             val id = idEditText.text.toString()
             val pw = pwEditText.text.toString()
             val pwch = pwchEditText.text.toString()
