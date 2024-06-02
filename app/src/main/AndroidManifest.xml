@@ -24,6 +24,7 @@
         <activity android:name=".Menti_mypageActivity" />
         <activity android:name=".Coach_scheduleActivity" />
         <activity android:name=".Menti_Classlist" />
+        <activity android:name=".Menti_Consultinglist" />
         <activity android:name=".Coach_registerActivity"/>
         <activity android:name=".Menti_coach_introduceActivity" />
         <activity android:name=".Menti_coach_introduceActivity2" />

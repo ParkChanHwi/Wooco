@@ -3,6 +3,7 @@ package com.odal.wooco
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +28,7 @@ class Menti_Classlist : AppCompatActivity() {
         val chatBtn: ImageView = findViewById(R.id.chat_1)
         val calBtn: ImageView = findViewById(R.id.uiw_date)
         val profileBtn: ImageView = findViewById(R.id.group_513866)
+        val consultlist: TextView = findViewById(R.id.consultList)
 
         // 코치 데이터 추가
         coachList.add(Coach("코치 이름", "마지막 채팅 내용"))
@@ -56,6 +58,11 @@ class Menti_Classlist : AppCompatActivity() {
         //멘티 마이페이지
         profileBtn.setOnClickListener {
             val intent = Intent(this, Menti_mypageActivity::class.java)
+            startActivity(intent)
+        }
+
+        consultlist.setOnClickListener {
+            val intent = Intent(this, Menti_Consultinglist::class.java)
             startActivity(intent)
         }
 

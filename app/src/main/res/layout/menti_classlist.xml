@@ -60,6 +60,7 @@
         android:background="@drawable/unselectedbox">
 
         <TextView
+            android:id="@+id/consultList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
