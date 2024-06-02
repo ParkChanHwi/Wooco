@@ -1,20 +1,36 @@
 package com.odal.wooco
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class Menti_coach_introduceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.menti_coach_introduce)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+        val recyclerView: RecyclerView = findViewById(R.id.menti_coach_introduce_recycler_view)
+
+        val items = listOf(
+            Menti_coach_introduceActivityAdapter.Item("카테고리", "세부카테고리"),
+            Menti_coach_introduceActivityAdapter.Item("카테고리", "세부카테고리"),
+            Menti_coach_introduceActivityAdapter.Item("카테고리", "세부카테고리"),
+            Menti_coach_introduceActivityAdapter.Item("카테고리", "세부카테고리"),
+            Menti_coach_introduceActivityAdapter.Item("카테고리", "세부카테고리"),
+            Menti_coach_introduceActivityAdapter.Item("카테고리", "세부카테고리"),
+
+
+
+
+            // Add more items as needed
+
+        )
+        val adapter = Menti_coach_introduceActivityAdapter(items)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
     }
 }

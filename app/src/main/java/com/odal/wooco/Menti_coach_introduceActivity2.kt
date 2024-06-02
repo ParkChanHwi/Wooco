@@ -13,7 +13,7 @@ class Menti_coach_introduceActivity2 : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.menti_coach_introduce2)
 
-        val recyclerView: RecyclerView = findViewById(R.id.menti_coach_introduce_recycler_view)
+        val recyclerView: RecyclerView = findViewById(R.id.menti_coach_introduce2_recycler_view)
 
         val items = listOf(
             Menti_coach_introduceActivity2Adapter.Item("한 줄 소개", "수업 가능 과목", "차별점","수업 방식")

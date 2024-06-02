@@ -13,7 +13,7 @@ class Menti_coach_introduceActivity3 : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.menti_coach_introduce3)
 
-        val recyclerView: RecyclerView = findViewById(R.id.menti_coach_introduce_recycler_view)
+        val recyclerView: RecyclerView = findViewById(R.id.menti_coach_introduce3_recycler_view)
 
         val items = listOf(
             Menti_coach_introduceActivity3Adapter.Item("차우코", "2024-05-31", "감사합니다"),
