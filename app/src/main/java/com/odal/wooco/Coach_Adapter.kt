@@ -13,7 +13,7 @@ class Coach_Adapter(val itemList: List<CoachDataModel>) : RecyclerView.Adapter<C
         val nicknameTextView: TextView = itemView.findViewById(R.id.nicknameTextView)
         val schoolOrCompanyTextView: TextView = itemView.findViewById(R.id.schoolOrCompanyTextView)
         val interestTextView: TextView = itemView.findViewById(R.id.interestTextView)
-        val scoreTextView: TextView = itemView.findViewById(R.id.star_score)
+        //val scoreTextView: TextView = itemView.findViewById(R.id.star_score)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -23,7 +23,7 @@ class Coach_Adapter(val itemList: List<CoachDataModel>) : RecyclerView.Adapter<C
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = itemList[position]
-        holder.nicknameTextView.text = item.nickname
+        holder.nicknameTextView.text = item.name
         holder.schoolOrCompanyTextView.text = item.school
         holder.interestTextView.text = item.interest
         //holder.scoreTextView.text = item.score?.toString() ?: "N/A"

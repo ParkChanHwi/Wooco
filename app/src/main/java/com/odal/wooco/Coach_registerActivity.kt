@@ -60,7 +60,7 @@ class Coach_registerActivity : AppCompatActivity() {
 
                 // 코치 정보 생성
                 val coachInfo = hashMapOf(
-                    "nickname" to name,
+                    "name" to name,
                     "school" to schoolOrCompany,
                     "interest" to majorOrPosition,
                     //"score"    to score
