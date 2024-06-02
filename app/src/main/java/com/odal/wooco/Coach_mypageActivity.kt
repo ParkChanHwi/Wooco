@@ -25,7 +25,7 @@ class Coach_mypageActivity : AppCompatActivity() {
 
 
         chatBtn.setOnClickListener{
-            val intent = Intent(this, ChatActivity::class.java)
+            val intent = Intent(this, Coach_Classlist::class.java)
             startActivity(intent)
         }
 

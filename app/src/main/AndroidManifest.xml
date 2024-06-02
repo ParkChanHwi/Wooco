@@ -23,6 +23,7 @@
         <activity android:name=".Coach_myselfActivity" />
         <activity android:name=".Menti_mypageActivity" />
         <activity android:name=".Coach_scheduleActivity" />
+        <activity android:name=".Menti_Classlist" />
         <activity android:name=".Coach_registerActivity"/>
         <activity android:name=".Menti_coach_introduceActivity3" />
         <activity android:name=".SplashActivity"

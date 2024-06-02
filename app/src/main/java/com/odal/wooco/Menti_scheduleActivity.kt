@@ -1,7 +1,10 @@
 package com.odal.wooco
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +16,10 @@ class Menti_scheduleActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.menti_schedule)
 
+        val homeBtn: ImageView = findViewById(R.id.material_sy)
+        val chatBtn: ImageView = findViewById(R.id.chat_1)
+        val calBtn: ImageView = findViewById(R.id.uiw_date)
+        val profileBtn: ImageView = findViewById(R.id.group_513866)
         val recyclerView: RecyclerView = findViewById(R.id.menti_schedule_recycler_view)
 
         val items = listOf(
@@ -30,5 +37,27 @@ class Menti_scheduleActivity : AppCompatActivity() {
         val adapter = Menti_sheduleActivityAdapter(items)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+
+
+        homeBtn.setOnClickListener{
+            val intent = Intent(this, CoachList::class.java)
+            startActivity(intent)
+        }
+
+        chatBtn.setOnClickListener{
+            val intent = Intent(this, Menti_Classlist::class.java)
+            startActivity(intent)
+        }
+
+        calBtn.setOnClickListener{
+            Toast.makeText(this, "현재 화면입니다.", Toast.LENGTH_SHORT).show()
+        }
+
+
+        profileBtn.setOnClickListener{
+            val intent = Intent(this, Menti_mypageActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

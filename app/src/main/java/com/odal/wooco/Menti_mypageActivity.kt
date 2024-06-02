@@ -26,11 +26,11 @@ class Menti_mypageActivity : AppCompatActivity() {
                 startActivity(intent)
             }
 
-            // 아직 채팅방 형성 x
-//        chatBtn.setOnClickListener{
-//            val intent = Intent(this, Mebti_chatActivity::class.java)
-//            startActivity(intent)
-//        }
+
+            chatBtn.setOnClickListener{
+            val intent = Intent(this, Menti_Classlist::class.java)
+            startActivity(intent)
+            }
 
             calBtn.setOnClickListener{
             val intent = Intent(this, Menti_scheduleActivity::class.java)

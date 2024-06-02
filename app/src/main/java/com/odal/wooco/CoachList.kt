@@ -91,9 +91,9 @@ class CoachList : AppCompatActivity() {
             Toast.makeText(this, "현재 화면입니다.", Toast.LENGTH_SHORT).show()
         }
 
-        // 아직 채팅방 형성 x
+        // 멘티 수업목록 - 클래스리스트
         chatBtn.setOnClickListener {
-            val intent = Intent(this, ChatActivity::class.java)
+            val intent = Intent(this, Menti_Classlist::class.java)
             startActivity(intent)
         }
 
