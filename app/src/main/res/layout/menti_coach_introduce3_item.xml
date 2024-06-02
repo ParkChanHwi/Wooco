@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <!-- 사람 1 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_coachlist"
+        android:layout_marginBottom="8dp">
+
+        <View
+            android:layout_width="39dp"
+            android:layout_height="42dp"
+            android:background="@drawable/group_513937"
+            android:layout_marginTop="9dp"
+            android:layout_marginLeft="7dp"
+            android:translationZ="1dp"/>
+
+        <View
+            android:id="@+id/rectangle_9"
+            android:layout_width="43dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rectangle_empty"
+            />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="67dp"
+            android:layout_marginTop="8dp"
+            android:text="김오달"
+            android:textSize="12dp"
+            android:textStyle="bold"/>
+        <ImageView
+            android:id="@+id/star1"
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_marginStart="67dp"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/star_score1"/>
+
+        <ImageView
+            android:id="@+id/star2"
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_marginStart="73dp"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/star_score1"/>
+
+        <ImageView
+            android:id="@+id/star3"
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_marginStart="79dp"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/star_score1"/>
+
+        <ImageView
+            android:id="@+id/star4"
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_marginStart="85dp"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/star_score1"/>
+
+        <ImageView
+            android:id="@+id/star5"
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_marginStart="91dp"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/star_score1"/>
+
+
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="30dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="110dp"
+            android:layout_marginTop="13dp"
+            android:textSize="6dp"
+            android:textStyle="bold"/>
+
+
+
+        <TextView
+            android:id="@+id/review"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="67dp"
+            android:layout_marginTop="35dp"
+            android:text="감사합니다."
+            android:textSize="7dp"
+            android:textColor="#B2AFAF"/>
+    </RelativeLayout>
+</LinearLayout>

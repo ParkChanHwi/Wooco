@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".Mentischedule"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="320dp"
+        android:layout_height="124dp"
+        android:background="@drawable/rectangle_yuna35"
+        >
+
+        <TextView
+            android:id="@+id/menti_name2"
+            android:layout_width="100dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="23dp"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/menti_name"
+            android:layout_width="50dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="115dp"
+            android:layout_marginTop="23dp"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:text="맨티"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/class_day"
+            android:layout_width="170dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="60dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_marginTop="97dp"
+            android:src="@drawable/rectangle_yuna9" />
+
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="27dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="97dp"
+            android:src="@drawable/rectangle_yuna10" />
+    </RelativeLayout>
+</LinearLayout>
