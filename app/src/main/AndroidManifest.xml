@@ -16,7 +16,7 @@
         <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".Coach_mypageActivity" />
         <activity android:name=".ChatActivity"
-                  android:windowSoftInputMode="adjustResize|stateHidden">
+            android:windowSoftInputMode="adjustResize|stateHidden">
         </activity>
         <activity android:name=".LoginActivity"> </activity>
         <activity android:name=".Menti_scheduleActivity" />
