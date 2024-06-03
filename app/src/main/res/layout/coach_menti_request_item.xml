@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/rectangle_coachlist"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="30dp"
+        android:padding="14dp">
+
+        <TextView
+            android:id="@+id/menti_requesr_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="오말룡 회원"/>
+        <TextView
+            android:id="@+id/menti_requesr_categori"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="진로/기타고민"/>
+        <TextView
+            android:id="@+id/menti_requesr_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="날짜"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="14dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="150dp">
+
+        <TextView
+            android:id="@+id/accept_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="승락"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" / "/>
+        <TextView
+            android:id="@+id/resfuse_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="거절"/>
+    </LinearLayout>
+</LinearLayout>

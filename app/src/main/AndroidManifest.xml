@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Wooco"
         tools:targetApi="31">
         <activity
+            android:name=".Coach_menti_request"
+            android:exported="false" />
+        <activity
+            android:name=".Menti_Reserve_1"
+            android:exported="false" />
+        <activity
             android:name=".Coach_Classlist"
             android:exported="false" />
         <activity android:name=".RegisterActivity" />
@@ -27,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".CoachList" />
-        <activity android:name=".MentiReserve"/>
+        <activity android:name=".MentiReserve" />
         <activity
             android:name=".Coach_Consultinglist"
             android:windowSoftInputMode="adjustResize" />
