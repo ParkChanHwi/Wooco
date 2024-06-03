@@ -67,16 +67,17 @@
         android:background="#F89B00"/>
 
 
-
     <TextView
         android:id="@+id/mypage_name"
         android:layout_width="88dp"
-        android:layout_height="22dp"
+        android:layout_height="30dp"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="156dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="125dp"
-        android:gravity="top"/>
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="121dp"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="30dp"

@@ -2,19 +2,25 @@ package com.odal.wooco
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 
 class Coach_mypageActivity : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.coach_mypage)
+
+        auth = FirebaseAuth.getInstance()
 
         val chatBtn: ImageView = findViewById(R.id.chat_1)
         val calBtn: ImageView = findViewById(R.id.uiw_date)
@@ -22,7 +28,37 @@ class Coach_mypageActivity : AppCompatActivity() {
         val transferBtn: Button = findViewById(R.id.menti_transfer)
         val coachBtn: Button = findViewById(R.id.coach_register)
 
+        // Firebase Realtime Database에서 coachInfo의 이름 가져오기
+        val database = FirebaseDatabase.getInstance()
+        val coachInfoRef = database.getReference("coachInfo")
 
+        // 현재 로그인한 사용자의 이름을 가져오기
+        val currentUser = auth.currentUser
+
+        coachInfoRef.child(currentUser?.uid ?: "").child("name").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val name = snapshot.getValue(String::class.java)
+
+                // 가져온 이름을 화면에 표시
+                val myPageNameTextView: TextView = findViewById(R.id.mypage_name)
+                myPageNameTextView.text = name
+
+                Log.d("UserDisplayName", "Current user display name: $name")
+
+                // coachBtn 클릭 시 사용자 이름을 Coach_registerActivity로 전달
+                coachBtn.setOnClickListener{
+                    val intent = Intent(this@Coach_mypageActivity, Coach_registerActivity::class.java)
+                    // 사용자 이름을 Coach_registerActivity로 전달
+                    intent.putExtra("name", name)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("Firebase", "Failed to read value.", error.toException())
+            }
+        })
 
         chatBtn.setOnClickListener{
             val intent = Intent(this, Coach_Classlist::class.java)
@@ -53,8 +89,5 @@ class Coach_mypageActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
-
-
     }
 }

@@ -3,6 +3,7 @@ package com.odal.wooco
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -17,17 +18,23 @@ class Coach_registerActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
 
-    private lateinit var nicknameEditText: EditText
+    private lateinit var nameEditText: EditText
     private lateinit var schoolOrCompanyEditText: EditText
     private lateinit var majorOrPositionEditText: EditText
     //private lateinit var score: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        // 하단바를 숨기는 코드입니다.
+        window.decorView.apply {
+            systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN
+        }
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.coach_register)
         auth = FirebaseAuth.getInstance()
 
-        nicknameEditText = findViewById(R.id.editText)
+        nameEditText = findViewById(R.id.editText)
         schoolOrCompanyEditText = findViewById(R.id.editText2)
         majorOrPositionEditText = findViewById(R.id.editText3)
 
@@ -40,10 +47,10 @@ class Coach_registerActivity : AppCompatActivity() {
 
         val registerBtn = findViewById<Button>(R.id.next_myself) // 코치 등록 버튼
         registerBtn.setOnClickListener {
-            val name = nicknameEditText.text.toString()
+            val name = nameEditText.text.toString()
             val schoolOrCompany = schoolOrCompanyEditText.text.toString()
             val majorOrPosition = majorOrPositionEditText.text.toString()
-           // val score = score.text.toString();
+            //val score = score.text.toString();
 
 
             if (name.isBlank() || schoolOrCompany.isBlank() || majorOrPosition.isBlank()) {
@@ -66,21 +73,24 @@ class Coach_registerActivity : AppCompatActivity() {
                     //"score"    to score
                 )
 
-                // Firestore에 코치 정보 추가
+                // Firebase에 코치 정보 추가
                 FirebaseRef.coachInfoRef.child(uid).setValue(coachInfo)
                     .addOnSuccessListener {
-                        // Firestore에 코치 정보 추가 성공
-                        Log.d(TAG, "Coach info added to Firestore.")
+                        // Firebase에 코치 정보 추가 성공
+                        Log.d(TAG, "Coach info added to Firebase.")
 
                         val intent = Intent(this, Coach_myselfActivity::class.java)
+                        intent.putExtra("name", name)
+                        intent.putExtra("school", schoolOrCompany)
+                        intent.putExtra("interest", majorOrPosition)
                         startActivity(intent)
 
 
                         // 추가적인 작업 수행 혹은 화면 이동 등
                     }
                     .addOnFailureListener { e ->
-                        // Firestore에 코치 정보 추가 실패
-                        Log.e(TAG, "Error adding coach info to Firestore.", e)
+                        // Firebase에 코치 정보 추가 실패
+                        Log.e(TAG, "Error adding coach info to Firebase.", e)
                     }
 
             }
