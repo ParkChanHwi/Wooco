@@ -1,7 +1,10 @@
 package com.odal.wooco
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +17,10 @@ class Coach_scheduleActivity : AppCompatActivity() {
         setContentView(R.layout.coach_schedule)
 
         val recyclerView: RecyclerView = findViewById(R.id.coach_schedule_recycler_view)
+
+        val chatBtn: ImageView = findViewById(R.id.chat_1)
+        val calBtn: ImageView = findViewById(R.id.uiw_date)
+        val profileBtn: ImageView = findViewById(R.id.group_513866)
 
         val items = listOf(
             CoachScheduleActivityAdapter.Item("차우코", "2024-05-31"),
@@ -30,5 +37,22 @@ class Coach_scheduleActivity : AppCompatActivity() {
         val adapter = CoachScheduleActivityAdapter(items)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+
+        chatBtn.setOnClickListener {
+            val intent = Intent(this, Coach_Classlist::class.java)
+            startActivity(intent)
+        }
+
+        //코치 나의 일정
+        calBtn.setOnClickListener {
+            Toast.makeText(this, "현재 화면입니다.", Toast.LENGTH_SHORT).show()
+        }
+
+        //코치 마이페이지
+        profileBtn.setOnClickListener {
+            val intent = Intent(this, Coach_mypageActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
