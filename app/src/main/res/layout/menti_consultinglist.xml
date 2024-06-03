@@ -59,28 +59,6 @@
         android:layout_marginTop="68dp"
         android:background="@drawable/selectedbox">
 
-<<<<<<<< HEAD:app/src/main/res/layout/menti_reserve.xml
-    <TimePicker
-        android:id="@+id/timePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="420dp"
-        android:layout_marginLeft="77dp"
-        android:timePickerMode="spinner"/>
-
-
-    <android.widget.Button
-        android:id="@+id/reserve_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="640dp"
-        android:layout_marginLeft="160dp"
-        android:text="예약 하기"
-        android:textColor="@color/white"
-        android:background="#F89B00"
-        />
-</RelativeLayout>
-========
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -158,4 +136,3 @@
 </RelativeLayout>
 
     <!--코치 박스 생김새 추가해야함-->
->>>>>>>> origin/chachacha_child:app/src/main/res/layout/menti_consultinglist.xml
