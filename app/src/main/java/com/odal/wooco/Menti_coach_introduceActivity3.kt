@@ -24,6 +24,7 @@ class Menti_coach_introduceActivity3 : AppCompatActivity() {
         val coachIntro2: TextView = findViewById(R.id.calss_inform)
         val coachIntro3: TextView = findViewById(R.id.review)
         val appointmentBtn: Button = findViewById(R.id.appointment_button)
+        val ArrowImageView: ImageView = findViewById(R.id.ArrowImageView)
         val consultBtn: Button = findViewById(R.id.consult_button)
 
         val items = listOf(
@@ -61,6 +62,11 @@ class Menti_coach_introduceActivity3 : AppCompatActivity() {
 
         appointmentBtn.setOnClickListener {
             val intent = Intent(this, MentiReserve::class.java)
+            startActivity(intent)
+        }
+
+        ArrowImageView.setOnClickListener{
+            val intent = Intent(this, CoachList::class.java)
             startActivity(intent)
         }
 

@@ -189,6 +189,7 @@
         />
 
     <android.widget.Button
+        android:id="@+id/appointment_button"
         android:layout_width="105dp"
         android:layout_height="28dp"
         android:layout_marginStart="78dp"
@@ -202,6 +203,7 @@
      />
 
     <android.widget.Button
+        android:id="@+id/consult_button"
         android:layout_width="105dp"
         android:layout_height="28dp"
         android:layout_marginStart="230dp"

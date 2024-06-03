@@ -55,7 +55,7 @@ class Coach_Consultinglist : AppCompatActivity() {
         }
 
         classTsf.setOnClickListener{
-            val intent = Intent(this, Coach_Consultinglist::class.java)
+            val intent = Intent(this, Coach_Classlist::class.java)
             startActivity(intent)
         }
     }
