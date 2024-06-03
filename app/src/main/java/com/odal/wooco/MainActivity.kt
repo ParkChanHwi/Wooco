@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         // myRef.setValue("Success")
         setContentView(R.layout.menti_coachlist)
 
-        //업데이트용
+        // 현정이거 병합
 
         findViewById<Button>(R.id.kategori1).setOnClickListener {
             val intent = Intent(this, CoachList::class.java)
