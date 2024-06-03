@@ -130,10 +130,11 @@
 
 
     <Button
+        android:id="@+id/addButton"
         android:layout_width="25dp"
         android:layout_height="16dp"
         android:layout_marginStart="310dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="275dp"
         android:backgroundTint="#FFFFFF"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
@@ -150,10 +151,11 @@
         android:layout_alignParentTop="true"/>
 
     <Button
+        android:id="@+id/addButton2"
         android:layout_width="25dp"
         android:layout_height="16dp"
         android:layout_marginStart="335dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="275dp"
         android:backgroundTint="#FFFFFF"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
@@ -212,6 +214,7 @@
         android:layout_alignParentTop="true"/>
 
     <Button
+        android:id="@+id/addButton3"
         android:layout_width="25dp"
         android:layout_height="16dp"
         android:layout_marginStart="310dp"
@@ -232,6 +235,7 @@
         android:layout_alignParentTop="true"/>
 
     <Button
+        android:id="@+id/addButton4"
         android:layout_width="25dp"
         android:layout_height="16dp"
         android:layout_marginStart="335dp"
