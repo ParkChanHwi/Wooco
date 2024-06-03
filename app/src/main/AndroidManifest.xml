@@ -9,26 +9,16 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+
         android:supportsRtl="true"
         android:theme="@style/Theme.Wooco"
         tools:targetApi="31">
-        <activity
-            android:name=".Menti_mypage_pastclassActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".Coach_mypageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Menti_mypageActivity"
-            android:exported="false" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".Mentischedule"/>
-        <activity android:name=".Coachschedule" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".Menti_coach_introduceActivity3"/>
-        <activity
-            android:name=".SplashActivity"
+        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".Menti_coach_introduceActivity2"></activity>
+        <activity android:name=".Menti_coach_introduceActivity"></activity>
+        <activity android:name=".Coach_registerActivity"></activity>
+        <activity android:name=".LoginActivity"> </activity>
+        <activity android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +26,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CoachList" />
+
+        <activity android:name=".CoachList"></activity>
+
     </application>
 
 </manifest>
