@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChatActivity">
+
+    <View
+        android:id="@+id/line_9"
+        android:layout_width="240dp"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="85dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="65dp"
+        android:background="@drawable/line_9"
+        />
+
+    <ImageView
+        android:id="@+id/arrow_3"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="29dp"
+        android:src="@drawable/arrow"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/chat_coach_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="김말룡 코치"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            />
+    </LinearLayout>
+
+    <!-- 대화 내용 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/menti_chat_recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="110dp"
+        android:layout_above="@id/input_layout"/>
+
+    <!-- 입력 레이아웃 -->
+    <LinearLayout
+        android:id="@+id/input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:weightSum="100">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="85"
+            android:background="@drawable/chat_rectangle"
+            android:hint="메시지를 입력하세요"
+            android:paddingStart="10dp"/>
+
+        <android.widget.Button
+            android:id="@+id/send_btn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="15"
+            android:background="#F89B00"
+            android:text="전송"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

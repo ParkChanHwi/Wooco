@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#D9D9D9">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/arrow"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="자소서"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="149dp"
+            />
+    </LinearLayout>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 마케팅"
+                android:buttonTint="#696969"
+                android:layout_marginLeft="20dp"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 기획"
+                android:buttonTint="#696969"
+                android:layout_marginLeft="120dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 사무직"
+                android:buttonTint="#696969"
+                android:layout_marginLeft="20dp"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 전문/특수/연구직"
+                android:buttonTint="#696969"
+                android:layout_marginLeft="120dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 무역/유통"
+                android:buttonTint="#696969"
+                android:layout_marginLeft="20dp"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 서비스"
+                android:buttonTint="#696969"
+                android:layout_marginLeft="101dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" IT"
+                android:buttonTint="#696969"
+                android:layout_marginLeft="20dp"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 디자인"
+                android:buttonTint="#696969"
+                android:layout_marginLeft="147dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 영업"
+                android:buttonTint="#696969"
+                android:layout_marginLeft="20dp"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 교육"
+                android:buttonTint="#696969"
+                android:layout_marginLeft="134dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 건설"
+                android:buttonTint="#696969"
+                android:layout_marginLeft="20dp"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 의료"
+                android:buttonTint="#696969"
+                android:layout_marginLeft="134dp"/>
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="329dp"
+            android:text="설정"
+            android:textColor="@color/white"
+            android:background="@drawable/rectangle_9533"/>
+    </RadioGroup>
+
+    <!-- 추가 카테고리 버튼들 -->
+
+</LinearLayout>

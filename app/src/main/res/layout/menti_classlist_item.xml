@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_marginBottom="8dp"
+    android:padding="8dp">
+
+    <View
+        android:layout_width="39dp"
+        android:layout_height="42dp"
+        android:background="@drawable/group_513937"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="7dp"
+        android:translationZ="1dp"/>
+
+    <View
+        android:id="@+id/coach_image"
+        android:layout_width="43dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/rectangle_empty"
+        />
+
+    <TextView
+        android:id="@+id/coach_class_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="67dp"
+        android:text="김오달 코치"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/coach_last_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="67dp"
+        android:layout_marginTop="24dp"
+        android:text="질문 답변 드립니다."
+        android:textColor="#B2AFAF"/>
+</RelativeLayout>

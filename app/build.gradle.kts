@@ -44,6 +44,7 @@ dependencies {
     //implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.firebase.firestore.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -64,5 +65,4 @@ dependencies {
     //bottom sheet
     implementation ("com.android.support:design:28.0.0")
     implementation ("com.google.android.material:material:1.2.0-alpha01")
-
 }
