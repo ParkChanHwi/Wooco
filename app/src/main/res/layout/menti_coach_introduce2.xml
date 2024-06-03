@@ -166,7 +166,7 @@
         android:layout_marginStart="296dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="260dp"
-        android:text="수업 안내"
+        android:text="수업 후기"
         android:gravity="center"
         android:textStyle="bold"
        />
