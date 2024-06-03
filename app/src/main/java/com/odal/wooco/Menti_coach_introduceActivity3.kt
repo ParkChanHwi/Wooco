@@ -2,6 +2,7 @@ package com.odal.wooco
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,6 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class Menti_coach_introduceActivity3 : AppCompatActivity() {
+    //넘어온 데이터 변수에 담기
+    private lateinit var receiverName: String
+    private lateinit var receiverUid: String
+    private lateinit var receiverSchool: String
+    private lateinit var receiverInterest: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -26,6 +32,14 @@ class Menti_coach_introduceActivity3 : AppCompatActivity() {
         val appointmentBtn: Button = findViewById(R.id.appointment_button)
         val ArrowImageView: ImageView = findViewById(R.id.ArrowImageView)
         val consultBtn: Button = findViewById(R.id.consult_button)
+        //코치정보 변수
+        val coachName: TextView = findViewById(R.id.user_class_text2)
+        val coachSchool: TextView = findViewById(R.id.user_class_text3)
+        val coachInterest: TextView = findViewById(R.id.user_class_text4)
+        receiverUid = intent.getStringExtra("uid").toString()
+        receiverName = intent.getStringExtra("name").toString()
+        receiverSchool = intent.getStringExtra("school").toString()
+        receiverInterest = intent.getStringExtra("interest").toString()
 
         val items = listOf(
             Menti_coach_introduceActivity3Adapter.Item("차우코", "2024-05-31", "감사합니다"),
@@ -41,6 +55,17 @@ class Menti_coach_introduceActivity3 : AppCompatActivity() {
         val adapter = Menti_coach_introduceActivity3Adapter(items)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+
+//        코치정보 로그에 찍어보기
+//        Log.d("UserDisplayName", "receiverName: $receiverUid")
+//        Log.d("UserDisplayName", "receiverName: $receiverName")
+//        Log.d("UserDisplayName", "receiverName: $receiverSchool")
+//        Log.d("UserDisplayName", "receiverName: $receiverInterest")
+
+        // 코치정보 화면 반영
+        coachName.text = receiverName
+        coachSchool.text = receiverSchool
+        coachInterest.text = receiverInterest
 
         coachIntro1.setOnClickListener {
             val intent = Intent(this, Menti_coach_introduceActivity::class.java)
