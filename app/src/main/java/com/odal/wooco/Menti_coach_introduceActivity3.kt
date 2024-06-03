@@ -32,7 +32,7 @@ class Menti_coach_introduceActivity3 : AppCompatActivity() {
         val appointmentBtn: Button = findViewById(R.id.appointment_button)
         val ArrowImageView: ImageView = findViewById(R.id.ArrowImageView)
         val consultBtn: Button = findViewById(R.id.consult_button)
-        //코치정보 변수
+        //코치정보 qus
         val coachName: TextView = findViewById(R.id.user_class_text2)
         val coachSchool: TextView = findViewById(R.id.user_class_text3)
         val coachInterest: TextView = findViewById(R.id.user_class_text4)
@@ -56,13 +56,12 @@ class Menti_coach_introduceActivity3 : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
-//        코치정보 로그에 찍어보기
+
 //        Log.d("UserDisplayName", "receiverName: $receiverUid")
 //        Log.d("UserDisplayName", "receiverName: $receiverName")
 //        Log.d("UserDisplayName", "receiverName: $receiverSchool")
 //        Log.d("UserDisplayName", "receiverName: $receiverInterest")
 
-        // 코치정보 화면 반영
         coachName.text = receiverName
         coachSchool.text = receiverSchool
         coachInterest.text = receiverInterest
@@ -95,11 +94,14 @@ class Menti_coach_introduceActivity3 : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // 상담하기 버튼 아직 x
-//        consultBtn.setOnClickListener {
-//            val intent = Intent(this, ::class.java)
-//            startActivity(intent)
-//        }
+       //  상담하기 버튼 아직 x
+        consultBtn.setOnClickListener {
+            val intent = Intent(this, ChatActivity::class.java).apply {
+                putExtra("uid", receiverUid)
+                putExtra("name", receiverName)
+            }
+            startActivity(intent)
+        }
 
 
     }

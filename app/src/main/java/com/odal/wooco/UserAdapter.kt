@@ -1,6 +1,7 @@
 package com.odal.wooco
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +31,17 @@ class UserAdapter(private val context: Context, private val userList: ArrayList<
 
         val currentUser = userList[position]
         holder.nameText.text = currentUser.name
+
+        //아이템 클릭 이벤트 - 채팅창으로 넘어가는 기능
+        holder.itemView.setOnClickListener{
+            // 이동 화면
+            val intent = Intent(context, ChatActivity::class.java)
+            // 넘길 데이터
+            intent.putExtra("name", currentUser.name)
+            intent.putExtra("uid", currentUser.uid)
+
+            context.startActivity(intent)
+        }
     }
 
     /**
