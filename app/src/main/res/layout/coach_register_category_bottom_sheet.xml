@@ -27,6 +27,7 @@
     </LinearLayout>
 
     <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -36,12 +37,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/radioButton1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 진로/기타 고민"
                 android:buttonTint="#696969"
                 android:layout_marginLeft="20dp"/>
             <RadioButton
+                android:id="@+id/radioButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 전공/과제"
@@ -53,12 +56,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/radioButton3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 면접"
                 android:buttonTint="#696969"
                 android:layout_marginLeft="20dp"/>
             <RadioButton
+                android:id="@+id/radioButton4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 자소서"
@@ -70,13 +75,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/radioButton5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 자격증"
                 android:buttonTint="#696969"
                 android:layout_marginLeft="20dp"/>
         </LinearLayout>
-
     </RadioGroup>
 
     <!-- 추가 카테고리 버튼들 -->
