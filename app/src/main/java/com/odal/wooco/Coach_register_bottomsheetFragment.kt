@@ -29,11 +29,9 @@ class Coach_register_bottomsheetFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val radioGroup: RadioGroup = view.findViewById(R.id.radioGroup)
-        radioGroup.setOnCheckedChangeListener { group, checkedId ->
-            val selectedRadioButton = view.findViewById<RadioButton>(checkedId)
-            val selectedText = selectedRadioButton.text.toString()
-
+        // 첫 번째 RadioGroup 설정
+        val radioGroup1: RadioGroup = view.findViewById(R.id.radioGroup1)
+        radioGroup1.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.radioButton1 -> {
                     BottomSheet2().show(parentFragmentManager, "BottomSheet2")
@@ -41,12 +39,28 @@ class Coach_register_bottomsheetFragment : BottomSheetDialogFragment() {
                 R.id.radioButton2 -> {
                     BottomSheet3().show(parentFragmentManager, "BottomSheet3")
                 }
+            }
+            dismiss() // 선택 후 바텀 시트 닫기
+        }
+
+        // 두 번째 RadioGroup 설정
+        val radioGroup2: RadioGroup = view.findViewById(R.id.radioGroup2)
+        radioGroup2.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
                 R.id.radioButton3 -> {
                     BottomSheet4().show(parentFragmentManager, "BottomSheet4")
                 }
                 R.id.radioButton4 -> {
                     BottomSheet5().show(parentFragmentManager, "BottomSheet5")
                 }
+            }
+            dismiss() // 선택 후 바텀 시트 닫기
+        }
+
+        // 세 번째 RadioGroup 설정
+        val radioGroup3: RadioGroup = view.findViewById(R.id.radioGroup3)
+        radioGroup3.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
                 R.id.radioButton5 -> {
                     BottomSheet6().show(parentFragmentManager, "BottomSheet6")
                 }

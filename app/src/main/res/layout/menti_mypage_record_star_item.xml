@@ -5,12 +5,12 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:padding="10dp"
-    android:layout_marginBottom="8dp"
     >
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="70dp"
-    android:background="@drawable/record_star"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@drawable/record_star" />
 
     <View
         android:layout_width="54dp"
@@ -95,10 +95,11 @@
     <android.widget.Button
         android:id="@+id/record_star_button"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="63dp"
+        android:layout_height="37dp"
+        android:layout_below="@id/schoolOrCompanyTextView"
+        android:layout_marginTop="21dp"
+        android:background="@drawable/record_star2"
         android:text="별점 남기기"
-        android:textStyle="bold"
-        android:background="@drawable/record_star2"/>
-
+        android:textStyle="bold" />
 </RelativeLayout>
+
