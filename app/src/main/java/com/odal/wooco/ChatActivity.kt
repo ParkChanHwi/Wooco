@@ -8,14 +8,16 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.odal.wooco.R
+import com.google.firebase.database.ValueEventListener
+import com.odal.wooco.datamodels.Message
 import com.odal.wooco.utils.FirebaseRef
 
 class ChatActivity : AppCompatActivity() {
@@ -23,25 +25,33 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var receiverName: String
     private lateinit var receiverUid: String
 
-    lateinit var  mAuth: FirebaseAuth
-    lateinit var  mDbRef: DatabaseReference
+    lateinit var mAuth: FirebaseAuth
+    lateinit var mDbRef: DatabaseReference
     private lateinit var receiverRoom: String // 받는 대화방
     private lateinit var senderRoom: String // 보낸 대화방
 
-
+    // message 배열 생성
+    private lateinit var messageList: ArrayList<Message>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.menti_chat)
         val otherName: TextView = findViewById(R.id.chat_coach_name)
 
         // 메세지 전송 버튼
         val sendBtn = findViewById<Button>(R.id.send_btn)
         // 채팅방 변수
-        val chat_input = findViewById<EditText>(R.id.chat_input)
+        val chatInput = findViewById<EditText>(R.id.chat_input)
+        // 초기화
+        messageList = ArrayList()
+        val messageAdapter: MessageAdapter = MessageAdapter(this, messageList)
 
-        //넘어온 데이터 변수에 담기
+        // RecyclerView
+        val recyclerView = findViewById<RecyclerView>(R.id.menti_chat_recycleView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = messageAdapter
+
+        // 넘어온 데이터 변수에 담기
         receiverName = intent.getStringExtra("name").toString()
         receiverUid = intent.getStringExtra("uid").toString()
 
@@ -53,10 +63,8 @@ class ChatActivity : AppCompatActivity() {
         senderRoom = receiverUid + senderUid // 보낸이 방의 키 값
         receiverRoom = senderUid + receiverUid // 받는이 방의 키 값
 
-        //액션바에 상대방 이름 보여주기
+        // 액션바에 상대방 이름 보여주기
         otherName.text = receiverName
-
-
 
         val arrowImageView: ImageView = findViewById(R.id.arrow_3)
         arrowImageView.setOnClickListener {
@@ -64,54 +72,64 @@ class ChatActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-
         sendBtn.setOnClickListener {
-            val chat_msg = chat_input.text.toString().trim()
-            if (chat_msg.isEmpty()) {
+            val chatMsg = chatInput.text.toString().trim()
+            if (chatMsg.isEmpty()) {
                 return@setOnClickListener
             }
-        if (senderUid != null) {
-            // 현재 로그인한 사용자의 UID 가져오기
-            val sendId = senderUid
+            val senderUid = mAuth.currentUser?.uid
+            if (senderUid != null) {
+                val message = Message(chatMsg, senderUid)
 
-            // 메세지 정보 생성
-            val chats = hashMapOf(
-                "message" to chat_msg,
-                "sendId" to sendId
-            )
+                // Firebase에 채팅방 정보 추가
+                FirebaseRef.chats.child(senderRoom).child("messages").push().setValue(message)
+                    .addOnSuccessListener {
+                        // Firebase에 보낸이 방의 메세지 추가 성공
+                        Log.d(TAG, "chats1 added to Firebase.")
 
-            // Firebase에 채팅방 정보 추가
-            FirebaseRef.chats.child(senderRoom).child("messages").setValue(chats)
-                .addOnSuccessListener {
-                    // Firebase에 코치 정보 추가 성공
-                    Log.d(TAG, "chats1 added to Firebase.")
+                        FirebaseRef.chats.child(receiverRoom).child("messages").push().setValue(message)
+                            .addOnSuccessListener {
+                                // Firebase에 받는이 방의 메세지 추가 성공
+                                Log.d(TAG, "chats2 added to Firebase.")
+                            }
+                            .addOnFailureListener { e ->
+                                // Firebase에 받는이 방의 메세지 추가 실패
+                                Log.e(TAG, "Error adding chats2 to Firebase.", e)
+                            }
+                    }
+                    .addOnFailureListener { e ->
+                        // Firebase에 보낸이 방의 메세지 추가 실패
+                        Log.e(TAG, "Error adding chats1 to Firebase.", e)
+                    }
 
-
-                    FirebaseRef.chats.child(receiverRoom).child("messages").setValue(chats)
-                        .addOnSuccessListener {
-                            // Firebase에 코치 정보 추가 성공
-                            Log.d(TAG, "chats2 added to Firebase.")
-
-//                    val intent = Intent(this, Coach_myselfActivity::class.java)
-//                    intent.putExtra("uid", uid)
-//                    intent.putExtra("name", name)
-//                    intent.putExtra("school", schoolOrCompany)
-//                    intent.putExtra("interest", majorOrPosition)
-//                    startActivity(intent)
-
-
-                    // 추가적인 작업 수행 혹은 화면 이동 등
-                }
-                .addOnFailureListener { e ->
-                    // Firebase에 코치 정보 추가 실패
-                    Log.e(TAG, "Error adding chats to Firebase.", e)
-                }
-             }
-
+                // 메시지 전송 후 입력 필드 초기화
+                chatInput.setText("")
+            }
         }
-    }
 
+        // 메시지 가져오기
+        mDbRef.child("chats").child(senderRoom).child("messages")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    // 데이터 변경을 처리하고 UI를 업데이트합니다.
+                    messageList.clear()
 
+                    for (postSnapshot in snapshot.children) {
+                        val message = postSnapshot.getValue(Message::class.java)
+                        if (message != null) {
+                            messageList.add(message)
+                        }
+                    }
+                    // RecyclerView 업데이트
+                    messageAdapter.notifyDataSetChanged()
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // 데이터 읽기가 취소되거나 실패했을 때 처리
+                    Log.e(TAG, "Failed to read messages", error.toException())
+                }
+            })
     }
 }
+
+
