@@ -6,7 +6,7 @@
     android:padding="14dp">
 
     <!-- 본인의 채팅 메시지 -->
-    <EditText
+    <TextView
         android:id="@+id/menti_chat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
