@@ -33,7 +33,6 @@ class Coach_registerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.coach_register)
         auth = FirebaseAuth.getInstance()
-
         nameEditText = findViewById(R.id.editText)
         schoolOrCompanyEditText = findViewById(R.id.editText2)
         majorOrPositionEditText = findViewById(R.id.editText3)
@@ -67,6 +66,7 @@ class Coach_registerActivity : AppCompatActivity() {
 
                 // 코치 정보 생성
                 val coachInfo = hashMapOf(
+                    "uid" to uid,
                     "name" to name,
                     "school" to schoolOrCompany,
                     "interest" to majorOrPosition,
@@ -80,6 +80,7 @@ class Coach_registerActivity : AppCompatActivity() {
                         Log.d(TAG, "Coach info added to Firebase.")
 
                         val intent = Intent(this, Coach_myselfActivity::class.java)
+                        intent.putExtra("uid", uid)
                         intent.putExtra("name", name)
                         intent.putExtra("school", schoolOrCompany)
                         intent.putExtra("interest", majorOrPosition)

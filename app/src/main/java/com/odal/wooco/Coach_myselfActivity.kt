@@ -34,6 +34,7 @@ class Coach_myselfActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+        val uid = intent.getStringExtra("uid") ?: ""
         val name = intent.getStringExtra("name") ?: ""
         val school = intent.getStringExtra("school") ?: ""
         val interest = intent.getStringExtra("interest") ?: ""
@@ -57,6 +58,7 @@ class Coach_myselfActivity : AppCompatActivity() {
                 val uid = currentUser.uid
 
                 val dataMap = HashMap<String, Any>()
+                dataMap["uid"] = uid
                 dataMap["name"] = name
                 dataMap["school"] = school
                 dataMap["interest"] = interest

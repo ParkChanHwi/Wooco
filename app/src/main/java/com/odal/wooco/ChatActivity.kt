@@ -26,10 +26,7 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var senderRoom: String // 보낸 대화방
 
     // 채팅방 변수
-    private lateinit var nameEditText: EditText
-    private lateinit var schoolOrCompanyEditText: EditText
-    private lateinit var majorOrPositionEditText: EditText
-
+    private lateinit var chat_input: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +52,7 @@ class ChatActivity : AppCompatActivity() {
         otherName.text = receiverName
 
         sendBtn.setOnClickListener {
-
+            val chat_input = chat_input.text.toString()
         }
 
 
