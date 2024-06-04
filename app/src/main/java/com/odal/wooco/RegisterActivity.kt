@@ -45,12 +45,12 @@ class RegisterActivity : AppCompatActivity() {
 
         val registerBtn = findViewById<Button>(R.id.button_commit) // 회원가입 버튼
         registerBtn.setOnClickListener {
-            val name = nicknicknameEditText.text.toString()
+            val nickname = nicknicknameEditText.text.toString()
             val id = idEditText.text.toString()
             val pw = pwEditText.text.toString()
             val pwch = pwchEditText.text.toString()
 
-            if (name.isBlank() || id.isBlank() || pw.isBlank() || pwch.isBlank()) {
+            if (nickname.isBlank() || id.isBlank() || pw.isBlank() || pwch.isBlank()) {
                 Toast.makeText(this, "모든 필드를 채워주세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else if (pw != pwch) {
@@ -67,7 +67,7 @@ class RegisterActivity : AppCompatActivity() {
 
                         val userModel = UserDataModel(
                             uid,
-                            name
+                            nickname
                         )
 
                         FirebaseRef.userInfoRef.child(uid).setValue(userModel)
