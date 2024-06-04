@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Menti_mypage_favorite_coachActivity">
+
+    <ImageView
+        android:id="@+id/ArrowImageView"
+        android:layout_width="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="37dp"
+        android:src="@drawable/arrow" />
+
+    <TextView
+        android:id="@+id/page_text_id"
+        android:layout_width="110dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="33dp"
+        android:text="별점 기록"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="240dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="69dp"
+        android:background="@android:color/darker_gray" />
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="93dp"
+        android:layout_marginStart="45dp"
+        android:background="@drawable/rectangle_coachlist"
+        >
+
+        <View
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/group_513937"
+            />
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/center_line"
+            android:rotation="90"
+            android:layout_marginLeft="9dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="80dp"
+            android:text="별명 :"
+            />
+
+        <TextView
+            android:id="@+id/nicknameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="118dp"
+            android:text="차우코"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="21dp"
+            android:text="학교 / 회사 :"
+            />
+
+        <TextView
+            android:id="@+id/schoolOrCompanyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="156dp"
+            android:layout_marginTop="21dp"
+            android:text="강원대 00학과"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="38dp"
+            android:text="□관심분야 :"
+            />
+
+        <TextView
+            android:id="@+id/interestTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="158dp"
+            android:layout_marginTop="38dp"
+            android:text="자격증 - 기사/기능사, 진로"/>
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="240dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="178dp"
+        android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:layout_width="329dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="195dp"
+        android:layout_marginStart="17dp"
+        android:text="코칭은 어떠셨나요? 별점을 매겨주세요."
+        android:textSize="13sp"/>
+    
+    <EditText
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="220dp"
+        android:background="@drawable/star_yuna"/>
+
+    <EditText
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="113dp"
+        android:layout_marginTop="220dp"
+        android:background="@drawable/star_yuna"/>
+
+    <EditText
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="178dp"
+        android:layout_marginTop="220dp"
+        android:background="@drawable/star_yuna"/>
+
+    <EditText
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="241dp"
+        android:layout_marginTop="220dp"
+        android:background="@drawable/star_yuna"/>
+
+    <EditText
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="304dp"
+        android:layout_marginTop="220dp"
+        android:background="@drawable/star_yuna"/>
+    
+    <EditText
+        android:layout_width="320dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginStart="45dp"
+        android:hint="최소 15자 이상 적어주세요."
+        android:textSize="15sp"
+        android:gravity="top"
+        android:background="@drawable/record_star_rectangle"/>
+
+    <android.widget.Button
+        android:layout_width="154dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="690dp"
+        android:layout_marginStart="130dp"
+        android:background="@drawable/rectangle_yuna8787"
+        android:text="다음"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+
+</RelativeLayout>
