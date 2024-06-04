@@ -84,10 +84,24 @@ class Menti_coach_introduceActivity3 : AppCompatActivity() {
 
 
 
+        // 예약하기 버튼에 클릭 리스너를 설정
         appointmentBtn.setOnClickListener {
-            val intent = Intent(this, MentiReserve::class.java)
+            // 인텐트를 생성. MentiReserve 액티비티를 목적지로 지정
+            val intent = Intent(this, MentiReserve::class.java).apply {
+                // 코치 정보를 인텐트에 추가
+                putExtra("coach_uid", receiverUid)         // 코치의 고유 식별자(uid)
+                Log.d("UserDisplayName", "Current user display ID: $receiverUid")
+                putExtra("coach_name", receiverName)       // 코치의 이름
+                Log.d("UserDisplayName", "Current user display name: $receiverName")
+
+                putExtra("coach_school", receiverSchool)   // 코치의 학교 또는 회사 정보
+                putExtra("coach_interest", receiverInterest) // 코치의 특기 또는 관심사
+            }
+            // 액티비티를 시작. MentiReserve 액티비티로 이동하면서 코치 정보를 함께 전달.
             startActivity(intent)
         }
+
+
 
         ArrowImageView.setOnClickListener{
             val intent = Intent(this, CoachList::class.java)

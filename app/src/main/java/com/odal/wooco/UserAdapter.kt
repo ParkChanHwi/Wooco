@@ -30,14 +30,14 @@ class UserAdapter(private val context: Context, private val userList: ArrayList<
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
 
         val currentUser = userList[position]
-        holder.nameText.text = currentUser.name
+        holder.nameText.text = currentUser.nickname
 
         //아이템 클릭 이벤트 - 채팅창으로 넘어가는 기능
         holder.itemView.setOnClickListener{
             // 이동 화면
             val intent = Intent(context, ChatActivity::class.java)
             // 넘길 데이터
-            intent.putExtra("name", currentUser.name)
+            intent.putExtra("nickname", currentUser.nickname)
             intent.putExtra("uid", currentUser.uid)
 
             context.startActivity(intent)

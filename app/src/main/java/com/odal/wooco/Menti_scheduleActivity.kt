@@ -53,13 +53,13 @@ class Menti_scheduleActivity : AppCompatActivity() {
         userInfoRef.child(currentUser?.uid ?: "").child("nickname").addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val name = snapshot.getValue(String::class.java)
+                val nickname = snapshot.getValue(String::class.java)
 
                 // 가져온 이름을 화면에 표시
                 val scheduleNameTextView: TextView = findViewById(R.id.user_class_text)
-                scheduleNameTextView.text = name
+                scheduleNameTextView.text = nickname
 
-                Log.d("UserDisplayName", "Current user display name: $name")
+                Log.d("UserDisplayName", "Current user display name: $nickname")
             }
 
             override fun onCancelled(error: DatabaseError) {
