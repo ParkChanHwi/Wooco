@@ -28,7 +28,7 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/settingsButton"
+        android:id="@+id/category_setting"
         android:layout_width="66dp"
         android:layout_height="22dp"
         android:layout_alignParentEnd="true"
