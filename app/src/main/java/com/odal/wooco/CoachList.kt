@@ -10,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -35,32 +36,31 @@ class CoachList : AppCompatActivity() {
         val profileBtn: ImageView = findViewById(R.id.group_513866)
 
         findViewById<Button>(R.id.kategori1).setOnClickListener {
-            val bottomSheet = BottomSheet2()
+            val bottomSheet = MyBottomSheetDialogFragment() // 변경된 부분
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
         findViewById<Button>(R.id.kategori2).setOnClickListener {
-            val bottomSheet = BottomSheet2()
+            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet2()
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
         findViewById<Button>(R.id.kategori3).setOnClickListener {
-            val bottomSheet = BottomSheet3()
+            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet3()
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
         findViewById<Button>(R.id.kategori4).setOnClickListener {
-            val bottomSheet = BottomSheet4()
+            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet4()
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
         findViewById<Button>(R.id.kategori5).setOnClickListener {
-            val bottomSheet = BottomSheet5()
+            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet5()
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
         findViewById<Button>(R.id.kategori6).setOnClickListener {
-            val bottomSheet = BottomSheet6()
+            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet6()
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
 
         // Firebase Database 초기화
-        // pathString은 코치목록으로 변경
         database = FirebaseDatabase.getInstance().reference.child("coachInfo")
 
         // RecyclerView 초기화
