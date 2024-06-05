@@ -119,6 +119,7 @@ class MentiReserve : AppCompatActivity() {
                         // 데이터 전송이 성공한 경우
                         // 추가 작업이 필요하다면 여기에 작성하세요
                         val intent = Intent(this, Menti_scheduleActivity::class.java)
+                        intent.putExtra("reserveData", dataMap) // dataMap을 reserveData라는 이름으로 전달
                         startActivity(intent)
                     }.addOnFailureListener {
                         // 데이터 전송이 실패한 경우

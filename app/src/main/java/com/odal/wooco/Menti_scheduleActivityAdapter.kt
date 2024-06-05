@@ -1,12 +1,14 @@
 package com.odal.wooco
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.odal.wooco.datamodels.ReserveDataModel
 
-class Menti_sheduleActivityAdapter(private val itemList: List<Item>) : RecyclerView.Adapter<Menti_sheduleActivityAdapter.ItemViewHolder>() {
+class Menti_sheduleActivityAdapter(var itemList: List<ReserveDataModel>, val context: Context) : RecyclerView.Adapter<Menti_sheduleActivityAdapter.ItemViewHolder>() {
 
     data class Item(
         val name: String,
@@ -26,8 +28,8 @@ class Menti_sheduleActivityAdapter(private val itemList: List<Item>) : RecyclerV
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = itemList[position]
-        holder.nameTextView.text = "${item.name}"
-        holder.dateTextView.text = "${item.date}"
+        holder.nameTextView.text = item.coach_receiverName
+        holder.dateTextView.text = item.reserve_time
     }
 
 
