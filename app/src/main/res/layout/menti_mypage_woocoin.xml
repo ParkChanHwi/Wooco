@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Menti_mypage_woocoinActivity">
+
+    <ImageView
+        android:id="@+id/ArrowImageView"
+        android:layout_width="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="37dp"
+        android:src="@drawable/arrow" />
+
+    <TextView
+        android:id="@+id/page_text_id"
+        android:layout_width="110dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="33dp"
+        android:text="구매 하기"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="240dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="69dp"
+        android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/woocoin_rectangle"
+        android:layout_width="411dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="93dp"
+        android:background="#80D9D9D9"
+        android:text="현재 보유한 Woo-coin"
+        android:paddingStart="52sp"
+        android:textColor="#000000"
+        android:gravity="center_vertical"
+        />
+
+    <TextView
+        android:id="@+id/woocoin_rectangle2"
+        android:layout_width="27dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="103dp"
+        android:layout_marginStart="190dp"
+        android:textStyle="bold"
+        android:textColor="#F89B00"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/woocoin_rectangle3"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="103dp"
+        android:layout_marginStart="217dp"
+        android:text="개"
+        android:textStyle="bold"
+        android:textColor="#F89B00"
+        android:gravity="center_vertical"
+        />
+
+    <ImageView
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="103dp"
+        android:background="@drawable/woocoin"/>
+
+    <RelativeLayout
+        android:layout_width="411dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="190dp"
+        >
+
+        <ImageView
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/woocoin2"/>
+        <TextView
+            android:layout_width="109dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="69dp"
+            android:layout_marginTop="19dp"
+            android:text="Woo-coin 1개"
+            android:textSize="18sp"/>
+
+        <android.widget.Button
+            android:id="@+id/woocoin_rectangle4"
+            android:layout_width="74dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="310dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="19dp"
+            android:text="10,000원"
+            android:textColor="@color/white"
+            android:background="#F89B00"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="411dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="290dp"
+       >
+
+        <ImageView
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/woocoin2"/>
+        <TextView
+            android:layout_width="109dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="69dp"
+            android:layout_marginTop="19dp"
+            android:text="Woo-coin 5개"
+            android:textSize="18sp"/>
+
+        <android.widget.Button
+            android:id="@+id/woocoin_rectangle5"
+            android:layout_width="74dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="310dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="19dp"
+            android:text="50,000원"
+            android:textColor="@color/white"
+            android:background="#F89B00"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="411dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="390dp"
+        >
+
+        <ImageView
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/woocoin2"/>
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="69dp"
+            android:layout_marginTop="19dp"
+            android:text="Woo-coin 10개"
+            android:textSize="18sp"/>
+
+        <android.widget.Button
+            android:id="@+id/woocoin_rectangle6"
+            android:layout_width="74dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="310dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="19dp"
+            android:text="100,000원"
+            android:textColor="@color/white"
+            android:background="#F89B00"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="411dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="490dp">
+
+        <ImageView
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/woocoin2"/>
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="69dp"
+            android:layout_marginTop="19dp"
+            android:text="Woo-coin 15개"
+            android:textSize="18sp"/>
+
+        <android.widget.Button
+            android:id="@+id/woocoin_rectangle7"
+            android:layout_width="74dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="310dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="19dp"
+            android:text="150,000원"
+            android:textColor="@color/white"
+            android:background="#F89B00"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="411dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="590dp">
+
+        <ImageView
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/woocoin2"/>
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="69dp"
+            android:layout_marginTop="19dp"
+            android:text="Woo-coin 20개"
+            android:textSize="18sp"/>
+
+        <android.widget.Button
+            android:id="@+id/woocoin_rectangle8"
+            android:layout_width="74dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="310dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="19dp"
+            android:text="200,000원"
+            android:textColor="@color/white"
+            android:background="#F89B00"
+            />
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
