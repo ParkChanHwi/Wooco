@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Menti_mypage_pastclassActivity">
+
+    <ImageView
+        android:id="@+id/ArrowImageView"
+        android:layout_width="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="37dp"
+        android:src="@drawable/arrow" />
+
+    <TextView
+        android:id="@+id/page_text_id"
+        android:layout_width="110dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="33dp"
+        android:text="지난 코칭 내역"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="240dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="69dp"
+        android:background="@android:color/darker_gray" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/coach_pastclass_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="634dp"
+        android:layout_marginTop="95dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</RelativeLayout>

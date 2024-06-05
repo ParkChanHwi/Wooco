@@ -27,6 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
+        android:layout_marginTop="5dp"
         android:text="별명 :"
         />
 
@@ -35,31 +36,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="118dp"
+        android:layout_marginTop="5dp"
         android:text="차우코"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="19dp"
-        android:text="학교 / 회사 :"
-        />
-
-    <TextView
-        android:id="@+id/schoolOrCompanyTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="156dp"
-        android:layout_marginTop="19dp"
-        android:text="강원대 00학과"
-
-        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="28dp"
         android:text="코칭 날짜 :"
         />
 
@@ -68,21 +53,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="155dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="28dp"
         android:text="2024.06.05"/>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/star_1"
-        android:layout_marginLeft="324dp"
-        android:layout_marginTop="3dp"/>
-    <TextView
-        android:id="@+id/star_score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:layout_marginLeft="340dp"
-        android:text="4.9"/>
 
 </RelativeLayout>
