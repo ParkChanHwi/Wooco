@@ -11,15 +11,15 @@ class Menti_mypage_pastclassActivityAdapter(private val itemList: List<Item>) : 
     data class Item(
         val name: String,
         val school_company: String,
-        val interest: String
+        val date: String
     )
 
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameTextView: TextView = itemView.findViewById(R.id.nicknameTextView)
         val school_companyTextView: TextView = itemView.findViewById(R.id.schoolOrCompanyTextView)
-        val interestTextView: TextView = itemView.findViewById(R.id.interestTextView)
-
+        val dateTextView: TextView = itemView.findViewById(R.id.dateTextView) // 수정된 부분: datetTextView -> dateTextView
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.menti_mypage_pastclass_item, parent, false)
@@ -30,7 +30,7 @@ class Menti_mypage_pastclassActivityAdapter(private val itemList: List<Item>) : 
         val item = itemList[position]
         holder.nameTextView.text = "${item.name}"
         holder.school_companyTextView.text = "${item.school_company}"
-        holder.interestTextView.text = "${item.interest}"
+        holder.dateTextView.text = "${item.date}"
 
     }
 

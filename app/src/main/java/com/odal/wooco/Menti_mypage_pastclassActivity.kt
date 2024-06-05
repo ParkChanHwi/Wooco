@@ -16,13 +16,13 @@ class Menti_mypage_pastclassActivity : AppCompatActivity() {
         val recyclerView: RecyclerView = findViewById(R.id.pastclass_recycler_view)
 
         val items = listOf(
-            Coach_Adapter.Item("차우코", "강원대 00학과", "자격증 - 기사/기능사, 진로", "4.9"),
-            Coach_Adapter.Item("별명 2", "학교/회사 2", "관심분야 2", "4.5"),
-            Coach_Adapter.Item("별명 2", "학교/회사 2", "관심분야 2", "4.5")
+           Menti_mypage_pastclassActivityAdapter.Item("차우코", "강원대 00학과", "2024.06.05"),
+            Menti_mypage_pastclassActivityAdapter.Item("차우코", "강원대 00학과", ""),
+            Menti_mypage_pastclassActivityAdapter.Item("차우코", "강원대 00학과", "")
 
         )
 
-        val adapter = Coach_Adapter(items)
+        val adapter = Menti_mypage_pastclassActivityAdapter(items)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
     }
