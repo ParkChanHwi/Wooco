@@ -75,7 +75,7 @@ class Coach_register_bottomsheetFragment : BottomSheetDialogFragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            return inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet, container, false)
+            return inflater.inflate(R.layout.bottom_sheet_one, container, false)
         }
     }
 
@@ -85,7 +85,7 @@ class Coach_register_bottomsheetFragment : BottomSheetDialogFragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            return inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet2, container, false)
+            return inflater.inflate(R.layout.bottom_sheet_two, container, false)
         }
     }
 
@@ -95,7 +95,7 @@ class Coach_register_bottomsheetFragment : BottomSheetDialogFragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            return inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet3, container, false)
+            return inflater.inflate(R.layout.bottom_sheet_three, container, false)
         }
     }
 
@@ -105,7 +105,7 @@ class Coach_register_bottomsheetFragment : BottomSheetDialogFragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            return inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet4, container, false)
+            return inflater.inflate(R.layout.bottom_sheet_four, container, false)
         }
     }
 
@@ -115,7 +115,7 @@ class Coach_register_bottomsheetFragment : BottomSheetDialogFragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            return inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet5, container, false)
+            return inflater.inflate(R.layout.bottom_sheet_five, container, false)
         }
     }
 }

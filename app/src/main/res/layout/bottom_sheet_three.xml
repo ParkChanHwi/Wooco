@@ -7,83 +7,47 @@
     android:padding="16dp"
     android:background="@drawable/rectangle_categori">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- 편입 -->
+    <RadioButton
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@drawable/arrow"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="면접"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="154dp"
-            />
-    </LinearLayout>
+        android:text="편입"
+        android:buttonTint="#696969"/>
 
-    <RadioGroup
-        android:layout_width="match_parent"
+    <!-- 기업 -->
+    <RadioButton
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:text="기업"
+        android:buttonTint="#696969"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" 편입"
-                android:buttonTint="#696969"
-                android:layout_marginLeft="20dp"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" 기업"
-                android:buttonTint="#696969"
-                android:layout_marginLeft="133dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" 공무원"
-                android:buttonTint="#696969"
-                android:layout_marginLeft="20dp"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" 임용"
-                android:buttonTint="#696969"
-                android:layout_marginLeft="120dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" 병원"
-                android:buttonTint="#696969"
-                android:layout_marginLeft="20dp"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" 기타"
-                android:buttonTint="#696969"
-                android:layout_marginLeft="133dp"/>
-        </LinearLayout>
+    <!-- 공무원 -->
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="공무원"
+        android:buttonTint="#696969"/>
 
-    </RadioGroup>
+    <!-- 임용 -->
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="임용"
+        android:buttonTint="#696969"/>
+
+    <!-- 병원 -->
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="병원"
+        android:buttonTint="#696969"/>
+
+    <!-- 기타 -->
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="기타"
+        android:buttonTint="#696969"/>
 
     <!-- 추가 카테고리 버튼들 -->
 
