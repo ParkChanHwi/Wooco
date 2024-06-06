@@ -27,6 +27,8 @@ class Coach_mypageActivity : AppCompatActivity() {
         val profileBtn: ImageView = findViewById(R.id.group_513866)
         val transferBtn: Button = findViewById(R.id.menti_transfer)
         val coachBtn: Button = findViewById(R.id.coach_register)
+        val coachRequest: Button = findViewById(R.id.coach_request)
+
 
         // Firebase Realtime Database에서 coachInfo의 이름 가져오기
         val database = FirebaseDatabase.getInstance()
@@ -60,6 +62,10 @@ class Coach_mypageActivity : AppCompatActivity() {
             }
         })
 
+        coachRequest.setOnClickListener{
+            val intent = Intent(this, Coach_menti_request::class.java)
+            startActivity(intent)
+        }
         chatBtn.setOnClickListener{
             val intent = Intent(this, Coach_Classlist::class.java)
             startActivity(intent)
