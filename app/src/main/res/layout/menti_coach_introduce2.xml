@@ -60,7 +60,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="247dp"
         android:background="@android:color/darker_gray"
-       />
+        />
 
     <TextView
         android:id="@+id/some_id"
@@ -118,7 +118,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="176dp"
         android:text="학과/직무:"
-       />
+        />
 
     <TextView
         android:id="@+id/user_class_text4"
@@ -169,10 +169,10 @@
         android:text="수업 후기"
         android:gravity="center"
         android:textStyle="bold"
-       />
+        />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/menti_coach_introduce2_recycler_view"
+        android:id="@+id/menti_coach_introduce_recycler_view"
         android:layout_width="345dp"
         android:layout_height="340dp"
         android:layout_marginTop="335dp"
