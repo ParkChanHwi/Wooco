@@ -1,11 +1,11 @@
-package com.odal.wooco
-
 import android.os.Bundle
-import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.odal.wooco.Coach_Adapter
+import com.odal.wooco.R
+import com.odal.wooco.datamodels.CoachDataModel
 
 class Menti_mypage_favorite_coachActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,16 +16,13 @@ class Menti_mypage_favorite_coachActivity : AppCompatActivity() {
         val recyclerView: RecyclerView = findViewById(R.id.favorite_coach_recycler_view)
 
         val items = listOf(
-            Coach_Adapter.Item("차우코", "강원대 00학과", "자격증 - 기사/기능사, 진로", "4.9"),
-            Coach_Adapter.Item("별명 2", "학교/회사 2", "관심분야 2", "4.5"),
-            Coach_Adapter.Item("별명 2", "학교/회사 2", "관심분야 2", "4.5")
-
+            CoachDataModel("차우코", "강원대 00학과", "자격증 - 기사/기능사, 진로", "4.9"),
+            CoachDataModel("별명 2", "학교/회사 2", "관심분야 2", "4.5"),
+            CoachDataModel("별명 2", "학교/회사 2", "관심분야 2", "4.5")
         )
 
-        val adapter = Coach_Adapter(items)
+        val adapter = Coach_Adapter(items, this)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
     }
-
-
 }

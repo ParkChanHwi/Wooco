@@ -12,6 +12,14 @@ import com.odal.wooco.datamodels.CoachDataModel
 
 class Coach_Adapter(val itemList: List<CoachDataModel>, val context: Context) : RecyclerView.Adapter<Coach_Adapter.ItemViewHolder>() {
 
+
+    data class Item(
+        val nickname: String,
+        val schoolOrCompany: String,
+        val interest: String,
+        val score: String
+    )
+
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nicknameTextView: TextView = itemView.findViewById(R.id.nicknameTextView)
         val schoolOrCompanyTextView: TextView = itemView.findViewById(R.id.schoolOrCompanyTextView)

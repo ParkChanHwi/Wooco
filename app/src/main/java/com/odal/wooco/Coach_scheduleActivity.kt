@@ -23,18 +23,18 @@ class Coach_scheduleActivity : AppCompatActivity() {
         val profileBtn: ImageView = findViewById(R.id.group_513866)
 
         val items = listOf(
-            CoachScheduleActivityAdapter.Item("차우코", "2024-05-31"),
-            CoachScheduleActivityAdapter.Item("별명 2", "date2"),
-            CoachScheduleActivityAdapter.Item("별명 3", "date3"),
-            CoachScheduleActivityAdapter.Item("별명 4", "date4"),
-            CoachScheduleActivityAdapter.Item("별명 5", "date5"),
-            CoachScheduleActivityAdapter.Item("별명 6", "date6"),
-            CoachScheduleActivityAdapter.Item("별명 7", "date7"),
-           CoachScheduleActivityAdapter.Item("별명 8", "date8"),
+            Coach_scheduleActivityAdapter.Item("차우코", "2024-05-31"),
+            Coach_scheduleActivityAdapter.Item("별명 2", "date2"),
+            Coach_scheduleActivityAdapter.Item("별명 3", "date3"),
+            Coach_scheduleActivityAdapter.Item("별명 4", "date4"),
+            Coach_scheduleActivityAdapter.Item("별명 5", "date5"),
+            Coach_scheduleActivityAdapter.Item("별명 6", "date6"),
+            Coach_scheduleActivityAdapter.Item("별명 7", "date7"),
+            Coach_scheduleActivityAdapter.Item("별명 8", "date8"),
             // Add more items as needed
 
         )
-        val adapter = CoachScheduleActivityAdapter(items)
+        val adapter = Coach_scheduleActivityAdapter(items)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
