@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Menti_mypage_pastclassActivity">
+    tools:context=".Menti_mypage_favorite_coachActivity">
 
     <ImageView
         android:id="@+id/ArrowImageView"
@@ -22,7 +22,7 @@
         android:layout_height="22dp"
         android:layout_marginStart="150dp"
         android:layout_marginTop="33dp"
-        android:text="지난 수강 내역"
+        android:text="찜한 코치"
         android:gravity="center"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -35,7 +35,7 @@
         android:background="@android:color/darker_gray" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/pastclass_recycler_view"
+        android:id="@+id/favorite_coach_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="634dp"
         android:layout_marginTop="95dp">

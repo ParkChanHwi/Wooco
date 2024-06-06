@@ -96,7 +96,7 @@
         android:layout_height="20dp"
         android:layout_marginStart="280dp"
         android:layout_marginTop="129dp"
-        android:text="계정 설정"
+        android:text="로그아웃"
         android:textSize="10sp"
         android:background="@drawable/account_set"/>
 

@@ -172,7 +172,7 @@
        />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/menti_coach_introduce_recycler_view"
+        android:id="@+id/menti_coach_introduce2_recycler_view"
         android:layout_width="345dp"
         android:layout_height="340dp"
         android:layout_marginTop="335dp"

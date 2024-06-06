@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@drawable/record_star" />
+
+    <View
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/group_513937"
+        />
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/center_line"
+        android:rotation="90"
+        android:layout_marginLeft="9dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="3dp"
+        android:text="별명 :"
+        />
+
+    <TextView
+        android:id="@+id/nicknameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="118dp"
+        android:layout_marginTop="3dp"
+        android:text="차우코"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="21dp"
+        android:text="학교 / 회사 :"
+        />
+
+    <TextView
+        android:id="@+id/schoolOrCompanyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="156dp"
+        android:layout_marginTop="21dp"
+        android:text="강원대 00학과"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="38dp"
+        android:text="□관심분야 :"
+        />
+
+    <TextView
+        android:id="@+id/interestTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="158dp"
+        android:layout_marginTop="38dp"
+        android:text="자격증 - 기사/기능사, 진로"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/star_1"
+        android:layout_marginLeft="324dp"
+        android:layout_marginTop="7dp"/>
+    <TextView
+        android:id="@+id/star_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="340dp"
+        android:text="4.9"/>
+
+    <android.widget.Button
+        android:id="@+id/record_star_button"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:layout_below="@id/schoolOrCompanyTextView"
+        android:layout_marginTop="21dp"
+        android:background="@drawable/record_star2"
+        android:text="별점 남기기"
+        android:textStyle="bold" />
+</RelativeLayout>
+
