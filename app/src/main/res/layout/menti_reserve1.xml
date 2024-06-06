@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToOutline="true"
+    android:background="#FFFFFF">
+
+    <ImageView
+        android:id="@+id/arrow_3"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="29dp"
+        android:src="@drawable/arrow"
+        />
+
+    <TextView
+        android:id="@+id/코치예약하기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="160dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="26dp"
+        android:text="코치 예약하기"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:gravity="center"
+        />
+
+    <View
+        android:id="@+id/line_9"
+        android:layout_width="240dp"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="85dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="65dp"
+        android:background="@drawable/line_9"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="286dp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="예약하려는 카테고리 선택>"
+            android:gravity="center_horizontal|top"
+            android:textStyle="bold"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <!-- 여기에 수평으로 스크롤될 요소들을 배치합니다. -->
+            <android.widget.Button
+                android:id="@+id/kategori2"
+                android:layout_width="90dp"
+                android:layout_height="20dp"
+                android:text="진로/기타 고민"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/black"
+                android:background="@color/white"
+                android:stateListAnimator="@null"
+                />
+
+            <android.widget.Button
+                android:id="@+id/kategori3"
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:text="전공/과제"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/black"
+                android:background="@color/white"
+                android:stateListAnimator="@null"
+                />
+
+            <android.widget.Button
+                android:id="@+id/kategori4"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:text="면접"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/black"
+                android:background="@color/white"
+                android:stateListAnimator="@null"
+                />
+            <android.widget.Button
+                android:id="@+id/kategori5"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:text="자소서"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/black"
+                android:background="@color/white"
+                android:stateListAnimator="@null"
+                />
+
+            <android.widget.Button
+                android:id="@+id/kategori6"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:text="자격증"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/black"
+                android:background="@color/white"
+                android:stateListAnimator="@null"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="선택한 카테고리 : "/>
+            <TextView
+                android:id="@+id/reserve_selected_categori"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="카테고리를 선택해주세요."/>
+        </LinearLayout>
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rectangle_yuna9788"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⚠ 예약하려는 코치가 예약을 승낙 / 거절 할 수 있습니다."
+                android:textSize="10dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="상담을 통하여 합의된 시간에 예약하는 것을 추천드립니다."
+                android:textSize="10dp"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <android.widget.Button
+        android:id="@+id/reserve_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="640dp"
+        android:layout_marginLeft="160dp"
+        android:text="다 음"
+        android:textColor="@color/white"
+        android:background="#F89B00"
+        />
+</RelativeLayout>
