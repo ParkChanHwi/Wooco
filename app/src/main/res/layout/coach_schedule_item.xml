@@ -34,7 +34,7 @@
             android:layout_marginTop="23dp"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:text="코치"
+            android:text="멘티"
             android:gravity="center"/>
 
         <TextView

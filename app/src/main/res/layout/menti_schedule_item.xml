@@ -34,7 +34,7 @@
             android:layout_marginTop="23dp"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:text="맨티"
+            android:text="맨토"
             android:gravity="center"/>
 
         <TextView
