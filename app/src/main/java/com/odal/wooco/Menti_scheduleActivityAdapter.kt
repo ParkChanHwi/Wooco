@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.odal.wooco.datamodels.ReserveDataModel
 
-class Menti_sheduleActivityAdapter(var itemList: List<ReserveDataModel>, val context: Context) : RecyclerView.Adapter<Menti_sheduleActivityAdapter.ItemViewHolder>() {
+class Menti_sheduleActivityAdapter(private var itemList: List<ReserveDataModel>, val context: Context) : RecyclerView.Adapter<Menti_sheduleActivityAdapter.ItemViewHolder>() {
 
     data class Item(
         val name: String,
@@ -18,7 +18,6 @@ class Menti_sheduleActivityAdapter(var itemList: List<ReserveDataModel>, val con
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameTextView: TextView = itemView.findViewById(R.id.menti_name2)
         val dateTextView: TextView = itemView.findViewById(R.id.class_day)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -32,6 +31,11 @@ class Menti_sheduleActivityAdapter(var itemList: List<ReserveDataModel>, val con
         holder.dateTextView.text = item.reserve_time
     }
 
-
     override fun getItemCount(): Int = itemList.size
+
+    // 수업 시작 시간에 따라 itemList를 정렬하는 메서드
+    fun sortByStartTime() {
+        itemList = itemList.sortedBy { it.reserve_time }
+        notifyDataSetChanged()
+    }
 }

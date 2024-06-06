@@ -1,6 +1,5 @@
 package com.odal.wooco
 
-import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -17,16 +16,15 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.odal.wooco.datamodels.CoachDataModel
 import com.odal.wooco.datamodels.ReserveDataModel
 import com.odal.wooco.utils.FirebaseRef.Companion.userInfoRef
 
 class Menti_scheduleActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
-    private lateinit var reserveAdapter: Menti_sheduleActivityAdapter // Adapter 변수 추가
+    private lateinit var reserveAdapter: Menti_sheduleActivityAdapter
     private lateinit var recyclerView: RecyclerView
-    private val itemList = mutableListOf<ReserveDataModel>() // itemList 선언 및 초기화
+    private val itemList = mutableListOf<ReserveDataModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,14 +41,11 @@ class Menti_scheduleActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.menti_schedule_recycler_view)
 
         // Firebase Database 초기화
-        // pathString은 예약목록으로 변경
         database = FirebaseDatabase.getInstance().reference.child("reserveInfo")
 
-
         // RecyclerView 초기화
-        recyclerView = findViewById(R.id.menti_schedule_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        reserveAdapter = Menti_sheduleActivityAdapter(itemList, this) // Context 추가
+        reserveAdapter = Menti_sheduleActivityAdapter(itemList, this)
         recyclerView.adapter = reserveAdapter
 
         // Firebase에서 데이터 가져오기
@@ -59,10 +54,11 @@ class Menti_scheduleActivity : AppCompatActivity() {
                 itemList.clear()
                 for (dataSnapshot in snapshot.children) {
                     val reserve = dataSnapshot.getValue(ReserveDataModel::class.java)
-                    if (reserve != null) {
-                        itemList.add(reserve)
+                    reserve?.let {
+                        itemList.add(it)
                     }
                 }
+                itemList.sortBy { it.reserve_time } // 시작 시간으로 정렬
                 reserveAdapter.notifyDataSetChanged()
             }
 
@@ -71,15 +67,13 @@ class Menti_scheduleActivity : AppCompatActivity() {
             }
         })
 
+        // 현재 사용자의 닉네임 가져와서 표시
         userInfoRef.child(currentUser?.uid ?: "").child("nickname").addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val nickname = snapshot.getValue(String::class.java)
-
-                // 가져온 이름을 화면에 표시
                 val scheduleNameTextView: TextView = findViewById(R.id.user_class_text)
                 scheduleNameTextView.text = nickname
-
                 Log.d("UserDisplayName", "Current user display name: $nickname")
             }
 
@@ -87,9 +81,6 @@ class Menti_scheduleActivity : AppCompatActivity() {
                 Log.e("Firebase", "Failed to read value.", error.toException())
             }
         })
-
-
-
 
         // 버튼 클릭 리스너 설정
         homeBtn.setOnClickListener{
