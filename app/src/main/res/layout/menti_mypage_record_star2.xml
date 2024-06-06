@@ -177,7 +177,7 @@
         android:layout_height="32dp"
         android:layout_marginTop="690dp"
         android:layout_marginStart="130dp"
-        android:background="@drawable/rectangle_yuna8787"
+        android:background="#F89B00"
         android:text="다음"
         android:textColor="#FFFFFF"
         android:textSize="10sp"
