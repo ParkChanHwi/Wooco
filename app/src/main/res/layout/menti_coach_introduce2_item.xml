@@ -32,7 +32,7 @@
             android:textStyle="bold"
             android:gravity="top" />
 
-        <EditText
+        <TextView
             android:id="@+id/myself1"
             android:layout_width="340dp"
             android:layout_height="110dp"
@@ -57,7 +57,7 @@
             android:textStyle="bold"
             android:gravity="top" />
 
-        <EditText
+        <TextView
             android:id="@+id/myself2"
             android:layout_width="340dp"
             android:layout_height="110dp"
@@ -82,7 +82,7 @@
             android:textStyle="bold"
             android:gravity="top" />
 
-        <EditText
+        <TextView
             android:id="@+id/myself3"
             android:layout_width="340dp"
             android:layout_height="110dp"
@@ -107,7 +107,7 @@
             android:textStyle="bold"
             android:gravity="top" />
 
-        <EditText
+        <TextView
             android:id="@+id/myself4"
             android:layout_width="340dp"
             android:layout_height="99dp"
