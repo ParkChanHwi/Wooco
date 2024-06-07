@@ -94,10 +94,10 @@
         android:id="@+id/editText2"
         android:layout_width="90dp"
         android:layout_height="20dp"
+        android:layout_alignTop="@id/some_id2"
         android:layout_marginStart="4dp"
-        android:background="@drawable/rectangle96666"
         android:layout_toEndOf="@id/some_id2"
-        android:layout_alignTop="@id/some_id2" />
+        android:background="@drawable/rectangle96666" />
 
     <TextView
         android:id="@+id/some_id3"
