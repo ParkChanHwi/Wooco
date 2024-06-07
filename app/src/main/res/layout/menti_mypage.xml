@@ -114,7 +114,7 @@
     <!-- 사용자가 보유한 코인 수를 표시할 TextView -->
     <TextView
         android:id="@+id/coin_count"
-        android:layout_width="20dp"
+        android:layout_width="30dp"
         android:layout_height="25dp"
         android:layout_toEndOf="@id/coin_label"
         android:layout_marginStart="0dp"

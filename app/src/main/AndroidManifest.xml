@@ -34,6 +34,8 @@
         <activity android:name=".Coach_menti_request" />
         <activity android:name=".MentiReserve" />
         <activity android:name=".CoachReserve" />
+        <activity android:name=".Menti_mypage_woocoinActivity" />
+        <activity android:name=".Coach_mypage_woocoin_exchangeActivity" />
         <activity android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>

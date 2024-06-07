@@ -177,6 +177,7 @@
         android:textStyle="bold"/>
 
     <android.widget.Button
+        android:id="@+id/woocoin_exchange"
         android:layout_width="116dp"
         android:layout_height="23dp"
         android:layout_marginStart="37dp"
