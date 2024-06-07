@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         // val myRef =  database.getReference("message")
         // myRef.setValue("Success")
         setContentView(R.layout.menti_coachlist)
-
         // 현정이거 병합
 
         findViewById<Button>(R.id.kategori1).setOnClickListener {
