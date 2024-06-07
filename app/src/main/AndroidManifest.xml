@@ -50,6 +50,7 @@
         </activity>
         <activity android:name=".CoachList" /> <!-- 여기에 추가 -->
         <activity
+
             android:name=".Menti_mypage_favorite_coachActivity"
             android:exported="false" />
     </application>
