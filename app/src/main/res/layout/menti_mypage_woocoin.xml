@@ -79,7 +79,7 @@
     <RelativeLayout
         android:layout_width="411dp"
         android:layout_height="61dp"
-        android:layout_marginTop="190dp"
+        android:layout_marginTop="215dp"
         >
 
         <ImageView
@@ -112,7 +112,7 @@
     <RelativeLayout
         android:layout_width="411dp"
         android:layout_height="61dp"
-        android:layout_marginTop="290dp"
+        android:layout_marginTop="315dp"
        >
 
         <ImageView
@@ -145,7 +145,7 @@
     <RelativeLayout
         android:layout_width="411dp"
         android:layout_height="61dp"
-        android:layout_marginTop="390dp"
+        android:layout_marginTop="415dp"
         >
 
         <ImageView
@@ -178,7 +178,7 @@
     <RelativeLayout
         android:layout_width="411dp"
         android:layout_height="61dp"
-        android:layout_marginTop="490dp">
+        android:layout_marginTop="515dp">
 
         <ImageView
             android:layout_width="38dp"
@@ -210,7 +210,7 @@
     <RelativeLayout
         android:layout_width="411dp"
         android:layout_height="61dp"
-        android:layout_marginTop="590dp">
+        android:layout_marginTop="615dp">
 
         <ImageView
             android:layout_width="38dp"
@@ -237,7 +237,17 @@
             android:textColor="@color/white"
             android:background="#F89B00"
             />
+
+
     </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="166dp"
+        android:text="⚠  우코인 한 개당 코칭 시간은 30분입니다."
+        android:paddingStart="22sp"
+        android:gravity="start"/>
 
 
 

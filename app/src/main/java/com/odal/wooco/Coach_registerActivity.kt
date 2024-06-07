@@ -14,7 +14,6 @@ class Coach_registerActivity : AppCompatActivity() {
         setContentView(R.layout.coach_register)
 
         val recyclerView: RecyclerView = findViewById(R.id.coach_register1_view)
-        val recyclerView2: RecyclerView = findViewById(R.id.coach_register2_view)
 
         val items = listOf(
             Coach_registerActivityAdapter.Item("카테고리", "세부카테고리"),
@@ -28,26 +27,6 @@ class Coach_registerActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
-        val items2 = listOf(
-            Coach_registerActivityAdapter2.Item(
-                R.drawable.document,
-                R.drawable.document,
-                R.drawable.document
-            ),
-            Coach_registerActivityAdapter2.Item(
-                R.drawable.document,
-                R.drawable.document,
-                R.drawable.document
-            ),
-            Coach_registerActivityAdapter2.Item(
-                R.drawable.document,
-                R.drawable.document,
-                R.drawable.document
-            )
-        )
-        val adapter2 = Coach_registerActivityAdapter2(items2)
-        recyclerView2.layoutManager = LinearLayoutManager(this)
-        recyclerView2.adapter = adapter2
 
         val addButton: Button = findViewById(R.id.addButton)
         addButton.setOnClickListener {
