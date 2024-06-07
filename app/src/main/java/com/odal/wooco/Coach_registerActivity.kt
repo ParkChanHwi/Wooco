@@ -60,7 +60,7 @@ class Coach_registerActivity : AppCompatActivity() {
                 )
 
                 val databaseReference = Firebase.database.reference
-                val coachCategoryRef = databaseReference.child("coachCategoryRef").child(uid)
+                val coachCategoryRef = databaseReference.child("coachCategoryRef").child(uid).child("category")
                 coachCategoryRef.setValue(coachCategory)
 
 

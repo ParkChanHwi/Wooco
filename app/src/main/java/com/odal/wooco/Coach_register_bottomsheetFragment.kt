@@ -46,7 +46,7 @@ class Coach_register_bottomsheetFragment : BottomSheetDialogFragment() {
                 }
 
                 R.id.radioButton2 -> {
-                    //BottomSheet3().show(parentFragmentManager, "BottomSheet3")
+                    BottomSheet3().show(parentFragmentManager, "BottomSheet3")
                 }
             }
             dismiss() // 선택 후 바텀 시트 닫기
@@ -57,11 +57,11 @@ class Coach_register_bottomsheetFragment : BottomSheetDialogFragment() {
         radioGroup2.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.radioButton3 -> {
-                    //BottomSheet4().show(parentFragmentManager, "BottomSheet4")
+                    BottomSheet4().show(parentFragmentManager, "BottomSheet4")
                 }
 
                 R.id.radioButton4 -> {
-                   // BottomSheet5().show(parentFragmentManager, "BottomSheet5")
+                    BottomSheet5().show(parentFragmentManager, "BottomSheet5")
                 }
             }
             dismiss() // 선택 후 바텀 시트 닫기
@@ -72,7 +72,7 @@ class Coach_register_bottomsheetFragment : BottomSheetDialogFragment() {
         radioGroup3.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.radioButton5 -> {
-                    //BottomSheet6().show(parentFragmentManager, "BottomSheet6")
+                    BottomSheet6().show(parentFragmentManager, "BottomSheet6")
                 }
             }
             dismiss() // 선택 후 바텀 시트 닫기
@@ -143,9 +143,60 @@ class Coach_register_bottomsheetFragment : BottomSheetDialogFragment() {
                 container: ViewGroup?,
                 savedInstanceState: Bundle?
             ): View? {
-                return inflater.inflate(R.layout.bottom_sheet_two, container, false)
+                val view = inflater.inflate(R.layout.bottom_sheet_two, container, false)
+
+                val radioButtonIds = mapOf(
+                    R.id.humanities to "인문/사회",
+                    R.id.arts to "예체능",
+                    R.id.medicine to "보건",
+                    R.id.engineering to "공학",
+                    R.id.education to "교육",
+                    R.id.nature to "자연"
+                )
+
+
+                val setButton = view.findViewById<AppCompatButton>(R.id.setting)
+
+                setButton.setOnClickListener {
+                    var selectedText: String? = null
+
+                    for ((radioButtonId, text) in radioButtonIds) {
+                        val radioButton = view.findViewById<RadioButton>(radioButtonId)
+                        if (radioButton.isChecked) {
+                            selectedText = text
+                            break
+                        }
+                    }
+
+                    if (selectedText != null) {
+                        // coach_register_item.xml에 값을 표시하는 함수 호출
+                        updateCoachRegisterItem(selectedText)
+                        // Firebase에 데이터 저장
+                        // saveToFirebase(selectedText)
+                    } else {
+                        // 선택된 라디오 버튼이 없을 경우 처리
+                        Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+
+                return view
             }
+
+            private fun updateCoachRegisterItem(selectedText: String) {
+                // 여기에서 coach_register_item.xml의 뷰에 접근하여 값을 설정합니다.
+                val activity = requireActivity()
+
+                // coach_register_item.xml의 뷰에 접근
+                val category1TextView = activity.findViewById<TextView>(R.id.category1)
+                val category2TextView = activity.findViewById<TextView>(R.id.category2)
+
+                category1TextView.text = "전공/과제"
+                category2TextView.text = selectedText // 필요에 따라 수정
+            }
+
         }
+
 
         class BottomSheet4 : BottomSheetDialogFragment() {
             override fun onCreateView(
@@ -153,7 +204,55 @@ class Coach_register_bottomsheetFragment : BottomSheetDialogFragment() {
                 container: ViewGroup?,
                 savedInstanceState: Bundle?
             ): View? {
-                return inflater.inflate(R.layout.bottom_sheet_three, container, false)
+                val view = inflater.inflate(R.layout.bottom_sheet_three, container, false)
+
+                val radioButtonIds = mapOf(
+                    R.id.transition to "편입",
+                    R.id.company to "기업",
+                    R.id.publicoffice to "공무원",
+                    R.id.eduemploy to "임용",
+                    R.id.hospital to "병원",
+                    R.id.etc to "기타"
+                )
+
+
+                val setButton = view.findViewById<AppCompatButton>(R.id.setting)
+
+                setButton.setOnClickListener {
+                    var selectedText: String? = null
+
+                    for ((radioButtonId, text) in radioButtonIds) {
+                        val radioButton = view.findViewById<RadioButton>(radioButtonId)
+                        if (radioButton.isChecked) {
+                            selectedText = text
+                            break
+                        }
+                    }
+
+                    if (selectedText != null) {
+                        // coach_register_item.xml에 값을 표시하는 함수 호출
+                        updateCoachRegisterItem(selectedText)
+                        // Firebase에 데이터 저장
+                        // saveToFirebase(selectedText)
+                    } else {
+                        // 선택된 라디오 버튼이 없을 경우 처리
+                        Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+
+                return view
+            }
+
+            private fun updateCoachRegisterItem(selectedText: String) {
+                // 여기에서 coach_register_item.xml의 뷰에 접근하여 값을 설정합니다.
+                val activity = requireActivity()
+
+                // coach_register_item.xml의 뷰에 접근
+                val category1TextView = activity.findViewById<TextView>(R.id.category1)
+                val category2TextView = activity.findViewById<TextView>(R.id.category2)
+                category1TextView.text = "면접"
+                category2TextView.text = selectedText // 필요에 따라 수정
             }
         }
 
@@ -163,7 +262,54 @@ class Coach_register_bottomsheetFragment : BottomSheetDialogFragment() {
                 container: ViewGroup?,
                 savedInstanceState: Bundle?
             ): View? {
-                return inflater.inflate(R.layout.bottom_sheet_four, container, false)
+                val view = inflater.inflate(R.layout.bottom_sheet_five, container, false)
+
+                val radioButtonIds = mapOf(
+                    R.id.ProfessionalEngineer to "기사/기능사",
+                    R.id.language to "어학",
+                    R.id.computer to "컴퓨터활용능력",
+                    R.id.khistory to "한국사",
+                    R.id.etc to "기타"
+                )
+
+
+                val setButton = view.findViewById<AppCompatButton>(R.id.setting)
+
+                setButton.setOnClickListener {
+                    var selectedText: String? = null
+
+                    for ((radioButtonId, text) in radioButtonIds) {
+                        val radioButton = view.findViewById<RadioButton>(radioButtonId)
+                        if (radioButton.isChecked) {
+                            selectedText = text
+                            break
+                        }
+                    }
+
+                    if (selectedText != null) {
+                        // coach_register_item.xml에 값을 표시하는 함수 호출
+                        updateCoachRegisterItem(selectedText)
+                        // Firebase에 데이터 저장
+                        // saveToFirebase(selectedText)
+                    } else {
+                        // 선택된 라디오 버튼이 없을 경우 처리
+                        Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+
+                return view
+            }
+
+            private fun updateCoachRegisterItem(selectedText: String) {
+                // 여기에서 coach_register_item.xml의 뷰에 접근하여 값을 설정합니다.
+                val activity = requireActivity()
+
+                // coach_register_item.xml의 뷰에 접근
+                val category1TextView = activity.findViewById<TextView>(R.id.category1)
+                val category2TextView = activity.findViewById<TextView>(R.id.category2)
+                category1TextView.text = "자격증"
+                category2TextView.text = selectedText // 필요에 따라 수정
             }
         }
 
@@ -173,7 +319,61 @@ class Coach_register_bottomsheetFragment : BottomSheetDialogFragment() {
                 container: ViewGroup?,
                 savedInstanceState: Bundle?
             ): View? {
-                return inflater.inflate(R.layout.bottom_sheet_five, container, false)
+                val view = inflater.inflate(R.layout.bottom_sheet_four, container, false)
+
+                val radioButtonIds = mapOf(
+                    R.id.marketing to "마케팅",
+                    R.id.plan to "기획",
+                    R.id.office to "사무직",
+                    R.id.special to "전문/특수/연구직",
+                    R.id.transportation to "무역/유통",
+                    R.id.service to "서비스",
+                    R.id.it to "IT",
+                    R.id.design to "디자인",
+                    R.id.business to "영업",
+                    R.id.education to "교육",
+                    R.id.construction to "건설",
+                    R.id.health to "의료"
+                )
+
+
+                val setButton = view.findViewById<AppCompatButton>(R.id.setting)
+
+                setButton.setOnClickListener {
+                    var selectedText: String? = null
+
+                    for ((radioButtonId, text) in radioButtonIds) {
+                        val radioButton = view.findViewById<RadioButton>(radioButtonId)
+                        if (radioButton.isChecked) {
+                            selectedText = text
+                            break
+                        }
+                    }
+
+                    if (selectedText != null) {
+                        // coach_register_item.xml에 값을 표시하는 함수 호출
+                        updateCoachRegisterItem(selectedText)
+                        // Firebase에 데이터 저장
+                        // saveToFirebase(selectedText)
+                    } else {
+                        // 선택된 라디오 버튼이 없을 경우 처리
+                        Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+
+                return view
+            }
+
+            private fun updateCoachRegisterItem(selectedText: String) {
+                // 여기에서 coach_register_item.xml의 뷰에 접근하여 값을 설정합니다.
+                val activity = requireActivity()
+
+                // coach_register_item.xml의 뷰에 접근
+                val category1TextView = activity.findViewById<TextView>(R.id.category1)
+                val category2TextView = activity.findViewById<TextView>(R.id.category2)
+                category1TextView.text = "자소서"
+                category2TextView.text = selectedText // 필요에 따라 수정
             }
         }
 

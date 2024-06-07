@@ -17,6 +17,7 @@
             android:layout_height="15dp"
             android:src="@drawable/arrow"/>
         <TextView
+            android:id="@+id/title2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="전공/과제"
@@ -26,12 +27,14 @@
     </LinearLayout>
 
     <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <!-- 인문/사회 -->
         <RadioButton
+            android:id="@+id/humanities"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="인문/사회"
@@ -39,6 +42,7 @@
 
         <!-- 예체능 -->
         <RadioButton
+            android:id="@+id/arts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="예체능"
@@ -46,6 +50,7 @@
 
         <!-- 보건 -->
         <RadioButton
+            android:id="@+id/medicine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="보건"
@@ -53,6 +58,7 @@
 
         <!-- 공학 -->
         <RadioButton
+            android:id="@+id/engineering"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="공학"
@@ -60,6 +66,7 @@
 
         <!-- 교육 -->
         <RadioButton
+            android:id="@+id/education"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="교육"
@@ -67,6 +74,7 @@
 
         <!-- 자연 -->
         <RadioButton
+            android:id="@+id/nature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="자연"
@@ -75,5 +83,13 @@
     </RadioGroup>
 
     <!-- 추가 카테고리 버튼들 -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="설정"
+        android:textColor="@color/white"
+        android:background="@drawable/rectangle_9533" />
 
 </LinearLayout>

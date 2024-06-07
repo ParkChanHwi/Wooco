@@ -18,6 +18,7 @@
             android:src="@drawable/arrow"
             />
         <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="자격증"
@@ -37,12 +38,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/ProfessionalEngineer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" 기사/기능사"
+                android:text="기사/기능사"
                 android:buttonTint="#696969"
                 android:layout_marginLeft="20dp"/>
             <RadioButton
+                android:id="@+id/language"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 어학"
@@ -54,12 +57,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/computer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 컴퓨터활용능력"
                 android:buttonTint="#696969"
                 android:layout_marginLeft="20dp"/>
             <RadioButton
+                android:id="@+id/khistory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 한국사"
@@ -71,6 +76,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/etc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 기타"
@@ -79,6 +85,15 @@
         </LinearLayout>
 
     </RadioGroup>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="설정"
+        android:textColor="@color/white"
+        android:background="@drawable/rectangle_9533" />
 
     <!-- 추가 카테고리 버튼들 -->
 

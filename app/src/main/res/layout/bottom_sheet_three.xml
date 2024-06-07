@@ -18,6 +18,7 @@
             android:src="@drawable/arrow"
             />
         <TextView
+            android:id="@+id/interview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="면접"
@@ -37,12 +38,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/transition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 편입"
                 android:buttonTint="#696969"
                 android:layout_marginLeft="20dp"/>
             <RadioButton
+                android:id="@+id/company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 기업"
@@ -54,12 +57,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/publicoffice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 공무원"
                 android:buttonTint="#696969"
                 android:layout_marginLeft="20dp"/>
             <RadioButton
+                android:id="@+id/eduemploy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 임용"
@@ -71,12 +76,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/hospital"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 병원"
                 android:buttonTint="#696969"
                 android:layout_marginLeft="20dp"/>
             <RadioButton
+                android:id="@+id/etc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 기타"
@@ -85,6 +92,15 @@
         </LinearLayout>
 
     </RadioGroup>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="설정"
+        android:textColor="@color/white"
+        android:background="@drawable/rectangle_9533" />
 
     <!-- 추가 카테고리 버튼들 -->
 
