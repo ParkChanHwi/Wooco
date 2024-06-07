@@ -187,103 +187,78 @@
         android:layout_width="144dp"
         android:layout_height="18dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="440dp"
+        android:layout_marginTop="470dp"
         android:text="자격증 및 기타 서류 등록"
-        android:gravity="center"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:textColor="@color/white"
+        android:gravity="start"
+        android:paddingStart="5sp"
+        android:textSize="11sp"
+        android:background="@drawable/notice_rec"
         />
+    <TextView
+        android:layout_width="55dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="500dp"
+        android:text="등록 방법:"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textColor="#0F4C81"/>
+    
+    <TextView
+        android:layout_width="230dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="500dp"
+        android:text="odal@gmail.com 메일로 제출"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:layout_width="55dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="530dp"
+        android:text="등록 서류:"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textColor="#0F4C81"/>
+
+    <TextView
+        android:layout_width="230dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="555dp"
+        android:text="1. 신분증 (주민등록증/운전면허증)"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:layout_width="230dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="580dp"
+        android:text="2. 인증 서류 (재학증명서/ 졸업증명서/재직증명서)"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:layout_width="230dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="605dp"
+        android:text="3. 자격증 카테고리 선택 시 -> 자격증 증명서 필수 "
+        android:textSize="12sp"/>
 
     <ImageView
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="465dp"
-        android:background="@drawable/notify"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"/>
+        android:layout_width="307dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="650dp"
+        android:layout_marginStart="50dp"
+        android:background="@drawable/group513968"/>
 
-    <TextView
-        android:layout_width="240dp"
-        android:layout_height="16dp"
-        android:layout_marginStart="57dp"
-        android:layout_marginTop="465dp"
-        android:text="신분증 및 재학 혹은 졸업 증명서, 희망 코칭 증명 가능서류"
-        android:textSize="10dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"/>
-
-    <Button
-        android:id="@+id/addButton3"
-        android:layout_width="25dp"
-        android:layout_height="16dp"
-        android:layout_marginStart="310dp"
-        android:layout_marginTop="465dp"
-        android:backgroundTint="#FFFFFF"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
-
-    <TextView
-        android:layout_width="25dp"
-        android:layout_height="16dp"
-        android:layout_marginStart="310dp"
-        android:layout_marginTop="465dp"
-        android:text="추가"
-        android:textSize="10dp"
-        android:gravity="center"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"/>
-
-    <Button
-        android:id="@+id/addButton4"
-        android:layout_width="25dp"
-        android:layout_height="16dp"
-        android:layout_marginStart="335dp"
-        android:layout_marginTop="465dp"
-        android:backgroundTint="#FFFFFF"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
-
-    <TextView
-        android:layout_width="25dp"
-        android:layout_height="16dp"
-        android:layout_marginStart="335dp"
-        android:layout_marginTop="465dp"
-        android:text="삭제"
-        android:textSize="10dp"
-        android:gravity="center"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/coach_register2_view"
-        android:layout_width="320dp"
-        android:layout_height="130dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="485dp"
-        android:background="@drawable/rectangle_yuna35">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-
-
-    <TextView
-        android:layout_width="320dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="620dp"
-        android:layout_marginStart="43dp"
-        android:background="@drawable/rectangle_yuna9788"
-        android:text="⚠  자격증 및 기타 서류 미제출시 코치 등록이 거절될 수 있습니다.
-                      제출된 문서는 관리자가 검토한 후, 보안 절차에 따라 폐기될 예정입니다."
-        android:textSize="10dp"
-        android:gravity="center"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"/>
 
     <android.widget.Button
         android:layout_width="154dp"
         android:layout_height="32dp"
-        android:layout_marginTop="693dp"
+        android:layout_marginTop="730dp"
         android:layout_marginStart="122dp"
         android:background="@drawable/rectangle_yuna8787"
         android:text="다음"
