@@ -22,6 +22,7 @@ class Menti_Reserve1 : AppCompatActivity() {
             val coachName = intent.getStringExtra("coach_receiverName")
             val mentiName = intent.getStringExtra("menti_name")
 
+
             // Now you can use these variables to populate your UI or perform other tasks
 
             val confirmationTextView: TextView = findViewById(R.id.reserve_selected_categori)
