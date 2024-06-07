@@ -16,12 +16,7 @@ class Coach_registerActivity : AppCompatActivity() {
         val recyclerView: RecyclerView = findViewById(R.id.coach_register1_view)
 
         val items = listOf(
-            Coach_registerActivityAdapter.Item("카테고리", "세부카테고리"),
-            Coach_registerActivityAdapter.Item("카테고리", "세부카테고리"),
-            Coach_registerActivityAdapter.Item("카테고리", "세부카테고리"),
-            Coach_registerActivityAdapter.Item("카테고리", "세부카테고리"),
-            Coach_registerActivityAdapter.Item("카테고리", "세부카테고리"),
-            Coach_registerActivityAdapter.Item("카테고리", "세부카테고리"),
+            Coach_registerActivityAdapter.Item("카테고리", "세부카테고리")
         )
         val adapter = Coach_registerActivityAdapter(items)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -30,7 +25,7 @@ class Coach_registerActivity : AppCompatActivity() {
 
         val addButton: Button = findViewById(R.id.addButton)
         addButton.setOnClickListener {
-            val bottomSheet = Coach_register_bottomsheetFragment() // 이 부분이 수정되었습니다.
+            val bottomSheet = Coach_register_bottomsheetFragment() // 누르면 카테고리가 뜸
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
     }

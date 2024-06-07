@@ -29,11 +29,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <RadioButton
+            android:id="@+id/career"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="진로"
             android:buttonTint="#696969" />
         <RadioButton
+            android:id="@+id/etc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="기타 고민"
@@ -41,6 +43,7 @@
     </RadioGroup>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
