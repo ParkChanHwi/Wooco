@@ -66,4 +66,8 @@ dependencies {
     implementation ("com.android.support:design:28.0.0")
     implementation ("com.google.android.material:material:1.2.0-alpha01")
 
+    //수업 취소 전에 문구 뜨게 하는 것
+    implementation ("androidx.appcompat:appcompat:1.3.1")
+
+
 }
