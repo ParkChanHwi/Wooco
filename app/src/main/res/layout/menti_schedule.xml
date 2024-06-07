@@ -136,18 +136,16 @@
         />
 
 
-
     <ImageView
         android:id="@+id/material_sy"
         android:layout_width="33dp"
         android:layout_height="33dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="29dp"
         android:layout_alignParentTop="true"
+        android:layout_marginLeft="29dp"
         android:layout_marginTop="677dp"
-        android:clipToOutline="true"
-        android:background="@drawable/outhome">
-    </ImageView>
+        android:background="@drawable/outhome"
+        android:clipToOutline="true"></ImageView>
 
     <ImageView
         android:id="@+id/chat_1"

@@ -34,7 +34,7 @@
             android:layout_marginTop="23dp"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:text="맨티"
+            android:text="코치"
             android:gravity="center"/>
 
         <TextView
@@ -52,11 +52,14 @@
             android:src="@drawable/rectangle_yuna9" />
 
         <ImageView
+            android:id="@+id/change_class"
             android:layout_width="160dp"
             android:layout_height="27dp"
             android:layout_gravity="bottom|end"
             android:layout_marginStart="160dp"
             android:layout_marginTop="97dp"
-            android:src="@drawable/rectangle_yuna10" />
+            android:src="@drawable/rectangle_yuna10"
+            android:clickable="true"
+            android:onClick="onClassChangeClick"    />
     </RelativeLayout>
 </LinearLayout>
