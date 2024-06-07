@@ -103,7 +103,7 @@
             android:layout_marginStart="310dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="19dp"
-            android:text="10,000원"
+            android:text="5,000원"
             android:textColor="@color/white"
             android:background="#F89B00"
             />
@@ -136,7 +136,7 @@
             android:layout_marginStart="310dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="19dp"
-            android:text="50,000원"
+            android:text="25,000원"
             android:textColor="@color/white"
             android:background="#F89B00"
             />
@@ -169,7 +169,7 @@
             android:layout_marginStart="310dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="19dp"
-            android:text="100,000원"
+            android:text="50,000원"
             android:textColor="@color/white"
             android:background="#F89B00"
             />
@@ -201,7 +201,7 @@
             android:layout_marginStart="310dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="19dp"
-            android:text="150,000원"
+            android:text="75,000원"
             android:textColor="@color/white"
             android:background="#F89B00"
             />
@@ -233,7 +233,7 @@
             android:layout_marginStart="310dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="19dp"
-            android:text="200,000원"
+            android:text="100,000원"
             android:textColor="@color/white"
             android:background="#F89B00"
             />
