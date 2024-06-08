@@ -140,7 +140,7 @@
         android:layout_height="23dp"
         android:layout_marginStart="37dp"
         android:layout_marginTop="307dp"
-        android:text="코칭 요청"
+        android:text="알림"
         android:textSize="18sp"
         android:gravity="start"
         android:background="@color/white"/>
