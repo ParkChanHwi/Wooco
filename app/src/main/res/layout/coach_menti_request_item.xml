@@ -19,41 +19,17 @@
             >
 
             <TextView
-                android:id="@+id/mento_name"
+                android:id="@+id/message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="멘토"
-                android:textStyle="bold"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="님과 "/>
-
-            <TextView
-                android:id="@+id/menti_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="멘티"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="님과의 "/>
-
-            <TextView
-                android:id="@+id/time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="00시00분"
-                android:textStyle="bold"/>
+                android:text="알림 뜰 곳"/>
         </LinearLayout>
 
         <TextView
+            android:id="@+id/notification_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" 수업이 취소되었습니다."/>
+            android:text=""
+            android:visibility="gone"/>
     </LinearLayout>
-
-
 </LinearLayout>

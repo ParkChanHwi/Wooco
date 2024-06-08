@@ -11,10 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.odal.wooco.datamodels.ReserveDataModel
 
 class CoachScheduleActivityAdapter(private var itemList: List<ReserveDataModel>, val context: Context) : RecyclerView.Adapter<CoachScheduleActivityAdapter.ItemViewHolder>() {
@@ -23,7 +20,7 @@ class CoachScheduleActivityAdapter(private var itemList: List<ReserveDataModel>,
         val nameTextView: TextView = itemView.findViewById(R.id.coach_name2)
         val dateTextView: TextView = itemView.findViewById(R.id.class_day)
         val changeClassButton: View = itemView.findViewById(R.id.change_class2)
-        val cancelClassButton: View = itemView.findViewById(R.id.cancel_class2) // Assuming you added this button in the layout
+        val cancelClassButton: View = itemView.findViewById(R.id.cancel_class2)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -60,6 +57,32 @@ class CoachScheduleActivityAdapter(private var itemList: List<ReserveDataModel>,
                             putExtra("reserve_id", reserveId)
                         }
                         context.startActivity(intent)
+
+                        // Add notification
+                        val notificationRef = FirebaseDatabase.getInstance().getReference("notifications")
+                        val notificationId = notificationRef.push().key
+                        if (notificationId == null) {
+                            Log.e("CoachScheduleAdapter", "Failed to get notification ID")
+                            return
+                        }
+                        val notificationMessage =
+                            "${item.coach_receiverName}(코치)님과 ${item.menti_name}(멘티)님의 ${item.reserve_time} 수업이 변경되었습니다."
+
+                        val notificationData = mapOf(
+                            "id" to notificationId,
+                            "coach_receiverName" to item.coach_receiverName,
+                            "menti_name" to item.menti_name,
+                            "message" to notificationMessage,
+                            "timestamp" to System.currentTimeMillis()
+                        )
+
+                        notificationRef.child(notificationId).setValue(notificationData)
+                            .addOnSuccessListener {
+                                Log.d("CoachScheduleAdapter", "Notification added successfully")
+                            }
+                            .addOnFailureListener { e ->
+                                Log.e("CoachScheduleAdapter", "Failed to add notification: ${e.message}")
+                            }
                     } else {
                         Toast.makeText(context, "해당하는 코치를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
                     }
@@ -88,6 +111,32 @@ class CoachScheduleActivityAdapter(private var itemList: List<ReserveDataModel>,
                         notifyItemRemoved(position)
                         itemList = itemList.filter { it.reserveId != reserveId }
                         notifyDataSetChanged()
+
+                        // Add notification
+                        val notificationRef = FirebaseDatabase.getInstance().getReference("notifications")
+                        val notificationId = notificationRef.push().key
+                        if (notificationId == null) {
+                            Log.e("CoachScheduleAdapter", "Failed to get notification ID")
+                            return@addOnSuccessListener
+                        }
+                        val notificationMessage =
+                            "${item.coach_receiverName}(코치)님과 ${item.menti_name}(멘티)님의 ${item.reserve_time} 수업이 취소되었습니다."
+
+                        val notificationData = mapOf(
+                            "id" to notificationId,
+                            "coach_receiverName" to item.coach_receiverName,
+                            "menti_name" to item.menti_name,
+                            "message" to notificationMessage,
+                            "timestamp" to System.currentTimeMillis()
+                        )
+
+                        notificationRef.child(notificationId).setValue(notificationData)
+                            .addOnSuccessListener {
+                                Log.d("CoachScheduleAdapter", "Notification added successfully")
+                            }
+                            .addOnFailureListener { e ->
+                                Log.e("CoachScheduleAdapter", "Failed to add notification: ${e.message}")
+                            }
                     }.addOnFailureListener { e ->
                         Toast.makeText(context, "예약을 취소하는 데 실패했습니다: ${e.message}", Toast.LENGTH_SHORT).show()
                         Log.e("CoachScheduleAdapter", "Failed to cancel reservation: ${e.message}")

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -100,6 +101,13 @@ class Coach_scheduleActivity : AppCompatActivity() {
             val profileBtn: ImageView = findViewById(R.id.group_513866)
             profileBtn.setOnClickListener {
                 val intent = Intent(this, Coach_mypageActivity::class.java)
+                startActivity(intent)
+            }
+
+            // 벨 버튼 클릭 시 CoachMentiRequestActivity로 이동
+            val bellBtn: RelativeLayout = findViewById(R.id.bell)
+            bellBtn.setOnClickListener {
+                val intent = Intent(this, Coach_menti_request::class.java)
                 startActivity(intent)
             }
         }
