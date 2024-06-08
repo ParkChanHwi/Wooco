@@ -40,7 +40,7 @@ class Menti_coach_introduceActivity : AppCompatActivity() {
                     val key = document.getString("key") ?: ""
                     val category = document.getString("category") ?: ""
                     val detail = document.getString("detail") ?: ""
-                    val coachCategoryDataModel = CoachCategoryDataModel(key, uid, category, detail)
+                    val coachCategoryDataModel = CoachCategoryDataModel(key, uid, detail)
                     coachCategoryInfoList.add(coachCategoryDataModel)
                 }
 
