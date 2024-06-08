@@ -47,7 +47,7 @@ class Coach_Consultinglist : AppCompatActivity() {
                     consultList.clear()
                     for (consultSnapshot in snapshot.children) {
                         val consult = consultSnapshot.getValue(Consult::class.java)
-                        if (consult != null && consult.mentiUid == currentUserUid) {
+                        if (consult != null && consult.mainID == currentUserUid) {
                             consultList.add(consult)
                         }
                     }
