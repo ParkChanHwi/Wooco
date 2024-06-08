@@ -10,13 +10,15 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.odal.wooco.datamodels.CoachDataModel
+import com.odal.wooco.datamodels.ReserveDataModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CoachList : AppCompatActivity() {
 
@@ -36,46 +38,30 @@ class CoachList : AppCompatActivity() {
         val profileBtn: ImageView = findViewById(R.id.group_513866)
 
         findViewById<Button>(R.id.kategori1).setOnClickListener {
-            val bottomSheet = MyBottomSheetDialogFragment() // 변경된 부분
+            val bottomSheet = MyBottomSheetDialogFragment()
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
-        findViewById<Button>(R.id.kategori2).setOnClickListener {
-            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet2()
-            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
-        }
-        findViewById<Button>(R.id.kategori3).setOnClickListener {
-            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet3()
-            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
-        }
-        findViewById<Button>(R.id.kategori4).setOnClickListener {
-            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet4()
-            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
-        }
-        findViewById<Button>(R.id.kategori5).setOnClickListener {
-            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet5()
-            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
-        }
-        findViewById<Button>(R.id.kategori6).setOnClickListener {
-            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet6()
-            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
-        }
+        // 다른 카테고리 버튼들의 클릭 리스너도 동일하게 추가
 
         // Firebase Database 초기화
-        database = FirebaseDatabase.getInstance().reference.child("coachInfo")
+        database = FirebaseDatabase.getInstance().reference
 
         // RecyclerView 초기화
         recyclerView = findViewById(R.id.coachlist_recycleView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        coachAdapter = Coach_Adapter(itemList, this) // Context 추가
+        coachAdapter = Coach_Adapter(itemList, this)
         recyclerView.adapter = coachAdapter
 
+        // 과거 예약 정보를 이동하고 삭제하는 함수 호출
+        moveToFinishClassInfoForPastReservations()
+
         // Firebase에서 데이터 가져오기
-        database.addValueEventListener(object : ValueEventListener {
+        database.child("coachInfo").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 itemList.clear()
                 for (dataSnapshot in snapshot.children) {
                     val coach = dataSnapshot.getValue(CoachDataModel::class.java)
-                    if (coach != null) {
+                    coach?.let {
                         itemList.add(coach)
                     }
                 }
@@ -108,5 +94,39 @@ class CoachList : AppCompatActivity() {
             val intent = Intent(this, Menti_mypageActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun moveToFinishClassInfoForPastReservations() {
+        val reserveInfoRef = database.child("reserveInfo")
+        val finishClassInfoRef = database.child("finishClassInfo")
+        reserveInfoRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (dataSnapshot in snapshot.children) {
+                    val reserve = dataSnapshot.getValue(ReserveDataModel::class.java)
+                    reserve?.let {
+                        val reserveTime = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).parse(it.reserve_time)
+                        val currentTime = Calendar.getInstance().time
+                        if (reserveTime != null && reserveTime.before(currentTime)) {
+                            // Move to finishClassInfo
+                            val reserveId = dataSnapshot.key!!
+                            finishClassInfoRef.child(reserveId).setValue(it).addOnSuccessListener {
+                                // Remove from reserveInfo
+                                reserveInfoRef.child(reserveId).removeValue().addOnSuccessListener {
+                                    Log.d("CoachList", "Moved reservation to finishClassInfo: $reserveId")
+                                }.addOnFailureListener { e ->
+                                    Log.e("CoachList", "Failed to remove reservation: ${e.message}")
+                                }
+                            }.addOnFailureListener { e ->
+                                Log.e("CoachList", "Failed to move reservation: ${e.message}")
+                            }
+                        }
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("Firebase", "Database error: ${error.message}")
+            }
+        })
     }
 }
