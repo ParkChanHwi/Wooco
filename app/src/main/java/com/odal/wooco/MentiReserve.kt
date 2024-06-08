@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TimePicker
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -107,48 +108,60 @@ class MentiReserve : AppCompatActivity() {
                 val day = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(selectedCalendar.time)
                 val time = String.format("%02d:%02d", hour, minute)
                 val datetime = "$day $time"
-                Toast.makeText(this, "선택한 날짜: $day\n선택한 시간: $time", Toast.LENGTH_LONG).show()
+                //Toast.makeText(this, "선택한 날짜: $day\n선택한 시간: $time", Toast.LENGTH_LONG).show()
 
-                currentUser?.let { user ->
-                    val mentiUid = user.uid
-                    val dataMap = HashMap<String, Any>()
-                    dataMap["menti_uid"] = mentiUid
-                    dataMap["menti_name"] = mentiName
-                    dataMap["coach_receiverUid"] = coach_receiverUid
-                    dataMap["coach_receiverName"] = coach_receiverName
-                    dataMap["reserve_time"] = datetime
+                // 예약 확인을 위한 다이얼로그
+                AlertDialog.Builder(this).apply {
+                    setTitle("예약 확인")
+                    setMessage("선택한 날짜: $day\n선택한 시간: $time\n예약을 진행하시겠습니까?")
+                    setPositiveButton("예") { _, _ ->
+                        currentUser?.let { user ->
+                            val mentiUid = user.uid
+                            val dataMap = HashMap<String, Any>()
+                            dataMap["menti_uid"] = mentiUid
+                            dataMap["menti_name"] = mentiName
+                            dataMap["coach_receiverUid"] = coach_receiverUid
+                            dataMap["coach_receiverName"] = coach_receiverName
+                            dataMap["reserve_time"] = datetime
 
-                    if (isChange && reserveId != null) {
-                        // 예약 정보 업데이트
-                        dataMap["reserveId"] = reserveId // reserveId를 추가
-                        reserveInfoRef.child(reserveId).updateChildren(dataMap)
-                            .addOnSuccessListener {
-                                Toast.makeText(this, "예약이 성공적으로 변경되었습니다.", Toast.LENGTH_SHORT).show()
-                                val intent = Intent(this, Menti_scheduleActivity::class.java)
-                                startActivity(intent)
-                            }
-                            .addOnFailureListener {
-                                Toast.makeText(this, "Firebase에 데이터를 업데이트하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
-                            }
-                    } else {
-                        // 새로운 예약 추가
-                        val newReserveId = reserveInfoRef.push().key
-                        if (newReserveId != null) {
-                            dataMap["reserveId"] = newReserveId // reserveId를 추가
-                            reserveInfoRef.child(newReserveId).setValue(dataMap)
-                                .addOnSuccessListener {
-                                    Toast.makeText(this, "예약이 성공적으로 추가되었습니다.", Toast.LENGTH_SHORT).show()
-                                    val intent = Intent(this, Menti_scheduleActivity::class.java)
-                                    startActivity(intent)
+                            if (isChange && reserveId != null) {
+                                // 예약 정보 업데이트
+                                dataMap["reserveId"] = reserveId // reserveId를 추가
+                                reserveInfoRef.child(reserveId).updateChildren(dataMap)
+                                    .addOnSuccessListener {
+                                        Toast.makeText(this@MentiReserve, "예약이 성공적으로 변경되었습니다.", Toast.LENGTH_SHORT).show()
+                                        val intent = Intent(this@MentiReserve, Menti_scheduleActivity::class.java)
+                                        startActivity(intent)
+                                    }
+                                    .addOnFailureListener {
+                                        Toast.makeText(this@MentiReserve, "Firebase에 데이터를 업데이트하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                                    }
+                            } else {
+                                // 새로운 예약 추가
+                                val newReserveId = reserveInfoRef.push().key
+                                if (newReserveId != null) {
+                                    dataMap["reserveId"] = newReserveId // reserveId를 추가
+                                    reserveInfoRef.child(newReserveId).setValue(dataMap)
+                                        .addOnSuccessListener {
+                                            Toast.makeText(this@MentiReserve, "예약이 성공적으로 추가되었습니다.", Toast.LENGTH_SHORT).show()
+                                            val intent = Intent(this@MentiReserve, Menti_scheduleActivity::class.java)
+                                            startActivity(intent)
+                                        }
+                                        .addOnFailureListener {
+                                            Toast.makeText(this@MentiReserve, "Firebase에 데이터를 저장하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                                        }
+                                } else {
+                                    Log.e("MentiReserve", "Failed to generate reservation ID")
+                                    Toast.makeText(this@MentiReserve, "예약 ID를 생성하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
                                 }
-                                .addOnFailureListener {
-                                    Toast.makeText(this, "Firebase에 데이터를 저장하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
-                                }
-                        } else {
-                            Log.e("MentiReserve", "Failed to generate reservation ID")
-                            Toast.makeText(this, "예약 ID를 생성하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
+                    setNegativeButton("아니오") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    create()
+                    show()
                 }
             }
         }
