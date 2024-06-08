@@ -26,6 +26,7 @@ class Menti_Counsultinglist : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         databaseRef = FirebaseDatabase.getInstance().reference.child("consults")
+        // mDbRef.child("consult").child(senderRoom).child("messages")
 
         databaseRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

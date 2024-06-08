@@ -84,12 +84,12 @@ class ChatActivity : AppCompatActivity() {
                 val message = Message(chatMsg, senderUid)
 
                 // Firebase에 채팅방 정보 추가
-                FirebaseRef.consultRef.child("consult").child(senderRoom).child(receiverUid).setValue(message)
+                FirebaseRef.consultRef.child(senderRoom).child("messages").push().setValue(message)
                     .addOnSuccessListener {
                         // Firebase에 보낸이 방의 메세지 추가 성공
                         Log.d(TAG, "chats1 added to Firebase.")
 
-                        FirebaseRef.consultRef.child("consult").child(receiverRoom).child(senderUid).setValue(message)
+                        FirebaseRef.consultRef.child(receiverRoom).child("messages").push().setValue(message)
                             .addOnSuccessListener {
                                 // Firebase에 받는이 방의 메세지 추가 성공
                                 Log.d(TAG, "chats2 added to Firebase.")
@@ -109,10 +109,10 @@ class ChatActivity : AppCompatActivity() {
             }
         }
 
-        // 메시지 가져오기 이것도 상담방이랑 수업 리스트 나눠야함
+// 메시지 가져오기 이것도 상담방이랑 수업 리스트 나눠야함
 
-        if(chatType == 1){
-            mDbRef.child("consult").child(senderRoom).child(receiverUid).child("messages")
+        if (chatType == 1) {
+            mDbRef.child("consult").child(senderRoom).child("messages")
                 .addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         // 데이터 변경을 처리하고 UI를 업데이트합니다.
