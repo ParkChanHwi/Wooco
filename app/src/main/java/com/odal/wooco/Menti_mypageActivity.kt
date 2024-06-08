@@ -9,7 +9,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -119,6 +121,14 @@ class Menti_mypageActivity : AppCompatActivity() {
             val intent = Intent(this, Menti_mypage_record_starActivity::class.java)
             startActivity(intent)
 
+        }
+        findViewById<Button>(R.id.logout).setOnClickListener {
+            val auth = Firebase.auth
+            auth.signOut()
+
+            // Redirect to LoginActivity
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 }

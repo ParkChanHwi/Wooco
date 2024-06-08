@@ -9,7 +9,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import com.google.firebase.database.*
 
 class Coach_mypageActivity : AppCompatActivity() {
@@ -55,6 +57,7 @@ class Coach_mypageActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 }
+
 
                 // woocoin_exchange 버튼 설정
                 woocoinExchangeButton?.setOnClickListener {
@@ -108,6 +111,15 @@ class Coach_mypageActivity : AppCompatActivity() {
             val intent = Intent(this, Coach_registerActivity::class.java)
             startActivity(intent)
             finish()
+        }
+
+        findViewById<Button>(R.id.logout).setOnClickListener {
+            val auth = Firebase.auth
+            auth.signOut()
+
+            // Redirect to LoginActivity
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 }

@@ -91,7 +91,7 @@
         android:gravity="top"/>
 
     <android.widget.Button
-        android:id="@+id/account_set"
+        android:id="@+id/logout"
         android:layout_width="50dp"
         android:layout_height="20dp"
         android:layout_marginStart="280dp"
