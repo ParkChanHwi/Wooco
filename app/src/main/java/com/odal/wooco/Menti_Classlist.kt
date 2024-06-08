@@ -62,8 +62,8 @@ class Menti_Classlist : AppCompatActivity() {
         }
 
         consultlist.setOnClickListener {
-            val intent = Intent(this, Menti_Consultinglist::class.java)
-            startActivity(intent)
+            //val intent = Intent(this, Menti_Consultinglist::class.java)
+            //startActivity(intent)
         }
 
     }

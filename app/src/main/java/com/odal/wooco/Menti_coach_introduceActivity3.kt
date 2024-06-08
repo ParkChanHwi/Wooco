@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
-import com.odal.wooco.utils.FirebaseRef.Companion.database
+import com.google.firebase.database.FirebaseDatabase
 
 class Menti_coach_introduceActivity3 : AppCompatActivity() {
     //넘어온 데이터 변수에 담기
@@ -22,6 +22,7 @@ class Menti_coach_introduceActivity3 : AppCompatActivity() {
     private lateinit var receiverSchool: String
     private lateinit var receiverInterest: String
     private lateinit var database: DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -60,12 +61,6 @@ class Menti_coach_introduceActivity3 : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
-
-//        Log.d("UserDisplayName", "receiverName: $receiverUid")
-//        Log.d("UserDisplayName", "receiverName: $receiverName")
-//        Log.d("UserDisplayName", "receiverName: $receiverSchool")
-//        Log.d("UserDisplayName", "receiverName: $receiverInterest")
-
         coachName.text = receiverName
         coachSchool.text = receiverSchool
         coachInterest.text = receiverInterest
@@ -75,57 +70,32 @@ class Menti_coach_introduceActivity3 : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         coachIntro2.setOnClickListener {
             val intent = Intent(this, Menti_coach_introduceActivity2::class.java)
             startActivity(intent)
         }
 
-
         coachIntro3.setOnClickListener {
             Toast.makeText(this, "현재 화면입니다.", Toast.LENGTH_SHORT).show()
         }
 
-
-
-        // 예약하기 버튼에 클릭 리스너를 설정
-        appointmentBtn.setOnClickListener {
-            // 인텐트를 생성. MentiReserve 액티비티를 목적지로 지정
-            val intent = Intent(this, MentiReserve::class.  java).apply {
-                // 코치 정보를 인텐트에 추가
-                putExtra("coach_uid", receiverUid)         // 코치의 고유 식별자(uid)
-                Log.d("UserDisplayName", "Current user display ID: $receiverUid")
-                putExtra("coach_name", receiverName)       // 코치의 이름
-                Log.d("UserDisplayName", "Current user display name: $receiverName")
-
-                putExtra("coach_school", receiverSchool)   // 코치의 학교 또는 회사 정보
-                putExtra("coach_interest", receiverInterest) // 코치의 특기 또는 관심사
-                putExtra("chat_type", 0)
-            }
-            // 액티비티를 시작. MentiReserve 액티비티로 이동하면서 코치 정보를 함께 전달.
-            startActivity(intent)
-        }
-
-
-
-        ArrowImageView.setOnClickListener{
+        // ArrowImageView 클릭 리스너
+        ArrowImageView.setOnClickListener {
             val intent = Intent(this, CoachList::class.java)
             startActivity(intent)
         }
 
-
         // 상담하기 버튼 클릭 리스너
         consultBtn.setOnClickListener {
-            val chatKey = "$receiverUid${FirebaseAuth.getInstance().currentUser!!.uid}"
+              // 상담 목록 업데이트 함수 호출
             val intent = Intent(this, ChatActivity::class.java).apply {
                 putExtra("uid", receiverUid)
                 putExtra("name", receiverName)
-                putExtra("chat_key", chatKey)
                 putExtra("chat_type", 1)  // 1 for consultation
             }
             startActivity(intent)
         }
+    }
+
 }
 
-
-}

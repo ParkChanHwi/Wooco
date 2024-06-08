@@ -11,6 +11,7 @@ class FirebaseRef {
         val userInfoRef = database.getReference("userInfo")
         val coachInfoRef = database.getReference("coachInfo")
         val chats = database.getReference("chats")
+        val consultRef = database.getReference("consult")
         val reserveInfoRef = database.getReference("reserveInfo") //예약정보 데이터베이스 6/4(금)
         val categoriesRef = database.getReference("coach_categories")
     }
