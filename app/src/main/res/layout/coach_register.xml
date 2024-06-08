@@ -204,7 +204,7 @@
         android:textSize="12sp"
         android:textStyle="bold"
         android:textColor="#0F4C81"/>
-    
+
     <TextView
         android:layout_width="230dp"
         android:layout_height="17dp"

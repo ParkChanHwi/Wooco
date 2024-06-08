@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class Coach_registerActivityAdapter(private val itemList: List<Item>) : RecyclerView.Adapter<Coach_registerActivityAdapter.ItemViewHolder>() {
+class Coach_registerActivityAdapter(private val itemList: MutableList<Item>) : RecyclerView.Adapter<Coach_registerActivityAdapter.ItemViewHolder>() {
 
     data class Item(
         val category3: String,
@@ -30,4 +30,11 @@ class Coach_registerActivityAdapter(private val itemList: List<Item>) : Recycler
     }
 
     override fun getItemCount(): Int = itemList.size
+
+    fun addItem(item: Item) {
+        itemList.add(item)
+        notifyItemInserted(itemList.size - 1)
+    }
+
+    fun getItemList(): List<Item> = itemList
 }
