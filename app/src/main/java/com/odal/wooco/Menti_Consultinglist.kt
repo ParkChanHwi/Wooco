@@ -37,7 +37,7 @@ class Menti_Counsultinglist : AppCompatActivity() {
                     consultList.clear()
                     for (consultSnapshot in snapshot.children) {
                         val consult = consultSnapshot.getValue(Consult::class.java)
-                        if (consult != null && consult.senderID == currentUserUid) {
+                        if (consult != null && consult.mainID == currentUserUid) {
                             consultList.add(consult)
                         }
                     }

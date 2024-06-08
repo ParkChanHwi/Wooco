@@ -73,13 +73,20 @@ class ChatActivity : AppCompatActivity() {
                         val consult = Consult(
                             mentiName = mentiName,
                             coachName = receiverName,
-                            senderID = senderUid,
+                            mainID = senderUid,
+                            lastMessage = ""
+                        )
+
+                        val consult2 = Consult(
+                            mentiName = mentiName,
+                            coachName = receiverName,
+                            mainID = receiverUid,
                             lastMessage = ""
                         )
                         senderRoom = receiverUid + senderUid // 보낸이 방의 키 값
                         receiverRoom = senderUid + receiverUid // 받는이 방의 키 값
                         mDbRef.child("consultRooms").child(senderRoom!!).setValue(consult)
-                        mDbRef.child("consultRooms").child(receiverRoom).setValue(consult) // receiverRoom도 저장
+                        mDbRef.child("consultRooms").child(receiverRoom).setValue(consult2) // receiverRoom도 저장
 
                         // 액션바에 상대방 이름 보여주기
                         otherName.text = receiverName
