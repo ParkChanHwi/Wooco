@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         // val database = Firebase.database
         // val myRef =  database.getReference("message")
         // myRef.setValue("Success")
+
         setContentView(R.layout.menti_coachlist)
         // 현정이거 병합
 
