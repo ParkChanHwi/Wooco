@@ -182,12 +182,14 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
+
+
     <TextView
         android:id="@+id/want_category"
         android:layout_width="144dp"
         android:layout_height="18dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="470dp"
+        android:layout_marginTop="435dp"
         android:text="자격증 및 기타 서류 등록"
         android:textColor="@color/white"
         android:gravity="start"
@@ -199,17 +201,17 @@
         android:layout_width="55dp"
         android:layout_height="16dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="465dp"
         android:text="등록 방법:"
         android:textSize="12sp"
         android:textStyle="bold"
         android:textColor="#0F4C81"/>
-    
+
     <TextView
         android:layout_width="230dp"
         android:layout_height="17dp"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="465dp"
         android:text="odal@gmail.com 메일로 제출"
         android:textSize="12sp"/>
 
@@ -217,7 +219,7 @@
         android:layout_width="55dp"
         android:layout_height="16dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="530dp"
+        android:layout_marginTop="495dp"
         android:text="등록 서류:"
         android:textSize="12sp"
         android:textStyle="bold"
@@ -227,7 +229,7 @@
         android:layout_width="230dp"
         android:layout_height="17dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="555dp"
+        android:layout_marginTop="520dp"
         android:text="1. 신분증 (주민등록증/운전면허증)"
         android:textSize="12sp"/>
 
@@ -235,7 +237,7 @@
         android:layout_width="230dp"
         android:layout_height="17dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="580dp"
+        android:layout_marginTop="545dp"
         android:text="2. 인증 서류 (재학증명서/ 졸업증명서/재직증명서)"
         android:textSize="12sp"/>
 
@@ -243,23 +245,24 @@
         android:layout_width="230dp"
         android:layout_height="17dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="605dp"
+        android:layout_marginTop="570dp"
         android:text="3. 자격증 카테고리 선택 시 -> 자격증 증명서 필수 "
         android:textSize="12sp"/>
 
     <ImageView
         android:layout_width="307dp"
         android:layout_height="44dp"
-        android:layout_marginTop="650dp"
+        android:layout_marginTop="610dp"
         android:layout_marginStart="50dp"
         android:background="@drawable/group513968"/>
+
 
 
     <android.widget.Button
         android:id="@+id/next_myself"
         android:layout_width="154dp"
         android:layout_height="32dp"
-        android:layout_marginTop="730dp"
+        android:layout_marginTop="685dp"
         android:layout_marginStart="122dp"
         android:background="@drawable/rectangle_yuna8787"
         android:text="다음"
