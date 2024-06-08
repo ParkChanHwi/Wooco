@@ -37,10 +37,10 @@ class Menti_coach_introduceActivity : AppCompatActivity() {
             .addOnSuccessListener { documents ->
                 // 가져온 문서를 순회하면서 카테고리 정보를 추출하여 리스트에 추가
                 for (document in documents) {
-                    val key = document.getString("key") ?: ""
+                    
                     val category = document.getString("category") ?: ""
                     val detail = document.getString("detail") ?: ""
-                    val coachCategoryDataModel = CoachCategoryDataModel(key, uid, detail)
+                    val coachCategoryDataModel = CoachCategoryDataModel(uid, category, detail)
                     coachCategoryInfoList.add(coachCategoryDataModel)
                 }
 
