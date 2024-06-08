@@ -1,5 +1,6 @@
 package com.odal.wooco
 
+import Consult
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
@@ -12,19 +13,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.odal.wooco.datamodels.Message
+import com.odal.wooco.datamodels.UserDataModel
 import com.odal.wooco.utils.FirebaseRef
-import kotlin.math.absoluteValue
 
 class ChatActivity : AppCompatActivity() {
 
     private lateinit var receiverName: String
     private lateinit var receiverUid: String
+    private lateinit var mentiName: String
 
     lateinit var mAuth: FirebaseAuth
     lateinit var mDbRef: DatabaseReference
@@ -60,10 +58,36 @@ class ChatActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
         mDbRef = FirebaseDatabase.getInstance().reference
 
-        val senderUid = mAuth.currentUser?.uid // 현재 유저의 uid
+        val senderUid = mAuth.currentUser?.uid// 현재 유저의 uid
 
-        senderRoom = receiverUid + senderUid // 보낸이 방의 키 값
-        receiverRoom = senderUid + receiverUid // 받는이 방의 키 값
+        // UserDataModel을 사용하여 현재 사용자의 이름 가져오기
+        val currentUserRef = senderUid?.let { FirebaseDatabase.getInstance().getReference("userInfo").child(it) }
+        currentUserRef?.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    val userDataModel = dataSnapshot.getValue(UserDataModel::class.java)
+                    mentiName = userDataModel?.nickname ?: ""
+                    // 채팅방 정보 저장
+                    if (senderUid != null) {
+                        val consult = Consult(
+                            mentiName = mentiName,
+                            coachName = receiverName,
+                            senderID = senderUid,
+                            lastMessage = ""
+                        )
+                        senderRoom = receiverUid + senderUid // 보낸이 방의 키 값
+                        receiverRoom = senderUid + receiverUid // 받는이 방의 키 값
+                        mDbRef.child("consultRooms").child(senderRoom).setValue(consult)
+                    }
+                } else {
+                    Log.e(TAG, "Current user data does not exist in the database.")
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.e(TAG, "Failed to read current user data.", databaseError.toException())
+            }
+        })
 
         // 액션바에 상대방 이름 보여주기
         otherName.text = receiverName
@@ -73,6 +97,8 @@ class ChatActivity : AppCompatActivity() {
             val intent = Intent(this, CoachList::class.java)
             startActivity(intent)
         }
+        // mentiName과 senderUid 값 확인 로그
+        Log.d(TAG, "Value of mentiName: $mentiName, senderUid: $senderUid")
 
         sendBtn.setOnClickListener {
             val chatMsg = chatInput.text.toString().trim()
@@ -88,11 +114,13 @@ class ChatActivity : AppCompatActivity() {
                     .addOnSuccessListener {
                         // Firebase에 보낸이 방의 메세지 추가 성공
                         Log.d(TAG, "chats1 added to Firebase.")
+                        mDbRef.child("consultRooms").child(senderRoom).child("lastMessage").setValue(chatMsg)
 
                         FirebaseRef.consultRef.child(receiverRoom).child("messages").push().setValue(message)
                             .addOnSuccessListener {
                                 // Firebase에 받는이 방의 메세지 추가 성공
                                 Log.d(TAG, "chats2 added to Firebase.")
+                                mDbRef.child("consultRooms").child(receiverRoom).child("lastMessage").setValue(chatMsg)
                             }
                             .addOnFailureListener { e ->
                                 // Firebase에 받는이 방의 메세지 추가 실패
@@ -109,8 +137,7 @@ class ChatActivity : AppCompatActivity() {
             }
         }
 
-// 메시지 가져오기 이것도 상담방이랑 수업 리스트 나눠야함
-
+        // 메시지 가져오기 이것도 상담방이랑 수업 리스트 나눠야함
         if (chatType == 1) {
             mDbRef.child("consult").child(senderRoom).child("messages")
                 .addValueEventListener(object : ValueEventListener {
@@ -134,8 +161,5 @@ class ChatActivity : AppCompatActivity() {
                     }
                 })
         }
-
     }
 }
-
-

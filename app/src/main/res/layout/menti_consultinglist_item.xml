@@ -16,7 +16,7 @@
         android:translationZ="1dp"/>
 
     <View
-        android:id="@+id/coach_image"
+        android:id="@+id/menti_image"
         android:layout_width="43dp"
         android:layout_height="45dp"
         android:layout_marginLeft="5dp"
@@ -24,19 +24,19 @@
         />
 
     <TextView
-        android:id="@+id/coach_class_name"
+        android:id="@+id/menti_cosult_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="67dp"
-        android:text="김오달 학생"
+        android:text="김오달학생"
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/coach_last_chat"
+        android:id="@+id/menti_consult_last_chat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="67dp"
         android:layout_marginTop="24dp"
-        android:text="이게 뭔가요?"
+        android:text="질문 답변 드립니다."
         android:textColor="#B2AFAF"/>
 </RelativeLayout>

@@ -1,21 +1,21 @@
 package com.odal.wooco
 
-import android.content.Intent
+import Consult
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.odal.wooco.datamodels.Consult
 
 class Menti_Counsultinglist : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: Menti_Consultinglist_Adater
+    private lateinit var adapter: Menti_Consultinglist_Adapter
     private val consultList = mutableListOf<Consult>()
 
     private lateinit var databaseRef: DatabaseReference
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,33 +23,31 @@ class Menti_Counsultinglist : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.menti_consulting_recycleView)
         recyclerView.layoutManager = LinearLayoutManager(this)
+        adapter = Menti_Consultinglist_Adapter(consultList)
         recyclerView.adapter = adapter
 
-        databaseRef = FirebaseDatabase.getInstance().reference.child("consults")
-        // mDbRef.child("consult").child(senderRoom).child("messages")
+        mAuth = FirebaseAuth.getInstance()
+        val currentUserUid = mAuth.currentUser?.uid
 
-        databaseRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                consultList.clear()
-                for (consultSnapshot in snapshot.children) {
-                    val consult = consultSnapshot.getValue(Consult::class.java)
-                    if (consult != null) {
-                        consultList.add(consult)
+        if (currentUserUid != null) {
+            databaseRef = FirebaseDatabase.getInstance().reference.child("consultRooms")
+            // 채팅방 목록 가져오기
+            databaseRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    consultList.clear()
+                    for (consultSnapshot in snapshot.children) {
+                        val consult = consultSnapshot.getValue(Consult::class.java)
+                        if (consult != null && consult.senderID == currentUserUid) {
+                            consultList.add(consult)
+                        }
                     }
+                    adapter.notifyDataSetChanged()
                 }
-                adapter.notifyDataSetChanged()
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-                // Handle error
-            }
-        })
-
-//        val chatBtn = findViewById<Button>(R.id.send_btn)
-//        chatBtn.setOnClickListener {
-//            val intent = Intent(this, ChatActivity::class.java)
-//            intent.putExtra("chat_type", 1) // 상담하기 버튼이므로 chat_type을 1로 설정
-//            startActivity(intent)
-//        }
+                override fun onCancelled(error: DatabaseError) {
+                    // Handle error
+                }
+            })
+        }
     }
 }
