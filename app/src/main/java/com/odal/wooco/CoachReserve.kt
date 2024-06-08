@@ -83,6 +83,7 @@ class CoachReserve : AppCompatActivity() {
 
         reserveButton.setOnClickListener {
             val selectedDate = calendarView.selectedDate?.date ?: Calendar.getInstance().time
+            val currentTime = Calendar.getInstance().time
             val day = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(selectedDate)
             val hour = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                 timePicker.hour
@@ -96,7 +97,15 @@ class CoachReserve : AppCompatActivity() {
             }
             val time = String.format("%02d:%02d", hour, minute)
             val datetime = "$day $time"
-            Toast.makeText(this, "선택한 날짜: $day\n선택한 시간: $time", Toast.LENGTH_LONG).show()
+
+            // 예약 날짜와 시간을 합쳐서 Date 객체로 변환
+            val selectedDateTime = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).parse(datetime)
+
+            // 현재 시간과 선택한 시간을 비교하여 경고창 표시
+            if (selectedDateTime != null && selectedDateTime.before(currentTime)) {
+                Toast.makeText(this, "올바른 날짜와 시간으로 예약해주세요", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
             currentUser?.let { user ->
                 val mentiUid = user.uid
