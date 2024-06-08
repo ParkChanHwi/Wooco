@@ -25,9 +25,9 @@ class Coach_menti_request_Adapter(private val RequestList: List<Request_Menti>) 
     }
 
     inner class MentiViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val mentiname: TextView = itemView.findViewById(R.id.menti_request_name)
-        private val menticate: TextView = itemView.findViewById(R.id.menti_request_categori)
-        private val mentidate: TextView = itemView.findViewById(R.id.menti_request_date)
+        private val mentiname: TextView = itemView.findViewById(R.id.mento_name)
+        private val menticate: TextView = itemView.findViewById(R.id.menti_name)
+        private val mentidate: TextView = itemView.findViewById(R.id.time)
 
         fun bind(menti: Request_Menti) {
             mentiname.text = menti.menti_request_name

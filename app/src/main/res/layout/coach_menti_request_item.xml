@@ -2,69 +2,58 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:background="@drawable/rectangle_coachlist"
+    android:gravity="center"
     >
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="14dp">
-
-        <ImageView
-            android:id="@+id/profile_image"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/group_513937"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="200dp"
-        android:layout_height="95dp"
         android:orientation="vertical"
-        android:padding="14dp">
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/mento_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="멘토"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="님과 "/>
+
+            <TextView
+                android:id="@+id/menti_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="멘티"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="님과의 "/>
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00시00분"
+                android:textStyle="bold"/>
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/menti_request_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="오말룡 회원"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/menti_request_categori"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="진로/기타고민"/>
-        <TextView
-            android:id="@+id/menti_request_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="날짜"/>
+            android:text=" 수업이 취소되었습니다."/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="36dp"
-        >
 
-        <TextView
-            android:id="@+id/accept_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#0F4C81"
-            android:textColor="@color/white"
-            android:text="승락"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" / "/>
-        <TextView
-            android:id="@+id/resfuse_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#ECECEC"
-            android:text="거절"/>
-    </LinearLayout>
 </LinearLayout>

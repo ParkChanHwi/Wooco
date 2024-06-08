@@ -53,7 +53,6 @@
         android:layout_height="20dp"
         android:layout_marginTop="109dp"
         android:layout_marginStart="272dp"
-        android:text="20"
         android:textStyle="bold"
         android:textColor="#0F4C81"
         android:gravity="end"

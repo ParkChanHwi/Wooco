@@ -9,7 +9,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import com.google.firebase.database.*
 
 class Coach_mypageActivity : AppCompatActivity() {
@@ -28,7 +30,7 @@ class Coach_mypageActivity : AppCompatActivity() {
         val transferBtn: Button = findViewById(R.id.menti_transfer)
         val coachBtn: Button = findViewById(R.id.coach_register)
         val coachRequest: Button = findViewById(R.id.coach_request)
-
+        var woocoinExchangeButton: Button? = null // 버튼을 미리 선언
 
         // Firebase Realtime Database에서 coachInfo의 이름 가져오기
         val database = FirebaseDatabase.getInstance()
@@ -55,12 +57,27 @@ class Coach_mypageActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 }
+
+
+                // woocoin_exchange 버튼 설정
+                woocoinExchangeButton?.setOnClickListener {
+                    if (name != null) {
+                        val intent = Intent(this@Coach_mypageActivity, Coach_mypage_woocoin_exchangeActivity::class.java).apply {
+                            putExtra("name", name)
+                        }
+                        startActivity(intent)
+                    } else {
+                        Log.e("Coach_mypageActivity", "Name is null")
+                    }
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
                 Log.e("Firebase", "Failed to read value.", error.toException())
             }
         })
+
+        woocoinExchangeButton = findViewById<Button>(R.id.woocoin_exchange) // 버튼 초기화
 
         coachRequest.setOnClickListener{
             val intent = Intent(this, Coach_menti_request::class.java)
@@ -94,6 +111,15 @@ class Coach_mypageActivity : AppCompatActivity() {
             val intent = Intent(this, Coach_registerActivity::class.java)
             startActivity(intent)
             finish()
+        }
+
+        findViewById<Button>(R.id.logout).setOnClickListener {
+            val auth = Firebase.auth
+            auth.signOut()
+
+            // Redirect to LoginActivity
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 }

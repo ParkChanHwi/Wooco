@@ -8,19 +8,15 @@
     android:background="#FFFFFF">
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="366dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="30dp"
         android:clipToOutline="true"
+        android:background="@drawable/bell"
         >
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/material_symbols_light_search"/>
     </RelativeLayout>
 
     <View

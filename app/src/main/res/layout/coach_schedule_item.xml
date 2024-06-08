@@ -45,6 +45,7 @@
             android:layout_marginTop="60dp"/>
 
         <ImageView
+            android:id="@+id/cancel_class2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|start"
@@ -52,6 +53,7 @@
             android:src="@drawable/rectangle_yuna9" />
 
         <ImageView
+            android:id="@+id/change_class2"
             android:layout_width="160dp"
             android:layout_height="27dp"
             android:layout_gravity="bottom|end"

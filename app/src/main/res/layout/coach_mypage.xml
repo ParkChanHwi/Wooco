@@ -90,11 +90,12 @@
         android:gravity="top"/>
 
     <android.widget.Button
+        android:id="@+id/logout"
         android:layout_width="50dp"
         android:layout_height="20dp"
         android:layout_marginStart="280dp"
         android:layout_marginTop="129dp"
-        android:text="계정 설정"
+        android:text="로그아웃"
         android:textSize="10sp"
         android:background="@drawable/account_set"/>
 
@@ -140,7 +141,7 @@
         android:layout_height="23dp"
         android:layout_marginStart="37dp"
         android:layout_marginTop="307dp"
-        android:text="코칭 요청"
+        android:text="알림"
         android:textSize="18sp"
         android:gravity="start"
         android:background="@color/white"/>
@@ -177,6 +178,7 @@
         android:textStyle="bold"/>
 
     <android.widget.Button
+        android:id="@+id/woocoin_exchange"
         android:layout_width="116dp"
         android:layout_height="23dp"
         android:layout_marginStart="37dp"
