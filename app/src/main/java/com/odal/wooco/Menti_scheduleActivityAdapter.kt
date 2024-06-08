@@ -17,9 +17,10 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.odal.wooco.datamodels.ReserveDataModel
 
-class Menti_sheduleActivityAdapter(private var itemList: List<ReserveDataModel>, val context: Context) : RecyclerView.Adapter<Menti_sheduleActivityAdapter.ItemViewHolder>() {
+class Menti_sheduleActivityAdapter(private var itemList: List<ReserveDataModel>, val context: Context) :
+    RecyclerView.Adapter<Menti_sheduleActivityAdapter.ItemViewHolder>() {
 
-    class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameTextView: TextView = itemView.findViewById(R.id.menti_name2)
         val dateTextView: TextView = itemView.findViewById(R.id.class_day)
         val changeClassButton: View = itemView.findViewById(R.id.change_class)
@@ -27,7 +28,8 @@ class Menti_sheduleActivityAdapter(private var itemList: List<ReserveDataModel>,
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.menti_schedule_item, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.menti_schedule_item, parent, false)
         return ItemViewHolder(view)
     }
 
@@ -48,8 +50,6 @@ class Menti_sheduleActivityAdapter(private var itemList: List<ReserveDataModel>,
                         val coachId = dataSnapshot.children.firstOrNull()?.key
                         val reserveId = item.reserveId
 
-                        Log.d("Menti_sheduleAdapter", "reserve_id to send: $reserveId")
-
                         val intent = Intent(context, MentiReserve::class.java).apply {
                             putExtra("change", true)
                             putExtra("coach_uid", coachId)
@@ -57,6 +57,32 @@ class Menti_sheduleActivityAdapter(private var itemList: List<ReserveDataModel>,
                             putExtra("reserve_id", reserveId)
                         }
                         context.startActivity(intent)
+
+                        // Add notification
+                        val notificationRef = FirebaseDatabase.getInstance().getReference("notifications")
+                        val notificationId = notificationRef.push().key
+                        if (notificationId == null) {
+                            Log.e("Menti_sheduleAdapter", "Failed to get notification ID")
+                            return
+                        }
+                        val notificationMessage =
+                            "${item.coach_receiverName}(코치)님과 ${item.menti_name}(멘티)님의 ${item.reserve_time} 수업이 변경되었습니다."
+
+                        val notificationData = mapOf(
+                            "id" to notificationId,
+                            "coach_receiverName" to item.coach_receiverName,
+                            "menti_name" to item.menti_name,
+                            "message" to notificationMessage,
+                            "timestamp" to System.currentTimeMillis()
+                        )
+
+                        notificationRef.child(notificationId).setValue(notificationData)
+                            .addOnSuccessListener {
+                                Log.d("Menti_sheduleAdapter", "Notification added successfully")
+                            }
+                            .addOnFailureListener { e ->
+                                Log.e("Menti_sheduleAdapter", "Failed to add notification: ${e.message}")
+                            }
                     } else {
                         Toast.makeText(context, "해당하는 코치를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
                     }
@@ -85,6 +111,32 @@ class Menti_sheduleActivityAdapter(private var itemList: List<ReserveDataModel>,
                         notifyItemRemoved(position)
                         itemList = itemList.filter { it.reserveId != reserveId }
                         notifyDataSetChanged()
+
+                        // Add notification
+                        val notificationRef = FirebaseDatabase.getInstance().getReference("notifications")
+                        val notificationId = notificationRef.push().key
+                        if (notificationId == null) {
+                            Log.e("Menti_sheduleAdapter", "Failed to get notification ID")
+                            return@addOnSuccessListener
+                        }
+                        val notificationMessage =
+                            "${item.coach_receiverName}(코치)님과 ${item.menti_name}(멘티)님의 ${item.reserve_time} 수업이 취소되었습니다."
+
+                        val notificationData = mapOf(
+                            "id" to notificationId,
+                            "coach_receiverName" to item.coach_receiverName,
+                            "menti_name" to item.menti_name,
+                            "message" to notificationMessage,
+                            "timestamp" to System.currentTimeMillis()
+                        )
+
+                        notificationRef.child(notificationId).setValue(notificationData)
+                            .addOnSuccessListener {
+                                Log.d("Menti_sheduleAdapter", "Notification added successfully")
+                            }
+                            .addOnFailureListener { e ->
+                                Log.e("Menti_sheduleAdapter", "Failed to add notification: ${e.message}")
+                            }
                     }.addOnFailureListener { e ->
                         Toast.makeText(context, "예약을 취소하는 데 실패했습니다: ${e.message}", Toast.LENGTH_SHORT).show()
                         Log.e("Menti_sheduleAdapter", "Failed to cancel reservation: ${e.message}")

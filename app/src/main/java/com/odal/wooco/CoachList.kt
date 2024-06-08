@@ -1,10 +1,12 @@
 package com.odal.wooco
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -36,6 +38,13 @@ class CoachList : AppCompatActivity() {
         val chatBtn: ImageView = findViewById(R.id.chat_1)
         val calBtn: ImageView = findViewById(R.id.uiw_date)
         val profileBtn: ImageView = findViewById(R.id.group_513866)
+
+        // 벨 버튼 클릭 시 coach_menti_request 이동
+        val bellBtn: RelativeLayout = findViewById(R.id.bell)
+        bellBtn.setOnClickListener {
+            val intent = Intent(this, Coach_menti_request::class.java)
+            startActivity(intent)
+        }
 
         findViewById<Button>(R.id.kategori1).setOnClickListener {
             val bottomSheet = MyBottomSheetDialogFragment()
@@ -99,13 +108,19 @@ class CoachList : AppCompatActivity() {
     private fun moveToFinishClassInfoForPastReservations() {
         val reserveInfoRef = database.child("reserveInfo")
         val finishClassInfoRef = database.child("finishClassInfo")
+        val currentTime = Date(System.currentTimeMillis())
+        Log.d("CoachList", "Current time: $currentTime")
+
+
+
         reserveInfoRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (dataSnapshot in snapshot.children) {
                     val reserve = dataSnapshot.getValue(ReserveDataModel::class.java)
                     reserve?.let {
                         val reserveTime = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).parse(it.reserve_time)
-                        val currentTime = Calendar.getInstance().time
+                        Log.d("CoachList", " reserveTime: $reserveTime")
+
                         if (reserveTime != null && reserveTime.before(currentTime)) {
                             // Move to finishClassInfo
                             val reserveId = dataSnapshot.key!!
@@ -129,4 +144,5 @@ class CoachList : AppCompatActivity() {
             }
         })
     }
+
 }

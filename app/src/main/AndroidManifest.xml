@@ -39,6 +39,7 @@
         <activity android:name=".Menti_mypage_record_starActivity" />
         <activity android:name=".Menti_mypage_record_star2Activity" />
 
+
         <activity android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
