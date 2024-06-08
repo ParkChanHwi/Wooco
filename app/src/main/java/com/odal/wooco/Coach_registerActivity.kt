@@ -9,14 +9,20 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.odal.wooco.datamodels.CoachCategoryDataModel
 import com.odal.wooco.utils.FirebaseAuthUtils
 import com.odal.wooco.datamodels.CoachDataModel
 
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+
 class Coach_registerActivity : AppCompatActivity() {
 
     private lateinit var adapter: Coach_registerActivityAdapter
+    private lateinit var databaseReference: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +62,7 @@ class Coach_registerActivity : AppCompatActivity() {
                     interest = department
                 )
 
-                val databaseReference = FirebaseDatabase.getInstance().getReference("coachInfo")
+                databaseReference = FirebaseDatabase.getInstance().getReference("coachInfo")
                 databaseReference.child(uid).setValue(coachData)
                     .addOnSuccessListener {
                         Toast.makeText(this, "코치 정보가 저장되었습니다.", Toast.LENGTH_SHORT).show()
@@ -65,17 +71,7 @@ class Coach_registerActivity : AppCompatActivity() {
                         Toast.makeText(this, "코치 정보 저장에 실패했습니다.", Toast.LENGTH_SHORT).show()
                     }
 
-                adapter.getItemList().forEach { item ->
-                    val coachCategory = CoachCategoryDataModel(
-                        coachUid = uid,
-                        coachName = name,
-                        category = item.category3,
-                        detail = item.category4
-                    )
-
-                    val coachCategoryRef = FirebaseDatabase.getInstance().getReference("coachCategoryRef").child(uid).child("category").push()
-                    coachCategoryRef.setValue(coachCategory)
-                }
+                saveCoachCategories(uid, name)
 
                 val intent = Intent(this, Coach_myselfActivity::class.java)
                 intent.putExtra("name", name)
@@ -87,4 +83,45 @@ class Coach_registerActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun saveCoachCategories(uid: String, name: String) {
+        val categoriesRef = FirebaseDatabase.getInstance().getReference("coachCategoryRef").child(uid).child("category")
+
+        adapter.getItemList().forEach { item ->
+            val query = categoriesRef.orderByChild("detail").equalTo(item.category4)
+            query.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    var categoryExists = false
+                    if (snapshot.exists()) {
+                        snapshot.children.forEach { categorySnapshot ->
+                            val existingCategory = categorySnapshot.getValue(CoachCategoryDataModel::class.java)
+                            if (existingCategory?.category == item.category3) {
+                                categoryExists = true
+                            }
+                        }
+                    }
+
+                    if (!categoryExists) {
+                        // Insert new category if it does not exist
+                        val key = categoriesRef.push().key
+                        if (key != null) {
+                            val coachCategory = CoachCategoryDataModel(
+                                coachUid = uid,
+                                category = item.category3,
+                                detail = item.category4
+                            )
+                            categoriesRef.child(key).setValue(coachCategory)
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Handle error
+                }
+            })
+        }
+    }
+
 }
+
+

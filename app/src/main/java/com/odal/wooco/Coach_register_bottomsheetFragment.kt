@@ -186,7 +186,7 @@ class Coach_register_bottomsheetFragment(private val onCategorySelected: (String
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            val view = inflater.inflate(R.layout.bottom_sheet_five, container, false)
+            val view = inflater.inflate(R.layout.bottom_sheet_four, container, false)
             val radioButtonIds = mapOf(
                 R.id.ProfessionalEngineer to "기사/기능사",
                 R.id.language to "어학",
@@ -216,12 +216,13 @@ class Coach_register_bottomsheetFragment(private val onCategorySelected: (String
         }
     }
 
+
     class BottomSheet6(private val onCategorySelected: (String, String) -> Unit) : BottomSheetDialogFragment() {
         override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            val view = inflater.inflate(R.layout.bottom_sheet_four, container, false)
+            val view = inflater.inflate(R.layout.bottom_sheet_five, container, false)
             val radioButtonIds = mapOf(
                 R.id.marketing to "마케팅",
                 R.id.plan to "기획",
@@ -257,4 +258,5 @@ class Coach_register_bottomsheetFragment(private val onCategorySelected: (String
             return view
         }
     }
+
 }
