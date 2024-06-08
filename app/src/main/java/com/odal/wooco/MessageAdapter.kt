@@ -55,4 +55,6 @@ class MessageAdapter(private val context: Context, private val messageList: Arra
     class ReceiveViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val receiveMessage: TextView = itemView.findViewById(R.id.coach_chat)
     }
+
+
 }

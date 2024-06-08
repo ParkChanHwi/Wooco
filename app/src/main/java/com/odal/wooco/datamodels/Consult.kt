@@ -1,6 +1,7 @@
 data class Consult(
-    var mentiName: String? = null, // 내 이름
-    var coachName: String? = null, // receiverName Intent로 넘어온 값
-    var mainID: String? = null, // 내 UID
-    var lastMessage: String? = null
+    val mentiName: String = "",
+    val coachName: String = "",
+    val coachUid: String = "",
+    val mainID: String = "",
+    val lastMessage: String = ""
 )
