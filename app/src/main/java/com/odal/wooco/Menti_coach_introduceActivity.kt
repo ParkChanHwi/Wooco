@@ -13,7 +13,14 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.odal.wooco.datamodels.CoachCategoryDataModel
+import com.odal.wooco.datamodels.CoachDataModel
+
 class Menti_coach_introduceActivity : AppCompatActivity() {
+    private lateinit var receiverName: String
+    private lateinit var receiverUid: String
+    private lateinit var receiverSchool: String
+    private lateinit var receiverInterest: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.menti_coach_introduce)
@@ -23,6 +30,7 @@ class Menti_coach_introduceActivity : AppCompatActivity() {
         Log.d(TAG, "UID: $uid")
         // UID를 사용하여 데이터베이스에서 해당 코치의 카테고리 정보를 가져옴
         getCoachCategoryInfoFromDatabase(uid)
+        getCoachInfoFromDatabase(uid)
     }
 
     private fun getCoachCategoryInfoFromDatabase(uid: String) {
@@ -54,6 +62,36 @@ class Menti_coach_introduceActivity : AppCompatActivity() {
         })
     }
 
+    private fun getCoachInfoFromDatabase(uid: String) {
+        // Firebase Realtime Database의 "coaches" 노드에서 해당 uid의 코치 정보를 가져옵니다.
+        val databaseReference = FirebaseDatabase.getInstance().getReference("coaches").child(uid)
+
+        // ValueEventListener를 추가하여 데이터를 가져옵니다.
+        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // dataSnapshot에서 CoachDataModel에 해당하는 정보를 가져와서 변수에 저장합니다.
+                val coachData = dataSnapshot.getValue(CoachDataModel::class.java)
+
+                // coachData가 null이 아닌 경우에만 변수에 저장합니다.
+                coachData?.let {
+                    receiverUid = it.uid ?: ""
+                    receiverName = it.name ?: ""
+                    receiverSchool = it.school ?: ""
+                    receiverInterest = it.interest ?: ""
+
+                    // 가져온 정보를 UI에 표시하는 함수를 호출합니다.
+                    Log.d("coach", receiverName)
+                    updateCoachInfo(coachData)
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // 데이터베이스에서 정보를 가져오는 도중 에러가 발생한 경우 처리합니다.
+                Log.e(TAG, "Error fetching coach data: ${databaseError.message}")
+            }
+        })
+    }
+
     private fun updateUI(coachCategoryInfo: List<CoachCategoryDataModel>) {
         // RecyclerView 참조 가져오기
         val recyclerView: RecyclerView = findViewById(R.id.menti_coach_introduce_recycler_view)
@@ -65,5 +103,16 @@ class Menti_coach_introduceActivity : AppCompatActivity() {
         val adapter = Menti_coach_introduceActivityAdapter(coachCategoryInfo)
         recyclerView.adapter = adapter
     }
-}
 
+    private fun updateCoachInfo(coachInfo: CoachDataModel) {
+        // 코치 정보를 UI에 표시하기 위해 각 TextView에 값을 설정합니다.
+        val coachNameTextView: TextView = findViewById(R.id.user_class_text2)
+        val coachSchoolTextView: TextView = findViewById(R.id.user_class_text3)
+        val coachInterestTextView: TextView = findViewById(R.id.user_class_text4)
+
+        coachNameTextView.text = coachInfo.name
+        coachSchoolTextView.text = coachInfo.school
+        coachInterestTextView.text = coachInfo.interest
+    }
+
+}

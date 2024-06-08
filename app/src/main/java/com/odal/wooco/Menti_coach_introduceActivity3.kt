@@ -11,6 +11,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.odal.wooco.utils.FirebaseRef.Companion.database
 
 class Menti_coach_introduceActivity3 : AppCompatActivity() {
     //넘어온 데이터 변수에 담기
@@ -18,6 +21,7 @@ class Menti_coach_introduceActivity3 : AppCompatActivity() {
     private lateinit var receiverUid: String
     private lateinit var receiverSchool: String
     private lateinit var receiverInterest: String
+    private lateinit var database: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -96,6 +100,7 @@ class Menti_coach_introduceActivity3 : AppCompatActivity() {
 
                 putExtra("coach_school", receiverSchool)   // 코치의 학교 또는 회사 정보
                 putExtra("coach_interest", receiverInterest) // 코치의 특기 또는 관심사
+                putExtra("chat_type", 0)
             }
             // 액티비티를 시작. MentiReserve 액티비티로 이동하면서 코치 정보를 함께 전달.
             startActivity(intent)
@@ -108,15 +113,19 @@ class Menti_coach_introduceActivity3 : AppCompatActivity() {
             startActivity(intent)
         }
 
-       //  상담하기 버튼 아직 x
+
+        // 상담하기 버튼 클릭 리스너
         consultBtn.setOnClickListener {
+            val chatKey = "$receiverUid${FirebaseAuth.getInstance().currentUser!!.uid}"
             val intent = Intent(this, ChatActivity::class.java).apply {
                 putExtra("uid", receiverUid)
                 putExtra("name", receiverName)
+                putExtra("chat_key", chatKey)
+                putExtra("chat_type", 1)  // 1 for consultation
             }
             startActivity(intent)
         }
+}
 
 
-    }
 }
