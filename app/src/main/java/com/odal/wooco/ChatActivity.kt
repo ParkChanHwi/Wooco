@@ -22,12 +22,13 @@ class ChatActivity : AppCompatActivity() {
 
     private lateinit var receiverName: String
     private lateinit var receiverUid: String
-    private lateinit var mentiName: String
+    private var mentiName: String? = null // nullable로 선언
+
 
     lateinit var mAuth: FirebaseAuth
     lateinit var mDbRef: DatabaseReference
     private lateinit var receiverRoom: String // 받는 대화방
-    private lateinit var senderRoom: String // 보낸 대화방
+    private var senderRoom: String? = null // 보낸 대화방
     // message 배열 생성
     private lateinit var messageList: ArrayList<Message>
 
@@ -77,7 +78,77 @@ class ChatActivity : AppCompatActivity() {
                         )
                         senderRoom = receiverUid + senderUid // 보낸이 방의 키 값
                         receiverRoom = senderUid + receiverUid // 받는이 방의 키 값
-                        mDbRef.child("consultRooms").child(senderRoom).setValue(consult)
+                        mDbRef.child("consultRooms").child(senderRoom!!).setValue(consult)
+                        mDbRef.child("consultRooms").child(receiverRoom).setValue(consult) // receiverRoom도 저장
+
+                        // 액션바에 상대방 이름 보여주기
+                        otherName.text = receiverName
+
+                        val arrowImageView: ImageView = findViewById(R.id.arrow_3)
+                        arrowImageView.setOnClickListener {
+                            val intent = Intent(this@ChatActivity, CoachList::class.java)
+                            startActivity(intent)
+                        }
+                        // mentiName과 senderUid 값 확인 로그
+                        Log.d(TAG, "Value of mentiName: $mentiName, senderUid: $senderUid")
+
+                        sendBtn.setOnClickListener {
+                            val chatMsg = chatInput.text.toString().trim()
+                            if (chatMsg.isEmpty()) {
+                                return@setOnClickListener
+                            }
+                            val senderUid = mAuth.currentUser?.uid
+                            if (senderUid != null && chatType == 1 && mentiName != null  && senderRoom != null) {
+                                val message = Message(chatMsg, senderUid)
+
+                                // Firebase에 채팅방 정보 추가
+                                FirebaseRef.consultRef.child(senderRoom!!).child("messages").push().setValue(message)
+                                    .addOnSuccessListener {
+                                        // Firebase에 보낸이 방의 메세지 추가 성공
+                                        Log.d(TAG, "chats1 added to Firebase.")
+                                        mDbRef.child("consultRooms").child(senderRoom!!).child("lastMessage").setValue(chatMsg)
+
+                                        FirebaseRef.consultRef.child(receiverRoom).child("messages").push().setValue(message)
+                                            .addOnSuccessListener {
+                                                // Firebase에 받는이 방의 메세지 추가 성공
+                                                Log.d(TAG, "chats2 added to Firebase.")
+                                                mDbRef.child("consultRooms").child(receiverRoom).child("lastMessage").setValue(chatMsg)
+                                            }
+                                            .addOnFailureListener { e ->
+                                                // Firebase에 받는이 방의 메세지 추가 실패
+                                                Log.e(TAG, "Error adding chats2 to Firebase.", e)
+                                            }
+                                    }
+                                    .addOnFailureListener { e ->
+                                        // Firebase에 보낸이 방의 메세지 추가 실패
+                                        Log.e(TAG, "Error adding chats1 to Firebase.", e)
+                                    }
+
+                                // 메시지 전송 후 입력 필드 초기화
+                                chatInput.setText("")
+                            }
+                        }
+
+
+                        if (chatType == 1) {
+                            mDbRef.child("consult").child(senderRoom!!).child("messages")
+                                .addValueEventListener(object : ValueEventListener {
+                                    override fun onDataChange(snapshot: DataSnapshot) {
+                                        messageList.clear()
+                                        for (postSnapshot in snapshot.children) {
+                                            val message = postSnapshot.getValue(Message::class.java)
+                                            if (message != null) {
+                                                messageList.add(message)
+                                            }
+                                        }
+                                        messageAdapter.notifyDataSetChanged()
+                                    }
+
+                                    override fun onCancelled(error: DatabaseError) {
+                                        Log.e(TAG, "Failed to read messages", error.toException())
+                                    }
+                                })
+                        }
                     }
                 } else {
                     Log.e(TAG, "Current user data does not exist in the database.")
@@ -88,78 +159,9 @@ class ChatActivity : AppCompatActivity() {
                 Log.e(TAG, "Failed to read current user data.", databaseError.toException())
             }
         })
+    }
 
-        // 액션바에 상대방 이름 보여주기
-        otherName.text = receiverName
-
-        val arrowImageView: ImageView = findViewById(R.id.arrow_3)
-        arrowImageView.setOnClickListener {
-            val intent = Intent(this, CoachList::class.java)
-            startActivity(intent)
-        }
-        // mentiName과 senderUid 값 확인 로그
-        Log.d(TAG, "Value of mentiName: $mentiName, senderUid: $senderUid")
-
-        sendBtn.setOnClickListener {
-            val chatMsg = chatInput.text.toString().trim()
-            if (chatMsg.isEmpty()) {
-                return@setOnClickListener
-            }
-            val senderUid = mAuth.currentUser?.uid
-            if (senderUid != null && chatType == 1) {
-                val message = Message(chatMsg, senderUid)
-
-                // Firebase에 채팅방 정보 추가
-                FirebaseRef.consultRef.child(senderRoom).child("messages").push().setValue(message)
-                    .addOnSuccessListener {
-                        // Firebase에 보낸이 방의 메세지 추가 성공
-                        Log.d(TAG, "chats1 added to Firebase.")
-                        mDbRef.child("consultRooms").child(senderRoom).child("lastMessage").setValue(chatMsg)
-
-                        FirebaseRef.consultRef.child(receiverRoom).child("messages").push().setValue(message)
-                            .addOnSuccessListener {
-                                // Firebase에 받는이 방의 메세지 추가 성공
-                                Log.d(TAG, "chats2 added to Firebase.")
-                                mDbRef.child("consultRooms").child(receiverRoom).child("lastMessage").setValue(chatMsg)
-                            }
-                            .addOnFailureListener { e ->
-                                // Firebase에 받는이 방의 메세지 추가 실패
-                                Log.e(TAG, "Error adding chats2 to Firebase.", e)
-                            }
-                    }
-                    .addOnFailureListener { e ->
-                        // Firebase에 보낸이 방의 메세지 추가 실패
-                        Log.e(TAG, "Error adding chats1 to Firebase.", e)
-                    }
-
-                // 메시지 전송 후 입력 필드 초기화
-                chatInput.setText("")
-            }
-        }
-
-        // 메시지 가져오기 이것도 상담방이랑 수업 리스트 나눠야함
-        if (chatType == 1) {
-            mDbRef.child("consult").child(senderRoom).child("messages")
-                .addValueEventListener(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        // 데이터 변경을 처리하고 UI를 업데이트합니다.
-                        messageList.clear()
-
-                        for (postSnapshot in snapshot.children) {
-                            val message = postSnapshot.getValue(Message::class.java)
-                            if (message != null) {
-                                messageList.add(message)
-                            }
-                        }
-                        // RecyclerView 업데이트
-                        messageAdapter.notifyDataSetChanged()
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                        // 데이터 읽기가 취소되거나 실패했을 때 처리
-                        Log.e(TAG, "Failed to read messages", error.toException())
-                    }
-                })
-        }
+    companion object {
+        private const val TAG = "ChatActivity"
     }
 }
