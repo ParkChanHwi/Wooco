@@ -67,6 +67,7 @@ class ChatActivity : AppCompatActivity() {
                             mentiName = mentiName!!,
                             coachName = receiverName,
                             coachUid = receiverUid,  // Add this field
+                            mentiUid = senderUid,
                             mainID = senderUid,
                             lastMessage = ""
                         )
@@ -74,8 +75,9 @@ class ChatActivity : AppCompatActivity() {
                         val consult2 = Consult(
                             mentiName = mentiName!!,
                             coachName = receiverName,
-                            coachUid = receiverUid,  // Add this field
-                            mainID = receiverUid,
+                            coachUid = receiverUid,
+                            mainID = receiverUid,// Add this field
+                            mentiUid = senderUid,
                             lastMessage = ""
                         )
 

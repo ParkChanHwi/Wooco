@@ -23,6 +23,7 @@ class Coach_Classlist : AppCompatActivity() {
         val calBtn: ImageView = findViewById(R.id.uiw_date)
         val profileBtn: ImageView = findViewById(R.id.group_513866)
         val consultTsf : TextView = findViewById(R.id.consult_button)
+        val consult_button : TextView = findViewById(R.id.consult_button)
 
         recyclerView = findViewById(R.id.coach_classlist_recycleView)
         adapter = Coach_Classlist_Adapter(mentiList)
@@ -36,6 +37,11 @@ class Coach_Classlist : AppCompatActivity() {
         mentiList.add(Menti("다른 코치 이름", "코치클래스리스트"))
 
         // 이후에 필요한만큼 코치를 추가할 수 있습니다.
+
+        consult_button.setOnClickListener {
+            val intent = Intent(this, Coach_Consultinglist::class.java)
+            startActivity(intent)
+        }
 
         chatBtn.setOnClickListener {
             Toast.makeText(this, "현재 화면입니다.", Toast.LENGTH_SHORT).show()

@@ -1,62 +1,63 @@
 package com.odal.wooco
 
-import android.content.Intent
+import Coach_Consultinglist_Adapter
+import Consult
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 
 class Coach_Consultinglist : AppCompatActivity() {
+
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: Coach_Cunsultinglist_Adapter
-    private val mentiList = mutableListOf<Consult_Menti>()
+    private lateinit var adapter: Coach_Consultinglist_Adapter
+    private val consultList = mutableListOf<Consult>()
+
+    private lateinit var databaseRef: DatabaseReference
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.coach_consultinglist)
 
-        val chatBtn: ImageView = findViewById(R.id.chat_1)
-        val calBtn: ImageView = findViewById(R.id.uiw_date)
-        val profileBtn: ImageView = findViewById(R.id.group_513866)
-        val classTsf : TextView = findViewById(R.id.class_button)
-
         recyclerView = findViewById(R.id.coach_consultinglist_recycleView)
-        adapter = Coach_Cunsultinglist_Adapter(mentiList)
         recyclerView.layoutManager = LinearLayoutManager(this)
+        adapter = Coach_Consultinglist_Adapter(consultList.map { consult ->
+            Consult(
+                mentiName = consult.mentiName,
+                coachName = consult.coachName,
+                coachUid = consult.coachUid,
+                mentiUid = consult.mentiUid,
+                mainID = consult.coachUid,
+                lastMessage = consult.lastMessage
+            )
+        })
         recyclerView.adapter = adapter
 
-        // 코치 데이터 추가
-        mentiList.add(Consult_Menti("학생 이름", "마지막 채팅 내용"))
+        mAuth = FirebaseAuth.getInstance()
+        val currentUserUid = mAuth.currentUser?.uid
 
-        // 또 다른 코치 추가
-        mentiList.add(Consult_Menti("다른 학생 이름", "멘티컨설트리스트"))
+        if (currentUserUid != null) {
+            databaseRef = FirebaseDatabase.getInstance().reference.child("consultRooms")
+            // 채팅방 목록 가져오기
+            databaseRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    consultList.clear()
+                    for (consultSnapshot in snapshot.children) {
+                        val consult = consultSnapshot.getValue(Consult::class.java)
+                        if (consult != null && consult.mentiUid == currentUserUid) {
+                            consultList.add(consult)
+                        }
+                    }
+                    adapter.notifyDataSetChanged()
+                }
 
-        // 이후에 필요한만큼 코치를 추가할 수 있습니다.
-
-
-        chatBtn.setOnClickListener {
-            Toast.makeText(this, "현재 화면입니다.", Toast.LENGTH_SHORT).show()
-        }
-
-        //코치 나의 일정
-        calBtn.setOnClickListener {
-            val intent = Intent(this, Coach_scheduleActivity::class.java)
-            startActivity(intent)
-        }
-
-        //코치 마이페이지
-        profileBtn.setOnClickListener {
-            val intent = Intent(this, Coach_mypageActivity::class.java)
-            startActivity(intent)
-        }
-
-        classTsf.setOnClickListener{
-            val intent = Intent(this, Coach_Classlist::class.java)
-            startActivity(intent)
+                override fun onCancelled(error: DatabaseError) {
+                    // Handle error
+                }
+            })
         }
     }
 }
