@@ -28,7 +28,7 @@ class Menti_Consultinglist_Adapter(private val consultList: List<Consult>) : Rec
         private val consultLastChat: TextView = itemView.findViewById(R.id.menti_consult_last_chat)
 
         fun bind(consult: Consult) {
-            consultName.text = consult.mentiName
+            consultName.text = consult.coachName
             consultLastChat.text = consult.lastMessage
         }
     }
