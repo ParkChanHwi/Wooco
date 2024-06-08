@@ -39,7 +39,7 @@ class Coach_Adapter(val itemList: List<CoachDataModel>, val context: Context) : 
         holder.interestTextView.text = item.interest
 
         holder.itemLayout.setOnClickListener {
-            val intent = Intent(context, Menti_coach_introduceActivity3::class.java).apply {
+            val intent = Intent(context, Menti_coach_introduceActivity::class.java).apply {
                 putExtra("uid", item.uid)  // 수정: Uid 키를 추가
                 putExtra("name", item.name)  // 수정: name 키를 추가
                 putExtra("school", item.school)  // 수정: school 키를 추가

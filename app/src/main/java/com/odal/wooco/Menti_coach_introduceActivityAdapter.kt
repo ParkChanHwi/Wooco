@@ -5,20 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.odal.wooco.datamodels.CoachCategoryDataModel
 
-class Menti_coach_introduceActivityAdapter(private val itemList: List<Item>) : RecyclerView.Adapter<Menti_coach_introduceActivityAdapter.ItemViewHolder>() {
-
-    data class Item(
-        val category1: String,
-        val category2: String
-
-    )
+class MentiCoachIntroduceAdapter(private val itemList: List<CoachCategoryDataModel>) : RecyclerView.Adapter<MentiCoachIntroduceAdapter.ItemViewHolder>() {
 
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val category1TextView: TextView = itemView.findViewById(R.id.category1)
-        val category2TextView: TextView = itemView.findViewById(R.id.category2)
-
-
+        val categoryTextView: TextView = itemView.findViewById(R.id.category1)
+        val detailTextView: TextView = itemView.findViewById(R.id.category2)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -28,10 +21,9 @@ class Menti_coach_introduceActivityAdapter(private val itemList: List<Item>) : R
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = itemList[position]
-        holder.category1TextView.text = "${item.category1}"
-        holder.category2TextView.text = "${item.category2}"
+        holder.categoryTextView.text = item.category
+        holder.detailTextView.text = item.detail
     }
-
 
     override fun getItemCount(): Int = itemList.size
 }
