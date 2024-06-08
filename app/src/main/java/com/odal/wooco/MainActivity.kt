@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.menti_coachlist)
         // 현정이거 병합
-
+        //ㅇd-1
         findViewById<Button>(R.id.kategori1).setOnClickListener {
             val intent = Intent(this, CoachList::class.java)
             startActivity(intent)
