@@ -72,7 +72,7 @@ class MentiReserve : AppCompatActivity() {
         }
 
         coach_receiverUid = intent.getStringExtra("coach_uid").toString()
-        coach_receiverName = intent.getStringExtra("coach_name").toString()
+        coach_receiverName = intent.getStringExtra("coachName").toString()
 
         // Intent에서 "change" 플래그 확인
         val isChange = intent.getBooleanExtra("change", false)
@@ -121,12 +121,14 @@ class MentiReserve : AppCompatActivity() {
             val day = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(selectedCalendar.time)
             val time = String.format("%02d:%02d", hour, minute)
             val datetime = "$day $time"
+            val selectedCategory = intent.getStringExtra("selectedCategory") ?: "미선택" // 선택한 카테고리 가져오기
+
             // Toast.makeText(this, "선택한 날짜: $day\n선택한 시간: $time", Toast.LENGTH_LONG).show()
 
             // 예약 확인을 위한 다이얼로그
             AlertDialog.Builder(this).apply {
                 setTitle("예약 확인")
-                setMessage("선택한 날짜: $day\n선택한 시간: $time\n예약을 진행하시겠습니까?")
+                setMessage("선택한 날짜: $day\n선택한 시간: $time\n선택한 카테고리: $selectedCategory\n예약을 진행하시겠습니까?")
                 setPositiveButton("예") { _, _ ->
                     checkForOverlappingReservation(selectedCalendar, selectedCalendar.timeInMillis + 30 * 60 * 1000, reserveId) { isOverlapping ->
                         if (isOverlapping) {
@@ -140,6 +142,8 @@ class MentiReserve : AppCompatActivity() {
                                 dataMap["coach_receiverUid"] = coach_receiverUid
                                 dataMap["coach_receiverName"] = coach_receiverName
                                 dataMap["reserve_time"] = datetime
+                                dataMap["selected_category"] = selectedCategory // 선택한 카테고리 정보 추가
+
 
                                 if (isChange && reserveId != null) {
                                     // 예약 정보 업데이트
