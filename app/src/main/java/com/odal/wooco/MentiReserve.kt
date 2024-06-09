@@ -172,9 +172,9 @@ class MentiReserve : AppCompatActivity() {
                                     //                        mDbRef.child("consultRooms").child(senderRoom!!).setValue(consult)
                                     //                        mDbRef.child("consultRooms").child(receiverRoom).setValue(consult2)
 
-                                    mDbRef.child("classRooms").child(senderRoom!!).updateChildren(class_dataMap)
+                                    mDbRef.child("MenticlassRooms").child(senderRoom!!).updateChildren(class_dataMap)
 
-                                    mDbRef.child("classRooms").child(receiverRoom).updateChildren(class_dataMap2)
+                                    mDbRef.child("CoachclassRooms").child(receiverRoom).updateChildren(class_dataMap2)
 
                                     val chatMsg =  mentiName + "님이" + coach_receiverName + "님에게 코칭을 요청하셨습니다"
                                     val message = Message(chatMsg, mentiUid)
