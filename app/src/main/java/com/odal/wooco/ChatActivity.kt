@@ -63,10 +63,13 @@ class ChatActivity : AppCompatActivity() {
                     mentiName = userDataModel?.nickname ?: ""
 
                     if (senderUid != null) {
+                        senderRoom = receiverUid + senderUid
+                        receiverRoom = senderUid + receiverUid
+
                         val consult = Consult(
                             mentiName = mentiName!!,
                             coachName = receiverName,
-                            coachUid = receiverUid,  // Add this field
+                            coachUid = receiverUid,
                             mentiUid = senderUid,
                             mainID = senderUid,
                             lastMessage = ""
@@ -76,15 +79,22 @@ class ChatActivity : AppCompatActivity() {
                             mentiName = mentiName!!,
                             coachName = receiverName,
                             coachUid = receiverUid,
-                            mainID = receiverUid,// Add this field
+                            mainID = receiverUid,
                             mentiUid = senderUid,
                             lastMessage = ""
                         )
 
-                        senderRoom = receiverUid + senderUid
-                        receiverRoom = senderUid + receiverUid
-                        mDbRef.child("MenticonsultRooms").child(senderRoom!!).setValue(consult)
-                        mDbRef.child("CoachconsultRooms").child(receiverRoom).setValue(consult2)
+                        if (chatType == 1) {
+                            // Menti consult list
+                            mDbRef.child("MenticonsultRooms").child(senderRoom!!).setValue(consult)
+                            // Coach consult list
+                            mDbRef.child("CoachconsultRooms").child(receiverRoom).setValue(consult2)
+                        } else if (chatType == 0) {
+                            // Menti class list
+                            mDbRef.child("MenticlassRooms").child(senderRoom!!).setValue(consult)
+                            // Coach class list
+                            mDbRef.child("CoachclassRooms").child(receiverRoom).setValue(consult2)
+                        }
 
                         otherName.text = receiverName
 
@@ -123,9 +133,7 @@ class ChatActivity : AppCompatActivity() {
                                     }
 
                                 chatInput.setText("")
-                            }
-
-                            else  if (senderUid != null && chatType == 0 && mentiName != null && senderRoom != null) {
+                            } else if (senderUid != null && chatType == 0 && mentiName != null && senderRoom != null) {
                                 val message = Message(chatMsg, senderUid)
 
                                 FirebaseRef.classRef.child(senderRoom!!).child("messages").push().setValue(message)
@@ -136,7 +144,7 @@ class ChatActivity : AppCompatActivity() {
                                         FirebaseRef.classRef.child(receiverRoom).child("messages").push().setValue(message)
                                             .addOnSuccessListener {
                                                 Log.d(TAG, "chats2 added to Firebase.")
-                                                mDbRef.child("MenticlassRooms").child(receiverRoom).child("lastMessage").setValue(chatMsg)
+                                                mDbRef.child("CoachclassRooms").child(receiverRoom).child("lastMessage").setValue(chatMsg)
                                             }
                                             .addOnFailureListener { e ->
                                                 Log.e(TAG, "Error adding chats2 to Firebase.", e)
@@ -168,8 +176,7 @@ class ChatActivity : AppCompatActivity() {
                                         Log.e(TAG, "Failed to read messages", error.toException())
                                     }
                                 })
-                        }
-                       else if (chatType == 0) {
+                        } else if (chatType == 0) {
                             mDbRef.child("class").child(senderRoom!!).child("messages")
                                 .addValueEventListener(object : ValueEventListener {
                                     override fun onDataChange(snapshot: DataSnapshot) {
@@ -188,8 +195,6 @@ class ChatActivity : AppCompatActivity() {
                                     }
                                 })
                         }
-
-
                     }
                 } else {
                     Log.e(TAG, "Current user data does not exist in the database.")
