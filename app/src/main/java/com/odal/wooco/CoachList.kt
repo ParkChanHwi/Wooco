@@ -51,6 +51,31 @@ class CoachList : AppCompatActivity() {
         }
         // 다른 카테고리 버튼들의 클릭 리스너도 동일하게 추가
 
+        findViewById<Button>(R.id.kategori2).setOnClickListener {
+            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet2()
+            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+        }
+
+        findViewById<Button>(R.id.kategori3).setOnClickListener {
+            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet3()
+            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+        }
+
+        findViewById<Button>(R.id.kategori4).setOnClickListener {
+            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet4()
+            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+        }
+
+        findViewById<Button>(R.id.kategori5).setOnClickListener {
+            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet5()
+            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+        }
+
+        findViewById<Button>(R.id.kategori6).setOnClickListener {
+            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet6()
+            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+        }
+
         // Firebase Database 초기화
         database = FirebaseDatabase.getInstance().reference
 

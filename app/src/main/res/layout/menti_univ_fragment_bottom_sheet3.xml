@@ -36,12 +36,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/transition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 편입"
                 android:buttonTint="#696969"
                 android:layout_marginLeft="20dp"/>
             <RadioButton
+                android:id="@+id/company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 기업"
@@ -53,12 +55,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/publicoffice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 공무원"
                 android:buttonTint="#696969"
                 android:layout_marginLeft="20dp"/>
             <RadioButton
+                android:id="@+id/education"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 임용"
@@ -70,12 +74,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/medicine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 병원"
                 android:buttonTint="#696969"
                 android:layout_marginLeft="20dp"/>
             <RadioButton
+                android:id="@+id/etc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 기타"

@@ -186,7 +186,7 @@ class Coach_register_bottomsheetFragment(private val onCategorySelected: (String
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            val view = inflater.inflate(R.layout.bottom_sheet_four, container, false)
+            val view = inflater.inflate(R.layout.bottom_sheet_four_hj, container, false)
             val radioButtonIds = mapOf(
                 R.id.ProfessionalEngineer to "기사/기능사",
                 R.id.language to "어학",
