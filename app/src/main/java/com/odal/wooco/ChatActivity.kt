@@ -112,7 +112,7 @@ class ChatActivity : AppCompatActivity() {
                                         FirebaseRef.consultRef.child(receiverRoom).child("messages").push().setValue(message)
                                             .addOnSuccessListener {
                                                 Log.d(TAG, "chats2 added to Firebase.")
-                                                mDbRef.child("MenticonsultRooms").child(receiverRoom).child("lastMessage").setValue(chatMsg)
+                                                mDbRef.child("CoachconsultRooms").child(receiverRoom).child("lastMessage").setValue(chatMsg)
                                             }
                                             .addOnFailureListener { e ->
                                                 Log.e(TAG, "Error adding chats2 to Firebase.", e)
