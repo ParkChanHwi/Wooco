@@ -17,6 +17,8 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.odal.wooco.datamodels.Message
+import com.odal.wooco.utils.FirebaseRef
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import java.util.Locale
 
@@ -26,6 +28,9 @@ class MentiReserve : AppCompatActivity() {
     private lateinit var mentiName: String // 멘티의 이름 변수 추가
     private lateinit var auth: FirebaseAuth
     private lateinit var reserveInfoRef: DatabaseReference
+    private lateinit var mDbRef: DatabaseReference
+    private lateinit var receiverRoom: String
+    private var senderRoom: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +39,7 @@ class MentiReserve : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         val database = FirebaseDatabase.getInstance()
         reserveInfoRef = database.getReference("reserveInfo")
+        mDbRef = FirebaseDatabase.getInstance().reference
 
         val currentUser = auth.currentUser
         currentUser?.let {
@@ -124,6 +130,24 @@ class MentiReserve : AppCompatActivity() {
                             dataMap["coach_receiverName"] = coach_receiverName
                             dataMap["reserve_time"] = datetime
 
+                            val class_dataMap = HashMap<String, Any>()
+                            class_dataMap["mentiUid"] = mentiUid
+                            class_dataMap["mentiName"] = mentiName
+                            class_dataMap["coachUid"] = coach_receiverUid
+                            class_dataMap["coachName"] = coach_receiverName
+                            class_dataMap["mainID"] = mentiUid
+                            class_dataMap["reserve_time"] = datetime
+                            class_dataMap["lastMessage"] = mentiName + "님이" + coach_receiverName + "에게 코칭을 요청하였습니다."
+
+                            val class_dataMap2 = HashMap<String, Any>()
+                            class_dataMap2["coachUid"] = coach_receiverUid
+                            class_dataMap2["coachName"] = coach_receiverName
+                            class_dataMap2["mentiUid"] = mentiUid
+                            class_dataMap2["mentiName"] = mentiName
+                            class_dataMap2["mainID"] = coach_receiverUid
+                            class_dataMap2["reserve_time"] = datetime
+                            class_dataMap2["lastMessage"] = mentiName + "님이" + coach_receiverName + "에게 코칭을 요청하였습니다."
+
                             if (isChange && reserveId != null) {
                                 // 예약 정보 업데이트
                                 dataMap["reserveId"] = reserveId // reserveId를 추가
@@ -141,15 +165,34 @@ class MentiReserve : AppCompatActivity() {
                                 val newReserveId = reserveInfoRef.push().key
                                 if (newReserveId != null) {
                                     dataMap["reserveId"] = newReserveId // reserveId를 추가
+                                    class_dataMap["reserveId"] = newReserveId
+                                    class_dataMap2["reserveId"] = newReserveId
+                                    senderRoom = mentiUid + coach_receiverUid
+                                    receiverRoom = coach_receiverUid + mentiUid
+                                    //                        mDbRef.child("consultRooms").child(senderRoom!!).setValue(consult)
+                                    //                        mDbRef.child("consultRooms").child(receiverRoom).setValue(consult2)
+
+                                    mDbRef.child("classRooms").child(senderRoom!!).updateChildren(class_dataMap)
+
+                                    mDbRef.child("classRooms").child(receiverRoom).updateChildren(class_dataMap2)
+
+                                    val chatMsg =  mentiName + "님이" + coach_receiverName + "님에게 코칭을 요청하셨습니다"
+                                    val message = Message(chatMsg, mentiUid)
+                                    FirebaseRef.classRef.child(senderRoom!!).child("messages").push().setValue(message)
+                                    FirebaseRef.classRef.child(receiverRoom).child("messages").push().setValue(message)
+
                                     reserveInfoRef.child(newReserveId).setValue(dataMap)
                                         .addOnSuccessListener {
                                             Toast.makeText(this@MentiReserve, "예약이 성공적으로 추가되었습니다.", Toast.LENGTH_SHORT).show()
+
                                             val intent = Intent(this@MentiReserve, Menti_scheduleActivity::class.java)
                                             startActivity(intent)
                                         }
                                         .addOnFailureListener {
                                             Toast.makeText(this@MentiReserve, "Firebase에 데이터를 저장하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
                                         }
+
+
                                 } else {
                                     Log.e("MentiReserve", "Failed to generate reservation ID")
                                     Toast.makeText(this@MentiReserve, "예약 ID를 생성하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
