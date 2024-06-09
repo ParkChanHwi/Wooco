@@ -124,6 +124,30 @@ class ChatActivity : AppCompatActivity() {
 
                                 chatInput.setText("")
                             }
+
+                            else  if (senderUid != null && chatType == 0 && mentiName != null && senderRoom != null) {
+                                val message = Message(chatMsg, senderUid)
+
+                                FirebaseRef.classRef.child(senderRoom!!).child("messages").push().setValue(message)
+                                    .addOnSuccessListener {
+                                        Log.d(TAG, "chats1 added to Firebase.")
+                                        mDbRef.child("classRooms").child(senderRoom!!).child("lastMessage").setValue(chatMsg)
+
+                                        FirebaseRef.classRef.child(receiverRoom).child("messages").push().setValue(message)
+                                            .addOnSuccessListener {
+                                                Log.d(TAG, "chats2 added to Firebase.")
+                                                mDbRef.child("classRooms").child(receiverRoom).child("lastMessage").setValue(chatMsg)
+                                            }
+                                            .addOnFailureListener { e ->
+                                                Log.e(TAG, "Error adding chats2 to Firebase.", e)
+                                            }
+                                    }
+                                    .addOnFailureListener { e ->
+                                        Log.e(TAG, "Error adding chats1 to Firebase.", e)
+                                    }
+
+                                chatInput.setText("")
+                            }
                         }
 
                         if (chatType == 1) {
@@ -145,6 +169,27 @@ class ChatActivity : AppCompatActivity() {
                                     }
                                 })
                         }
+                       else if (chatType == 0) {
+                            mDbRef.child("class").child(senderRoom!!).child("messages")
+                                .addValueEventListener(object : ValueEventListener {
+                                    override fun onDataChange(snapshot: DataSnapshot) {
+                                        messageList.clear()
+                                        for (postSnapshot in snapshot.children) {
+                                            val message = postSnapshot.getValue(Message::class.java)
+                                            if (message != null) {
+                                                messageList.add(message)
+                                            }
+                                        }
+                                        messageAdapter.notifyDataSetChanged()
+                                    }
+
+                                    override fun onCancelled(error: DatabaseError) {
+                                        Log.e(TAG, "Failed to read messages", error.toException())
+                                    }
+                                })
+                        }
+
+
                     }
                 } else {
                     Log.e(TAG, "Current user data does not exist in the database.")

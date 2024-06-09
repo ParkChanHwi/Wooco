@@ -40,7 +40,7 @@ class Menti_Classlist : AppCompatActivity() {
                     for (classSnapshot in snapshot.children) {
                         val classData = classSnapshot.getValue(Class::class.java)
                         if (classData != null && classData.mainID == currentUserUid) {
-                            classlist.add(Class(classData.coachName, classData.lastMessage))
+                            classlist.add(Class(classData.mentiName, classData.coachName,classData.coachUid,classData.mentiUid,classData.mainID,classData.lastMessage))
                         }
                     }
                     adapter.notifyDataSetChanged()

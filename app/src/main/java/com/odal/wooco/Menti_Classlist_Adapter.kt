@@ -1,5 +1,6 @@
 package com.odal.wooco
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +16,17 @@ class Menti_Classlist_Adapter(private val coachList: List<Class>) : RecyclerView
     }
 
     override fun onBindViewHolder(holder: CoachViewHolder, position: Int) {
-        val coach = coachList[position]
-        holder.bind(coach)
+        val classlist = coachList[position]
+        holder.bind(classlist)
+        holder.itemView.setOnClickListener {
+            val context = holder.itemView.context
+            val intent = Intent(context, ChatActivity::class.java).apply {
+                putExtra("uid", classlist.coachUid)   // Menti name
+                putExtra("name", classlist.coachName)
+                putExtra("chat_type", 0)  // Chat type 0 for class
+            }
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
