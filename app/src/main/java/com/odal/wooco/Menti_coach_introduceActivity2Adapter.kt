@@ -13,7 +13,6 @@ class Menti_coach_introduceActivity2Adapter(private val itemList: List<Item>) : 
         val explain2: String,
         val explain3: String,
         val explain4: String
-
     )
 
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -21,8 +20,6 @@ class Menti_coach_introduceActivity2Adapter(private val itemList: List<Item>) : 
         val explain2TextView: TextView = itemView.findViewById(R.id.myself2)
         val explain3TextView: TextView = itemView.findViewById(R.id.myself3)
         val explain4TextView: TextView = itemView.findViewById(R.id.myself4)
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -32,12 +29,11 @@ class Menti_coach_introduceActivity2Adapter(private val itemList: List<Item>) : 
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = itemList[position]
-        holder.explainTextView.text = "${item.explain}"
-        holder.explain2TextView.text = "${item.explain2}"
-        holder.explain3TextView.text = "${item.explain3}"
-        holder.explain4TextView.text = "${item.explain4}"
+        holder.explainTextView.text = item.explain
+        holder.explain2TextView.text = item.explain2
+        holder.explain3TextView.text = item.explain3
+        holder.explain4TextView.text = item.explain4
     }
-
 
     override fun getItemCount(): Int = itemList.size
 }

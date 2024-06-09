@@ -10,12 +10,17 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class Menti_coach_introduceActivity2 : AppCompatActivity() {
     private lateinit var receiverName: String
     private lateinit var receiverUid: String
     private lateinit var receiverSchool: String
     private lateinit var receiverInterest: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -46,26 +51,21 @@ class Menti_coach_introduceActivity2 : AppCompatActivity() {
         coachSchool.text = receiverSchool
         coachInterest.text = receiverInterest
 
-
         // 예약하기 버튼에 클릭 리스너를 설정
         val appointmentBtn: Button = findViewById(R.id.appointment_button)
         appointmentBtn.setOnClickListener {
-            // 인텐트를 생성. Menti_Reserve1 액티비티를 목적지로 지정
-            val intent = Intent(this, Menti_Reserve1::class.  java).apply {
-                // 코치 정보를 인텐트에 추가
-                putExtra("coach_uid", receiverUid)         // 코치의 고유 식별자(uid)
-                putExtra("coach_name", receiverName)       // 코치의 이름
-                putExtra("coach_school", receiverSchool)   // 코치의 학교 또는 회사 정보
-                putExtra("coach_interest", receiverInterest) // 코치의 특기 또는 관심사
+            val intent = Intent(this, Menti_Reserve1::class.java).apply {
+                putExtra("coach_uid", receiverUid)
+                putExtra("coach_name", receiverName)
+                putExtra("coach_school", receiverSchool)
+                putExtra("coach_interest", receiverInterest)
             }
-            // 액티비티를 시작. MentiReserve 액티비티로 이동하면서 코치 정보를 함께 전달.
             startActivity(intent)
         }
 
         // 상담하기 버튼 클릭 리스너
         val consultBtn: Button = findViewById(R.id.consult_button)
         consultBtn.setOnClickListener {
-            // 상담 목록 업데이트 함수 호출
             val intent = Intent(this, ChatActivity::class.java).apply {
                 putExtra("uid", receiverUid)
                 putExtra("name", receiverName)
@@ -74,16 +74,8 @@ class Menti_coach_introduceActivity2 : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-        val items = listOf(
-            Menti_coach_introduceActivity2Adapter.Item("한 줄 소개", "수업 가능 과목", "차별점","수업 방식")
-
-            // Add more items as needed
-
-        )
-        val adapter = Menti_coach_introduceActivity2Adapter(items)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapter
+        // Firebase에서 데이터 가져오기
+        getMyselfInfoFromDatabase(receiverUid)
 
         coachIntro1.setOnClickListener {
             val intent1 = Intent(this, Menti_coach_introduceActivity::class.java).apply {
@@ -95,12 +87,10 @@ class Menti_coach_introduceActivity2 : AppCompatActivity() {
             startActivity(intent1)
         }
 
-
         coachIntro2.setOnClickListener {
             Toast.makeText(this, "현재 화면입니다.", Toast.LENGTH_SHORT).show()
             startActivity(intent)
         }
-
 
         coachIntro3.setOnClickListener {
             val intent3 = Intent(this, Menti_coach_introduceActivity3::class.java).apply {
@@ -111,5 +101,35 @@ class Menti_coach_introduceActivity2 : AppCompatActivity() {
             }
             startActivity(intent3)
         }
+    }
+
+    private fun getMyselfInfoFromDatabase(uid: String) {
+        val databaseReference = FirebaseDatabase.getInstance().getReference("coachInfo").child(uid)
+
+        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val myself1 = dataSnapshot.child("myself1").getValue(String::class.java) ?: ""
+                val myself2 = dataSnapshot.child("myself2").getValue(String::class.java) ?: ""
+                val myself3 = dataSnapshot.child("myself3").getValue(String::class.java) ?: ""
+                val myself4 = dataSnapshot.child("myself4").getValue(String::class.java) ?: ""
+
+                val items = listOf(
+                    Menti_coach_introduceActivity2Adapter.Item(myself1, myself2, myself3, myself4)
+                )
+
+                updateMyselfInfoUI(items)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Toast.makeText(this@Menti_coach_introduceActivity2, "Error fetching data: ${databaseError.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun updateMyselfInfoUI(items: List<Menti_coach_introduceActivity2Adapter.Item>) {
+        val recyclerView: RecyclerView = findViewById(R.id.menti_coach_introduce_recycler_view)
+        val adapter = Menti_coach_introduceActivity2Adapter(items)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
     }
 }
