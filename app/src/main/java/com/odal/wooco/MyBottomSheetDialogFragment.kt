@@ -1,9 +1,11 @@
 package com.odal.wooco
 
+import android.app.Activity
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +23,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.odal.wooco.datamodels.CategoryDataModel
+import com.odal.wooco.utils.FirebaseRef.Companion.database
 
 class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
@@ -30,6 +33,11 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
     private lateinit var recyclerView: RecyclerView
     private val results = mutableListOf<String>()
     private lateinit var database: DatabaseReference
+
+
+    interface OnCategorySelectedListener {
+        fun onCategorySelected(category: String)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,31 +61,39 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             }
         }
 
-        searchButton.setOnClickListener {
-            val query = searchInput.text.toString()
-            if (query.isNotEmpty()) {
-                performSearch(query)
-            }
-        }
-
         val setButton = view.findViewById<Button>(R.id.category_setting)
         setButton.setOnClickListener {
             val selectedRadioButtonId = radioGroup.checkedRadioButtonId
             if (selectedRadioButtonId != -1) {
                 val selectedRadioButton = view.findViewById<RadioButton>(selectedRadioButtonId)
                 val selectedText = selectedRadioButton.text.toString()
-                // 선택된 라디오 버튼의 텍스트를 가져와서 AND 연산에 추가
-                // 여기서 AND 연산을 수행하는 로직을 추가합니다.
-                Toast.makeText(requireContext(), "선택된 대학교: $selectedText", Toast.LENGTH_SHORT).show()
+                // 선택된 카테고리 전달
+                val intent = Intent().apply {
+                    putExtra("SELECTED_CATEGORY", selectedText)
+                }
+                targetFragment?.onActivityResult(targetRequestCode, Activity.RESULT_OK, intent)
+                dismiss()
+
             } else {
                 Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
             }
         }
 
-
         return view
     }
+
+
     class BottomSheet2() : BottomSheetDialogFragment() {
+
+        private var listener: OnCategorySelectedListener? = null
+        fun setOnCategorySelectedListener(listener: OnCategorySelectedListener) {
+            this.listener = listener
+        }
+
+        private fun onCategorySelected(category: String) {
+            listener?.onCategorySelected(category)
+        }
+
 
         override fun onCreateView(
             inflater: LayoutInflater,
@@ -94,9 +110,15 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
                 if (selectedRadioButtonId != -1) {
                     val selectedRadioButton = view.findViewById<RadioButton>(selectedRadioButtonId)
-                    val selectedText = selectedRadioButton.text.toString()
-                    // 선택된 라디오 버튼의 텍스트를 가져와서 OR 연산에 추가
-                    // 여기에 OR 연산에 추가하는 로직을 넣습니다.
+                    val selectedText2 = selectedRadioButton.text.toString()
+                    onCategorySelected(selectedText2)
+                    Log.d("새로 만든 건데 보내긴 보내질듯 :", selectedText2)
+                    // 선택된 카테고리 전달
+                    val intent = Intent().apply {
+                        putExtra("SELECTED_CATEGORY2", selectedText2)
+                    }
+                    targetFragment?.onActivityResult(targetRequestCode, Activity.RESULT_OK, intent)
+                    dismiss()
                 } else {
                     Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
                 }
@@ -106,9 +128,16 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
         }
     }
 
-
-
     class BottomSheet3() : BottomSheetDialogFragment() {
+
+        private var listener: OnCategorySelectedListener? = null
+        fun setOnCategorySelectedListener(listener: OnCategorySelectedListener) {
+            this.listener = listener
+        }
+
+        private fun onCategorySelected(category: String) {
+            listener?.onCategorySelected(category)
+        }
 
         override fun onCreateView(
             inflater: LayoutInflater,
@@ -138,20 +167,43 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                     }
                 }
 
-                if (selectedTexts.isNotEmpty()) {
-                    val message = "선택된 라디오 버튼: ${selectedTexts.joinToString(" OR ")}"
-                    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+                //여기부터
+                val selectedRadioButtonId = RadioButton.generateViewId()
+
+
+
+                if (selectedRadioButtonId != -1) {
+                    val selectedRadioButton = view.findViewById<RadioButton>(selectedRadioButtonId)
+                    val selectedText3 = selectedRadioButton.text.toString()
+                    onCategorySelected(selectedText3)
+                    Log.d("새로 만든 건데 보내긴 보내질듯 :", selectedText3)
+                    // 선택된 카테고리 전달
+                    val intent = Intent().apply {
+                        putExtra("SELECTED_CATEGORY3", selectedText3)
+
+                    }
+                    targetFragment?.onActivityResult(targetRequestCode, Activity.RESULT_OK, intent)
+                    dismiss()
                 } else {
                     Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
                 }
+                //여기
             }
 
             return view
         }
     }
 
-
     class BottomSheet4() : BottomSheetDialogFragment() {
+
+        private var listener: OnCategorySelectedListener? = null
+        fun setOnCategorySelectedListener(listener: OnCategorySelectedListener) {
+            this.listener = listener
+        }
+
+        private fun onCategorySelected(category: String) {
+            listener?.onCategorySelected(category)
+        }
 
         override fun onCreateView(
             inflater: LayoutInflater,
@@ -181,9 +233,27 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                     }
                 }
 
-                if (selectedTexts.isNotEmpty()) {
-                    val message = "선택된 라디오 버튼: ${selectedTexts.joinToString(" OR ")}"
-                    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+                val radioGroup = view.findViewById<RadioGroup>(R.id.radio_group)
+                val radioButton1 = view.findViewById<RadioButton>(R.id.transition)
+                val radioButton2 = view.findViewById<RadioButton>(R.id.company)
+                val radioButton3 = view.findViewById<RadioButton>(R.id.medicine)
+                val radioButton4 = view.findViewById<RadioButton>(R.id.education)
+                val radioButton5 = view.findViewById<RadioButton>(R.id.publicoffice)
+                val radioButton6 = view.findViewById<RadioButton>(R.id.etc)
+
+                val allRadioButtons = listOf(radioButton1, radioButton2, radioButton3, radioButton4, radioButton5, radioButton6)
+                val selectedRadioButton = allRadioButtons.firstOrNull { it.isChecked }
+                if (selectedRadioButton != null) {
+                    val selectedText4 = selectedRadioButton.text.toString()
+                    onCategorySelected(selectedText4)
+                    Log.d("새로 만든 건데 보내긴 보내질듯 :", selectedText4)
+                    // 선택된 카테고리 전달
+                    val intent = Intent().apply {
+                        putExtra("SELECTED_CATEGORY4", selectedText4)
+
+                    }
+                    targetFragment?.onActivityResult(targetRequestCode, Activity.RESULT_OK, intent)
+                    dismiss()
                 } else {
                     Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
                 }
@@ -195,6 +265,14 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     class BottomSheet5() : BottomSheetDialogFragment() {
 
+        private var listener: OnCategorySelectedListener? = null
+        fun setOnCategorySelectedListener(listener: OnCategorySelectedListener) {
+            this.listener = listener
+        }
+
+        private fun onCategorySelected(category: String) {
+            listener?.onCategorySelected(category)
+        }
         override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -222,9 +300,21 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                     }
                 }
 
-                if (selectedTexts.isNotEmpty()) {
-                    val message = "선택된 라디오 버튼: ${selectedTexts.joinToString(" OR ")}"
-                    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+                val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroup)
+                val selectedRadioButtonId = radioGroup.checkedRadioButtonId
+
+                if (selectedRadioButtonId != -1) {
+                    val selectedRadioButton = view.findViewById<RadioButton>(selectedRadioButtonId)
+                    val selectedText5 = selectedRadioButton.text.toString()
+                    onCategorySelected(selectedText5)
+                    Log.d("새로 만든 건데 보내긴 보내질듯 :", selectedText5)
+                    // 선택된 카테고리 전달
+                    val intent = Intent().apply {
+                        putExtra("SELECTED_CATEGORY5", selectedText5)
+
+                    }
+                    targetFragment?.onActivityResult(targetRequestCode, Activity.RESULT_OK, intent)
+                    dismiss()
                 } else {
                     Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
                 }
@@ -235,6 +325,15 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
     }
 
     class BottomSheet6() : BottomSheetDialogFragment() {
+
+        private var listener: OnCategorySelectedListener? = null
+        fun setOnCategorySelectedListener(listener: OnCategorySelectedListener) {
+            this.listener = listener
+        }
+
+        private fun onCategorySelected(category: String) {
+            listener?.onCategorySelected(category)
+        }
 
         override fun onCreateView(
             inflater: LayoutInflater,
@@ -270,18 +369,30 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                     }
                 }
 
-                if (selectedTexts.isNotEmpty()) {
-                    val message = "선택된 라디오 버튼: ${selectedTexts.joinToString(" OR ")}"
-                    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+                val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroup)
+                val selectedRadioButtonId = radioGroup.checkedRadioButtonId
+
+                if (selectedRadioButtonId != -1) {
+                    val selectedRadioButton = view.findViewById<RadioButton>(selectedRadioButtonId)
+                    val selectedText5 = selectedRadioButton.text.toString()
+                    onCategorySelected(selectedText5)
+                    Log.d("새로 만든 건데 보내긴 보내질듯 :", selectedText5)
+                    // 선택된 카테고리 전달
+                    val intent = Intent().apply {
+                        putExtra("SELECTED_CATEGORY5", selectedText5)
+
+                    }
+                    targetFragment?.onActivityResult(targetRequestCode, Activity.RESULT_OK, intent)
+                    dismiss()
                 } else {
                     Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
                 }
             }
 
+
             return view
         }
     }
-
 
     private fun performSearch(query: String) {
         database.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -300,34 +411,19 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                     filteredResults.forEach { result ->
                         val radioButton = RadioButton(context).apply {
                             text = result
-                            buttonTintList = ColorStateList.valueOf(Color.parseColor("#696969"))
+                            setTextColor(Color.BLACK)
+                            buttonTintList = ColorStateList.valueOf(Color.BLACK)
                         }
                         radioGroup.addView(radioButton)
                     }
-                    recyclerView.visibility = View.VISIBLE
                 } else {
-                    recyclerView.visibility = View.GONE
+                    Toast.makeText(context, "No results found", Toast.LENGTH_SHORT).show()
                 }
-
-                // Update RecyclerView
-                results.clear()
-                results.addAll(filteredResults)
-
-                // Send the selected categories to the CoachList activity/fragment
-                val selectedCategories = filteredResults.joinToString(", ")
-                val intent = Intent(requireContext(), CoachList::class.java).apply {
-                    putExtra("SELECTED_CATEGORIES", selectedCategories)
-                }
-                startActivity(intent)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // Handle possible errors.
+                Log.e("DatabaseError", "Database error: ${databaseError.message}")
             }
         })
     }
-
 }
-
-
-
