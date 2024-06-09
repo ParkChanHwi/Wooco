@@ -42,7 +42,7 @@
         <activity android:name=".Menti_mypage_record_star2Activity" />
 
 
-        <activity android:name=".SplashActivity"
+        <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
