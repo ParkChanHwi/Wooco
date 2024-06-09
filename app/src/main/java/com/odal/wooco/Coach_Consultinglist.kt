@@ -24,16 +24,7 @@ class Coach_Consultinglist : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.coach_consultinglist_recycleView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = Coach_Consultinglist_Adapter(consultList.map { consult ->
-            Consult(
-                mentiName = consult.mentiName,
-                coachName = consult.coachName,
-                coachUid = consult.coachUid,
-                mentiUid = consult.mentiUid,
-                mainID = consult.coachUid,
-                lastMessage = consult.lastMessage
-            )
-        })
+        adapter = Coach_Consultinglist_Adapter(consultList)
         recyclerView.adapter = adapter
 
         mAuth = FirebaseAuth.getInstance()
@@ -47,7 +38,7 @@ class Coach_Consultinglist : AppCompatActivity() {
                     consultList.clear()
                     for (consultSnapshot in snapshot.children) {
                         val consult = consultSnapshot.getValue(Consult::class.java)
-                        if (consult != null && consult.mainID == currentUserUid) {
+                        if (consult != null && consult.mainID == currentUserUid) { //
                             consultList.add(consult)
                         }
                     }
