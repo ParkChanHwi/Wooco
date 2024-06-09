@@ -39,15 +39,40 @@ class Coach_Adapter(val itemList: List<CoachDataModel>, val context: Context) : 
         holder.interestTextView.text = item.interest
 
         holder.itemLayout.setOnClickListener {
-            val intent = Intent(context, Menti_coach_introduceActivity3::class.java).apply {
-                putExtra("uid", item.uid)  // 수정: Uid 키를 추가
-                putExtra("name", item.name)  // 수정: name 키를 추가
-                putExtra("school", item.school)  // 수정: school 키를 추가
-                putExtra("interest", item.interest)  // 수정: interest 키를 추가
+            val uid = item.uid
+            val name = item.name
+            val school = item.school
+            val interest = item.interest
+
+            // Menti_coach_introduceActivity3로 가는 Intent
+            val intent3 = Intent(context, Menti_coach_introduceActivity3::class.java).apply {
+                putExtra("uid", uid)
+                putExtra("name", name)
+                putExtra("school", school)
+                putExtra("interest", interest)
             }
-            context.startActivity(intent)
+            context.startActivity(intent3)
+
+            // Menti_coach_introduceActivity2로 가는 Intent
+            val intent2 = Intent(context, Menti_coach_introduceActivity2::class.java).apply {
+                putExtra("uid", uid)
+                putExtra("name", name)
+                putExtra("school", school)
+                putExtra("interest", interest)
+            }
+            context.startActivity(intent2)
+
+            // Menti_coach_introduceActivity1로 가는 Intent
+            val intent1 = Intent(context, Menti_coach_introduceActivity::class.java).apply {
+                putExtra("uid", uid)
+                putExtra("name", name)
+                putExtra("school", school)
+                putExtra("interest", interest)
+            }
+            context.startActivity(intent1)
         }
     }
+
 
     override fun getItemCount(): Int = itemList.size
 }

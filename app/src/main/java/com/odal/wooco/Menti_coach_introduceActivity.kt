@@ -1,9 +1,14 @@
 package com.odal.wooco
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +28,7 @@ class Menti_coach_introduceActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(R.layout.menti_coach_introduce)
 
         // Intent로부터 UID를 가져옴
@@ -31,6 +37,83 @@ class Menti_coach_introduceActivity : AppCompatActivity() {
         // UID를 사용하여 데이터베이스에서 해당 코치의 카테고리 정보를 가져옴
         getCoachCategoryInfoFromDatabase(uid)
         getCoachInfoFromDatabase(uid)
+
+        // ArrowImageView 클릭 리스너
+        val ArrowImageView: ImageView = findViewById(R.id.ArrowImageView)
+        ArrowImageView.setOnClickListener {
+            val intent = Intent(this, CoachList::class.java)
+            startActivity(intent)
+        }
+
+        val coachName: TextView = findViewById(R.id.user_class_text2)
+        val coachSchool: TextView = findViewById(R.id.user_class_text3)
+        val coachInterest: TextView = findViewById(R.id.user_class_text4)
+
+        receiverUid = intent.getStringExtra("uid").toString()
+        receiverName = intent.getStringExtra("name").toString()
+        receiverSchool = intent.getStringExtra("school").toString()
+        receiverInterest = intent.getStringExtra("interest").toString()
+
+        coachName.text = receiverName
+        coachSchool.text = receiverSchool
+        coachInterest.text = receiverInterest
+
+
+        // 예약하기 버튼에 클릭 리스너를 설정
+        val appointmentBtn: Button = findViewById(R.id.appointment_button)
+        appointmentBtn.setOnClickListener {
+            // 인텐트를 생성. Menti_Reserve1 액티비티를 목적지로 지정
+            val intent = Intent(this, Menti_Reserve1::class.  java).apply {
+                // 코치 정보를 인텐트에 추가
+                putExtra("coach_uid", receiverUid)         // 코치의 고유 식별자(uid)
+                putExtra("coach_name", receiverName)       // 코치의 이름
+                putExtra("coach_school", receiverSchool)   // 코치의 학교 또는 회사 정보
+                putExtra("coach_interest", receiverInterest) // 코치의 특기 또는 관심사
+            }
+            // 액티비티를 시작. MentiReserve 액티비티로 이동하면서 코치 정보를 함께 전달.
+            startActivity(intent)
+        }
+
+        // 상담하기 버튼 클릭 리스너
+        val consultBtn: Button = findViewById(R.id.consult_button)
+        consultBtn.setOnClickListener {
+            // 상담 목록 업데이트 함수 호출
+            val intent = Intent(this, ChatActivity::class.java).apply {
+                putExtra("uid", receiverUid)
+                putExtra("name", receiverName)
+                putExtra("chat_type", 1)  // 1 for consultation
+            }
+            startActivity(intent)
+        }
+
+        val coachIntro1: TextView = findViewById(R.id.coach_category)
+        val coachIntro2: TextView = findViewById(R.id.calss_inform)
+        val coachIntro3: TextView = findViewById(R.id.review)
+
+        coachIntro1.setOnClickListener {
+            Toast.makeText(this, "현재 화면입니다.", Toast.LENGTH_SHORT).show()
+            startActivity(intent)
+        }
+
+        coachIntro2.setOnClickListener {
+            val intent2 = Intent(this, Menti_coach_introduceActivity2::class.java).apply {
+                putExtra("uid", receiverUid)
+                putExtra("name", receiverName)
+                putExtra("school", receiverSchool)
+                putExtra("interest", receiverInterest)
+            }
+            startActivity(intent2)
+        }
+
+        coachIntro3.setOnClickListener {
+            val intent3 = Intent(this, Menti_coach_introduceActivity3::class.java).apply {
+                putExtra("uid", receiverUid)
+                putExtra("name", receiverName)
+                putExtra("school", receiverSchool)
+                putExtra("interest", receiverInterest)
+            }
+            startActivity(intent3)
+        }
     }
 
     private fun getCoachCategoryInfoFromDatabase(uid: String) {
@@ -81,7 +164,6 @@ class Menti_coach_introduceActivity : AppCompatActivity() {
 
                     // 가져온 정보를 UI에 표시하는 함수를 호출합니다.
                     Log.d("coach", receiverName)
-                    updateCoachInfo(coachData)
                 }
             }
 
@@ -104,15 +186,5 @@ class Menti_coach_introduceActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
     }
 
-    private fun updateCoachInfo(coachInfo: CoachDataModel) {
-        // 코치 정보를 UI에 표시하기 위해 각 TextView에 값을 설정합니다.
-        val coachNameTextView: TextView = findViewById(R.id.user_class_text2)
-        val coachSchoolTextView: TextView = findViewById(R.id.user_class_text3)
-        val coachInterestTextView: TextView = findViewById(R.id.user_class_text4)
-
-        coachNameTextView.text = coachInfo.name
-        coachSchoolTextView.text = coachInfo.school
-        coachInterestTextView.text = coachInfo.interest
-    }
 
 }

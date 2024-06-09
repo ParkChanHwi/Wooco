@@ -93,5 +93,13 @@
     </RadioGroup>
 
     <!-- 추가 카테고리 버튼들 -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/setting"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="329dp"
+        android:text="설정"
+        android:textColor="@color/white"
+        android:background="@drawable/rectangle_9533"/>
 
 </LinearLayout>

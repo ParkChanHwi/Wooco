@@ -66,13 +66,23 @@ class Menti_coach_introduceActivity3 : AppCompatActivity() {
         coachInterest.text = receiverInterest
 
         coachIntro1.setOnClickListener {
-            val intent = Intent(this, Menti_coach_introduceActivity::class.java)
-            startActivity(intent)
+            val intent1 = Intent(this, Menti_coach_introduceActivity::class.java).apply {
+                putExtra("uid", receiverUid)
+                putExtra("name", receiverName)
+                putExtra("school", receiverSchool)
+                putExtra("interest", receiverInterest)
+            }
+            startActivity(intent1)
         }
 
         coachIntro2.setOnClickListener {
-            val intent = Intent(this, Menti_coach_introduceActivity2::class.java)
-            startActivity(intent)
+            val intent2 = Intent(this, Menti_coach_introduceActivity2::class.java).apply {
+                putExtra("uid", receiverUid)
+                putExtra("name", receiverName)
+                putExtra("school", receiverSchool)
+                putExtra("interest", receiverInterest)
+            }
+            startActivity(intent2)
         }
 
         coachIntro3.setOnClickListener {
