@@ -37,6 +37,8 @@ class CoachList : AppCompatActivity() {
         val chatBtn: ImageView = findViewById(R.id.chat_1)
         val calBtn: ImageView = findViewById(R.id.uiw_date)
         val profileBtn: ImageView = findViewById(R.id.group_513866)
+//        val selectedCategories = intent.getStringExtra("SELECTED_CATEGORIES")?.split(", ") ?: listOf()
+//        coachAdapter = CoachAdapter(coaches, selectedCategories) 추가하려는 코드
 
         // 벨 버튼 클릭 시 coach_menti_request 이동
         val bellBtn: RelativeLayout = findViewById(R.id.bell)

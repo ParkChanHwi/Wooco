@@ -1,5 +1,6 @@
 package com.odal.wooco
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -52,6 +53,28 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             }
         }
 
+        searchButton.setOnClickListener {
+            val query = searchInput.text.toString()
+            if (query.isNotEmpty()) {
+                performSearch(query)
+            }
+        }
+
+        val setButton = view.findViewById<Button>(R.id.category_setting)
+        setButton.setOnClickListener {
+            val selectedRadioButtonId = radioGroup.checkedRadioButtonId
+            if (selectedRadioButtonId != -1) {
+                val selectedRadioButton = view.findViewById<RadioButton>(selectedRadioButtonId)
+                val selectedText = selectedRadioButton.text.toString()
+                // 선택된 라디오 버튼의 텍스트를 가져와서 AND 연산에 추가
+                // 여기서 AND 연산을 수행하는 로직을 추가합니다.
+                Toast.makeText(requireContext(), "선택된 대학교: $selectedText", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
         return view
     }
     class BottomSheet2() : BottomSheetDialogFragment() {
@@ -61,38 +84,28 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            // 부모 클래스의 onCreateView 메서드 호출
             super.onCreateView(inflater, container, savedInstanceState)
-            // 레이아웃 초기화
             val view = inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet, container, false)
 
-            // 버튼 찾기
             val setButton = view.findViewById<Button>(R.id.category_setting)
-
-            // 버튼에 클릭 리스너 설정
             setButton.setOnClickListener {
-                // 선택된 라디오 그룹의 ID 가져오기
                 val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroup)
                 val selectedRadioButtonId = radioGroup.checkedRadioButtonId
 
                 if (selectedRadioButtonId != -1) {
-                    // 선택된 라디오 버튼 찾기
                     val selectedRadioButton = view.findViewById<RadioButton>(selectedRadioButtonId)
-                    // 선택된 라디오 버튼의 텍스트 가져오기
                     val selectedText = selectedRadioButton.text.toString()
-
-                    // 선택된 라디오 버튼의 텍스트 출력
-                    Toast.makeText(requireContext(), "선택된 라디오 버튼: $selectedText", Toast.LENGTH_SHORT).show()
+                    // 선택된 라디오 버튼의 텍스트를 가져와서 OR 연산에 추가
+                    // 여기에 OR 연산에 추가하는 로직을 넣습니다.
                 } else {
-                    // 선택된 라디오 버튼이 없을 경우 처리
                     Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
                 }
             }
 
-            // 완성된 뷰 반환
             return view
         }
     }
+
 
 
     class BottomSheet3() : BottomSheetDialogFragment() {
@@ -102,17 +115,11 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            // 부모 클래스의 onCreateView 메서드 호출
             super.onCreateView(inflater, container, savedInstanceState)
-            // 레이아웃 초기화
             val view = inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet2, container, false)
 
-            // 버튼 찾기
             val setButton = view.findViewById<Button>(R.id.category_setting2)
-
-            // 버튼에 클릭 리스너 설정
             setButton.setOnClickListener {
-                // 각 라디오 버튼의 ID와 해당 텍스트를 매핑하는 맵
                 val radioButtonIds = mapOf(
                     R.id.humanities to "인문사회",
                     R.id.arts to "예체능",
@@ -124,7 +131,6 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
                 val selectedTexts = mutableListOf<String>()
 
-                // 각 라디오 버튼을 순회하며 선택된 버튼의 텍스트를 가져오기
                 for ((radioButtonId, text) in radioButtonIds) {
                     val radioButton = view.findViewById<RadioButton>(radioButtonId)
                     if (radioButton.isChecked) {
@@ -133,17 +139,13 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                 }
 
                 if (selectedTexts.isNotEmpty()) {
-                    // 선택된 라디오 버튼의 텍스트 출력
-                    val message = "선택된 라디오 버튼: ${selectedTexts.joinToString(", ")}"
+                    val message = "선택된 라디오 버튼: ${selectedTexts.joinToString(" OR ")}"
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
                 } else {
-                    // 선택된 라디오 버튼이 없을 경우 처리
                     Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
                 }
             }
 
-
-            // 완성된 뷰 반환
             return view
         }
     }
@@ -156,17 +158,11 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            // 부모 클래스의 onCreateView 메서드 호출
             super.onCreateView(inflater, container, savedInstanceState)
-            // 레이아웃 초기화
             val view = inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet3, container, false)
 
-            // 버튼 찾기
             val setButton = view.findViewById<Button>(R.id.category_setting)
-
-            // 버튼에 클릭 리스너 설정
             setButton.setOnClickListener {
-                // 각 라디오 버튼의 ID와 해당 텍스트를 매핑하는 맵
                 val radioButtonIds = mapOf(
                     R.id.transition to "편입",
                     R.id.company to "기업",
@@ -178,7 +174,6 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
                 val selectedTexts = mutableListOf<String>()
 
-                // 각 라디오 버튼을 순회하며 선택된 버튼의 텍스트를 가져오기
                 for ((radioButtonId, text) in radioButtonIds) {
                     val radioButton = view.findViewById<RadioButton>(radioButtonId)
                     if (radioButton.isChecked) {
@@ -187,20 +182,17 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                 }
 
                 if (selectedTexts.isNotEmpty()) {
-                    // 선택된 라디오 버튼의 텍스트 출력
-                    val message = "선택된 라디오 버튼: ${selectedTexts.joinToString(", ")}"
+                    val message = "선택된 라디오 버튼: ${selectedTexts.joinToString(" OR ")}"
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
                 } else {
-                    // 선택된 라디오 버튼이 없을 경우 처리
                     Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
                 }
             }
 
-
-            // 완성된 뷰 반환
             return view
         }
     }
+
     class BottomSheet5() : BottomSheetDialogFragment() {
 
         override fun onCreateView(
@@ -208,17 +200,11 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            // 부모 클래스의 onCreateView 메서드 호출
             super.onCreateView(inflater, container, savedInstanceState)
-            // 레이아웃 초기화
             val view = inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet4, container, false)
 
-            // 버튼 찾기
             val setButton = view.findViewById<Button>(R.id.category_setting)
-
-            // 버튼에 클릭 리스너 설정
             setButton.setOnClickListener {
-                // 각 라디오 버튼의 ID와 해당 텍스트를 매핑하는 맵
                 val radioButtonIds = mapOf(
                     R.id.history to "한국사",
                     R.id.com to "컴퓨터활용능력",
@@ -229,7 +215,6 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
                 val selectedTexts = mutableListOf<String>()
 
-                // 각 라디오 버튼을 순회하며 선택된 버튼의 텍스트를 가져오기
                 for ((radioButtonId, text) in radioButtonIds) {
                     val radioButton = view.findViewById<RadioButton>(radioButtonId)
                     if (radioButton.isChecked) {
@@ -238,17 +223,13 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                 }
 
                 if (selectedTexts.isNotEmpty()) {
-                    // 선택된 라디오 버튼의 텍스트 출력
-                    val message = "선택된 라디오 버튼: ${selectedTexts.joinToString(", ")}"
+                    val message = "선택된 라디오 버튼: ${selectedTexts.joinToString(" OR ")}"
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
                 } else {
-                    // 선택된 라디오 버튼이 없을 경우 처리
                     Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
                 }
             }
 
-
-            // 완성된 뷰 반환
             return view
         }
     }
@@ -260,17 +241,11 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            // 부모 클래스의 onCreateView 메서드 호출
             super.onCreateView(inflater, container, savedInstanceState)
-            // 레이아웃 초기화
             val view = inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet5, container, false)
 
-            // 버튼 찾기
             val setButton = view.findViewById<Button>(R.id.category_setting)
-
-            // 버튼에 클릭 리스너 설정
             setButton.setOnClickListener {
-                // 각 라디오 버튼의 ID와 해당 텍스트를 매핑하는 맵
                 val radioButtonIds = mapOf(
                     R.id.marketing to "마케팅",
                     R.id.plan to "기획",
@@ -288,7 +263,6 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
                 val selectedTexts = mutableListOf<String>()
 
-                // 각 라디오 버튼을 순회하며 선택된 버튼의 텍스트를 가져오기
                 for ((radioButtonId, text) in radioButtonIds) {
                     val radioButton = view.findViewById<RadioButton>(radioButtonId)
                     if (radioButton.isChecked) {
@@ -297,17 +271,13 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                 }
 
                 if (selectedTexts.isNotEmpty()) {
-                    // 선택된 라디오 버튼의 텍스트 출력
-                    val message = "선택된 라디오 버튼: ${selectedTexts.joinToString(", ")}"
+                    val message = "선택된 라디오 버튼: ${selectedTexts.joinToString(" OR ")}"
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
                 } else {
-                    // 선택된 라디오 버튼이 없을 경우 처리
                     Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
                 }
             }
 
-
-            // 완성된 뷰 반환
             return view
         }
     }
@@ -342,12 +312,22 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                 // Update RecyclerView
                 results.clear()
                 results.addAll(filteredResults)
+
+                // Send the selected categories to the CoachList activity/fragment
+                val selectedCategories = filteredResults.joinToString(", ")
+                val intent = Intent(requireContext(), CoachList::class.java).apply {
+                    putExtra("SELECTED_CATEGORIES", selectedCategories)
+                }
+                startActivity(intent)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
                 // Handle possible errors.
             }
         })
-
     }
+
 }
+
+
+
