@@ -115,44 +115,50 @@ class MentiReserve : AppCompatActivity() {
                     setTitle("예약 확인")
                     setMessage("선택한 날짜: $day\n선택한 시간: $time\n예약을 진행하시겠습니까?")
                     setPositiveButton("예") { _, _ ->
-                        currentUser?.let { user ->
-                            val mentiUid = user.uid
-                            val dataMap = HashMap<String, Any>()
-                            dataMap["menti_uid"] = mentiUid
-                            dataMap["menti_name"] = mentiName
-                            dataMap["coach_receiverUid"] = coach_receiverUid
-                            dataMap["coach_receiverName"] = coach_receiverName
-                            dataMap["reserve_time"] = datetime
-
-                            if (isChange && reserveId != null) {
-                                // 예약 정보 업데이트
-                                dataMap["reserveId"] = reserveId // reserveId를 추가
-                                reserveInfoRef.child(reserveId).updateChildren(dataMap)
-                                    .addOnSuccessListener {
-                                        Toast.makeText(this@MentiReserve, "예약이 성공적으로 변경되었습니다.", Toast.LENGTH_SHORT).show()
-                                        val intent = Intent(this@MentiReserve, Menti_scheduleActivity::class.java)
-                                        startActivity(intent)
-                                    }
-                                    .addOnFailureListener {
-                                        Toast.makeText(this@MentiReserve, "Firebase에 데이터를 업데이트하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
-                                    }
+                        checkForOverlappingReservation(selectedCalendar, selectedCalendar.timeInMillis + 30 * 60 * 1000, reserveId) { isOverlapping ->
+                            if (isOverlapping) {
+                                Toast.makeText(this@MentiReserve, "이미 예약된 시간이 있습니다.", Toast.LENGTH_SHORT).show()
                             } else {
-                                // 새로운 예약 추가
-                                val newReserveId = reserveInfoRef.push().key
-                                if (newReserveId != null) {
-                                    dataMap["reserveId"] = newReserveId // reserveId를 추가
-                                    reserveInfoRef.child(newReserveId).setValue(dataMap)
-                                        .addOnSuccessListener {
-                                            Toast.makeText(this@MentiReserve, "예약이 성공적으로 추가되었습니다.", Toast.LENGTH_SHORT).show()
-                                            val intent = Intent(this@MentiReserve, Menti_scheduleActivity::class.java)
-                                            startActivity(intent)
+                                currentUser?.let { user ->
+                                    val mentiUid = user.uid
+                                    val dataMap = HashMap<String, Any>()
+                                    dataMap["menti_uid"] = mentiUid
+                                    dataMap["menti_name"] = mentiName
+                                    dataMap["coach_receiverUid"] = coach_receiverUid
+                                    dataMap["coach_receiverName"] = coach_receiverName
+                                    dataMap["reserve_time"] = datetime
+
+                                    if (isChange && reserveId != null) {
+                                        // 예약 정보 업데이트
+                                        dataMap["reserveId"] = reserveId // reserveId를 추가
+                                        reserveInfoRef.child(reserveId).updateChildren(dataMap)
+                                            .addOnSuccessListener {
+                                                Toast.makeText(this@MentiReserve, "예약이 성공적으로 변경되었습니다.", Toast.LENGTH_SHORT).show()
+                                                val intent = Intent(this@MentiReserve, Menti_scheduleActivity::class.java)
+                                                startActivity(intent)
+                                            }
+                                            .addOnFailureListener {
+                                                Toast.makeText(this@MentiReserve, "Firebase에 데이터를 업데이트하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                                            }
+                                    } else {
+                                        // 새로운 예약 추가
+                                        val newReserveId = reserveInfoRef.push().key
+                                        if (newReserveId != null) {
+                                            dataMap["reserveId"] = newReserveId // reserveId를 추가
+                                            reserveInfoRef.child(newReserveId).setValue(dataMap)
+                                                .addOnSuccessListener {
+                                                    Toast.makeText(this@MentiReserve, "예약이 성공적으로 추가되었습니다.", Toast.LENGTH_SHORT).show()
+                                                    val intent = Intent(this@MentiReserve, Menti_scheduleActivity::class.java)
+                                                    startActivity(intent)
+                                                }
+                                                .addOnFailureListener {
+                                                    Toast.makeText(this@MentiReserve, "Firebase에 데이터를 저장하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                                                }
+                                        } else {
+                                            Log.e("MentiReserve", "Failed to generate reservation ID")
+                                            Toast.makeText(this@MentiReserve, "예약 ID를 생성하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
                                         }
-                                        .addOnFailureListener {
-                                            Toast.makeText(this@MentiReserve, "Firebase에 데이터를 저장하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
-                                        }
-                                } else {
-                                    Log.e("MentiReserve", "Failed to generate reservation ID")
-                                    Toast.makeText(this@MentiReserve, "예약 ID를 생성하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                                    }
                                 }
                             }
                         }
@@ -165,5 +171,36 @@ class MentiReserve : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun checkForOverlappingReservation(startDateTime: Calendar, endDateTime: Long, excludeReserveId: String?, callback: (Boolean) -> Unit) {
+        val query = reserveInfoRef.orderByChild("coach_receiverUid").equalTo(coach_receiverUid)
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (reservationSnapshot in dataSnapshot.children) {
+                    val reserveId = reservationSnapshot.child("reserveId").getValue(String::class.java)
+                    if (reserveId == excludeReserveId) continue
+
+                    val reserveTime = reservationSnapshot.child("reserve_time").getValue(String::class.java)
+                    if (reserveTime != null) {
+                        val reserveDateTime = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).parse(reserveTime)
+                        reserveDateTime?.let {
+                            val reserveCalendar = Calendar.getInstance().apply { time = it }
+                            val reserveEndDateTime = reserveCalendar.timeInMillis + 30 * 60 * 1000
+                            if (startDateTime.timeInMillis < reserveEndDateTime && endDateTime > reserveCalendar.timeInMillis) {
+                                callback(true)
+                                return
+                            }
+                        }
+                    }
+                }
+                callback(false)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.e("MentiReserve", "Failed to read reservation info: ${databaseError.message}")
+                callback(false)
+            }
+        })
     }
 }
