@@ -67,7 +67,7 @@ class ChatActivity : AppCompatActivity() {
                         receiverRoom = senderUid + receiverUid
 
                         if (chatType == 1) {
-                            // Menti consult list
+                            // 상담 정보 저장
                             val mentiConsult = Consult(
                                 mentiName = mentiName!!,
                                 coachName = receiverName,
@@ -78,7 +78,6 @@ class ChatActivity : AppCompatActivity() {
                             )
                             mDbRef.child("MenticonsultRooms").child(senderRoom!!).setValue(mentiConsult)
 
-                            // Coach consult list
                             val coachConsult = Consult(
                                 mentiName = mentiName!!,
                                 coachName = receiverName,
@@ -89,7 +88,7 @@ class ChatActivity : AppCompatActivity() {
                             )
                             mDbRef.child("CoachconsultRooms").child(receiverRoom).setValue(coachConsult)
                         } else if (chatType == 0) {
-                            // Menti class list
+                            // 수업 정보 저장
                             val mentiClass = Consult(
                                 mentiName = mentiName!!,
                                 coachName = receiverName,
@@ -100,7 +99,6 @@ class ChatActivity : AppCompatActivity() {
                             )
                             mDbRef.child("MenticlassRooms").child(senderRoom!!).setValue(mentiClass)
 
-                            // Coach class list
                             val coachClass = Consult(
                                 mentiName = mentiName!!,
                                 coachName = receiverName,
@@ -131,32 +129,31 @@ class ChatActivity : AppCompatActivity() {
                                 val message = Message(chatMsg, senderUid)
 
                                 val messageRef = if (chatType == 1) FirebaseRef.consultRef else FirebaseRef.classRef
-                                val roomPath = if (chatType == 1) "MenticonsultRooms" else "MenticlassRooms"
-                                val otherRoomPath = if (chatType == 1) "CoachconsultRooms" else "CoachclassRooms"
+                                val messagePath = if (chatType == 1) "consults" else "classes"
 
                                 messageRef.child(senderRoom!!).child("messages").push().setValue(message)
                                     .addOnSuccessListener {
-                                        Log.d(TAG, "chats1 added to Firebase.")
-                                        mDbRef.child(roomPath).child(senderRoom!!).child("lastMessage").setValue(chatMsg)
+                                        Log.d(TAG, "Message added to Firebase.")
+                                        mDbRef.child(messagePath).child(senderRoom!!).child("lastMessage").setValue(chatMsg)
 
                                         messageRef.child(receiverRoom).child("messages").push().setValue(message)
                                             .addOnSuccessListener {
-                                                Log.d(TAG, "chats2 added to Firebase.")
-                                                mDbRef.child(otherRoomPath).child(receiverRoom).child("lastMessage").setValue(chatMsg)
+                                                Log.d(TAG, "Message added to Firebase.")
+                                                mDbRef.child(messagePath).child(receiverRoom).child("lastMessage").setValue(chatMsg)
                                             }
                                             .addOnFailureListener { e ->
-                                                Log.e(TAG, "Error adding chats2 to Firebase.", e)
+                                                Log.e(TAG, "Error adding message to Firebase.", e)
                                             }
                                     }
                                     .addOnFailureListener { e ->
-                                        Log.e(TAG, "Error adding chats1 to Firebase.", e)
+                                        Log.e(TAG, "Error adding message to Firebase.", e)
                                     }
 
                                 chatInput.setText("")
                             }
                         }
 
-                        val messagePath = if (chatType == 1) "consult" else "class"
+                        val messagePath = if (chatType == 1) "consults" else "classes"
                         mDbRef.child(messagePath).child(senderRoom!!).child("messages")
                             .addValueEventListener(object : ValueEventListener {
                                 override fun onDataChange(snapshot: DataSnapshot) {

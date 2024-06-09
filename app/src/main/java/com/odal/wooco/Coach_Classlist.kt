@@ -58,7 +58,7 @@ class Coach_Classlist : AppCompatActivity() {
                                     mentiList.clear()
                                     for (classSnapshot in snapshot.children) {
                                         val classData = classSnapshot.getValue(Class::class.java)
-                                        if (classData != null && classData.mainID == currentUserUid && classData.coachName == currentUserName) {
+                                        if (classData != null && classData.mainID == currentUserUid) {
                                             mentiList.add(Class(classData.mentiName, classData.coachName, classData.coachUid, classData.mentiUid, classData.mainID, classData.lastMessage))
                                         }
                                     }
