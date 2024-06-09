@@ -15,15 +15,17 @@
             android:id="@+id/back"
             android:layout_width="15dp"
             android:layout_height="15dp"
-            android:src="@drawable/arrow"/>
+            android:src="@drawable/arrow"
+            />
         <TextView
-            android:id="@+id/title2"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="전공/과제"
+            android:text="자격증"
             android:textSize="15sp"
             android:textStyle="bold"
-            android:layout_marginLeft="144dp"/>
+            android:layout_marginLeft="149dp"
+            />
     </LinearLayout>
 
     <RadioGroup
@@ -32,53 +34,46 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- 인문/사회 -->
         <RadioButton
-            android:id="@+id/humanities"
+            android:id="@+id/ProfessionalEngineer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="인문/사회"
-            android:buttonTint="#696969"/>
+            android:text="기사/기능사"
+            android:buttonTint="#696969"
+            android:layout_marginLeft="20dp"/>
 
-        <!-- 예체능 -->
         <RadioButton
-            android:id="@+id/arts"
+            android:id="@+id/language"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="예체능"
-            android:buttonTint="#696969"/>
+            android:text=" 어학"
+            android:buttonTint="#696969"
+            android:layout_marginLeft="20dp"/>
 
-        <!-- 보건 -->
         <RadioButton
-            android:id="@+id/medicine"
+            android:id="@+id/computer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="보건"
-            android:buttonTint="#696969"/>
+            android:text=" 컴퓨터활용능력"
+            android:buttonTint="#696969"
+            android:layout_marginLeft="20dp"/>
 
-        <!-- 공학 -->
         <RadioButton
-            android:id="@+id/engineering"
+            android:id="@+id/khistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="공학"
-            android:buttonTint="#696969"/>
+            android:text=" 한국사"
+            android:buttonTint="#696969"
+            android:layout_marginLeft="20dp"/>
 
-        <!-- 교육 -->
         <RadioButton
-            android:id="@+id/education"
+            android:id="@+id/etc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="교육"
-            android:buttonTint="#696969"/>
+            android:text=" 기타"
+            android:buttonTint="#696969"
+            android:layout_marginLeft="20dp"/>
 
-        <!-- 자연 -->
-        <RadioButton
-            android:id="@+id/nature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="자연"
-            android:buttonTint="#696969"/>
 
     </RadioGroup>
 
@@ -88,7 +83,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:text="설정"
-        android:textColor="@android:color/white"
-        android:background="@drawable/rectangle_9533" />
+        android:textColor="@color/white"
+        android:background="@drawable/rectangle_9533"
+        android:onClick="onSettingButtonClick" />
 
 </LinearLayout>

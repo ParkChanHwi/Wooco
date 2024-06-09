@@ -81,8 +81,8 @@ class Menti_coach_introduceActivity3 : AppCompatActivity() {
 
         // 예약하기 버튼에 클릭 리스너를 설정
         appointmentBtn.setOnClickListener {
-            // 인텐트를 생성. MentiReserve 액티비티를 목적지로 지정
-            val intent = Intent(this, MentiReserve::class.  java).apply {
+            // 인텐트를 생성. Menti_Reserve1 액티비티를 목적지로 지정
+            val intent = Intent(this, Menti_Reserve1::class.  java).apply {
                 // 코치 정보를 인텐트에 추가
                 putExtra("coach_uid", receiverUid)         // 코치의 고유 식별자(uid)
                 Log.d("UserDisplayName", "Current user display ID: $receiverUid")

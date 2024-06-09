@@ -33,6 +33,8 @@
         <activity android:name=".Menti_coach_introduceActivity3" />
         <activity android:name=".Coach_menti_request" />
         <activity android:name=".MentiReserve" />
+        <activity android:name=".Menti_Reserve1" />
+
         <activity android:name=".CoachReserve" />
         <activity android:name=".Menti_mypage_woocoinActivity" />
         <activity android:name=".Coach_mypage_woocoin_exchangeActivity" />
