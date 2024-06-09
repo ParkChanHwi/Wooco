@@ -51,7 +51,7 @@ class Coach_Classlist : AppCompatActivity() {
                         val currentUserName = userDataModel?.nickname
 
                         if (currentUserName != null) {
-                            databaseRef = FirebaseDatabase.getInstance().reference.child("classRooms")
+                            databaseRef = FirebaseDatabase.getInstance().reference.child("CoachclassRooms")
                             // 클래스 목록 가져오기
                             databaseRef.addValueEventListener(object : ValueEventListener {
                                 override fun onDataChange(snapshot: DataSnapshot) {

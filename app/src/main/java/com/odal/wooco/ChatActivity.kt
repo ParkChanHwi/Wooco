@@ -83,8 +83,8 @@ class ChatActivity : AppCompatActivity() {
 
                         senderRoom = receiverUid + senderUid
                         receiverRoom = senderUid + receiverUid
-                        mDbRef.child("consultRooms").child(senderRoom!!).setValue(consult)
-                        mDbRef.child("consultRooms").child(receiverRoom).setValue(consult2)
+                        mDbRef.child("MenticonsultRooms").child(senderRoom!!).setValue(consult)
+                        mDbRef.child("CoachconsultRooms").child(receiverRoom).setValue(consult2)
 
                         otherName.text = receiverName
 
@@ -107,12 +107,12 @@ class ChatActivity : AppCompatActivity() {
                                 FirebaseRef.consultRef.child(senderRoom!!).child("messages").push().setValue(message)
                                     .addOnSuccessListener {
                                         Log.d(TAG, "chats1 added to Firebase.")
-                                        mDbRef.child("consultRooms").child(senderRoom!!).child("lastMessage").setValue(chatMsg)
+                                        mDbRef.child("MenticonsultRooms").child(senderRoom!!).child("lastMessage").setValue(chatMsg)
 
                                         FirebaseRef.consultRef.child(receiverRoom).child("messages").push().setValue(message)
                                             .addOnSuccessListener {
                                                 Log.d(TAG, "chats2 added to Firebase.")
-                                                mDbRef.child("consultRooms").child(receiverRoom).child("lastMessage").setValue(chatMsg)
+                                                mDbRef.child("MenticonsultRooms").child(receiverRoom).child("lastMessage").setValue(chatMsg)
                                             }
                                             .addOnFailureListener { e ->
                                                 Log.e(TAG, "Error adding chats2 to Firebase.", e)
@@ -131,12 +131,12 @@ class ChatActivity : AppCompatActivity() {
                                 FirebaseRef.classRef.child(senderRoom!!).child("messages").push().setValue(message)
                                     .addOnSuccessListener {
                                         Log.d(TAG, "chats1 added to Firebase.")
-                                        mDbRef.child("classRooms").child(senderRoom!!).child("lastMessage").setValue(chatMsg)
+                                        mDbRef.child("MenticlassRooms").child(senderRoom!!).child("lastMessage").setValue(chatMsg)
 
                                         FirebaseRef.classRef.child(receiverRoom).child("messages").push().setValue(message)
                                             .addOnSuccessListener {
                                                 Log.d(TAG, "chats2 added to Firebase.")
-                                                mDbRef.child("classRooms").child(receiverRoom).child("lastMessage").setValue(chatMsg)
+                                                mDbRef.child("MenticlassRooms").child(receiverRoom).child("lastMessage").setValue(chatMsg)
                                             }
                                             .addOnFailureListener { e ->
                                                 Log.e(TAG, "Error adding chats2 to Firebase.", e)

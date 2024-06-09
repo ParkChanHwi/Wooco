@@ -32,7 +32,7 @@ class Menti_Classlist : AppCompatActivity() {
         val currentUserUid = mAuth.currentUser?.uid
 
         if (currentUserUid != null) {
-            databaseRef = FirebaseDatabase.getInstance().reference.child("classRooms")
+            databaseRef = FirebaseDatabase.getInstance().reference.child("MenticlassRooms")
             // 클래스 목록 가져오기
             databaseRef.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {

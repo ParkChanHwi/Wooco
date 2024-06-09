@@ -40,7 +40,7 @@ class Coach_Consultinglist : AppCompatActivity() {
                         val currentUserName = userDataModel?.nickname
 
                         if (currentUserName != null) {
-                            databaseRef = FirebaseDatabase.getInstance().reference.child("consultRooms")
+                            databaseRef = FirebaseDatabase.getInstance().reference.child("CoachconsultRooms")
                             // 채팅방 목록 가져오기
                             databaseRef.addValueEventListener(object : ValueEventListener {
                                 override fun onDataChange(snapshot: DataSnapshot) {

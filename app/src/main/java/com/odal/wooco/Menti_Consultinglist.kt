@@ -30,7 +30,7 @@ class Menti_Counsultinglist : AppCompatActivity() {
         val currentUserUid = mAuth.currentUser?.uid
 
         if (currentUserUid != null) {
-            databaseRef = FirebaseDatabase.getInstance().reference.child("consultRooms")
+            databaseRef = FirebaseDatabase.getInstance().reference.child("MenticonsultRooms")
             // 채팅방 목록 가져오기
             databaseRef.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
