@@ -34,6 +34,7 @@
         android:layout_marginTop="69dp"
         android:background="@android:color/darker_gray" />
 
+
     <TextView
         android:id="@+id/woocoin_rectangle"
         android:layout_width="411dp"
@@ -48,11 +49,14 @@
 
     <TextView
         android:id="@+id/woocoin_rectangle2"
-        android:layout_width="27dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="103dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="25dp"
+        android:minWidth="25dp"
+        android:layout_marginTop="100dp"
         android:layout_marginStart="190dp"
         android:textStyle="bold"
+        android:textSize="20dp"
         android:textColor="#F89B00"
         android:gravity="center"
         />
@@ -62,8 +66,9 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="103dp"
-        android:layout_marginStart="217dp"
         android:text="개"
+        android:layout_toRightOf="@+id/woocoin_rectangle2"
+        android:layout_alignBaseline="@+id/woocoin_rectangle2"
         android:textStyle="bold"
         android:textColor="#F89B00"
         android:gravity="center_vertical"
@@ -113,7 +118,7 @@
         android:layout_width="411dp"
         android:layout_height="61dp"
         android:layout_marginTop="315dp"
-       >
+        >
 
         <ImageView
             android:layout_width="38dp"
