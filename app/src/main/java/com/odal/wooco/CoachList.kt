@@ -1,6 +1,5 @@
 package com.odal.wooco
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -111,29 +110,34 @@ class CoachList : AppCompatActivity() {
         val currentTime = Date(System.currentTimeMillis())
         Log.d("CoachList", "Current time: $currentTime")
 
-
-
         reserveInfoRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (dataSnapshot in snapshot.children) {
                     val reserve = dataSnapshot.getValue(ReserveDataModel::class.java)
                     reserve?.let {
-                        val reserveTime = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).parse(it.reserve_time)
-                        Log.d("CoachList", " reserveTime: $reserveTime")
+                        val reserveTimeString = it.reserve_time
+                        if (reserveTimeString != null) {
+                            val reserveTime = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).parse(reserveTimeString)
+                            Log.d("CoachList", "reserveTime: $reserveTime")
 
-                        if (reserveTime != null && reserveTime.before(currentTime)) {
-                            // Move to finishClassInfo
-                            val reserveId = dataSnapshot.key!!
-                            finishClassInfoRef.child(reserveId).setValue(it).addOnSuccessListener {
-                                // Remove from reserveInfo
-                                reserveInfoRef.child(reserveId).removeValue().addOnSuccessListener {
-                                    Log.d("CoachList", "Moved reservation to finishClassInfo: $reserveId")
+                            if (reserveTime != null && reserveTime.before(currentTime)) {
+                                // Move to finishClassInfo
+                                val reserveId = dataSnapshot.key!!
+                                finishClassInfoRef.child(reserveId).setValue(it).addOnSuccessListener {
+                                    // Remove from reserveInfo
+                                    reserveInfoRef.child(reserveId).removeValue().addOnSuccessListener {
+                                        Log.d("CoachList", "Moved reservation to finishClassInfo: $reserveId")
+                                    }.addOnFailureListener { e ->
+                                        Log.e("CoachList", "Failed to remove reservation: ${e.message}")
+                                    }
                                 }.addOnFailureListener { e ->
-                                    Log.e("CoachList", "Failed to remove reservation: ${e.message}")
+                                    Log.e("CoachList", "Failed to move reservation: ${e.message}")
                                 }
-                            }.addOnFailureListener { e ->
-                                Log.e("CoachList", "Failed to move reservation: ${e.message}")
+                            } else {
+
                             }
+                        } else {
+                            Log.e("CoachList", "reserveTime is null for reservation: ${dataSnapshot.key}")
                         }
                     }
                 }
@@ -144,5 +148,4 @@ class CoachList : AppCompatActivity() {
             }
         })
     }
-
 }
