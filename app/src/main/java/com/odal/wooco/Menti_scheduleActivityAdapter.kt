@@ -115,59 +115,120 @@ class Menti_sheduleActivityAdapter(private var itemList: List<ReserveDataModel>,
         }
 
         holder.cancelClassButton.setOnClickListener {
-            val reserveId = item.reserveId
-            if (reserveId != null) {
-                // 확인 다이얼로그 표시
+            val dateTimeFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+            val reserveDateTime = dateTimeFormat.parse(item.reserve_time)
+            val currentTime = Calendar.getInstance().time
+            val timeDifference = reserveDateTime.time - currentTime.time
+
+            if (timeDifference < 12 * 60 * 60 * 1000) {
+                // 경고창 표시
                 val builder = AlertDialog.Builder(context)
                 builder.setTitle("수업 취소")
-                builder.setMessage("정말 수업을 취소하시겠습니까?")
+                builder.setMessage("지금 취소하시면 우코인 환불이 불가합니다.\n그래도 계속 진행하시겠습니까?")
+
                 builder.setPositiveButton("예") { dialog, _ ->
-                    // 사용자가 '예' 버튼을 클릭함
-                    val reserveInfoRef = FirebaseDatabase.getInstance().getReference("reserveInfo").child(reserveId)
+                    val reserveId = item.reserveId
+                    if (reserveId != null) {
+                        val reserveInfoRef = FirebaseDatabase.getInstance().getReference("reserveInfo").child(reserveId)
 
-                    reserveInfoRef.removeValue().addOnSuccessListener {
-                        Toast.makeText(context, "예약이 성공적으로 취소되었습니다.", Toast.LENGTH_SHORT).show()
-                        notifyItemRemoved(position)
-                        itemList = itemList.filter { it.reserveId != reserveId }
-                        notifyDataSetChanged()
+                        reserveInfoRef.removeValue().addOnSuccessListener {
+                            Toast.makeText(context, "예약이 성공적으로 취소되었습니다.", Toast.LENGTH_SHORT).show()
+                            notifyItemRemoved(position)
+                            itemList = itemList.filter { it.reserveId != reserveId }
+                            notifyDataSetChanged()
 
-                        // 알림 추가
-                        val notificationRef = FirebaseDatabase.getInstance().getReference("notifications")
-                        val notificationId = notificationRef.push().key
-                        if (notificationId == null) {
-                            Log.e("Menti_sheduleAdapter", "Failed to get notification ID")
-                            return@addOnSuccessListener
+                            // 알림 추가
+                            val notificationRef = FirebaseDatabase.getInstance().getReference("notifications")
+                            val notificationId = notificationRef.push().key
+                            if (notificationId == null) {
+                                Log.e("Menti_sheduleAdapter", "Failed to get notification ID")
+                                return@addOnSuccessListener
+                            }
+                            val notificationMessage =
+                                "${item.coach_receiverName}(코치)님과 ${item.menti_name}(멘티)님의 ${item.reserve_time} 수업이 취소되었습니다."
+
+                            val notificationData = mapOf(
+                                "id" to notificationId,
+                                "coach_receiverName" to item.coach_receiverName,
+                                "menti_name" to item.menti_name,
+                                "message" to notificationMessage,
+                                "timestamp" to System.currentTimeMillis()
+                            )
+
+                            notificationRef.child(notificationId).setValue(notificationData)
+                                .addOnSuccessListener {
+                                    Log.d("Menti_sheduleAdapter", "Notification added successfully")
+                                }
+                                .addOnFailureListener { e ->
+                                    Log.e("Menti_sheduleAdapter", "Failed to add notification: ${e.message}")
+                                }
+                        }.addOnFailureListener { e ->
+                            Toast.makeText(context, "예약을 취소하는 데 실패했습니다: ${e.message}", Toast.LENGTH_SHORT).show()
+                            Log.e("Menti_sheduleAdapter", "Failed to cancel reservation: ${e.message}")
                         }
-                        val notificationMessage =
-                            "${item.coach_receiverName}(코치)님과 ${item.menti_name}(멘티)님의 ${item.reserve_time} 수업이 취소되었습니다."
-
-                        val notificationData = mapOf(
-                            "id" to notificationId,
-                            "coach_receiverName" to item.coach_receiverName,
-                            "menti_name" to item.menti_name,
-                            "message" to notificationMessage,
-                            "timestamp" to System.currentTimeMillis()
-                        )
-
-                        notificationRef.child(notificationId).setValue(notificationData)
-                            .addOnSuccessListener {
-                                Log.d("Menti_sheduleAdapter", "Notification added successfully")
-                            }
-                            .addOnFailureListener { e ->
-                                Log.e("Menti_sheduleAdapter", "Failed to add notification: ${e.message}")
-                            }
-                    }.addOnFailureListener { e ->
-                        Toast.makeText(context, "예약을 취소하는 데 실패했습니다: ${e.message}", Toast.LENGTH_SHORT).show()
-                        Log.e("Menti_sheduleAdapter", "Failed to cancel reservation: ${e.message}")
+                    } else {
+                        Toast.makeText(context, "예약 ID가 null입니다.", Toast.LENGTH_SHORT).show()
                     }
+                    dialog.dismiss()
                 }
                 builder.setNegativeButton("아니요") { dialog, _ ->
-                    // 사용자가 '아니요' 버튼을 클릭함, 다이얼로그 닫기
                     dialog.dismiss()
                 }
                 builder.create().show()
             } else {
-                Toast.makeText(context, "예약 ID가 null입니다.", Toast.LENGTH_SHORT).show()
+                val reserveId = item.reserveId
+                if (reserveId != null) {
+                    // 확인 다이얼로그 표시
+                    val builder = AlertDialog.Builder(context)
+                    builder.setTitle("수업 취소")
+                    builder.setMessage("정말 수업을 취소하시겠습니까?")
+                    builder.setPositiveButton("예") { dialog, _ ->
+                        // 사용자가 '예' 버튼을 클릭함
+                        val reserveInfoRef = FirebaseDatabase.getInstance().getReference("reserveInfo").child(reserveId)
+
+                        reserveInfoRef.removeValue().addOnSuccessListener {
+                            Toast.makeText(context, "예약이 성공적으로 취소되었습니다.", Toast.LENGTH_SHORT).show()
+                            notifyItemRemoved(position)
+                            itemList = itemList.filter { it.reserveId != reserveId }
+                            notifyDataSetChanged()
+
+                            // 알림 추가
+                            val notificationRef = FirebaseDatabase.getInstance().getReference("notifications")
+                            val notificationId = notificationRef.push().key
+                            if (notificationId == null) {
+                                Log.e("Menti_sheduleAdapter", "Failed to get notification ID")
+                                return@addOnSuccessListener
+                            }
+                            val notificationMessage =
+                                "${item.coach_receiverName}(코치)님과 ${item.menti_name}(멘티)님의 ${item.reserve_time} 수업이 취소되었습니다."
+
+                            val notificationData = mapOf(
+                                "id" to notificationId,
+                                "coach_receiverName" to item.coach_receiverName,
+                                "menti_name" to item.menti_name,
+                                "message" to notificationMessage,
+                                "timestamp" to System.currentTimeMillis()
+                            )
+
+                            notificationRef.child(notificationId).setValue(notificationData)
+                                .addOnSuccessListener {
+                                    Log.d("Menti_sheduleAdapter", "Notification added successfully")
+                                }
+                                .addOnFailureListener { e ->
+                                    Log.e("Menti_sheduleAdapter", "Failed to add notification: ${e.message}")
+                                }
+                        }.addOnFailureListener { e ->
+                            Toast.makeText(context, "예약을 취소하는 데 실패했습니다: ${e.message}", Toast.LENGTH_SHORT).show()
+                            Log.e("Menti_sheduleAdapter", "Failed to cancel reservation: ${e.message}")
+                        }
+                    }
+                    builder.setNegativeButton("아니요") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    builder.create().show()
+                } else {
+                    Toast.makeText(context, "예약 ID가 null입니다.", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
