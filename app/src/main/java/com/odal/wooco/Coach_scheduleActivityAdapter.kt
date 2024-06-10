@@ -53,6 +53,8 @@ class CoachScheduleActivityAdapter(private var itemList: List<ReserveDataModel>,
                 builder.create().show()
             } else {
                 val mentiName = item.menti_name
+                Log.d("menti_name", "menti_name: $mentiName")
+
                 val coachName = item.coach_receiverName
                 Log.d("CoachScheduleAdapter", "coachName: $coachName")
                 val coachInfoRef = FirebaseDatabase.getInstance().getReference("coachInfo")
@@ -70,6 +72,7 @@ class CoachScheduleActivityAdapter(private var itemList: List<ReserveDataModel>,
 
                             val intent = Intent(context, CoachReserve::class.java).apply {
                                 putExtra("change", true)
+                                putExtra("mentiName", mentiName)
                                 putExtra("coach_uid", coachId)
                                 putExtra("coach_name", coachName)
                                 putExtra("reserve_id", reserveId)

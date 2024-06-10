@@ -58,6 +58,8 @@ class Menti_sheduleActivityAdapter(private var itemList: List<ReserveDataModel>,
                 builder.create().show()
             } else {
                 val coachName = item.coach_receiverName
+                Log.d("coach_receiverName", "coach_receiverName: $coachName")
+
                 val coachInfoRef = FirebaseDatabase.getInstance().getReference("coachInfo")
                     .orderByChild("name")
                     .equalTo(coachName)
@@ -66,6 +68,8 @@ class Menti_sheduleActivityAdapter(private var itemList: List<ReserveDataModel>,
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         if (dataSnapshot.exists()) {
                             val coachId = dataSnapshot.children.firstOrNull()?.key
+                            Log.d("coachId", "coachId: $coachId")
+
                             val reserveId = item.reserveId
 
                             val intent = Intent(context, MentiReserve::class.java).apply {
