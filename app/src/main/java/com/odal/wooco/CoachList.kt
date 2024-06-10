@@ -155,6 +155,8 @@ class CoachList : AppCompatActivity() {
                 coachAdapter.notifyDataSetChanged()
             }
 
+
+
             override fun onCancelled(error: DatabaseError) {
                 Log.e("Firebase", "Database error: ${error.message}")
             }
