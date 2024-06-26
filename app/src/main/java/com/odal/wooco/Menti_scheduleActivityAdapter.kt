@@ -3,6 +3,7 @@ package com.odal.wooco
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.icu.util.ULocale.Category
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -62,6 +63,7 @@ class Menti_sheduleActivityAdapter(private var itemList: List<ReserveDataModel>,
                     .orderByChild("name")
                     .equalTo(coachName)
 
+               // Log.d("coachName_Menti_sAA", "coachName : $coachName")
                 coachInfoRef.addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         if (dataSnapshot.exists()) {
@@ -73,6 +75,7 @@ class Menti_sheduleActivityAdapter(private var itemList: List<ReserveDataModel>,
                                 putExtra("coach_uid", coachId)
                                 putExtra("coach_name", coachName)
                                 putExtra("reserve_id", reserveId)
+                                // 카테고리 정보 넘겨주기
                             }
                             context.startActivity(intent)
 
