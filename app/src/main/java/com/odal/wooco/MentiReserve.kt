@@ -19,6 +19,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView
+import java.util.Date
 import java.util.Locale
 
 class MentiReserve : AppCompatActivity() {
@@ -196,7 +197,7 @@ class MentiReserve : AppCompatActivity() {
     }
 
     private fun checkForOverlappingReservation(startDateTime: Calendar, endDateTime: Long, excludeReserveId: String?, callback: (Boolean) -> Unit) {
-        val query = reserveInfoRef.orderByChild("coach_receiverUid").equalTo(coach_receiverUid)
+        val query = reserveInfoRef.orderByChild("menti_uid").equalTo(auth.currentUser?.uid)
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (reservationSnapshot in dataSnapshot.children) {
@@ -209,22 +210,28 @@ class MentiReserve : AppCompatActivity() {
                         reserveDateTime?.let {
                             val reserveCalendar = Calendar.getInstance().apply { time = it }
                             val reserveEndDateTime = reserveCalendar.timeInMillis + 30 * 60 * 1000
+
                             if (startDateTime.timeInMillis < reserveEndDateTime && endDateTime > reserveCalendar.timeInMillis) {
                                 callback(true)
                                 return
                             }
+                        } ?: run {
+                            Log.e("CheckReservation", "Failed to parse reserveTime: $reserveTime")
                         }
+                    } else {
+                        Log.e("CheckReservation", "reserveTime is null for reservation ID: $reserveId")
                     }
                 }
                 callback(false)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                Log.e("MentiReserve", "Failed to read reservation info: ${databaseError.message}")
+                Log.e("CheckReservation", "Failed to read reservation info: ${databaseError.message}")
                 callback(false)
             }
         })
     }
+
 
     // Function to create coach and menti class rooms
     private fun createClassRooms(mentiUid: String, coachUid: String, mentiName: String, coachName: String) {

@@ -105,6 +105,14 @@ class CoachReserve : AppCompatActivity() {
                 set(Calendar.MINUTE, minute)
             }
 
+            // Check if selected date is today
+            val today = Calendar.getInstance()
+            if (selectedCalendar.get(Calendar.YEAR) == today.get(Calendar.YEAR) &&
+                selectedCalendar.get(Calendar.DAY_OF_YEAR) == today.get(Calendar.DAY_OF_YEAR)) {
+                Toast.makeText(this, "당일 예약 변경은 불가합니다. 다른 날짜를 선택해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             // Check if selected date and time are in the past
             if (selectedCalendar.before(Calendar.getInstance())) {
                 Toast.makeText(this, "올바른 날짜와 시간으로 예약해주세요", Toast.LENGTH_SHORT).show()
