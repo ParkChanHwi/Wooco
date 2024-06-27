@@ -76,7 +76,7 @@ class Menti_sheduleActivityAdapter(private var itemList: List<ReserveDataModel>,
                                 putExtra("coach_uid", coachId)
                                 putExtra("coach_name", coachName)
                                 putExtra("reserve_id", reserveId)
-                                putExtra("selectedCategory", selected_category)
+                                putExtra("selected_category", selected_category)
 
                                 // 카테고리 정보 넘겨주기
                             }
