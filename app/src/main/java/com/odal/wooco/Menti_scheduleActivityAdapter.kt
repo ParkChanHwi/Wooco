@@ -3,6 +3,7 @@ package com.odal.wooco
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.icu.util.ULocale.Category
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -58,25 +59,26 @@ class Menti_sheduleActivityAdapter(private var itemList: List<ReserveDataModel>,
                 builder.create().show()
             } else {
                 val coachName = item.coach_receiverName
-                Log.d("coach_receiverName", "coach_receiverName: $coachName")
-
                 val coachInfoRef = FirebaseDatabase.getInstance().getReference("coachInfo")
                     .orderByChild("name")
                     .equalTo(coachName)
 
+                // Log.d("coachName_Menti_sAA", "coachName : $coachName")
                 coachInfoRef.addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         if (dataSnapshot.exists()) {
                             val coachId = dataSnapshot.children.firstOrNull()?.key
-                            Log.d("coachId", "coachId: $coachId")
-
                             val reserveId = item.reserveId
+                            val selected_category = item.selected_category
 
                             val intent = Intent(context, MentiReserve::class.java).apply {
                                 putExtra("change", true)
                                 putExtra("coach_uid", coachId)
                                 putExtra("coach_name", coachName)
                                 putExtra("reserve_id", reserveId)
+                                putExtra("selectedCategory", selected_category)
+
+                                // 카테고리 정보 넘겨주기
                             }
                             context.startActivity(intent)
 

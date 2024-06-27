@@ -2,6 +2,7 @@ package com.odal.wooco
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -26,21 +27,20 @@ class Menti_Reserve1 : AppCompatActivity(), Menti_Reserve1_bottom_sheet1.OnCateg
         coachName = intent.getStringExtra("coach_name")
 
         val reserveButton: Button = findViewById(R.id.reserve_button)
+
         reserveButton.setOnClickListener {
             val category = selectedCategory
 
-            reserveButton.setOnClickListener {
-                val category = selectedCategory
-
-                // 다음 액티비티로 인텐트 생성
-                val intent = Intent(this, MentiReserve::class.java)
-                intent.putExtra("selectedCategory", category) // selectedCategory 추가
-                intent.putExtra("coach_uid", coach_uid)
-                intent.putExtra("coachName", coachName)
-                startActivity(intent)
-            }
-
+            // 다음 액티비티로 인텐트 생성
+            val intent = Intent(this, MentiReserve::class.java)
+            intent.putExtra("selectedCategory", category) // selectedCategory 추가
+            Log.d("selected Category", "selected Category : $category")
+            intent.putExtra("coach_uid", coach_uid)
+            intent.putExtra("coach_name", coachName)
+            startActivity(intent)
         }
+
+
 
         val kategori2: Button = findViewById(R.id.kategori2)
         kategori2.setOnClickListener {

@@ -7,4 +7,5 @@ class ReserveDataModel (
     val coach_receiverName : String? = null,
     val reserve_time : String? = null,
     val reserveId: String? = null, // 예약 ID 추가
+    val selected_category: String? = null,
 )
