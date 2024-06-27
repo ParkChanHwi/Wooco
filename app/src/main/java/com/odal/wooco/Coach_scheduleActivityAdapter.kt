@@ -67,6 +67,8 @@ class CoachScheduleActivityAdapter(private var itemList: List<ReserveDataModel>,
                         if (dataSnapshot.exists()) {
                             val coachId = dataSnapshot.children.firstOrNull()?.key
                             val reserveId = item.reserveId
+                            val selectedCategory = item.selected_category
+
 
                             Log.d("CoachScheduleAdapter", "reserve_id to send: $reserveId, coach_id: $coachId")
 
@@ -76,6 +78,8 @@ class CoachScheduleActivityAdapter(private var itemList: List<ReserveDataModel>,
                                 putExtra("coach_uid", coachId)
                                 putExtra("coach_name", coachName)
                                 putExtra("reserve_id", reserveId)
+                                putExtra("selectedCategory", selectedCategory)
+
                             }
                             context.startActivity(intent)
 

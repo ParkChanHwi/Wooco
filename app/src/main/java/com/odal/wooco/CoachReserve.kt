@@ -112,11 +112,13 @@ class CoachReserve : AppCompatActivity() {
                 val day = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(selectedCalendar.time)
                 val time = String.format("%02d:%02d", hour, minute)
                 val datetime = "$day $time"
+                val selectedCategory = intent.getStringExtra("selectedCategory") ?: "미선택" // 선택한 카테고리 가져오기
+
 
                 // 예약 확인을 위한 다이얼로그
                 AlertDialog.Builder(this).apply {
                     setTitle("예약 확인")
-                    setMessage("선택한 날짜: $day\n선택한 시간: $time\n예약을 진행하시겠습니까?")
+                    setMessage("선택한 날짜: $day\n선택한 시간: $time\n선택한 카테고리: $selectedCategory\n예약을 진행하시겠습니까?")
                     setPositiveButton("예") { _, _ ->
                         checkForOverlappingReservation(selectedCalendar, selectedCalendar.timeInMillis + 30 * 60 * 1000, reserveId) { isOverlapping ->
                             if (isOverlapping) {
@@ -130,6 +132,8 @@ class CoachReserve : AppCompatActivity() {
                                         dataMap["coach_receiverUid"] = coach_receiverUid
                                         dataMap["coach_receiverName"] = coach_receiverName
                                         dataMap["reserve_time"] = datetime
+                                        dataMap["selected_category"] = selectedCategory // 선택한 카테고리 정보 추가
+
 
                                         if (isChange && reserveId != null) {
                                             // 예약 정보 업데이트
@@ -214,9 +218,9 @@ class CoachReserve : AppCompatActivity() {
         userInfoRef.orderByChild("nickname").equalTo(mentiName).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    for (userSnapshot in dataSnapshot.children) {
-                        val mentiUid = userSnapshot.key
-                        callback(mentiUid)
+                    for (snapshot in dataSnapshot.children) {
+                        val uid = snapshot.key
+                        callback(uid)
                         return
                     }
                 }
@@ -224,7 +228,7 @@ class CoachReserve : AppCompatActivity() {
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                Log.e("CoachReserve", "Failed to fetch menti UID: ${databaseError.message}")
+                Log.e("CoachReserve", "Failed to get Menti UID: ${databaseError.message}")
                 callback(null)
             }
         })
