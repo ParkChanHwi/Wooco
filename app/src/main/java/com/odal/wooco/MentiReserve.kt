@@ -125,7 +125,7 @@ class MentiReserve : AppCompatActivity() {
             val day = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(selectedCalendar.time)
             val time = String.format("%02d:%02d", hour, minute)
             val datetime = "$day $time"
-            val selectedCategory = intent.getStringExtra("selected_category") ?: "미선택" // 선택한 카테고리 가져오기
+            val selectedCategory = intent.getStringExtra("selectedCategory") ?: "미선택" // 선택한 카테고리 가져오기
 
             Log.d("selectedCategory", "selectedCategory : $selectedCategory")
             // Toast.makeText(this, "선택한 날짜: $day\n선택한 시간: $time", Toast.LENGTH_LONG).show()

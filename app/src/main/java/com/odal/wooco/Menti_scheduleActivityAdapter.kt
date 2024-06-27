@@ -69,14 +69,14 @@ class Menti_sheduleActivityAdapter(private var itemList: List<ReserveDataModel>,
                         if (dataSnapshot.exists()) {
                             val coachId = dataSnapshot.children.firstOrNull()?.key
                             val reserveId = item.reserveId
-                            val selected_category = item.selected_category
+                            val selectedCategory = item.selected_category
 
                             val intent = Intent(context, MentiReserve::class.java).apply {
                                 putExtra("change", true)
                                 putExtra("coach_uid", coachId)
                                 putExtra("coach_name", coachName)
                                 putExtra("reserve_id", reserveId)
-                                putExtra("selected_category", selected_category)
+                                putExtra("selectedCategory", selectedCategory)
 
                                 // 카테고리 정보 넘겨주기
                             }
