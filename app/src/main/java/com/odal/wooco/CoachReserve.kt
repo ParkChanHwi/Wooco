@@ -131,7 +131,7 @@ class CoachReserve : AppCompatActivity() {
                             if (mentiUid != null) {
                                 checkForOverlappingReservation(mentiUid, selectedCalendar, selectedCalendar.timeInMillis + 30 * 60 * 1000, reserveId) { isOverlapping ->
                                     if (isOverlapping) {
-                                        Toast.makeText(this@CoachReserve, "이미 예약된 시간이 있습니다.", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(this@CoachReserve, "이미 예약되어 있는 시간입니다.", Toast.LENGTH_SHORT).show()
                                     } else {
                                         val dataMap = HashMap<String, Any>()
                                         dataMap["menti_uid"] = mentiUid

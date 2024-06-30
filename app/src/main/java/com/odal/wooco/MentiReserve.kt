@@ -138,7 +138,7 @@ class MentiReserve : AppCompatActivity() {
                 setPositiveButton("예") { _, _ ->
                     checkForOverlappingReservation(selectedCalendar, selectedCalendar.timeInMillis + 30 * 60 * 1000, reserveId) { isOverlapping ->
                         if (isOverlapping) {
-                            Toast.makeText(this@MentiReserve, "이미 예약된 시간이 있습니다.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@MentiReserve, "이미 예약되어 있는 시간이 입니다.", Toast.LENGTH_SHORT).show()
                         } else {
                             currentUser?.let { user ->
                                 val mentiUid = user.uid
