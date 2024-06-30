@@ -197,41 +197,62 @@ class MentiReserve : AppCompatActivity() {
     }
 
     private fun checkForOverlappingReservation(startDateTime: Calendar, endDateTime: Long, excludeReserveId: String?, callback: (Boolean) -> Unit) {
-        val query = reserveInfoRef.orderByChild("menti_uid").equalTo(auth.currentUser?.uid)
-        query.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for (reservationSnapshot in dataSnapshot.children) {
-                    val reserveId = reservationSnapshot.child("reserveId").getValue(String::class.java)
-                    if (reserveId == excludeReserveId) continue
+        val currentUserUid = auth.currentUser?.uid
+        if (currentUserUid == null) {
+            callback(false)
+            return
+        }
 
-                    val reserveTime = reservationSnapshot.child("reserve_time").getValue(String::class.java)
-                    if (reserveTime != null) {
-                        val reserveDateTime = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).parse(reserveTime)
-                        reserveDateTime?.let {
-                            val reserveCalendar = Calendar.getInstance().apply { time = it }
-                            val reserveEndDateTime = reserveCalendar.timeInMillis + 30 * 60 * 1000
+        val queries = listOf(
+            reserveInfoRef.orderByChild("menti_uid").equalTo(currentUserUid),
+            reserveInfoRef.orderByChild("coach_receiverUid").equalTo(coach_receiverUid)
+        )
 
-                            if (startDateTime.timeInMillis < reserveEndDateTime && endDateTime > reserveCalendar.timeInMillis) {
-                                callback(true)
-                                return
+        var isOverlappingFound = false
+        var pendingQueries = queries.size
+
+        for (query in queries) {
+            query.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (reservationSnapshot in dataSnapshot.children) {
+                        val reserveId = reservationSnapshot.child("reserveId").getValue(String::class.java)
+                        if (reserveId == excludeReserveId) continue
+
+                        val reserveTime = reservationSnapshot.child("reserve_time").getValue(String::class.java)
+                        if (reserveTime != null) {
+                            val reserveDateTime = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).parse(reserveTime)
+                            reserveDateTime?.let {
+                                val reserveCalendar = Calendar.getInstance().apply { time = it }
+                                val reserveEndDateTime = reserveCalendar.timeInMillis + 30 * 60 * 1000
+
+                                if (startDateTime.timeInMillis < reserveEndDateTime && endDateTime > reserveCalendar.timeInMillis) {
+                                    isOverlappingFound = true
+                                    callback(true)
+                                    return
+                                }
+                            } ?: run {
+                                Log.e("CheckReservation", "Failed to parse reserveTime: $reserveTime")
                             }
-                        } ?: run {
-                            Log.e("CheckReservation", "Failed to parse reserveTime: $reserveTime")
+                        } else {
+                            Log.e("CheckReservation", "reserveTime is null for reservation ID: $reserveId")
                         }
-                    } else {
-                        Log.e("CheckReservation", "reserveTime is null for reservation ID: $reserveId")
+                    }
+                    pendingQueries -= 1
+                    if (pendingQueries == 0 && !isOverlappingFound) {
+                        callback(false)
                     }
                 }
-                callback(false)
-            }
 
-            override fun onCancelled(databaseError: DatabaseError) {
-                Log.e("CheckReservation", "Failed to read reservation info: ${databaseError.message}")
-                callback(false)
-            }
-        })
+                override fun onCancelled(databaseError: DatabaseError) {
+                    Log.e("CheckReservation", "Failed to read reservation info: ${databaseError.message}")
+                    pendingQueries -= 1
+                    if (pendingQueries == 0 && !isOverlappingFound) {
+                        callback(false)
+                    }
+                }
+            })
+        }
     }
-
 
     // Function to create coach and menti class rooms
     private fun createClassRooms(mentiUid: String, coachUid: String, mentiName: String, coachName: String) {

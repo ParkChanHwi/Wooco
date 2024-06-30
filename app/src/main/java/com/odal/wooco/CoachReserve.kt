@@ -23,7 +23,7 @@ import java.util.Locale
 class CoachReserve : AppCompatActivity() {
     private lateinit var coach_receiverUid: String // Menti_coach_introduceActivity에서 받아온 코치 UID정보
     private lateinit var coach_receiverName: String
-    private lateinit var coachName: String // 멘티의 이름 변수 추가
+    private lateinit var coachName: String // 코치의 이름 변수 추가
     private lateinit var mentiName: String // 멘티의 이름 변수 추가
 
     private lateinit var auth: FirebaseAuth
@@ -122,18 +122,17 @@ class CoachReserve : AppCompatActivity() {
                 val datetime = "$day $time"
                 val selectedCategory = intent.getStringExtra("selectedCategory") ?: "미선택" // 선택한 카테고리 가져오기
 
-
                 // 예약 확인을 위한 다이얼로그
                 AlertDialog.Builder(this).apply {
                     setTitle("예약 확인")
                     setMessage("선택한 날짜: $day\n선택한 시간: $time\n선택한 카테고리: $selectedCategory\n예약을 진행하시겠습니까?")
                     setPositiveButton("예") { _, _ ->
-                        checkForOverlappingReservation(selectedCalendar, selectedCalendar.timeInMillis + 30 * 60 * 1000, reserveId) { isOverlapping ->
-                            if (isOverlapping) {
-                                Toast.makeText(this@CoachReserve, "이미 예약된 시간이 있습니다.", Toast.LENGTH_SHORT).show()
-                            } else {
-                                getMentiUidByName(mentiName) { mentiUid ->
-                                    if (mentiUid != null) {
+                        getMentiUidByName(mentiName) { mentiUid ->
+                            if (mentiUid != null) {
+                                checkForOverlappingReservation(mentiUid, selectedCalendar, selectedCalendar.timeInMillis + 30 * 60 * 1000, reserveId) { isOverlapping ->
+                                    if (isOverlapping) {
+                                        Toast.makeText(this@CoachReserve, "이미 예약된 시간이 있습니다.", Toast.LENGTH_SHORT).show()
+                                    } else {
                                         val dataMap = HashMap<String, Any>()
                                         dataMap["menti_uid"] = mentiUid
                                         dataMap["menti_name"] = mentiName
@@ -141,7 +140,6 @@ class CoachReserve : AppCompatActivity() {
                                         dataMap["coach_receiverName"] = coach_receiverName
                                         dataMap["reserve_time"] = datetime
                                         dataMap["selected_category"] = selectedCategory // 선택한 카테고리 정보 추가
-
 
                                         if (isChange && reserveId != null) {
                                             // 예약 정보 업데이트
@@ -174,10 +172,10 @@ class CoachReserve : AppCompatActivity() {
                                                 Toast.makeText(this@CoachReserve, "예약 ID를 생성하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
                                             }
                                         }
-                                    } else {
-                                        Toast.makeText(this@CoachReserve, "멘티 UID를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
                                     }
                                 }
+                            } else {
+                                Toast.makeText(this@CoachReserve, "멘티 UID를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
@@ -191,35 +189,51 @@ class CoachReserve : AppCompatActivity() {
         }
     }
 
-    private fun checkForOverlappingReservation(startDateTime: Calendar, endDateTime: Long, excludeReserveId: String?, callback: (Boolean) -> Unit) {
-        val query = reserveInfoRef.orderByChild("coach_receiverUid").equalTo(coach_receiverUid)
-        query.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for (reservationSnapshot in dataSnapshot.children) {
-                    val reserveId = reservationSnapshot.child("reserveId").getValue(String::class.java)
-                    if (reserveId == excludeReserveId) continue
+    private fun checkForOverlappingReservation(mentiUid: String, startDateTime: Calendar, endDateTime: Long, excludeReserveId: String?, callback: (Boolean) -> Unit) {
+        val queries = listOf(
+            reserveInfoRef.orderByChild("coach_receiverUid").equalTo(coach_receiverUid),
+            reserveInfoRef.orderByChild("menti_uid").equalTo(mentiUid)
+        )
 
-                    val reserveTime = reservationSnapshot.child("reserve_time").getValue(String::class.java)
-                    if (reserveTime != null) {
-                        val reserveDateTime = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).parse(reserveTime)
-                        reserveDateTime?.let {
-                            val reserveCalendar = Calendar.getInstance().apply { time = it }
-                            val reserveEndDateTime = reserveCalendar.timeInMillis + 30 * 60 * 1000
-                            if (startDateTime.timeInMillis < reserveEndDateTime && endDateTime > reserveCalendar.timeInMillis) {
-                                callback(true)
-                                return
+        var isOverlappingFound = false
+        var pendingQueries = queries.size
+
+        for (query in queries) {
+            query.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (reservationSnapshot in dataSnapshot.children) {
+                        val reserveId = reservationSnapshot.child("reserveId").getValue(String::class.java)
+                        if (reserveId == excludeReserveId) continue
+
+                        val reserveTime = reservationSnapshot.child("reserve_time").getValue(String::class.java)
+                        if (reserveTime != null) {
+                            val reserveDateTime = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).parse(reserveTime)
+                            reserveDateTime?.let {
+                                val reserveCalendar = Calendar.getInstance().apply { time = it }
+                                val reserveEndDateTime = reserveCalendar.timeInMillis + 30 * 60 * 1000
+                                if (startDateTime.timeInMillis < reserveEndDateTime && endDateTime > reserveCalendar.timeInMillis) {
+                                    isOverlappingFound = true
+                                    callback(true)
+                                    return
+                                }
                             }
                         }
                     }
+                    pendingQueries -= 1
+                    if (pendingQueries == 0 && !isOverlappingFound) {
+                        callback(false)
+                    }
                 }
-                callback(false)
-            }
 
-            override fun onCancelled(databaseError: DatabaseError) {
-                Log.e("CoachReserve", "Failed to check for overlapping reservations: ${databaseError.message}")
-                callback(false)
-            }
-        })
+                override fun onCancelled(databaseError: DatabaseError) {
+                    Log.e("CoachReserve", "Failed to check for overlapping reservations: ${databaseError.message}")
+                    pendingQueries -= 1
+                    if (pendingQueries == 0 && !isOverlappingFound) {
+                        callback(false)
+                    }
+                }
+            })
+        }
     }
 
     private fun getMentiUidByName(mentiName: String, callback: (String?) -> Unit) {
