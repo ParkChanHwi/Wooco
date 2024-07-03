@@ -1,0 +1,10 @@
+<!-- res/drawable/button_with_shadow.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <!-- 실제 버튼 배경 레이어 -->
+  <item>
+    <shape android:shape="rectangle">
+      <solid android:color="#F89B00"/> <!-- 오렌지색 -->
+      <corners android:radius="16dp"/> <!-- 라운드 모서리 -->
+    </shape>
+  </item>
+</layer-list>

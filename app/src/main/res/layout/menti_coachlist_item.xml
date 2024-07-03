@@ -3,87 +3,92 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/coach_item"
     android:layout_width="match_parent"
-    android:layout_height="70dp"
-    android:padding="8dp"
-    android:background="@drawable/rectangle_coachlist"
-    android:layout_marginBottom="8dp"
+    android:layout_height="90dp"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/group_513814"
     >
+    <RelativeLayout
+        android:layout_marginStart="5dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/rectangle_stroke">
 
-    <View
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginLeft="4dp"
-        android:background="@drawable/group_513937"
-        />
-
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/center_line"
-        android:rotation="90"
-        android:layout_marginLeft="9dp"
-        />
-
+        <View
+            android:id="@+id/userpicture"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/yunacharacter"/>
+    </RelativeLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="8dp"
         android:text="별명 :"
+        android:textStyle="bold"
         />
 
     <TextView
         android:id="@+id/nicknameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="118dp"
-        android:text="차우코"/>
+        android:layout_marginLeft="138dp"
+        android:layout_marginTop="8dp"
+        android:text="차우코"
+        android:textStyle="bold"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="28dp"
         android:text="학교 / 회사 :"
+        android:textStyle="bold"
         />
 
     <TextView
         android:id="@+id/schoolOrCompanyTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="156dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="176dp"
+        android:layout_marginTop="28dp"
         android:text="강원대 00학과"
-
+        android:textStyle="bold"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="48dp"
         android:text="□관심분야 :"
+        android:textStyle="bold"
         />
 
     <TextView
         android:id="@+id/interestTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="158dp"
-        android:layout_marginTop="32dp"
-        android:text="자격증 - 기사/기능사, 진로"/>
+        android:layout_marginLeft="178dp"
+        android:layout_marginTop="48dp"
+        android:text="자격증 - 기사/기능사, 진로"
+        android:textStyle="bold"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/star_1"
-        android:layout_marginLeft="324dp"
-        android:layout_marginTop="3dp"/>
+        android:layout_marginLeft="354dp"
+        android:layout_marginTop="11dp"/>
     <TextView
         android:id="@+id/star_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:layout_marginLeft="340dp"
-        android:text="4.9"/>
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="370dp"
+        android:text="4.9"
+        android:textStyle="bold"/>
 
 </RelativeLayout>

@@ -5,7 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipToOutline="true"
-    android:background="#FFFFFF">
+    android:background="#FFFBF5">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="D0D0D0" />
+
     <RelativeLayout
         android:id="@+id/bell"
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -30,18 +37,6 @@
         android:layout_marginTop="65dp"
         android:background="@drawable/line_9"
         />
-
-    <ImageView
-        android:id="@+id/arrow_3"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="37dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="29dp"
-        android:src="@drawable/arrow"
-        />
-
     <TextView
         android:id="@+id/코치목록"
         android:layout_width="72dp"
@@ -55,21 +50,6 @@
         android:textColor="#000000"
         android:gravity="center"
         />
-
-    <TextView
-        android:id="@+id/카테고리"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="9dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="82dp"
-        android:text="@string/카테고리"
-        android:textSize="15sp"
-        android:textColor="#000000"
-        android:gravity="top"
-        />
-
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,72 +59,98 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
 
             <!-- 여기에 수평으로 스크롤될 요소들을 배치합니다. -->
             <android.widget.Button
-                android:id="@+id/kategori1"
-                android:layout_width="40dp"
-                android:layout_height="20dp"
-                android:text="대학교"
+                android:id="@+id/kategori"
+                android:layout_width="55dp"
+                android:layout_height="35dp"
+                android:text="전체"
+                android:textSize="12sp"
                 android:layout_marginLeft="10dp"
-                android:textColor="@color/black"
-                android:background="@color/white"
+                android:textColor="@android:color/white"
+                android:background="@drawable/category_back"
                 android:stateListAnimator="@null"
+                android:paddingBottom="8dp"
+                />
+
+            <android.widget.Button
+                android:id="@+id/kategori1"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:text="대학교"
+                android:textSize="12sp"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
+                android:background="@drawable/category_back"
+                android:stateListAnimator="@null"
+                android:paddingBottom="8dp"
                 />
 
             <android.widget.Button
                 android:id="@+id/kategori2"
-                android:layout_width="90dp"
-                android:layout_height="20dp"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
                 android:text="진로/기타 고민"
                 android:layout_marginLeft="10dp"
-                android:textColor="@color/black"
-                android:background="@color/white"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:background="@drawable/rectangle_9855"
                 android:stateListAnimator="@null"
+                android:paddingBottom="8dp"
                 />
 
             <android.widget.Button
                 android:id="@+id/kategori3"
-                android:layout_width="60dp"
-                android:layout_height="20dp"
+                android:layout_width="76dp"
+                android:layout_height="35dp"
                 android:text="전공/과제"
                 android:layout_marginLeft="10dp"
-                android:textColor="@color/black"
-                android:background="@color/white"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:background="@drawable/rectangle_9855"
                 android:stateListAnimator="@null"
+                android:paddingBottom="8dp"
                 />
 
             <android.widget.Button
                 android:id="@+id/kategori4"
-                android:layout_width="30dp"
-                android:layout_height="20dp"
+                android:layout_width="55dp"
+                android:layout_height="35dp"
                 android:text="면접"
                 android:layout_marginLeft="10dp"
-                android:textColor="@color/black"
-                android:background="@color/white"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:background="@drawable/rectangle_9855"
                 android:stateListAnimator="@null"
+                android:paddingBottom="8dp"
                 />
             <android.widget.Button
                 android:id="@+id/kategori5"
-                android:layout_width="40dp"
-                android:layout_height="20dp"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
                 android:text="자소서"
+                android:textSize="12sp"
                 android:layout_marginLeft="10dp"
-                android:textColor="@color/black"
-                android:background="@color/white"
+                android:textColor="@color/white"
+                android:background="@drawable/rectangle_9855"
                 android:stateListAnimator="@null"
+                android:paddingBottom="8dp"
                 />
 
             <android.widget.Button
                 android:id="@+id/kategori6"
-                android:layout_width="40dp"
-                android:layout_height="20dp"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
                 android:text="자격증"
                 android:layout_marginLeft="10dp"
-                android:textColor="@color/black"
-                android:background="@color/white"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:background="@drawable/rectangle_9855"
                 android:stateListAnimator="@null"
+                android:paddingBottom="8dp"
                 />
 
 
@@ -157,7 +163,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="24dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="160dp"
         android:clipToOutline="true">
 
         <ImageView
@@ -173,8 +179,8 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="44dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="132dp"
-        android:text="@string/오늘의추천멘토"
+        android:layout_marginTop="160dp"
+        android:text=" 오늘의 추천 멘토 !"
         android:textSize="10sp"
         android:textColor="#000000"
         android:gravity="top"
@@ -182,8 +188,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/coachlist_recycleView"
         android:layout_width="match_parent"
-        android:layout_height="505dp"
-        android:layout_marginTop="160dp"/>
+        android:layout_height="495dp"
+        android:layout_marginTop="171dp"/>
 
     <View
         android:id="@+id/line_21"
@@ -193,18 +199,19 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="667dp"
         android:background="@drawable/line_9"
+
         />
 
     <ImageView
         android:id="@+id/material_sy"
-        android:layout_width="43dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="29dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="677dp"
+        android:layout_marginTop="684dp"
         android:clipToOutline="true"
-        android:background="@drawable/material_symbols_home">
+        android:background="@drawable/homeimg">
     </ImageView>
 
     <ImageView
@@ -214,9 +221,9 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="136dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="677dp"
+        android:layout_marginTop="684dp"
         android:clipToOutline="true"
-        android:background="@drawable/vector">
+        android:background="@drawable/chatimg">
     </ImageView>
 
     <ImageView
@@ -226,21 +233,21 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="239dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="677dp"
+        android:layout_marginTop="682dp"
         android:clipToOutline="true"
-        android:background="@drawable/uiw_date"
+        android:background="@drawable/calimg"
         />
 
     <ImageView
         android:id="@+id/group_513866"
-        android:layout_width="32dp"
-        android:layout_height="35dp"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="346dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="677dp"
+        android:layout_marginTop="680dp"
         android:clipToOutline="true"
-        android:background="@drawable/group_513937"
+        android:background="@drawable/myimg"
         />
 
 </RelativeLayout>
