@@ -188,8 +188,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/coachlist_recycleView"
         android:layout_width="match_parent"
-        android:layout_height="495dp"
-        android:layout_marginTop="171dp"/>
+        android:layout_height="485dp"
+        android:layout_marginTop="181dp"/>
 
     <View
         android:id="@+id/line_21"
