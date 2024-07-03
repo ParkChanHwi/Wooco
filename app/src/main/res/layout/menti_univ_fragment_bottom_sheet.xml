@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#D9D9D9">
+    android:background="@drawable/rectangle_9685">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,28 +31,38 @@
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <RadioButton
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/career"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
             android:text=" 진로"
-            android:buttonTint="#696969"/>
-        <RadioButton
+            android:buttonTint="#696969"
+            android:buttonTintMode="src_in"/>
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/etc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" 기타 고민"
-            android:buttonTint="#696969"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="120dp"
+            android:buttonTint="#696969"
+            android:buttonTintMode="src_in"/>
     </RadioGroup>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/category_setting"
-        android:layout_width="50dp"
-        android:layout_height="20dp"
-        android:layout_marginLeft="329dp"
-        android:text="설정"
+        android:id="@+id/setting"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:text="확인"
+        android:textSize="15sp"
         android:textColor="@color/white"
-        android:background="@drawable/rectangle_9533"/>
+        android:background="@drawable/okbtn" />
     <!-- 추가 카테고리 버튼들 -->
 
 </LinearLayout>

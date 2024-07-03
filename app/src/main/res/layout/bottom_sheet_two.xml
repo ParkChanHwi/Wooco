@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@drawable/rectangle_categori">
+    android:background="@drawable/rectangle_9685">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,6 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="인문/사회"
+            android:layout_marginStart="40dp"
             android:buttonTint="#696969"/>
 
         <!-- 예체능 -->
@@ -46,6 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="예체능"
+            android:layout_marginStart="40dp"
             android:buttonTint="#696969"/>
 
         <!-- 보건 -->
@@ -54,6 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="보건"
+            android:layout_marginStart="40dp"
             android:buttonTint="#696969"/>
 
         <!-- 공학 -->
@@ -62,6 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="공학"
+            android:layout_marginStart="40dp"
             android:buttonTint="#696969"/>
 
         <!-- 교육 -->
@@ -70,6 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="교육"
+            android:layout_marginStart="40dp"
             android:buttonTint="#696969"/>
 
         <!-- 자연 -->
@@ -78,17 +83,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="자연"
+            android:layout_marginStart="40dp"
             android:buttonTint="#696969"/>
 
     </RadioGroup>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/setting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:text="설정"
-        android:textColor="@android:color/white"
-        android:background="@drawable/rectangle_9533" />
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:text="확인"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:background="@drawable/okbtn" />
 
 </LinearLayout>

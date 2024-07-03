@@ -5,7 +5,7 @@ android:layout_width="match_parent"
 android:layout_height="wrap_content"
 android:orientation="vertical"
 android:padding="16dp"
-android:background="@drawable/rectangle_categori">
+android:background="@drawable/rectangle_9685">
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -40,7 +40,7 @@ android:background="@drawable/rectangle_categori">
         android:layout_height="wrap_content"
         android:text="마케팅"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginStart="40dp"/>
 
     <!-- 기획 -->
     <RadioButton
@@ -49,7 +49,7 @@ android:background="@drawable/rectangle_categori">
         android:layout_height="wrap_content"
         android:text="기획"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginStart="40dp"/>
 
 
     <!-- 사무직 -->
@@ -59,7 +59,7 @@ android:background="@drawable/rectangle_categori">
         android:layout_height="wrap_content"
         android:text="사무직"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginStart="40dp"/>
 
 
     <!-- 전문/특수/연구직 -->
@@ -69,7 +69,7 @@ android:background="@drawable/rectangle_categori">
         android:layout_height="wrap_content"
         android:text="전문/특수/연구직"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginStart="40dp"/>
 
     <!-- 무역/유통 -->
     <RadioButton
@@ -78,7 +78,7 @@ android:background="@drawable/rectangle_categori">
         android:layout_height="wrap_content"
         android:text="무역/유통"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginStart="40dp"/>
 
     <!-- 서비스 -->
 
@@ -88,7 +88,7 @@ android:background="@drawable/rectangle_categori">
         android:layout_height="wrap_content"
         android:text="서비스"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginStart="40dp"/>
 
     <!-- IT -->
 
@@ -98,7 +98,7 @@ android:background="@drawable/rectangle_categori">
         android:layout_height="wrap_content"
         android:text="IT"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginStart="40dp"/>
 
     <!-- 디자인 -->
     <RadioButton
@@ -107,7 +107,7 @@ android:background="@drawable/rectangle_categori">
         android:layout_height="wrap_content"
         android:text="디자인"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginStart="40dp"/>
 
     <!-- 영업 -->
     <RadioButton
@@ -116,7 +116,7 @@ android:background="@drawable/rectangle_categori">
         android:layout_height="wrap_content"
         android:text="영업"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginStart="40dp"/>
 
 
     <!-- 교육 -->
@@ -126,7 +126,7 @@ android:background="@drawable/rectangle_categori">
         android:layout_height="wrap_content"
         android:text="교육"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginStart="40dp"/>
 
     <!-- 건설 -->
     <RadioButton
@@ -135,7 +135,7 @@ android:background="@drawable/rectangle_categori">
         android:layout_height="wrap_content"
         android:text="건설"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginStart="40dp"/>
 
     <!-- 의료 -->
 
@@ -145,7 +145,7 @@ android:background="@drawable/rectangle_categori">
         android:layout_height="wrap_content"
         android:text="의료"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginStart="40dp"/>
 
     <!-- 여기에 다른 라디오 버튼 추가 -->
 
@@ -153,13 +153,13 @@ android:background="@drawable/rectangle_categori">
 
 <androidx.appcompat.widget.AppCompatButton
     android:id="@+id/setting"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="end"
-    android:text="설정"
+    android:layout_width="320dp"
+    android:layout_height="40dp"
+    android:layout_marginStart="30dp"
+    android:text="확인"
+    android:textSize="15sp"
     android:textColor="@color/white"
-    android:background="@drawable/rectangle_9533"
-    android:onClick="onSettingButtonClick" />
+    android:background="@drawable/okbtn" />
 
 </LinearLayout>
 

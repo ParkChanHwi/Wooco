@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#D9D9D9">
+    android:background="@drawable/rectangle_9685">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,7 +37,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 인문/사회"
-                android:buttonTint="#696969"/>
+                android:buttonTint="#696969"
+                android:layout_marginStart="40dp"/>
             <RadioButton
                 android:id="@+id/arts"
                 android:layout_width="wrap_content"
@@ -55,7 +56,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 보건"
-                android:buttonTint="#696969"/>
+                android:buttonTint="#696969"
+                android:layout_marginStart="40dp"/>
             <RadioButton
                 android:id="@+id/engineering"
                 android:layout_width="wrap_content"
@@ -73,7 +75,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 교육"
-                android:buttonTint="#696969"/>
+                android:buttonTint="#696969"
+                android:layout_marginStart="40dp"/>
             <RadioButton
                 android:id="@+id/nature"
                 android:layout_width="wrap_content"
@@ -87,12 +90,13 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/category_setting2"
-        android:layout_width="50dp"
-        android:layout_height="20dp"
-        android:layout_marginLeft="329dp"
-        android:text="설정"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:text="확인"
+        android:textSize="15sp"
         android:textColor="@color/white"
-        android:background="@drawable/rectangle_9533"/>
+        android:background="@drawable/okbtn"/>
     <!-- 추가 카테고리 버튼들 -->
 
 </LinearLayout>

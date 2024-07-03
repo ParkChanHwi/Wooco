@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#D9D9D9">
+    android:background="@drawable/rectangle_9685">
 
     <!-- 마케팅 -->
     <RadioGroup
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="마케팅"
             android:buttonTint="#696969"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginStart="40dp"/>
     </RadioGroup>
 
     <!-- 기획 -->
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="기획"
             android:buttonTint="#696969"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginStart="40dp"/>
     </RadioGroup>
 
     <!-- 사무직 -->
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:text="사무직"
             android:buttonTint="#696969"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginStart="40dp"/>
     </RadioGroup>
 
     <!-- 전문/특수/연구직 -->
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:text="전문/특수/연구직"
             android:buttonTint="#696969"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginStart="40dp"/>
     </RadioGroup>
 
     <!-- 무역/유통 -->
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:text="무역/유통"
             android:buttonTint="#696969"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginStart="40dp"/>
     </RadioGroup>
 
     <!-- 서비스 -->
@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             android:text="서비스"
             android:buttonTint="#696969"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginStart="40dp"/>
     </RadioGroup>
 
     <!-- IT -->
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:text="IT"
             android:buttonTint="#696969"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginStart="40dp"/>
     </RadioGroup>
 
     <!-- 디자인 -->
@@ -116,7 +116,7 @@
             android:layout_height="wrap_content"
             android:text="디자인"
             android:buttonTint="#696969"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginStart="40dp"/>
     </RadioGroup>
 
     <!-- 영업 -->
@@ -130,7 +130,7 @@
             android:layout_height="wrap_content"
             android:text="영업"
             android:buttonTint="#696969"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginStart="40dp"/>
     </RadioGroup>
 
     <!-- 교육 -->
@@ -144,7 +144,7 @@
             android:layout_height="wrap_content"
             android:text="교육"
             android:buttonTint="#696969"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginStart="40dp"/>
     </RadioGroup>
 
     <!-- 건설 -->
@@ -158,7 +158,7 @@
             android:layout_height="wrap_content"
             android:text="건설"
             android:buttonTint="#696969"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginStart="40dp"/>
     </RadioGroup>
 
     <!-- 의료 -->
@@ -172,16 +172,17 @@
             android:layout_height="wrap_content"
             android:text="의료"
             android:buttonTint="#696969"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginStart="40dp"/>
     </RadioGroup>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/setting"
-        android:layout_width="50dp"
-        android:layout_height="20dp"
-        android:layout_marginLeft="329dp"
-        android:text="설정"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:text="확인"
+        android:textSize="15sp"
         android:textColor="@color/white"
-        android:background="@drawable/rectangle_9533"/>
+        android:background="@drawable/okbtn"/>
 
 </LinearLayout>

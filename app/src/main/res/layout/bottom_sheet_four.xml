@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@drawable/rectangle_categori">
+    android:background="@drawable/rectangle_9685">
 
     <!-- 기사/기능사 -->
     <RadioGroup
@@ -20,6 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="기사/기능사"
+                android:layout_marginStart="40dp"
                 android:buttonTint="#696969"/>
         </LinearLayout>
     </RadioGroup>
@@ -37,6 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="어학"
+                android:layout_marginStart="40dp"
                 android:buttonTint="#696969"/>
         </LinearLayout>
     </RadioGroup>
@@ -54,6 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="컴퓨터활용능력"
+                android:layout_marginStart="40dp"
                 android:buttonTint="#696969"/>
         </LinearLayout>
     </RadioGroup>
@@ -71,6 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="한국사"
+                android:layout_marginStart="40dp"
                 android:buttonTint="#696969"/>
         </LinearLayout>
     </RadioGroup>
@@ -88,6 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="기타"
+                android:layout_marginStart="40dp"
                 android:buttonTint="#696969"/>
         </LinearLayout>
     </RadioGroup>
@@ -95,11 +100,12 @@
     <!-- 추가 카테고리 버튼들 -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/setting"
-        android:layout_width="50dp"
-        android:layout_height="20dp"
-        android:layout_marginLeft="329dp"
-        android:text="설정"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:text="확인"
+        android:textSize="15sp"
         android:textColor="@color/white"
-        android:background="@drawable/rectangle_9533"/>
+        android:background="@drawable/okbtn"/>
 
 </LinearLayout>
