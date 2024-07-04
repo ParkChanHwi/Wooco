@@ -6,41 +6,63 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Mentischedule">
-
-    <ImageView
-        android:id="@+id/ArrowImageView"
-        android:layout_width="15dp"
+    android:background="#FFFBF5"
+    tools:context=".Coach_scheduleActivity">
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_gravity="left"
-        android:layout_marginStart="37dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="366dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="37dp"
-        android:src="@drawable/arrow">
-    </ImageView>
+        android:layout_marginTop="38dp"
+        android:clipToOutline="true"
+        android:background="@drawable/bell"
+        >
+    </RelativeLayout>
 
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/bell"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="366dp"
+        android:layout_marginTop="38dp"
+        android:background="@drawable/bell"
+        android:clipToOutline="true"></RelativeLayout>
     <TextView
         android:id="@+id/page_text_id"
         android:layout_width="110dp"
         android:layout_height="22dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_marginStart="150dp"
         android:layout_marginTop="33dp"
         android:text="나의 수업 일정"
-        android:textSize="18dp"
-        android:textStyle="bold" />
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
 
     <View
         android:layout_width="240dp"
         android:layout_height="1dp"
-        android:layout_alignParentStart="true"
         android:layout_marginStart="93dp"
-        android:layout_alignParentTop="true"
         android:layout_marginTop="69dp"
-        android:background="@android:color/darker_gray" />
+        android:background="@android:color/darker_gray"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
 
+    <ImageView
+        android:layout_width="103dp"
+        android:layout_height="117dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="99dp"
+        android:elevation="4dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/rectangle_9534"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+    <!--    바뀔 이미지 부분-->
     <ImageView
         android:id="@+id/profile_image"
         android:layout_width="103dp"
@@ -49,18 +71,19 @@
         android:layout_marginTop="99dp"
         android:elevation="4dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/efaultimage"
-         android:layout_alignParentStart="true"
+        android:src="@drawable/rectangle_9534_character"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
-
+    <!--바뀔 이미지 코드-->
     <View
         android:layout_width="240dp"
         android:layout_height="1dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="93dp"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="93dp"
         android:layout_marginTop="247dp"
-        android:background="@android:color/darker_gray" />
+        android:background="@android:color/darker_gray"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
 
     <TextView
         android:id="@+id/user_class_text"
@@ -73,9 +96,9 @@
         android:gravity="center"
         android:textSize="20dp"
         android:textStyle="bold"
-         android:layout_alignParentStart="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-   />
+        />
 
     <TextView
         android:id="@+id/user_class_text2"
@@ -87,8 +110,7 @@
         android:layout_marginEnd="66dp"
         android:gravity="center"
         android:textSize="18sp"
-        android:textStyle="bold"
-         android:layout_alignParentStart="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"/>
 
     <LinearLayout
@@ -98,7 +120,9 @@
         android:layout_marginTop="273dp"
         android:layout_marginStart="22dp"
         android:clipToPadding="false"
-        android:clipChildren="false">
+        android:clipChildren="false"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
         <ImageView
             android:id="@+id/grid_icon_imageview"
@@ -117,13 +141,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/menti_schedule_recycler_view"
-        android:layout_width="320dp"
-        android:layout_height="350dp"
+        android:layout_width="match_parent"
+        android:layout_height="357dp"
         android:layout_marginTop="310dp"
-        android:layout_marginStart="43dp">
+        android:layout_marginStart="30dp"
+        >
 
     </androidx.recyclerview.widget.RecyclerView>
-
 
     <View
         android:id="@+id/line_21"
@@ -133,19 +157,20 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="667dp"
         android:background="@drawable/line_9"
-        />
 
+        />
 
     <ImageView
         android:id="@+id/material_sy"
-        android:layout_width="33dp"
-        android:layout_height="33dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:layout_marginLeft="29dp"
-        android:layout_marginTop="677dp"
-        android:background="@drawable/outhome"
-        android:clipToOutline="true"></ImageView>
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="684dp"
+        android:clipToOutline="true"
+        android:background="@drawable/homeimg_none">
+    </ImageView>
 
     <ImageView
         android:id="@+id/chat_1"
@@ -154,9 +179,9 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="136dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="677dp"
+        android:layout_marginTop="684dp"
         android:clipToOutline="true"
-        android:background="@drawable/vector">
+        android:background="@drawable/chatimg">
     </ImageView>
 
     <ImageView
@@ -166,26 +191,20 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="239dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="677dp"
+        android:layout_marginTop="682dp"
         android:clipToOutline="true"
-        android:background="@drawable/uiw_date2"
+        android:background="@drawable/calimg_none"
         />
 
     <ImageView
         android:id="@+id/group_513866"
-        android:layout_width="32dp"
-        android:layout_height="35dp"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="346dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="677dp"
+        android:layout_marginTop="680dp"
         android:clipToOutline="true"
-        android:background="@drawable/group_513937"
+        android:background="@drawable/myimg"
         />
-
-
-
-
-
-
 </RelativeLayout>

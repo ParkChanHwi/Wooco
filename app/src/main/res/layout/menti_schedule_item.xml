@@ -6,22 +6,21 @@
     android:id="@+id/main"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context=".Menti_scheduleActivity"
-
+    tools:context=".Coach_scheduleActivity"
     >
 
     <RelativeLayout
-        android:layout_width="320dp"
-        android:layout_height="124dp"
-        android:background="@drawable/rectangle_yuna35"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/group_514001"
         >
 
         <TextView
             android:id="@+id/menti_name2"
             android:layout_width="100dp"
             android:layout_height="31dp"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="23dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="18dp"
             android:textSize="18dp"
             android:textStyle="bold"
             android:gravity="center"/>
@@ -30,8 +29,8 @@
             android:id="@+id/menti_name"
             android:layout_width="50dp"
             android:layout_height="31dp"
-            android:layout_marginStart="115dp"
-            android:layout_marginTop="23dp"
+            android:layout_marginStart="122dp"
+            android:layout_marginTop="18dp"
             android:textSize="18dp"
             android:textStyle="bold"
             android:text="코치"
@@ -41,26 +40,31 @@
             android:id="@+id/class_day"
             android:layout_width="170dp"
             android:layout_height="15dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="60dp"/>
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="55dp"/>
 
-        <ImageView
+        <TextView
             android:id="@+id/cancel_class"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="168dp"
+            android:layout_height="27dp"
             android:layout_gravity="bottom|start"
             android:layout_marginTop="97dp"
-            android:src="@drawable/rectangle_yuna9" />
+            android:layout_marginStart="3dp"
+            android:text="수업 취소"
+            android:paddingLeft="60dp"
+            android:paddingTop="2dp"
+            />
 
-        <ImageView
+        <TextView
             android:id="@+id/change_class"
-            android:layout_width="160dp"
+            android:layout_width="169dp"
             android:layout_height="27dp"
             android:layout_gravity="bottom|end"
-            android:layout_marginStart="160dp"
+            android:layout_marginStart="173dp"
             android:layout_marginTop="97dp"
-            android:src="@drawable/rectangle_yuna10"
-            android:clickable="true"
-            android:onClick="onClassChangeClick"    />
+            android:text="수업 변경"
+            android:paddingLeft="58dp"
+            android:paddingTop="2dp"
+            />
     </RelativeLayout>
 </LinearLayout>
