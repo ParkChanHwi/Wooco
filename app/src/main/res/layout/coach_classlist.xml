@@ -116,7 +116,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="677dp"
         android:clipToOutline="true"
-        android:background="@drawable/uiw_date"
+        android:background="@drawable/uiw_date_coach"
         />
 
     <ImageView
@@ -127,7 +127,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="335dp"
         android:layout_marginTop="677dp"
-        android:background="@drawable/group_513937"
+        android:background="@drawable/icon_mypage_coach"
         android:clipToOutline="true" />
 </RelativeLayout>
 
