@@ -4,45 +4,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp"
+    android:background="#FFFBF5"
     tools:context=".Menti_coach_introduceActivity"
 
     >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
                >
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="31dp"
-            android:layout_marginStart="0dp"
-            android:text="카테고리:"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:gravity="center"/>
-
-
         <TextView
             android:id="@+id/category1"
-            android:layout_width="100dp"
-            android:layout_height="31dp"
-            android:layout_marginStart="115dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="카테고리"
             android:textSize="15dp"
             android:textStyle="bold"
             android:gravity="center"/>
 
         <TextView
             android:id="@+id/category2"
-            android:layout_width="180dp"
-            android:layout_height="31dp"
-            android:layout_marginStart="215dp"
-            android:textSize="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="40dp"
+            android:text="세부 카테고리"
+            android:textSize="12dp"
             android:textStyle="bold"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:paddingBottom="7dp"
+            android:background="@drawable/rectangle_9843"/>
 
 
     </RelativeLayout>
