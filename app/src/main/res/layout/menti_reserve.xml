@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/some_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipToOutline="true"
-    android:background="#FFFFFF">
+    android:background="#FFFBF5">
 
     <ImageView
         android:id="@+id/arrow_3"
@@ -53,9 +54,13 @@
         android:layout_marginTop="94dp"
         app:mcv_selectionColor="#F89B00"
         app:mcv_arrowColor="#F89B00"
+        app:mcv_leftArrowMask="@drawable/polygon_84"
+        app:mcv_rightArrowMask="@drawable/polygon_85"
+        app:mcv_headerTextAppearance="@style/TextAppearance.Material3.BodyLarge"
         app:mcv_showOtherDates="none"
         app:mcv_firstDayOfWeek="sunday"
-        tools:ignore="MissingClass" />
+        tools:ignore="MissingClass"
+        />
 
     <TimePicker
         android:id="@+id/timePicker"
@@ -68,10 +73,9 @@
 
     <android.widget.Button
         android:id="@+id/reserve_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="640dp"
-        android:layout_marginLeft="160dp"
+        android:layout_marginTop="683dp"
         android:text="예약 하기"
         android:textColor="@color/white"
         android:background="#F89B00"

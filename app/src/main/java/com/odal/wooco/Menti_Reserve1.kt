@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
@@ -16,6 +17,7 @@ class Menti_Reserve1 : AppCompatActivity(), Menti_Reserve1_bottom_sheet1.OnCateg
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(R.layout.menti_reserve1)
 
         val arrowImageView: ImageView = findViewById(R.id.arrow_3)
@@ -81,7 +83,7 @@ class Menti_Reserve1 : AppCompatActivity(), Menti_Reserve1_bottom_sheet1.OnCateg
 
     private fun updateSelectedCategoryText() {
         val confirmationTextView: TextView = findViewById(R.id.reserve_selected_categori)
-        val text = " 코치 이름: $coachName \n 카테고리 : ${selectedCategory ?: "위에서 선택"}"
+        val text = " 코치 이름: $coachName       카테고리 : ${selectedCategory ?: "위에서 선택"}"
         confirmationTextView.text = text
     }
 }

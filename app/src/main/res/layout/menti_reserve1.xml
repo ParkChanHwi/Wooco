@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipToOutline="true"
-    android:background="#FFFFFF">
+    android:background="#FFFBF5">
 
     <ImageView
         android:id="@+id/arrow_3"
@@ -44,21 +45,21 @@
         android:background="@drawable/line_9"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="카테고리 선택"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="45dp"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="286dp"
         android:orientation="vertical"
-        android:gravity="center">
+        android:layout_marginTop="110dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="예약하려는 카테고리 선택>"
-            android:gravity="center_horizontal|top"
-            android:textStyle="bold"
-            />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,73 +67,88 @@
             android:layout_marginTop="20dp">
 
             <!-- 여기에 수평으로 스크롤될 요소들을 배치합니다. -->
-            <android.widget.Button
-                android:id="@+id/kategori2"
-                android:layout_width="90dp"
-                android:layout_height="20dp"
-                android:text="진로/기타 고민"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/black"
-                android:background="@color/white"
-                android:stateListAnimator="@null"
-                />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <android.widget.Button
-                android:id="@+id/kategori3"
-                android:layout_width="60dp"
-                android:layout_height="20dp"
-                android:text="전공/과제"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/black"
-                android:background="@color/white"
-                android:stateListAnimator="@null"
-                />
+                <android.widget.Button
+                    android:id="@+id/kategori2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="39dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/group_513996"
+                    android:stateListAnimator="@null"
+                    />
 
-            <android.widget.Button
-                android:id="@+id/kategori4"
-                android:layout_width="30dp"
-                android:layout_height="20dp"
-                android:text="면접"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/black"
-                android:background="@color/white"
-                android:stateListAnimator="@null"
-                />
-            <android.widget.Button
-                android:id="@+id/kategori5"
-                android:layout_width="40dp"
-                android:layout_height="20dp"
-                android:text="자소서"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/black"
-                android:background="@color/white"
-                android:stateListAnimator="@null"
-                />
-
-            <android.widget.Button
-                android:id="@+id/kategori6"
-                android:layout_width="40dp"
-                android:layout_height="20dp"
-                android:text="자격증"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/black"
-                android:background="@color/white"
-                android:stateListAnimator="@null"
-                />
-
-
+                <android.widget.Button
+                    android:id="@+id/kategori3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="233dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/group_513997"
+                    android:stateListAnimator="@null"
+                    />
+            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_height="wrap_content">
 
-            <TextView
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <android.widget.Button
+                    android:id="@+id/kategori4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="39dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/group_513998"
+                    android:stateListAnimator="@null"
+                    />
+                <android.widget.Button
+                    android:id="@+id/kategori5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="233dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/group_513999"
+                    android:stateListAnimator="@null"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <android.widget.Button
+                android:id="@+id/kategori6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="선택한 카테고리 : "/>
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/black"
+                android:background="@drawable/group_514000"
+                android:stateListAnimator="@null"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="106dp"
+        android:orientation="vertical"
+        android:gravity="center">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="465dp">
             <TextView
                 android:id="@+id/reserve_selected_categori"
                 android:layout_width="wrap_content"
@@ -145,7 +161,7 @@
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="13dp"
             android:background="@drawable/rectangle_yuna9788"
             android:padding="10dp">
 
@@ -167,12 +183,12 @@
 
     <android.widget.Button
         android:id="@+id/reserve_button"
-        android:layout_width="wrap_content"
+        android:layout_width="373dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="640dp"
-        android:layout_marginLeft="160dp"
+        android:layout_marginTop="665dp"
+        android:layout_marginLeft="20dp"
         android:text="다 음"
         android:textColor="@color/white"
-        android:background="#F89B00"
+        android:background="@drawable/okbtn"
         />
 </RelativeLayout>
