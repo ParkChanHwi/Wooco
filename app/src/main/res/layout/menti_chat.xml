@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFBF5"
     tools:context=".ChatActivity">
 
     <View
@@ -50,11 +51,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="100dp"
         android:layout_above="@id/input_layout"/>
 
     <!-- 입력 레이아웃 -->
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,27 +66,29 @@
 
         <EditText
             android:id="@+id/chat_input"
-            android:layout_width="wrap_content"
+            android:layout_width="390dp"
             android:layout_height="50dp"
             android:layout_marginStart="10dp"
             android:layout_weight="85"
-            android:background="@drawable/chat_rectangle"
+            android:background="@drawable/rectangle_9782"
             android:hint="메시지를 입력하세요"
             android:paddingStart="10dp"
+            android:layout_alignParentLeft="true"
             />
 
         <android.widget.Button
             android:id="@+id/send_btn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="18dp"
             android:layout_weight="15"
-            android:background="#F89B00"
-            android:text="전송"
-            android:textColor="@android:color/white"/>
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/group_514001"
+            />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </RelativeLayout>

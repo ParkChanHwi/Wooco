@@ -7,15 +7,25 @@
     android:clipToOutline="true"
     android:background="#FFFFFF">
 
-    <ImageView
-        android:id="@+id/arrow_3"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="37dp"
+        android:layout_marginLeft="151dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="29dp"
-        android:src="@drawable/arrow"
+        android:layout_marginTop="26dp"
+        android:text="나의 수업 목록"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:gravity="center"
+        />
+
+    <View
+        android:layout_width="240dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="69dp"
+        android:background="@android:color/darker_gray"
         />
 
     <LinearLayout
@@ -24,30 +34,21 @@
         android:layout_height="40dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="68dp"
-        android:background="@drawable/selectedbox">
+        android:layout_marginTop="85dp"
+        android:background="@drawable/rectangle_9611">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="59dp"
+            android:layout_marginLeft="70dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="10dp"
-            android:text="클래스 목록"
+            android:text="코칭 목록"
+            android:textStyle="bold"
+            android:textColor="#F89B00"
             android:gravity="top"/>
     </LinearLayout>
-
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="1dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="191dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="88dp"
-        android:rotation="90"
-        android:background="@drawable/center_line"
-        />
 
     <LinearLayout
         android:id="@+id/consultListBox"
@@ -56,18 +57,20 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="212dp"
-        android:layout_marginTop="68dp"
-        android:background="@drawable/unselectedbox">
+        android:layout_marginTop="85dp"
+        android:background="@drawable/rectangle_9619">
 
         <TextView
             android:id="@+id/consultList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="59dp"
+            android:layout_marginLeft="70dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="10dp"
             android:text="상담 목록"
+            android:textStyle="bold"
+            android:textColor="#A7A8A9"
             android:gravity="top"/>
     </LinearLayout>
 
@@ -86,18 +89,19 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="667dp"
         android:background="@drawable/line_9"
+
         />
 
     <ImageView
         android:id="@+id/material_sy"
-        android:layout_width="33dp"
-        android:layout_height="33dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="29dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="677dp"
+        android:layout_marginTop="684dp"
         android:clipToOutline="true"
-        android:background="@drawable/outhome">
+        android:background="@drawable/homeimg_none">
     </ImageView>
 
     <ImageView
@@ -107,9 +111,9 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="136dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="677dp"
+        android:layout_marginTop="684dp"
         android:clipToOutline="true"
-        android:background="@drawable/onchat">
+        android:background="@drawable/chatimg_none">
     </ImageView>
 
     <ImageView
@@ -119,21 +123,21 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="239dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="677dp"
+        android:layout_marginTop="682dp"
         android:clipToOutline="true"
-        android:background="@drawable/uiw_date"
+        android:background="@drawable/calimg"
         />
 
     <ImageView
         android:id="@+id/group_513866"
-        android:layout_width="32dp"
-        android:layout_height="35dp"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="346dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="677dp"
+        android:layout_marginTop="680dp"
         android:clipToOutline="true"
-        android:background="@drawable/group_513937"
+        android:background="@drawable/myimg"
         />
 </RelativeLayout>
 

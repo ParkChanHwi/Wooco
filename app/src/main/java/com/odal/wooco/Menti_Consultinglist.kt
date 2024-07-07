@@ -2,6 +2,7 @@ package com.odal.wooco
 
 import Consult
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +20,7 @@ class Menti_Counsultinglist : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(R.layout.menti_consultinglist)
 
         recyclerView = findViewById(R.id.menti_consulting_recycleView)

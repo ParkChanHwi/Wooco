@@ -12,18 +12,19 @@
         android:layout_height="wrap_content"
         android:background="@drawable/menti_chat_rectangle"
         android:padding="8dp"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:text="Hello, how are you?"
+        android:textSize="20sp"
         android:maxWidth="200dp"
         android:layout_alignParentEnd="true"/>
 
     <!-- 채팅 시간 스탬프 -->
-    <TextView
-        android:id="@+id/text_timestamp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/darker_gray"
-        android:text="10:00 AM"
-        android:layout_below="@id/menti_chat"
-        android:layout_alignEnd="@id/menti_chat"/>
+<!--    <TextView-->
+<!--        android:id="@+id/text_timestamp"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textColor="@android:color/darker_gray"-->
+<!--        android:text="10:00 AM"-->
+<!--        android:layout_below="@id/menti_chat"-->
+<!--        android:layout_alignEnd="@id/menti_chat"/>-->
 </RelativeLayout>
