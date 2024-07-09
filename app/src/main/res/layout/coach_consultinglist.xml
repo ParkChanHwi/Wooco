@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipToOutline="true"
-    android:background="#FFFFFF">
+    android:background="#F4F8FD">
 
     <ImageView
         android:id="@+id/arrow_3"
@@ -32,10 +32,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="59dp"
+            android:layout_marginLeft="65dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="10dp"
             android:text="클래스 목록"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#33000000"
             android:gravity="top"/>
     </LinearLayout>
 
@@ -65,10 +68,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="59dp"
+            android:layout_marginLeft="70dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="10dp"
             android:text="상담 목록"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#0F4C81"
             android:gravity="top"/>
     </LinearLayout>
 
@@ -90,7 +96,6 @@
         />
 
     <ImageView
-        android:id="@+id/chat_1"
         android:layout_width="33dp"
         android:layout_height="33dp"
         android:layout_alignParentLeft="true"
@@ -98,7 +103,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="677dp"
         android:clipToOutline="true"
-        android:background="@drawable/onchat">
+        android:background="@drawable/onchat_coach">
     </ImageView>
 
     <ImageView
@@ -110,7 +115,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="677dp"
         android:clipToOutline="true"
-        android:background="@drawable/uiw_date"
+        android:background="@drawable/uiw_date_coach"
         />
 
     <ImageView
@@ -121,7 +126,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="335dp"
         android:layout_marginTop="677dp"
-        android:background="@drawable/group_513937"
+        android:background="@drawable/icon_mypage_coach"
         android:clipToOutline="true" />
 </RelativeLayout>
 

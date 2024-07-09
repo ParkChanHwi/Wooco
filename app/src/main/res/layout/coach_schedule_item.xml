@@ -7,20 +7,22 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     tools:context=".Coach_scheduleActivity"
+
     >
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/group_514001"
+        android:layout_width="335dp"
+        android:layout_height="130dp"
+        android:background="@drawable/schedule_box4"
         >
 
         <TextView
             android:id="@+id/coach_name2"
             android:layout_width="100dp"
             android:layout_height="31dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="14dp"
             android:layout_marginTop="23dp"
+            android:text="김우코"
             android:textSize="18dp"
             android:textStyle="bold"
             android:gravity="center"/>
@@ -33,31 +35,37 @@
             android:layout_marginTop="23dp"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:text="멘티"
+            android:text="학생"
             android:gravity="center"/>
 
         <TextView
             android:id="@+id/class_day"
             android:layout_width="170dp"
-            android:layout_height="15dp"
-            android:layout_marginStart="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="14dp"
+            android:text="2024년 4월 24일 17시"
+            android:gravity="center"
             android:layout_marginTop="60dp"/>
 
-        <ImageView
+        <TextView
             android:id="@+id/cancel_class2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|start"
+            android:text="수업 취소"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
             android:layout_marginTop="97dp"
-            />
+            android:layout_marginStart="57dp"/>
 
-        <ImageView
+        <TextView
             android:id="@+id/change_class2"
             android:layout_width="160dp"
             android:layout_height="27dp"
-            android:layout_gravity="bottom|end"
-            android:layout_marginStart="160dp"
+            android:layout_gravity="center"
+            android:text="수업 변경"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
             android:layout_marginTop="97dp"
-            />
+            android:layout_marginStart="165dp" />
     </RelativeLayout>
 </LinearLayout>

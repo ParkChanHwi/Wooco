@@ -70,7 +70,7 @@
             android:layout_marginLeft="34dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="156dp"
-            android:background="@drawable/rectangle_9"/>
+            android:background="@drawable/login3"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_name"
@@ -81,8 +81,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="156dp"
         android:text="중복 확인"
+        android:gravity="center_horizontal"
+        android:padding="7dp"
         android:textColor="@color/white"
-        android:background="@drawable/checkdup">
+        android:background="@drawable/login4">
     </androidx.appcompat.widget.AppCompatButton>
 
     <TextView
@@ -109,7 +111,7 @@
             android:layout_marginLeft="34dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="239dp"
-            android:background="@drawable/rectangle_9"
+            android:background="@drawable/login3"
             />
 
 
@@ -138,7 +140,7 @@
             android:layout_marginLeft="34dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="335dp"
-            android:background="@drawable/rectangle_9"
+            android:background="@drawable/login5"
             android:inputType="textPassword"/>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -151,7 +153,9 @@
         android:layout_marginTop="239dp"
         android:textColor="@color/white"
         android:text="중복 확인"
-        android:background="@drawable/checkdup">
+        android:gravity="center_horizontal"
+        android:padding="7dp"
+        android:background="@drawable/login4">
     </androidx.appcompat.widget.AppCompatButton>
 
     <TextView
@@ -192,7 +196,7 @@
             android:layout_marginLeft="34dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="443dp"
-            android:background="@drawable/rectangle_9"
+            android:background="@drawable/login5"
             android:inputType="textPassword"/>
 
     <CheckBox
