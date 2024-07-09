@@ -142,10 +142,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/coach_schedule_recycler_view"
-        android:layout_width="320dp"
-        android:layout_height="350dp"
+        android:layout_width="match_parent"
+        android:layout_height="357dp"
         android:layout_marginTop="310dp"
-        android:layout_marginStart="43dp">
+        android:layout_marginStart="30dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
