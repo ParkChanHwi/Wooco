@@ -51,15 +51,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginStart="26dp"
+            android:layout_marginStart="30dp"
             android:text="인문/사회"
             android:textSize="15sp"
             android:buttonTint="#696969"
             android:textStyle="bold"
             android:gravity="center_horizontal"
             android:padding="7dp"
-            android:button="@android:color/transparent"
-            android:background="@drawable/rec_bottom2"/>
+            />
 
         <!-- 예체능 -->
 
@@ -69,10 +68,8 @@
             android:id="@+id/arts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="70dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/rec_bottom2"
-            android:button="@android:color/transparent"
             android:buttonTint="#696969"
             android:gravity="center_horizontal"
             android:padding="7dp"
@@ -91,22 +88,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginStart="26dp"
+            android:layout_marginStart="30dp"
             android:text="보건"
             android:textSize="15sp"
             android:buttonTint="#696969"
             android:textStyle="bold"
             android:gravity="center_horizontal"
             android:padding="7dp"
-            android:button="@android:color/transparent"
-            android:background="@drawable/rec_bottom2"/>
+            />
 
         <!-- 공학 -->
         <RadioButton
             android:id="@+id/engineering"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="105dp"
             android:layout_marginTop="20dp"
             android:text="공학"
             android:textSize="15sp"
@@ -114,8 +110,7 @@
             android:textStyle="bold"
             android:gravity="center_horizontal"
             android:padding="7dp"
-            android:button="@android:color/transparent"
-            android:background="@drawable/rec_bottom2"/>
+           />
     </LinearLayout>
 
         <!-- 교육 -->
@@ -130,22 +125,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginStart="26dp"
+            android:layout_marginStart="30dp"
             android:text="교육"
             android:textSize="15sp"
             android:buttonTint="#696969"
             android:textStyle="bold"
             android:gravity="center_horizontal"
-            android:padding="7dp"
-            android:button="@android:color/transparent"
-            android:background="@drawable/rec_bottom2"/>
+            android:padding="7dp" />
 
         <!-- 자연 -->
         <RadioButton
             android:id="@+id/nature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="105dp"
             android:layout_marginTop="20dp"
             android:text="자연"
             android:textSize="15sp"
@@ -153,8 +146,7 @@
             android:textStyle="bold"
             android:gravity="center_horizontal"
             android:padding="7dp"
-            android:button="@android:color/transparent"
-            android:background="@drawable/rec_bottom2"/>
+           />
 
         </LinearLayout>
     </RadioGroup>

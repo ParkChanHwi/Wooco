@@ -104,8 +104,7 @@
             android:layout_height="wrap_content"
             android:text=" 한국사"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="20
-"
+            android:layout_marginTop="20dp"
             android:textSize="15sp"
             android:buttonTint="#696969"
             android:textStyle="bold"
