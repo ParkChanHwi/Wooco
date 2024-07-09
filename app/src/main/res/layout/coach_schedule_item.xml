@@ -48,24 +48,27 @@
             android:layout_marginTop="60dp"/>
 
         <TextView
-            android:id="@+id/cancel_class2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/cancel_class"
+            android:layout_width="168dp"
+            android:layout_height="27dp"
+            android:layout_gravity="bottom|start"
+            android:layout_marginTop="97dp"
+            android:layout_marginStart="3dp"
             android:text="수업 취소"
             android:textStyle="bold"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="97dp"
-            android:layout_marginStart="57dp"/>
+            android:paddingLeft="60dp"
+            android:paddingTop="2dp"/>
 
         <TextView
             android:id="@+id/change_class2"
-            android:layout_width="160dp"
+            android:layout_width="169dp"
             android:layout_height="27dp"
-            android:layout_gravity="center"
+            android:layout_gravity="bottom|end"
+            android:layout_marginStart="173dp"
+            android:layout_marginTop="97dp"
             android:text="수업 변경"
             android:textStyle="bold"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="97dp"
-            android:layout_marginStart="165dp" />
+            android:paddingLeft="58dp"
+            android:paddingTop="2dp" />
     </RelativeLayout>
 </LinearLayout>

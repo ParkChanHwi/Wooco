@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/rectangle_35"
+        android:background="@drawable/schedule_box4"
         >
 
         <TextView
@@ -51,6 +51,7 @@
             android:layout_marginTop="97dp"
             android:layout_marginStart="3dp"
             android:text="수업 취소"
+            android:textStyle="bold"
             android:paddingLeft="60dp"
             android:paddingTop="2dp"
             />
@@ -63,6 +64,7 @@
             android:layout_marginStart="173dp"
             android:layout_marginTop="97dp"
             android:text="수업 변경"
+            android:textStyle="bold"
             android:paddingLeft="58dp"
             android:paddingTop="2dp"
             />
