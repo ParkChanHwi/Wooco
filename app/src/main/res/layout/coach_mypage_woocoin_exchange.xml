@@ -6,6 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F4F8FD"
     tools:context=".Menti_mypage_pastclassActivity">
 
     <ImageView
@@ -36,11 +37,11 @@
 
     <TextView
         android:id="@+id/woocoin_rectangle"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
+        android:layout_width="348dp"
+        android:layout_height="50dp"
         android:layout_marginTop="87dp"
-        android:layout_marginStart="60dp"
-        android:background="#80D9D9D9"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/enxchange_rec"
         android:text="현재 보유한 Woo-coin"
         android:paddingStart="80sp"
         android:textColor="#000000"
@@ -51,7 +52,7 @@
         android:id="@+id/woocoin_rectangle2"
         android:layout_width="27dp"
         android:layout_height="20dp"
-        android:layout_marginTop="109dp"
+        android:layout_marginTop="99dp"
         android:layout_marginStart="272dp"
         android:textStyle="bold"
         android:textColor="#0F4C81"
@@ -62,7 +63,7 @@
         android:id="@+id/woocoin_rectangle3"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginTop="109dp"
+        android:layout_marginTop="99dp"
         android:layout_marginStart="299dp"
         android:text="개"
         android:textStyle="bold"
@@ -73,33 +74,86 @@
     <ImageView
         android:layout_width="22dp"
         android:layout_height="22dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="107dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="99dp"
         android:background="@drawable/woocoin"/>
 
     <TextView
         android:layout_width="127dp"
         android:layout_height="20dp"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="164dp"
-        android:text="현금 교환 코인 개수"
+        android:layout_marginTop="171dp"
+        android:text="전환할 코인 개수"
         android:textSize="15sp"
         android:gravity="top"
         />
-    
+
     <EditText
         android:id="@+id/exchange1"
         android:layout_width="302dp"
         android:layout_height="37dp"
-        android:textSize="15sp"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="189dp"/>
+        android:layout_marginTop="215dp"
+        android:textSize="12sp"
+        android:hint="예금주를 입력하세요"/>
+
+    <ImageView
+        android:id="@+id/ex1"
+        android:layout_width="46dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="255dp"
+        android:background="@drawable/ex1"
+        />
+
+    <ImageView
+        android:id="@+id/ex5"
+        android:layout_width="46dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="255dp"
+        android:background="@drawable/ex5"
+        />
+
+    <ImageView
+        android:id="@+id/ex10"
+        android:layout_width="46dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="255dp"
+        android:background="@drawable/ex10"
+        />
+
+    <ImageView
+        android:id="@+id/ex20"
+        android:layout_width="46dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="255dp"
+        android:background="@drawable/ex50"
+        />
+
+    <ImageView
+        android:id="@+id/ex_all"
+        android:layout_width="46dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="282dp"
+        android:layout_marginTop="255dp"
+        android:background="@drawable/ex_all"
+        />
+
+    <ImageView
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="310dp"
+        android:layout_marginTop="215dp"
+        android:background="@drawable/x"/>
 
     <TextView
         android:layout_width="94dp"
         android:layout_height="20dp"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="243dp"
+        android:layout_marginTop="296dp"
         android:text="예금주"
         android:textSize="15sp"/>
 
@@ -107,15 +161,16 @@
         android:id="@+id/exchange2"
         android:layout_width="302dp"
         android:layout_height="37dp"
-        android:textSize="15sp"
+        android:textSize="12sp"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="273dp"/>
+        android:layout_marginTop="328dp"
+        android:hint="예금주를 입력하세요" />
 
     <TextView
         android:layout_width="94dp"
         android:layout_height="20dp"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="327dp"
+        android:layout_marginTop="400dp"
         android:text="은행명"
         android:textSize="15sp"/>
 
@@ -123,15 +178,16 @@
         android:id="@+id/exchange3"
         android:layout_width="302dp"
         android:layout_height="37dp"
-        android:textSize="15sp"
+        android:textSize="12sp"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="357dp"/>
+        android:layout_marginTop="431dp"
+        android:hint="예금주를 입력하세요"/>
 
     <TextView
         android:layout_width="94dp"
         android:layout_height="20dp"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="411dp"
+        android:layout_marginTop="503dp"
         android:text="계좌번호"
         android:textSize="15sp"/>
 
@@ -139,30 +195,16 @@
         android:id="@+id/exchange4"
         android:layout_width="302dp"
         android:layout_height="37dp"
-        android:textSize="15sp"
+        android:textSize="12sp"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="446dp"/>
+        android:layout_marginTop="539dp"
+        android:hint="계좌번호를 입력하세요"/>
 
-    <TextView
-        android:layout_width="94dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="500dp"
-        android:text="최종 입금액"
-        android:textSize="15sp"/>
-
-    <EditText
-        android:id="@+id/exchange5"
-        android:layout_width="302dp"
-        android:layout_height="37dp"
-        android:textSize="15sp"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="532dp"/>
 
     <TextView
         android:layout_width="320dp"
         android:layout_height="58dp"
-        android:layout_marginTop="590dp"
+        android:layout_marginTop="605dp"
         android:layout_marginStart="43dp"
         android:background="@drawable/rectangle_yuna9788"
         android:text="⚠   우코인을 현금으로 교환할 때, 13.3%의 수수료가 부과됩니다.
@@ -174,16 +216,16 @@
         android:layout_alignParentTop="true"/>
 
     <android.widget.Button
-        android:layout_width="154dp"
-        android:layout_height="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="126dp"
-        android:layout_marginTop="670dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="692dp"
         android:background="@drawable/rectangle_yuna8787"
         android:text="현금 교환 신청"
         android:textColor="#FFFFFF"
-        android:textSize="10sp"
+        android:textSize="15sp"
         android:textStyle="bold" />
 
 

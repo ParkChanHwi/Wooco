@@ -5,26 +5,32 @@ android:layout_width="match_parent"
 android:layout_height="wrap_content"
 android:orientation="vertical"
 android:padding="16dp"
-android:background="@drawable/rectangle_categori">
+android:background="@drawable/categort_box1">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <ImageView
-        android:id="@+id/back"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:src="@drawable/arrow"
-        />
+    <View
+        android:layout_width="50dp"
+        android:layout_height="1dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:background="@android:color/darker_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="자소서"
-        android:textSize="15sp"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_marginLeft="149dp"
         />
 </LinearLayout>
 
@@ -34,132 +40,249 @@ android:background="@drawable/rectangle_categori">
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
     <RadioButton
         android:id="@+id/marketing"
-        android:layout_width="wrap_content"
+        android:layout_width="149dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="26dp"
         android:text="마케팅"
+        android:textSize="15sp"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:padding="7dp"
+        android:button="@android:color/transparent"
+        android:background="@drawable/rec_bottom1"/>
 
     <!-- 기획 -->
     <RadioButton
         android:id="@+id/plan"
-        android:layout_width="wrap_content"
+        android:layout_width="149dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
         android:text="기획"
+        android:textSize="15sp"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
-
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:padding="7dp"
+        android:button="@android:color/transparent"
+        android:background="@drawable/rec_bottom1"/>
+    </LinearLayout>
 
     <!-- 사무직 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
     <RadioButton
         android:id="@+id/office"
-        android:layout_width="wrap_content"
+        android:layout_width="149dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="26dp"
         android:text="사무직"
+        android:textSize="15sp"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:padding="7dp"
+        android:button="@android:color/transparent"
+        android:background="@drawable/rec_bottom1"/>
 
 
     <!-- 전문/특수/연구직 -->
     <RadioButton
         android:id="@+id/special"
-        android:layout_width="wrap_content"
+        android:layout_width="149dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
         android:text="전문/특수/연구직"
+        android:textSize="15sp"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:padding="7dp"
+        android:button="@android:color/transparent"
+        android:background="@drawable/rec_bottom1"/>
+    </LinearLayout>
 
     <!-- 무역/유통 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
     <RadioButton
         android:id="@+id/transportation"
-        android:layout_width="wrap_content"
+        android:layout_width="149dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="26dp"
         android:text="무역/유통"
+        android:textSize="15sp"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:padding="7dp"
+        android:button="@android:color/transparent"
+        android:background="@drawable/rec_bottom1"/>
 
     <!-- 서비스 -->
 
     <RadioButton
         android:id="@+id/service"
-        android:layout_width="wrap_content"
+        android:layout_width="149dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
         android:text="서비스"
+        android:textSize="15sp"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:padding="7dp"
+        android:button="@android:color/transparent"
+        android:background="@drawable/rec_bottom1"/>
+    </LinearLayout>
 
     <!-- IT -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
     <RadioButton
         android:id="@+id/it"
-        android:layout_width="wrap_content"
+        android:layout_width="149dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="20dp"
         android:text="IT"
+        android:textSize="15sp"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:padding="7dp"
+        android:button="@android:color/transparent"
+        android:background="@drawable/rec_bottom1"/>
 
     <!-- 디자인 -->
     <RadioButton
         android:id="@+id/design"
-        android:layout_width="wrap_content"
+        android:layout_width="149dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
         android:text="디자인"
+        android:textSize="15sp"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:padding="7dp"
+        android:button="@android:color/transparent"
+        android:background="@drawable/rec_bottom1"/>
+    </LinearLayout>
 
     <!-- 영업 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
     <RadioButton
         android:id="@+id/business"
-        android:layout_width="wrap_content"
+        android:layout_width="149dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="26dp"
         android:text="영업"
+        android:textSize="15sp"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:padding="7dp"
+        android:button="@android:color/transparent"
+        android:background="@drawable/rec_bottom1"/>
 
 
     <!-- 교육 -->
     <RadioButton
         android:id="@+id/education"
-        android:layout_width="wrap_content"
+        android:layout_width="149dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
         android:text="교육"
+        android:textSize="15sp"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:padding="7dp"
+        android:button="@android:color/transparent"
+        android:background="@drawable/rec_bottom1"/>
+    </LinearLayout>
 
     <!-- 건설 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
     <RadioButton
         android:id="@+id/construction"
-        android:layout_width="wrap_content"
+        android:layout_width="149dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="26dp"
         android:text="건설"
+        android:textSize="15sp"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:padding="7dp"
+        android:button="@android:color/transparent"
+        android:background="@drawable/rec_bottom1"/>
 
     <!-- 의료 -->
 
     <RadioButton
         android:id="@+id/health"
-        android:layout_width="wrap_content"
+        android:layout_width="149dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
         android:text="의료"
+        android:textSize="15sp"
         android:buttonTint="#696969"
-        android:layout_marginLeft="20dp"/>
-
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:padding="7dp"
+        android:button="@android:color/transparent"
+        android:background="@drawable/rec_bottom1"/>
+    </LinearLayout>
     <!-- 여기에 다른 라디오 버튼 추가 -->
 
 </RadioGroup>
 
 <androidx.appcompat.widget.AppCompatButton
     android:id="@+id/setting"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="end"
-    android:text="설정"
-    android:textColor="@color/white"
-    android:background="@drawable/rectangle_9533"
-    android:onClick="onSettingButtonClick" />
+    android:layout_width="270dp"
+    android:layout_height="37dp"
+    android:layout_marginTop="40dp"
+    android:layout_gravity="center_horizontal"
+    android:text="확인"
+    android:textColor="@android:color/white"
+    android:background="@drawable/cofirm1" />
 
 </LinearLayout>
 

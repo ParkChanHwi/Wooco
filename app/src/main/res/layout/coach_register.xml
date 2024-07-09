@@ -6,6 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F4F8FD"
     tools:context=".Coach_registerActivity">
 
     <ImageView
@@ -47,7 +48,7 @@
         android:layout_marginTop="99dp"
         android:elevation="4dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/efaultimage"
+        android:src="@drawable/mypage_psa"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
 
@@ -75,7 +76,7 @@
         android:layout_width="90dp"
         android:layout_height="20dp"
         android:layout_marginStart="4dp"
-        android:background="@drawable/rectangle96666"
+        android:background="@drawable/my_line"
         android:layout_toEndOf="@id/some_id"
         android:layout_alignTop="@id/some_id" />
 
@@ -97,7 +98,7 @@
         android:layout_alignTop="@id/some_id2"
         android:layout_marginStart="4dp"
         android:layout_toEndOf="@id/some_id2"
-        android:background="@drawable/rectangle96666" />
+        android:background="@drawable/my_line" />
 
     <TextView
         android:id="@+id/some_id3"
@@ -114,7 +115,7 @@
         android:layout_width="90dp"
         android:layout_height="20dp"
         android:layout_marginStart="4dp"
-        android:background="@drawable/rectangle96666"
+        android:background="@drawable/my_line"
         android:layout_toEndOf="@id/some_id3"
         android:layout_alignTop="@id/some_id3" />
 
@@ -148,7 +149,8 @@
         android:textSize="10dp"
         android:gravity="center"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"/>
+        android:layout_alignParentTop="true"
+        android:background="@drawable/add_del"/>
 
     <Button
         android:id="@+id/addButton2"
@@ -169,16 +171,17 @@
         android:textSize="10dp"
         android:gravity="center"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"/>
+        android:layout_alignParentTop="true"
+        android:background="@drawable/add_del"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/coach_register1_view"
-        android:layout_width="320dp"
+        android:layout_width="321dp"
         android:layout_height="130dp"
         android:layout_marginStart="43dp"
         android:layout_marginTop="295dp"
-        android:background="@drawable/rectangle_yuna35">
+        android:background="@drawable/mtself_b">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -197,11 +200,20 @@
         android:textSize="11sp"
         android:background="@drawable/notice_rec"
         />
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="321dp"
+        android:layout_height="158dp"
+        android:layout_marginTop="475dp"
+        android:layout_marginStart="43dp"
+        android:background="@drawable/mtself_b"/>
+
     <TextView
         android:layout_width="55dp"
         android:layout_height="16dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="478dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="485dp"
         android:text="등록 방법:"
         android:textSize="12sp"
         android:textStyle="bold"
@@ -210,16 +222,17 @@
     <TextView
         android:layout_width="230dp"
         android:layout_height="17dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="478dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="485dp"
         android:text="odal@gmail.com 메일로 제출"
         android:textSize="12sp"/>
+
 
     <TextView
         android:layout_width="55dp"
         android:layout_height="16dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="505dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="512dp"
         android:text="등록 서류:"
         android:textSize="12sp"
         android:textStyle="bold"
@@ -228,31 +241,31 @@
     <TextView
         android:layout_width="230dp"
         android:layout_height="17dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="530dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="537dp"
         android:text="1. 신분증 (주민등록증/운전면허증)"
         android:textSize="12sp"/>
 
     <TextView
         android:layout_width="230dp"
         android:layout_height="17dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="555dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="562dp"
         android:text="2. 인증 서류 (재학증명서/ 졸업증명서/재직증명서)"
         android:textSize="12sp"/>
 
     <TextView
-        android:layout_width="230dp"
+        android:layout_width="250dp"
         android:layout_height="17dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="580dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="587dp"
         android:text="3. 자격증 카테고리 선택 시 -> 자격증 증명서 필수 "
         android:textSize="12sp"/>
 
     <ImageView
         android:layout_width="307dp"
         android:layout_height="44dp"
-        android:layout_marginTop="617dp"
+        android:layout_marginTop="643dp"
         android:layout_marginStart="50dp"
         android:background="@drawable/group513968"/>
 
@@ -260,14 +273,13 @@
 
     <android.widget.Button
         android:id="@+id/next_myself"
-        android:layout_width="154dp"
+        android:layout_width="match_parent"
         android:layout_height="32dp"
-        android:layout_marginTop="680dp"
-        android:layout_marginStart="122dp"
+        android:layout_marginTop="700dp"
         android:background="@drawable/rectangle_yuna8787"
         android:text="다음"
         android:textColor="#FFFFFF"
-        android:textSize="10sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />

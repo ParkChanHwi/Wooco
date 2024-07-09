@@ -6,6 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F4F8FD"
     tools:context=".Menti_mypageActivity">
 
     <ImageView
@@ -36,13 +37,13 @@
 
     <ImageView
         android:id="@+id/profile_image"
-        android:layout_width="103dp"
+        android:layout_width="110dp"
         android:layout_height="117dp"
         android:layout_marginStart="37dp"
-        android:layout_marginTop="99dp"
+        android:layout_marginTop="100dp"
         android:elevation="4dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/efaultimage"
+        android:src="@drawable/mypage_psa"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
 
@@ -64,7 +65,7 @@
         android:text="맨티 전환"
         android:textSize="12sp"
         android:textColor="@color/white"
-        android:background="#F89B00"/>
+        android:background="@drawable/mypage_trans"/>
 
 
     <TextView
@@ -106,9 +107,9 @@
         android:layout_height="25dp"
         android:layout_marginStart="156dp"
         android:layout_marginTop="177dp"
-        android:text="나의 코칭 별점:"
-        android:textColor="@color/white"
-        android:background="#0F4C81"
+        android:text="평균 코칭 별점:"
+        android:textColor="@color/black"
+        android:background="#F4F8FD"
         android:padding="2dp"/>
 
     <!-- 사용자가 보유한 코인 수를 표시할 TextView -->
@@ -122,18 +123,18 @@
         android:gravity="center"
         android:textSize="18sp"
         android:textColor="@color/white"
-        android:background="#0F4C81"
+        android:background="#F4F8FD"
         android:padding="2dp"/>
 
     <TextView
         android:id="@+id/my"
-        android:layout_width="31dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="37dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:layout_marginTop="270dp"
-        android:text="MY"
+        android:text="      MY"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:background="@drawable/mypage_rec"/>
 
     <android.widget.Button
         android:id="@+id/coach_request"
@@ -141,10 +142,10 @@
         android:layout_height="23dp"
         android:layout_marginStart="37dp"
         android:layout_marginTop="307dp"
-        android:text="알림"
-        android:textSize="18sp"
+        android:background="#F4F8FD"
         android:gravity="start"
-        android:background="@color/white"/>
+        android:text="알림"
+        android:textSize="18sp" />
 
     <android.widget.Button
         android:layout_width="116dp"
@@ -154,7 +155,7 @@
         android:text="지난 코칭 내역"
         android:textSize="18sp"
         android:gravity="start"
-        android:background="@color/white"/>
+        android:background="#F4F8FD"/>
 
     <android.widget.Button
         android:id="@+id/coach_register"
@@ -165,17 +166,17 @@
         android:text="코치 등록"
         android:textSize="18sp"
         android:gravity="start"
-        android:background="#FFFFFF"/>
+        android:background="#F4F8FD"/>
 
     <TextView
         android:id="@+id/woocoin"
-        android:layout_width="56dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="37dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:layout_marginTop="410dp"
-        android:text="우코인"
+        android:text="     우코인"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:background="@drawable/mypage_rec"/>
 
     <android.widget.Button
         android:id="@+id/woocoin_exchange"
@@ -186,7 +187,7 @@
         android:text="교환 하기"
         android:textSize="18sp"
         android:gravity="start"
-        android:background="@color/white"/>
+        android:background="#F4F8FD"/>
 
     <android.widget.Button
         android:layout_width="116dp"
@@ -196,17 +197,17 @@
         android:text="교환 내역"
         android:textSize="18sp"
         android:gravity="start"
-        android:background="@color/white"/>
+        android:background="#F4F8FD"/>
 
     <TextView
         android:id="@+id/guide"
-        android:layout_width="68dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="37dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:layout_marginTop="534dp"
-        android:text="가이드"
+        android:text="     가이드"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:background="@drawable/mypage_rec"/>
 
     <android.widget.Button
         android:layout_width="116dp"
@@ -216,7 +217,7 @@
         android:text="우코 소개"
         android:textSize="18sp"
         android:gravity="start"
-        android:background="@color/white"/>
+        android:background="#F4F8FD"/>
 
     <android.widget.Button
         android:layout_width="116dp"
@@ -226,7 +227,7 @@
         android:text="공지사항"
         android:textSize="18sp"
         android:gravity="start"
-        android:background="@color/white"/>
+        android:background="#F4F8FD"/>
 
     <android.widget.Button
         android:layout_width="116dp"
@@ -236,7 +237,7 @@
         android:text="앱 버전"
         android:textSize="18sp"
         android:gravity="start"
-        android:background="#FFFFFF"/>
+        android:background="#F4F8FD"/>
 
     <View
         android:id="@+id/line_21"
@@ -264,24 +265,24 @@
 
     <ImageView
         android:id="@+id/uiw_date"
-        android:layout_width="32dp"
+        android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="44dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="677dp"
         android:clipToOutline="true"
-        android:background="@drawable/uiw_date"
+        android:background="@drawable/uiw_date_coach"
         />
 
     <ImageView
         android:id="@+id/group_513866"
-        android:layout_width="32dp"
-        android:layout_height="35dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="335dp"
         android:layout_marginTop="677dp"
-        android:background="@drawable/group_5139372"
+        android:background="@drawable/coach_icon"
         android:clipToOutline="true" />
 </RelativeLayout>
