@@ -183,6 +183,6 @@
         android:text="확인"
         android:textSize="15sp"
         android:textColor="@color/white"
-        android:background="@drawable/okbtn"/>
+        android:background="@drawable/oknbtn_coach"/>
 
 </LinearLayout>

@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
-            android:text=" 진로"
+            android:text=" 진로1"
             android:buttonTint="#696969"
             android:buttonTintMode="src_in"/>
 
