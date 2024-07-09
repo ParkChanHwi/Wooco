@@ -48,7 +48,7 @@
             android:layout_marginTop="60dp"/>
 
         <TextView
-            android:id="@+id/cancel_class"
+            android:id="@+id/cancel_class2"
             android:layout_width="168dp"
             android:layout_height="27dp"
             android:layout_gravity="bottom|start"
