@@ -9,14 +9,6 @@
     android:background="#F4F8FD"
     tools:context=".Menti_mypageActivity">
 
-    <ImageView
-        android:id="@+id/ArrowImageView"
-        android:layout_width="15dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="37dp"
-        android:src="@drawable/arrow" />
-
     <TextView
         android:id="@+id/page_text_id"
         android:layout_width="110dp"
@@ -95,7 +87,7 @@
         android:layout_width="50dp"
         android:layout_height="20dp"
         android:layout_marginStart="280dp"
-        android:layout_marginTop="129dp"
+        android:layout_marginTop="126dp"
         android:text="로그아웃"
         android:textSize="10sp"
         android:background="@drawable/account_set"/>
@@ -145,7 +137,8 @@
         android:background="#F4F8FD"
         android:gravity="start"
         android:text="        알림"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:stateListAnimator="@null"/>
 
     <android.widget.Button
         android:layout_width="match_parent"
@@ -155,7 +148,8 @@
         android:text="        지난 코칭 내역"
         android:textSize="18sp"
         android:gravity="start"
-        android:background="#F4F8FD"/>
+        android:background="#F4F8FD"
+        android:stateListAnimator="@null"/>
 
     <android.widget.Button
         android:id="@+id/coach_register"
@@ -166,7 +160,8 @@
         android:text="        코치 등록"
         android:textSize="18sp"
         android:gravity="start"
-        android:background="#F4F8FD"/>
+        android:background="#F4F8FD"
+        android:stateListAnimator="@null"/>
 
     <TextView
         android:id="@+id/woocoin"
@@ -180,22 +175,20 @@
 
     <android.widget.Button
         android:id="@+id/woocoin_exchange"
-        android:layout_width="116dp"
+        android:layout_width="match_parent"
         android:layout_height="23dp"
-        android:layout_marginStart="37dp"
         android:layout_marginTop="447dp"
-        android:text="교환 하기"
+        android:text="        교환 하기"
         android:textSize="18sp"
         android:gravity="start"
         android:background="#F4F8FD"
         android:stateListAnimator="@null"/>
 
     <android.widget.Button
-        android:layout_width="116dp"
+        android:layout_width="match_parent"
         android:layout_height="23dp"
-        android:layout_marginStart="37dp"
         android:layout_marginTop="478dp"
-        android:text="교환 내역"
+        android:text="        교환 내역"
         android:textSize="18sp"
         android:gravity="start"
         android:background="#F4F8FD"
@@ -205,41 +198,41 @@
         android:id="@+id/guide"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginTop="534dp"
+        android:layout_marginTop="514dp"
         android:text="     가이드"
         android:textSize="20sp"
         android:textStyle="bold"
         android:background="@drawable/mypage_rec"/>
 
     <android.widget.Button
-        android:layout_width="116dp"
+        android:layout_width="match_parent"
         android:layout_height="23dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="571dp"
-        android:text="우코 소개"
+        android:layout_marginTop="551dp"
+        android:text="        우코 소개"
         android:textSize="18sp"
         android:gravity="start"
-        android:background="#F4F8FD"/>
+        android:background="#F4F8FD"
+        android:stateListAnimator="@null"/>
 
     <android.widget.Button
-        android:layout_width="116dp"
+        android:layout_width="match_parent"
         android:layout_height="23dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="602dp"
-        android:text="공지사항"
+        android:layout_marginTop="582dp"
+        android:text="        공지사항"
         android:textSize="18sp"
         android:gravity="start"
-        android:background="#F4F8FD"/>
+        android:background="#F4F8FD"
+        android:stateListAnimator="@null"/>
 
     <android.widget.Button
-        android:layout_width="116dp"
+        android:layout_width="match_parent"
         android:layout_height="23dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="633dp"
-        android:text="앱 버전"
+        android:layout_marginTop="613dp"
+        android:text="        앱 버전"
         android:textSize="18sp"
         android:gravity="start"
-        android:background="#F4F8FD"/>
+        android:background="#F4F8FD"
+        android:stateListAnimator="@null"/>
 
     <View
         android:id="@+id/line_21"
