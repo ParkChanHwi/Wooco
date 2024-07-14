@@ -140,6 +140,12 @@
         android:textSize="18sp"
         android:stateListAnimator="@null"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="337dp"
+        android:background="@drawable/rectangle_9853"/>
+
     <android.widget.Button
         android:layout_width="match_parent"
         android:layout_height="23dp"
@@ -150,6 +156,12 @@
         android:gravity="start"
         android:background="#F4F8FD"
         android:stateListAnimator="@null"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="367dp"
+        android:background="@drawable/rectangle_9853"/>
 
     <android.widget.Button
         android:id="@+id/coach_register"
@@ -184,6 +196,12 @@
         android:background="#F4F8FD"
         android:stateListAnimator="@null"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="475dp"
+        android:background="@drawable/rectangle_9853"/>
+
     <android.widget.Button
         android:layout_width="match_parent"
         android:layout_height="23dp"
@@ -214,6 +232,13 @@
         android:background="#F4F8FD"
         android:stateListAnimator="@null"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="578dp"
+        android:background="@drawable/rectangle_9853"/>
+
+
     <android.widget.Button
         android:layout_width="match_parent"
         android:layout_height="23dp"
@@ -224,6 +249,12 @@
         android:background="#F4F8FD"
         android:stateListAnimator="@null"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="610dp"
+        android:background="@drawable/rectangle_9853"/>
+
     <android.widget.Button
         android:layout_width="match_parent"
         android:layout_height="23dp"
@@ -233,6 +264,12 @@
         android:gravity="start"
         android:background="#F4F8FD"
         android:stateListAnimator="@null"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="640dp"
+        android:background="@drawable/rectangle_9853"/>
 
     <View
         android:id="@+id/line_21"

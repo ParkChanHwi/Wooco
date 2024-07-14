@@ -124,6 +124,7 @@
             android:layout_marginTop="2dp"
             android:gravity="center"
             android:paddingRight="3dp"
+            android:textStyle="bold"
             android:textSize="18sp"
             android:textColor="@android:color/black"
             />
@@ -149,6 +150,11 @@
         android:gravity="start"
         android:background="#FFFBF5"
         android:stateListAnimator="@null" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="337dp"
+        android:background="@drawable/rectangle_9853"/>
 
     <android.widget.Button
         android:id="@+id/love_coach"
@@ -161,6 +167,12 @@
         android:background="#FFFBF5"
         android:stateListAnimator="@null"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="367dp"
+        android:background="@drawable/rectangle_9853"/>
+
     <android.widget.Button
         android:id="@+id/my_review"
         android:layout_width="match_parent"
@@ -171,6 +183,7 @@
         android:gravity="start"
         android:background="#FFFBF5"
         android:stateListAnimator="@null"/>
+
 
     <TextView
         android:id="@+id/woocoin"
@@ -192,6 +205,12 @@
         android:gravity="start"
         android:background="#FFFBF5"
         android:stateListAnimator="@null"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="475dp"
+        android:background="@drawable/rectangle_9853"/>
 
     <android.widget.Button
         android:id="@+id/purchase_history"
@@ -225,6 +244,12 @@
         android:background="#FFFBF5"
         android:stateListAnimator="@null"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="578dp"
+        android:background="@drawable/rectangle_9853"/>
+
     <android.widget.Button
         android:id="@+id/notice"
         android:layout_width="match_parent"
@@ -236,6 +261,12 @@
         android:background="#FFFBF5"
         android:stateListAnimator="@null"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="610dp"
+        android:background="@drawable/rectangle_9853"/>
+
     <android.widget.Button
         android:id="@+id/app_version"
         android:layout_width="match_parent"
@@ -246,6 +277,12 @@
         android:gravity="start"
         android:background="#FFFBF5"
         android:stateListAnimator="@null"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="640dp"
+        android:background="@drawable/rectangle_9853"/>
 
     <View
         android:id="@+id/line_21"
