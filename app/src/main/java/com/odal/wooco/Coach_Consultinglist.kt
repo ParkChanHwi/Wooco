@@ -41,7 +41,7 @@ class Coach_Consultinglist : AppCompatActivity() {
 
                         if (currentUserName != null) {
                             databaseRef = FirebaseDatabase.getInstance().reference.child("CoachconsultRooms")
-                            // 채팅방 목록 가져오기
+                            // 상담방 목록 가져오기
                             databaseRef.addValueEventListener(object : ValueEventListener {
                                 override fun onDataChange(snapshot: DataSnapshot) {
                                     consultList.clear()
