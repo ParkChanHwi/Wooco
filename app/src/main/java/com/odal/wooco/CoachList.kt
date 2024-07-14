@@ -45,11 +45,20 @@ class CoachList : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // 전체 버튼, 눌렀을때 모든 카테고리 설정 취소하게끔
+//        findViewById<Button>(R.id.kategori).setOnClickListener {
+//            val bottomSheet = MyBottomSheetDialogFragment()
+//            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+//        }
+
+
         findViewById<Button>(R.id.kategori1).setOnClickListener {
             val bottomSheet = MyBottomSheetDialogFragment()
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
         // 다른 카테고리 버튼들의 클릭 리스너도 동일하게 추가
+
+
 
         // Firebase Database 초기화
         database = FirebaseDatabase.getInstance().reference
