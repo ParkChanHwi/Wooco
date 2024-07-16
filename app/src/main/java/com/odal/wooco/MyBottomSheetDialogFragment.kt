@@ -220,11 +220,58 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             savedInstanceState: Bundle?
         ): View? {
             super.onCreateView(inflater, container, savedInstanceState)
-            return inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet5, container, false)
+            val view = inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet5, container, false)
+
+
+            // 버튼 찾기
+            val setButton = view.findViewById<Button>(R.id.category_setting)
+            setButton.setOnClickListener {
+                // 각 라디오 버튼의 ID와 해당 텍스트를 매핑하는 맵
+                val radioButtonIds = mapOf(
+                    R.id.marketing to "마케팅",
+                    R.id.business to "기획",
+                    R.id.indoor to "사무직",
+                    R.id.special to "전문/특수/연구직",
+                    R.id.finance to "무역/유통",
+                    R.id.service to "서비스",
+                    R.id.it to "IT",
+                    R.id.design to "디자인",
+                    R.id.sales to "영업",
+                    R.id.education to "교육",
+                    R.id.construction to "건설",
+                    R.id.medicine to "의료"
+                )
+
+                // RadioGroup 찾기
+                val radioGroup = view.findViewById<RadioGroup>(R.id.category_group2)
+
+                val selectedTexts = mutableListOf<String>()
+
+                // 각 라디오 버튼을 순회하며 선택된 버튼의 텍스트를 가져오기
+                for ((radioButtonId, text) in radioButtonIds) {
+                    val radioButton = view.findViewById<RadioButton>(radioButtonId)
+                    if (radioButton.isChecked) {
+                        selectedTexts.add(text)
+                    }
+                }
+
+                if (selectedTexts.isNotEmpty()) {
+                    // 선택된 라디오 버튼의 텍스트 출력
+                    val message = "선택된 라디오 버튼: ${selectedTexts.joinToString(", ")}"
+                    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+                } else {
+                    // 선택된 라디오 버튼이 없을 경우 처리
+                    Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+
+            // 완성된 뷰 반환
+            return view
         }
     }
 
-    
+
     class BottomSheet6() : BottomSheetDialogFragment() {
 
         override fun onCreateView(
@@ -233,7 +280,45 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             savedInstanceState: Bundle?
         ): View? {
             super.onCreateView(inflater, container, savedInstanceState)
-            return inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet4, container, false)
+            val view = inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet4, container, false)
+
+
+            // 버튼 찾기
+            val setButton = view.findViewById<Button>(R.id.category_setting)
+            setButton.setOnClickListener {
+                // 각 라디오 버튼의 ID와 해당 텍스트를 매핑하는 맵
+                val radioButtonIds = mapOf(
+                    R.id.category_radio1 to "기사/기능사",
+                    R.id.category_radio2 to "어학",
+                    R.id.category_radio3 to "컴퓨터활용능력",
+                    R.id.category_radio4 to "한국사",
+                    R.id.category_radio5 to "기타"
+                )
+
+
+                val selectedTexts = mutableListOf<String>()
+
+                // 각 라디오 버튼을 순회하며 선택된 버튼의 텍스트를 가져오기
+                for ((radioButtonId, text) in radioButtonIds) {
+                    val radioButton = view.findViewById<RadioButton>(radioButtonId)
+                    if (radioButton.isChecked) {
+                        selectedTexts.add(text)
+                    }
+                }
+
+                if (selectedTexts.isNotEmpty()) {
+                    // 선택된 라디오 버튼의 텍스트 출력
+                    val message = "선택된 라디오 버튼: ${selectedTexts.joinToString(", ")}"
+                    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+                } else {
+                    // 선택된 라디오 버튼이 없을 경우 처리
+                    Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+
+            // 완성된 뷰 반환
+            return view
         }
     }
 

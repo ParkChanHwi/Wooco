@@ -27,6 +27,7 @@
     </LinearLayout>
 
     <RadioGroup
+        android:id="@+id/category_group2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -36,12 +37,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/marketing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 마케팅"
                 android:buttonTint="#696969"
                 android:layout_marginStart="40dp"/>
             <RadioButton
+                android:id="@+id/business"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 기획"
@@ -53,12 +56,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/indoor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 사무직"
                 android:buttonTint="#696969"
                 android:layout_marginStart="40dp"/>
             <RadioButton
+                android:id="@+id/special"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 전문/특수/연구직"
@@ -70,12 +75,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/finance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 무역/유통"
                 android:buttonTint="#696969"
                 android:layout_marginStart="40dp"/>
             <RadioButton
+                android:id="@+id/service"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 서비스"
@@ -87,12 +94,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/it"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" IT"
                 android:buttonTint="#696969"
                 android:layout_marginStart="40dp"/>
             <RadioButton
+                android:id="@+id/design"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 디자인"
@@ -104,12 +113,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/sales"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 영업"
                 android:buttonTint="#696969"
                 android:layout_marginStart="40dp"/>
             <RadioButton
+                android:id="@+id/education"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 교육"
@@ -121,12 +132,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/construction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 건설"
                 android:buttonTint="#696969"
                 android:layout_marginStart="40dp"/>
             <RadioButton
+                android:id="@+id/medicine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 의료"

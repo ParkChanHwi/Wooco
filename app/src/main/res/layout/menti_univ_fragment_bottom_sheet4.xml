@@ -27,6 +27,7 @@
     </LinearLayout>
 
     <RadioGroup
+        android:id="@+id/category_group3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -36,12 +37,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/category_radio1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 기사/기능사"
                 android:buttonTint="#696969"
                 android:layout_marginStart="40dp"/>
             <RadioButton
+                android:id="@+id/category_radio2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 어학"
@@ -53,12 +56,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/category_radio3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 컴퓨터활용능력"
                 android:buttonTint="#696969"
                 android:layout_marginStart="40dp"/>
             <RadioButton
+                android:id="@+id/category_radio4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 한국사"
@@ -70,6 +75,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/category_radio5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 기타"
