@@ -54,6 +54,19 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
         return view
     }
+
+    class BottomSheet1 : BottomSheetDialogFragment() {
+
+        override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View? {
+            return inflater.inflate(R.layout.menti_univ_bottom_sheet, container, false)
+        }
+    }
+
+
     class BottomSheet2() : BottomSheetDialogFragment() {
 
         override fun onCreateView(
@@ -67,7 +80,7 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             val view = inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet, container, false)
 
             // 버튼 찾기
-            val setButton = view.findViewById<Button>(R.id.category_setting)
+            val setButton = view.findViewById<Button>(R.id.setting)
 
             // 버튼에 클릭 리스너 설정
             setButton.setOnClickListener {
