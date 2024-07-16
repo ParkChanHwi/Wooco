@@ -38,6 +38,7 @@ class CoachList : AppCompatActivity() {
         val calBtn: ImageView = findViewById(R.id.uiw_date)
         val profileBtn: ImageView = findViewById(R.id.group_513866)
 
+
         // 벨 버튼 클릭 시 coach_menti_request 이동
         val bellBtn: RelativeLayout = findViewById(R.id.bell)
         bellBtn.setOnClickListener {
@@ -55,7 +56,7 @@ class CoachList : AppCompatActivity() {
         findViewById<Button>(R.id.kategori1).setOnClickListener {
             val bottomSheet = MyBottomSheetDialogFragment.BottomSheet1()
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
-        }
+        } // 바텀시트 내에서 클릭했을때의 값을 리턴해주는 변수 생성
 
         // 다른 카테고리 버튼들의 클릭 리스너도 동일하게 추가
 
