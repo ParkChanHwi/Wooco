@@ -129,7 +129,10 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                 val radioButtonIds = mapOf(
                     R.id.humanities to "인문사회",
                     R.id.arts to "예체능",
-                    R.id.medicine to "의학"
+                    R.id.medicine to "보건",
+                    R.id.engineering to "공학",
+                    R.id.education to "교육",
+                    R.id.nature to "자연"
                 )
 
                 val selectedTexts = mutableListOf<String>()
@@ -159,7 +162,7 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
     }
 
 
-    class BottomSheet4() : BottomSheetDialogFragment() {
+    class BottomSheet4 : BottomSheetDialogFragment() {
 
         override fun onCreateView(
             inflater: LayoutInflater,
@@ -167,9 +170,48 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             savedInstanceState: Bundle?
         ): View? {
             super.onCreateView(inflater, container, savedInstanceState)
-            return inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet3, container, false)
+            val view = inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet3, container, false)
+
+
+            // 버튼 찾기
+            val setButton = view.findViewById<Button>(R.id.category_setting)
+            setButton.setOnClickListener {
+                // 각 라디오 버튼의 ID와 해당 텍스트를 매핑하는 맵
+                val radioButtonIds = mapOf(
+                    R.id.job to "편입",
+                    R.id.company to "기업",
+                    R.id.government to "공무원",
+                    R.id.employment to "임용",
+                    R.id.hospital to "병원",
+                    R.id.etc to "기타"
+                )
+
+                val selectedTexts = mutableListOf<String>()
+
+                // 각 라디오 버튼을 순회하며 선택된 버튼의 텍스트를 가져오기
+                for ((radioButtonId, text) in radioButtonIds) {
+                    val radioButton = view.findViewById<RadioButton>(radioButtonId)
+                    if (radioButton.isChecked) {
+                        selectedTexts.add(text)
+                    }
+                }
+
+                if (selectedTexts.isNotEmpty()) {
+                    // 선택된 라디오 버튼의 텍스트 출력
+                    val message = "선택된 라디오 버튼: ${selectedTexts.joinToString(", ")}"
+                    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+                } else {
+                    // 선택된 라디오 버튼이 없을 경우 처리
+                    Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+
+            // 완성된 뷰 반환
+            return view
         }
     }
+
     class BottomSheet5() : BottomSheetDialogFragment() {
 
         override fun onCreateView(
@@ -181,6 +223,8 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             return inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet5, container, false)
         }
     }
+
+    
     class BottomSheet6() : BottomSheetDialogFragment() {
 
         override fun onCreateView(

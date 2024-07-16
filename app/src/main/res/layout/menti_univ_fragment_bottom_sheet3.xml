@@ -27,6 +27,7 @@
     </LinearLayout>
 
     <RadioGroup
+        android:id="@+id/category_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -36,12 +37,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/job"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 편입"
                 android:buttonTint="#696969"
                 android:layout_marginStart="40dp"/>
             <RadioButton
+                android:id="@+id/company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 기업"
@@ -53,12 +56,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/government"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 공무원"
                 android:buttonTint="#696969"
                 android:layout_marginStart="40dp"/>
             <RadioButton
+                android:id="@+id/employment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 임용"
@@ -70,12 +75,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/hospital"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 병원"
                 android:buttonTint="#696969"
                 android:layout_marginStart="40dp"/>
             <RadioButton
+                android:id="@+id/etc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 기타"
