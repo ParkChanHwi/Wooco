@@ -3,6 +3,7 @@ package com.odal.wooco
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -31,7 +32,7 @@ class Coach_Classlist : AppCompatActivity() {
         val chatBtn: ImageView = findViewById(R.id.chat_1)
         val calBtn: ImageView = findViewById(R.id.uiw_date)
         val profileBtn: ImageView = findViewById(R.id.group_513866)
-        val consultTsf : TextView = findViewById(R.id.consult_button)
+        val consultListBox : LinearLayout = findViewById(R.id.consultListBox)
         val consult_button : TextView = findViewById(R.id.consult_button)
 
         recyclerView = findViewById(R.id.coach_classlist_recycleView)
@@ -100,7 +101,7 @@ class Coach_Classlist : AppCompatActivity() {
             startActivity(intent)
         }
 
-        consultTsf.setOnClickListener {
+        consultListBox.setOnClickListener {
             val intent = Intent(this, Coach_Consultinglist::class.java)
             startActivity(intent)
         }

@@ -5,6 +5,7 @@ import Consult
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +31,7 @@ class Coach_Consultinglist : AppCompatActivity() {
         val calBtn: ImageView = findViewById(R.id.uiw_date)
         val profileBtn: ImageView = findViewById(R.id.group_513866)
         val class_button : TextView = findViewById(R.id.class_button)
+        val class_button_box : LinearLayout = findViewById(R.id.classListBox)
         val arrow_3 : ImageView = findViewById(R.id.arrow_3)
 
         recyclerView = findViewById(R.id.coach_consultinglist_recycleView)
@@ -95,10 +97,14 @@ class Coach_Consultinglist : AppCompatActivity() {
             startActivity(intent)
         }
 
-//        arrow_3.setOnClickListener {
-//            val intent = Intent(this, Coach_mypageActivity::class.java)
-//            startActivity(intent)
-//        }
+        class_button_box.setOnClickListener {
+            val intent = Intent(this, Coach_Classlist::class.java)
+            startActivity(intent)
+        }
+
+        arrow_3.setOnClickListener {
+            finish()
+        }
 
     }
 

@@ -3,6 +3,7 @@ package com.odal.wooco
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -59,6 +60,7 @@ class Menti_Classlist : AppCompatActivity() {
         val calBtn: ImageView = findViewById(R.id.uiw_date)
         val profileBtn: ImageView = findViewById(R.id.group_513866)
         val consultlist: TextView = findViewById(R.id.consultList)
+        val consultListBox: LinearLayout = findViewById(R.id.consultListBox)
 
         homeBtn.setOnClickListener {
             val intent = Intent(this, CoachList::class.java)
@@ -80,6 +82,10 @@ class Menti_Classlist : AppCompatActivity() {
         }
 
         consultlist.setOnClickListener {
+            val intent = Intent(this, Menti_Counsultinglist::class.java)
+            startActivity(intent)
+        }
+        consultListBox.setOnClickListener {
             val intent = Intent(this, Menti_Counsultinglist::class.java)
             startActivity(intent)
         }

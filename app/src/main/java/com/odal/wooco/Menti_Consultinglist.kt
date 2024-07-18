@@ -4,6 +4,7 @@ import Consult
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -59,6 +60,7 @@ class Menti_Counsultinglist : AppCompatActivity() {
             val calBtn: ImageView = findViewById(R.id.uiw_date)
             val profileBtn: ImageView = findViewById(R.id.group_513866)
             val classList: TextView = findViewById(R.id.classList)
+            val classListBox : LinearLayout = findViewById(R.id.classListBox)
 
             homeBtn.setOnClickListener {
                 val intent = Intent(this, CoachList::class.java)
@@ -83,6 +85,11 @@ class Menti_Counsultinglist : AppCompatActivity() {
                 val intent = Intent(this, Menti_Classlist::class.java)
                 startActivity(intent)
             }
+            classListBox.setOnClickListener {
+                val intent = Intent(this, Menti_Classlist::class.java)
+                startActivity(intent)
+            }
+
         }
     }
 }

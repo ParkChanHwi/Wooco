@@ -114,11 +114,12 @@ class ChatActivity : AppCompatActivity() {
 
                         otherName.text = receiverName
 
+                        // 뒤로가기
                         val arrowImageView: ImageView = findViewById(R.id.arrow_3)
                         arrowImageView.setOnClickListener {
-                            val intent = Intent(this@ChatActivity, CoachList::class.java)
-                            startActivity(intent)
+                            finish()
                         }
+
                         Log.d(TAG, "Value of mentiName: $mentiName, senderUid: $senderUid")
 
                         sendBtn.setOnClickListener {
