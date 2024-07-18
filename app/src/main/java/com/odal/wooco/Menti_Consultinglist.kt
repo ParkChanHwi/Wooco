@@ -1,7 +1,11 @@
 package com.odal.wooco
 
 import Consult
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +18,6 @@ class Menti_Counsultinglist : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: Menti_Consultinglist_Adapter
     private val consultList = mutableListOf<Consult>()
-
     private lateinit var databaseRef: DatabaseReference
     private lateinit var mAuth: FirebaseAuth
 
@@ -40,7 +43,7 @@ class Menti_Counsultinglist : AppCompatActivity() {
                     for (consultSnapshot in snapshot.children) {
                         val consult = consultSnapshot.getValue(Consult::class.java)
                         if (consult != null && consult.mainID == currentUserUid) {
-                            consultList.add(consult)
+                            consultList.add(Consult(consult.mentiName, consult.coachName,consult.coachUid,consult.mentiUid,consult.mainID))
                         }
                     }
                     adapter.notifyDataSetChanged()
@@ -50,6 +53,36 @@ class Menti_Counsultinglist : AppCompatActivity() {
                     // Handle error
                 }
             })
+
+            val homeBtn: ImageView = findViewById(R.id.material_sy)
+            val chatBtn: ImageView = findViewById(R.id.chat_1)
+            val calBtn: ImageView = findViewById(R.id.uiw_date)
+            val profileBtn: ImageView = findViewById(R.id.group_513866)
+            val classList: TextView = findViewById(R.id.classList)
+
+            homeBtn.setOnClickListener {
+                val intent = Intent(this, CoachList::class.java)
+                startActivity(intent)
+            }
+
+            chatBtn.setOnClickListener {
+                Toast.makeText(this, "현재 화면입니다.", Toast.LENGTH_SHORT).show()
+            }
+
+            calBtn.setOnClickListener {
+                val intent = Intent(this, Menti_scheduleActivity::class.java)
+                startActivity(intent)
+            }
+
+            profileBtn.setOnClickListener {
+                val intent = Intent(this, Menti_mypageActivity::class.java)
+                startActivity(intent)
+            }
+
+            classList.setOnClickListener {
+                val intent = Intent(this, Menti_Classlist::class.java)
+                startActivity(intent)
+            }
         }
     }
 }
