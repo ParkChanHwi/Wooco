@@ -51,13 +51,12 @@
         android:id="@+id/woocoin_rectangle2"
         android:layout_width="27dp"
         android:layout_height="23dp"
-        android:layout_marginTop="100dp"
         android:layout_marginStart="190dp"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:textColor="#F89B00"
+        android:layout_marginTop="100dp"
         android:gravity="center"
-        />
+        android:textColor="#F89B00"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/woocoin_rectangle3"
