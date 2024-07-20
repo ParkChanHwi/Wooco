@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Menti_mypage_woocoinActivity">
+
+    <ImageView
+        android:id="@+id/ArrowImageView"
+        android:layout_width="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="37dp"
+        android:src="@drawable/arrow" />
+
+    <TextView
+        android:id="@+id/page_text_id"
+        android:layout_width="110dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="33dp"
+        android:text="구매 내역"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="240dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="69dp"
+        android:background="@android:color/darker_gray" />
+
+
+    <TextView
+        android:id="@+id/woocoin_rectangle"
+        android:layout_width="411dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="93dp"
+        android:background="@drawable/rectangle_9795"
+        android:text="현재 보유한 Woo-coin"
+        android:paddingStart="52sp"
+        android:textColor="#000000"
+        android:gravity="center_vertical"
+        />
+
+    <TextView
+        android:id="@+id/woocoin_rectangle2"
+        android:layout_width="27dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="190dp"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:textColor="#F89B00"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/woocoin_rectangle3"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="103dp"
+        android:layout_marginStart="217dp"
+        android:text="개"
+        android:textStyle="bold"
+        android:textColor="#F89B00"
+        android:gravity="center_vertical"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/menti_coach_introduce_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="180dp">
+    </androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>

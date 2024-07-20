@@ -40,7 +40,7 @@
         android:layout_width="411dp"
         android:layout_height="40dp"
         android:layout_marginTop="93dp"
-        android:background="#80D9D9D9"
+        android:background="@drawable/rectangle_9795"
         android:text="현재 보유한 Woo-coin"
         android:paddingStart="52sp"
         android:textColor="#000000"
@@ -51,13 +51,12 @@
         android:id="@+id/woocoin_rectangle2"
         android:layout_width="27dp"
         android:layout_height="23dp"
-        android:layout_marginTop="100dp"
         android:layout_marginStart="190dp"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:textColor="#F89B00"
+        android:layout_marginTop="100dp"
         android:gravity="center"
-        />
+        android:textColor="#F89B00"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/woocoin_rectangle3"
@@ -79,9 +78,11 @@
         android:background="@drawable/woocoin"/>
 
     <RelativeLayout
-        android:layout_width="411dp"
-        android:layout_height="61dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_9797"
         android:layout_marginTop="215dp"
+
         >
 
         <ImageView
@@ -94,7 +95,7 @@
             android:layout_width="109dp"
             android:layout_height="22dp"
             android:layout_marginStart="69dp"
-            android:layout_marginTop="19dp"
+            android:layout_marginTop="16dp"
             android:text="Woo-coin 1개"
             android:textSize="18sp"/>
 
@@ -105,15 +106,17 @@
             android:layout_marginStart="310dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="19dp"
+            android:paddingBottom="2dp"
             android:text="5,000원"
             android:textColor="@color/white"
-            android:background="#F89B00"
+            android:background="@drawable/rectangle_9801"
             />
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="411dp"
-        android:layout_height="61dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_9797"
         android:layout_marginTop="315dp"
        >
 
@@ -127,7 +130,7 @@
             android:layout_width="109dp"
             android:layout_height="22dp"
             android:layout_marginStart="69dp"
-            android:layout_marginTop="19dp"
+            android:layout_marginTop="16dp"
             android:text="Woo-coin 5개"
             android:textSize="18sp"/>
 
@@ -140,14 +143,16 @@
             android:layout_marginTop="19dp"
             android:text="25,000원"
             android:textColor="@color/white"
-            android:background="#F89B00"
+            android:background="@drawable/rectangle_9801"
+            android:paddingBottom="2dp"
             />
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="411dp"
-        android:layout_height="61dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="415dp"
+        android:background="@drawable/rectangle_9797"
         >
 
         <ImageView
@@ -160,7 +165,7 @@
             android:layout_width="120dp"
             android:layout_height="22dp"
             android:layout_marginStart="69dp"
-            android:layout_marginTop="19dp"
+            android:layout_marginTop="16dp"
             android:text="Woo-coin 10개"
             android:textSize="18sp"/>
 
@@ -173,14 +178,16 @@
             android:layout_marginTop="19dp"
             android:text="50,000원"
             android:textColor="@color/white"
-            android:background="#F89B00"
+            android:background="@drawable/rectangle_9801"
+            android:paddingBottom="2dp"
             />
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="411dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="515dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="515dp"
+        android:background="@drawable/rectangle_9797">
 
         <ImageView
             android:layout_width="38dp"
@@ -192,7 +199,7 @@
             android:layout_width="120dp"
             android:layout_height="22dp"
             android:layout_marginStart="69dp"
-            android:layout_marginTop="19dp"
+            android:layout_marginTop="16dp"
             android:text="Woo-coin 15개"
             android:textSize="18sp"/>
 
@@ -205,14 +212,16 @@
             android:layout_marginTop="19dp"
             android:text="75,000원"
             android:textColor="@color/white"
-            android:background="#F89B00"
+            android:background="@drawable/rectangle_9801"
+            android:paddingBottom="2dp"
             />
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="411dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="615dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="615dp"
+        android:background="@drawable/rectangle_9797">
 
         <ImageView
             android:layout_width="38dp"
@@ -224,7 +233,7 @@
             android:layout_width="120dp"
             android:layout_height="22dp"
             android:layout_marginStart="69dp"
-            android:layout_marginTop="19dp"
+            android:layout_marginTop="16dp"
             android:text="Woo-coin 20개"
             android:textSize="18sp"/>
 
@@ -234,10 +243,11 @@
             android:layout_height="30dp"
             android:layout_marginStart="310dp"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="19dp"
+            android:layout_marginTop="15dp"
             android:text="100,000원"
             android:textColor="@color/white"
-            android:background="#F89B00"
+            android:background="@drawable/rectangle_9801"
+            android:paddingBottom="2dp"
             />
 
 
