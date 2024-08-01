@@ -88,6 +88,7 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             radioGroup = view.findViewById(R.id.radio_group)
             recyclerView = view.findViewById(R.id.search_results_recycler_view)
             recyclerView.layoutManager = LinearLayoutManager(context)
+            val categorySettingButton: Button = view.findViewById(R.id.category_setting)
 
             database = FirebaseDatabase.getInstance().getReference("category")
 
@@ -112,6 +113,17 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                 }
                 return@OnKeyListener false
             })
+
+            categorySettingButton.setOnClickListener {
+                val selectedRadioButtonId = radioGroup.checkedRadioButtonId
+                if (selectedRadioButtonId != -1) {
+                    val selectedRadioButton = view.findViewById<RadioButton>(selectedRadioButtonId)
+                    val selectedText = selectedRadioButton.text.toString()
+                    Toast.makeText(requireContext(), "선택된 항목: $selectedText", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(requireContext(), "항목이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
+                }
+            }
 
             return view
         }
