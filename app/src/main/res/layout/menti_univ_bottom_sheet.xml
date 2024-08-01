@@ -48,7 +48,10 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:hint="  찾으시려는 대학교를 검색해주세요."
-        android:textSize="12sp"
+        android:textSize="12dp"
+        android:inputType="text"
+        android:maxLines="1"
+        android:imeOptions="actionSearch"
         android:background="@drawable/rectangle_9821"/>
 
     <android.widget.Button
@@ -59,8 +62,7 @@
         android:layout_marginTop="-21dp"
         android:layout_marginStart="320dp"
         android:background="@drawable/vector_search"
-        android:text="검색"
-        android:textColor="@color/white" />
+    />
 
     <RadioGroup
         android:id="@+id/radio_group"

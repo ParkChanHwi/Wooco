@@ -3,6 +3,8 @@ package com.odal.wooco
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,49 +25,134 @@ import com.odal.wooco.datamodels.CategoryDataModel
 
 class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
-    private lateinit var searchButton: Button
-    private lateinit var searchInput: EditText
+    private lateinit var database: DatabaseReference
     private lateinit var radioGroup: RadioGroup
     private lateinit var recyclerView: RecyclerView
     private val results = mutableListOf<String>()
-    private lateinit var database: DatabaseReference
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.menti_univ_bottom_sheet, container, false)
+    private fun performSearch(query: String) {
+        database.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {  
+                val categoryData = dataSnapshot.getValue(CategoryDataModel::class.java)
 
-        searchButton = view.findViewById(R.id.search_button)
-        searchInput = view.findViewById(R.id.search_input)
-        radioGroup = view.findViewById(R.id.radio_group)
-        recyclerView = view.findViewById(R.id.search_results_recycler_view)
-        recyclerView.layoutManager = LinearLayoutManager(context)
+                val filteredResults = mutableListOf<String>()
+                categoryData?.univs?.let { univs ->
+                    filteredResults.addAll(univs.filter { it.contains(query, ignoreCase = true) })
+                }
 
-        database = FirebaseDatabase.getInstance().getReference("category")
+                // Clear existing RadioButtons
+                radioGroup.removeAllViews()
 
-        searchButton.setOnClickListener {
-            val query = searchInput.text.toString()
-            if (query.isNotEmpty()) {
-                performSearch(query)
+                if (filteredResults.isNotEmpty()) {
+                    filteredResults.forEach { result ->
+                        val radioButton = RadioButton(context).apply {
+                            text = result
+                            buttonTintList = ColorStateList.valueOf(Color.parseColor("#696969"))
+                        }
+                        radioGroup.addView(radioButton)
+                    }
+                    recyclerView.visibility = View.VISIBLE
+                } else {
+                    recyclerView.visibility = View.GONE
+                }
+
+                // Update RecyclerView
+                results.clear()
+                results.addAll(filteredResults)
             }
-        }
 
-        return view
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle possible errors.
+            }
+        })
     }
 
     class BottomSheet1 : BottomSheetDialogFragment() {
+
+        private lateinit var searchButton: Button
+        private lateinit var searchInput: EditText
+        private lateinit var radioGroup: RadioGroup
+        private lateinit var recyclerView: RecyclerView
+        private lateinit var database: DatabaseReference
+        private val results = mutableListOf<String>()
 
         override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            return inflater.inflate(R.layout.menti_univ_bottom_sheet, container, false)
+            val view = inflater.inflate(R.layout.menti_univ_bottom_sheet, container, false)
+
+            searchButton = view.findViewById(R.id.search_button)
+            searchInput = view.findViewById(R.id.search_input)
+            radioGroup = view.findViewById(R.id.radio_group)
+            recyclerView = view.findViewById(R.id.search_results_recycler_view)
+            recyclerView.layoutManager = LinearLayoutManager(context)
+
+            database = FirebaseDatabase.getInstance().getReference("category")
+
+            // searchButton.setOnClickListener {
+            //     val query = searchInput.text.toString()
+            //     if (query.isNotEmpty()) {
+            //         performSearch(query)
+            //     }
+            // }
+
+            searchInput.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                    // 로그에 Enter 키가 눌렸음을 기록합니다.
+                    Log.d("SearchInput", "Enter key pressed")
+
+                    // searchButton의 클릭 이벤트에서 했던 것과 동일한 작업을 수행합니다.
+                    val query = searchInput.text.toString()
+                    if (query.isNotEmpty()) {
+                        performSearch(query)
+                    }
+                    return@OnKeyListener true
+                }
+                return@OnKeyListener false
+            })
+
+            return view
+        }
+
+        private fun performSearch(query: String) {
+            database.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val categoryData = dataSnapshot.getValue(CategoryDataModel::class.java)
+
+                    val filteredResults = mutableListOf<String>()
+                    categoryData?.univs?.let { univs ->
+                        filteredResults.addAll(univs.filter { it.contains(query, ignoreCase = true) })
+                    }
+
+                    // Clear existing RadioButtons
+                    radioGroup.removeAllViews()
+
+                    if (filteredResults.isNotEmpty()) {
+                        filteredResults.forEach { result ->
+                            val radioButton = RadioButton(context).apply {
+                                text = result
+                                buttonTintList = ColorStateList.valueOf(Color.parseColor("#696969"))
+                            }
+                            radioGroup.addView(radioButton)
+                        }
+                        recyclerView.visibility = View.VISIBLE
+                    } else {
+                        recyclerView.visibility = View.GONE
+                    }
+
+                    // Update RecyclerView
+                    results.clear()
+                    results.addAll(filteredResults)
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    // Handle possible errors.
+                }
+            })
         }
     }
-
 
     class BottomSheet2() : BottomSheetDialogFragment() {
 
@@ -322,41 +409,4 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
         }
     }
 
-    private fun performSearch(query: String) {
-        database.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val categoryData = dataSnapshot.getValue(CategoryDataModel::class.java)
-
-                val filteredResults = mutableListOf<String>()
-                categoryData?.univs?.let { univs ->
-                    filteredResults.addAll(univs.filter { it.contains(query, ignoreCase = true) })
-                }
-
-                // Clear existing RadioButtons
-                radioGroup.removeAllViews()
-
-                if (filteredResults.isNotEmpty()) {
-                    filteredResults.forEach { result ->
-                        val radioButton = RadioButton(context).apply {
-                            text = result
-                            buttonTintList = ColorStateList.valueOf(Color.parseColor("#696969"))
-                        }
-                        radioGroup.addView(radioButton)
-                    }
-                    recyclerView.visibility = View.VISIBLE
-                } else {
-                    recyclerView.visibility = View.GONE
-                }
-
-                // Update RecyclerView
-                results.clear()
-                results.addAll(filteredResults)
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Handle possible errors.
-            }
-        })
-
-    }
 }
