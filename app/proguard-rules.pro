@@ -15,6 +15,15 @@
 # Uncomment this to preserve the line number information for
 # debugging stack traces.
 #-keepattributes SourceFile,LineNumberTable
+# Kotlin 데이터 클래스 및 Firebase 모델을 위한 규칙
+-keep class com.odal.wooco.datamodels.** { *; }
+-keep class kotlin.Metadata { *; }
+-keep class kotlin.jvm.internal.** { *; }
+-keepclassmembers class com.odal.wooco.datamodels.CoachCategoryDataModel {
+    public <init>();
+}
+
+
 
 # If you keep the line number information, uncomment this to
 # hide the original source file name.

@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
-            android:text=" 진로"
+            android:text="진로"
             android:buttonTint="#696969"
             android:buttonTintMode="src_in"/>
 
@@ -47,7 +47,7 @@
             android:id="@+id/etc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" 기타 고민"
+            android:text="기타 고민"
             android:layout_marginTop="10dp"
             android:layout_marginStart="120dp"
             android:buttonTint="#696969"

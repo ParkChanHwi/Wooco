@@ -22,17 +22,49 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.odal.wooco.datamodels.CategoryDataModel
+import com.odal.wooco.datamodels.FilterCriteria
 
 class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
-    private lateinit var database: DatabaseReference
+    private lateinit var searchButton: Button
+    private lateinit var searchInput: EditText
     private lateinit var radioGroup: RadioGroup
     private lateinit var recyclerView: RecyclerView
     private val results = mutableListOf<String>()
+    private lateinit var database: DatabaseReference
+
+    interface FilterCriteriaListener {
+        fun onFilterCriteriaSelected(category: String, subcategory: String?)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.menti_univ_bottom_sheet, container, false)
+
+        searchButton = view.findViewById(R.id.search_button)
+        searchInput = view.findViewById(R.id.search_input)
+        radioGroup = view.findViewById(R.id.radio_group)
+        recyclerView = view.findViewById(R.id.search_results_recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+
+        database = FirebaseDatabase.getInstance().getReference("category")
+
+        searchButton.setOnClickListener {
+            val query = searchInput.text.toString()
+            if (query.isNotEmpty()) {
+                performSearch(query)
+            }
+        }
+
+        return view
+    }
 
     private fun performSearch(query: String) {
         database.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {  
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val categoryData = dataSnapshot.getValue(CategoryDataModel::class.java)
 
                 val filteredResults = mutableListOf<String>()
@@ -92,19 +124,9 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
             database = FirebaseDatabase.getInstance().getReference("category")
 
-            // searchButton.setOnClickListener {
-            //     val query = searchInput.text.toString()
-            //     if (query.isNotEmpty()) {
-            //         performSearch(query)
-            //     }
-            // }
-
             searchInput.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
                 if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-                    // 로그에 Enter 키가 눌렸음을 기록합니다.
                     Log.d("SearchInput", "Enter key pressed")
-
-                    // searchButton의 클릭 이벤트에서 했던 것과 동일한 작업을 수행합니다.
                     val query = searchInput.text.toString()
                     if (query.isNotEmpty()) {
                         performSearch(query)
@@ -138,7 +160,6 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                         filteredResults.addAll(univs.filter { it.contains(query, ignoreCase = true) })
                     }
 
-                    // Clear existing RadioButtons
                     radioGroup.removeAllViews()
 
                     if (filteredResults.isNotEmpty()) {
@@ -154,7 +175,6 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                         recyclerView.visibility = View.GONE
                     }
 
-                    // Update RecyclerView
                     results.clear()
                     results.addAll(filteredResults)
                 }
@@ -166,65 +186,54 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
         }
     }
 
-    class BottomSheet2() : BottomSheetDialogFragment() {
+    class BottomSheet2 : BottomSheetDialogFragment() {
+        private var filterCriteria = FilterCriteria(category = "진로/기타고민")
 
         override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
+            inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            // 부모 클래스의 onCreateView 메서드 호출
-            super.onCreateView(inflater, container, savedInstanceState)
-            // 레이아웃 초기화
             val view = inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet, container, false)
 
-            // 버튼 찾기
             val setButton = view.findViewById<Button>(R.id.setting)
+            val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroup)
 
-            // 버튼에 클릭 리스너 설정
             setButton.setOnClickListener {
-                // 선택된 라디오 그룹의 ID 가져오기
-                val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroup)
                 val selectedRadioButtonId = radioGroup.checkedRadioButtonId
-
                 if (selectedRadioButtonId != -1) {
-                    // 선택된 라디오 버튼 찾기
                     val selectedRadioButton = view.findViewById<RadioButton>(selectedRadioButtonId)
-                    // 선택된 라디오 버튼의 텍스트 가져오기
                     val selectedText = selectedRadioButton.text.toString()
 
-                    // 선택된 라디오 버튼의 텍스트 출력
-                    Toast.makeText(requireContext(), "선택된 라디오 버튼: $selectedText", Toast.LENGTH_SHORT).show()
+                    filterCriteria.subcategory = selectedText
+                    val category = filterCriteria.category
+                    val subcategory = filterCriteria.subcategory
+
+                    (activity as? FilterCriteriaListener)?.onFilterCriteriaSelected(category, subcategory)
+                    dismiss()
                 } else {
-                    // 선택된 라디오 버튼이 없을 경우 처리
                     Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
                 }
             }
 
-            // 완성된 뷰 반환
+
+
             return view
         }
     }
 
-
-    class BottomSheet3() : BottomSheetDialogFragment() {
+    class BottomSheet3 : BottomSheetDialogFragment() {
 
         override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            // 부모 클래스의 onCreateView 메서드 호출
             super.onCreateView(inflater, container, savedInstanceState)
-            // 레이아웃 초기화
             val view = inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet2, container, false)
 
-            // 버튼 찾기
             val setButton = view.findViewById<Button>(R.id.category_setting2)
 
-            // 버튼에 클릭 리스너 설정
             setButton.setOnClickListener {
-                // 각 라디오 버튼의 ID와 해당 텍스트를 매핑하는 맵
                 val radioButtonIds = mapOf(
                     R.id.humanities to "인문사회",
                     R.id.arts to "예체능",
@@ -236,7 +245,6 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
                 val selectedTexts = mutableListOf<String>()
 
-                // 각 라디오 버튼을 순회하며 선택된 버튼의 텍스트를 가져오기
                 for ((radioButtonId, text) in radioButtonIds) {
                     val radioButton = view.findViewById<RadioButton>(radioButtonId)
                     if (radioButton.isChecked) {
@@ -245,21 +253,22 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                 }
 
                 if (selectedTexts.isNotEmpty()) {
-                    // 선택된 라디오 버튼의 텍스트 출력
                     val message = "선택된 라디오 버튼: ${selectedTexts.joinToString(", ")}"
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+
+                    // Notify listener (main activity)
+                    val category = "학문 분야"
+                    val subcategory = selectedTexts.joinToString(", ")
+                    (activity as? FilterCriteriaListener)?.onFilterCriteriaSelected(category, subcategory)
+                    dismiss()
                 } else {
-                    // 선택된 라디오 버튼이 없을 경우 처리
                     Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
                 }
             }
 
-
-            // 완성된 뷰 반환
             return view
         }
     }
-
 
     class BottomSheet4 : BottomSheetDialogFragment() {
 
@@ -271,11 +280,8 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             super.onCreateView(inflater, container, savedInstanceState)
             val view = inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet3, container, false)
 
-
-            // 버튼 찾기
             val setButton = view.findViewById<Button>(R.id.category_setting)
             setButton.setOnClickListener {
-                // 각 라디오 버튼의 ID와 해당 텍스트를 매핑하는 맵
                 val radioButtonIds = mapOf(
                     R.id.job to "편입",
                     R.id.company to "기업",
@@ -287,7 +293,6 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
                 val selectedTexts = mutableListOf<String>()
 
-                // 각 라디오 버튼을 순회하며 선택된 버튼의 텍스트를 가져오기
                 for ((radioButtonId, text) in radioButtonIds) {
                     val radioButton = view.findViewById<RadioButton>(radioButtonId)
                     if (radioButton.isChecked) {
@@ -296,22 +301,24 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                 }
 
                 if (selectedTexts.isNotEmpty()) {
-                    // 선택된 라디오 버튼의 텍스트 출력
                     val message = "선택된 라디오 버튼: ${selectedTexts.joinToString(", ")}"
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+
+                    // Notify listener (main activity)
+                    val category = "진로 목표"
+                    val subcategory = selectedTexts.joinToString(", ")
+                    (activity as? FilterCriteriaListener)?.onFilterCriteriaSelected(category, subcategory)
+                    dismiss()
                 } else {
-                    // 선택된 라디오 버튼이 없을 경우 처리
                     Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
                 }
             }
 
-
-            // 완성된 뷰 반환
             return view
         }
     }
 
-    class BottomSheet5() : BottomSheetDialogFragment() {
+    class BottomSheet5 : BottomSheetDialogFragment() {
 
         override fun onCreateView(
             inflater: LayoutInflater,
@@ -321,11 +328,8 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             super.onCreateView(inflater, container, savedInstanceState)
             val view = inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet5, container, false)
 
-
-            // 버튼 찾기
             val setButton = view.findViewById<Button>(R.id.category_setting)
             setButton.setOnClickListener {
-                // 각 라디오 버튼의 ID와 해당 텍스트를 매핑하는 맵
                 val radioButtonIds = mapOf(
                     R.id.marketing to "마케팅",
                     R.id.business to "기획",
@@ -341,12 +345,8 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                     R.id.medicine to "의료"
                 )
 
-                // RadioGroup 찾기
-                val radioGroup = view.findViewById<RadioGroup>(R.id.category_group2)
-
                 val selectedTexts = mutableListOf<String>()
 
-                // 각 라디오 버튼을 순회하며 선택된 버튼의 텍스트를 가져오기
                 for ((radioButtonId, text) in radioButtonIds) {
                     val radioButton = view.findViewById<RadioButton>(radioButtonId)
                     if (radioButton.isChecked) {
@@ -355,23 +355,24 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                 }
 
                 if (selectedTexts.isNotEmpty()) {
-                    // 선택된 라디오 버튼의 텍스트 출력
                     val message = "선택된 라디오 버튼: ${selectedTexts.joinToString(", ")}"
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+
+                    // Notify listener (main activity)
+                    val category = "직업 분야"
+                    val subcategory = selectedTexts.joinToString(", ")
+                    (activity as? FilterCriteriaListener)?.onFilterCriteriaSelected(category, subcategory)
+                    dismiss()
                 } else {
-                    // 선택된 라디오 버튼이 없을 경우 처리
                     Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
                 }
             }
 
-
-            // 완성된 뷰 반환
             return view
         }
     }
 
-
-    class BottomSheet6() : BottomSheetDialogFragment() {
+    class BottomSheet6 : BottomSheetDialogFragment() {
 
         override fun onCreateView(
             inflater: LayoutInflater,
@@ -381,11 +382,8 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             super.onCreateView(inflater, container, savedInstanceState)
             val view = inflater.inflate(R.layout.menti_univ_fragment_bottom_sheet4, container, false)
 
-
-            // 버튼 찾기
             val setButton = view.findViewById<Button>(R.id.category_setting)
             setButton.setOnClickListener {
-                // 각 라디오 버튼의 ID와 해당 텍스트를 매핑하는 맵
                 val radioButtonIds = mapOf(
                     R.id.category_radio1 to "기사/기능사",
                     R.id.category_radio2 to "어학",
@@ -394,10 +392,8 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                     R.id.category_radio5 to "기타"
                 )
 
-
                 val selectedTexts = mutableListOf<String>()
 
-                // 각 라디오 버튼을 순회하며 선택된 버튼의 텍스트를 가져오기
                 for ((radioButtonId, text) in radioButtonIds) {
                     val radioButton = view.findViewById<RadioButton>(radioButtonId)
                     if (radioButton.isChecked) {
@@ -406,19 +402,20 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                 }
 
                 if (selectedTexts.isNotEmpty()) {
-                    // 선택된 라디오 버튼의 텍스트 출력
                     val message = "선택된 라디오 버튼: ${selectedTexts.joinToString(", ")}"
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+
+                    // Notify listener (main activity)
+                    val category = "자격증/기타"
+                    val subcategory = selectedTexts.joinToString(", ")
+                    (activity as? FilterCriteriaListener)?.onFilterCriteriaSelected(category, subcategory)
+                    dismiss()
                 } else {
-                    // 선택된 라디오 버튼이 없을 경우 처리
                     Toast.makeText(requireContext(), "라디오 버튼이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
                 }
             }
 
-
-            // 완성된 뷰 반환
             return view
         }
     }
-
 }
