@@ -125,20 +125,51 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
         val localCategory = selectedCategory
         val localSubcategory = selectedSubcategory
 
-        if (localCategory != null) {
-            if (localSubcategory != null) {
-                Log.d("CoachList", "Loading filtered data with category: $selectedCategory and subcategory: $selectedSubcategory")
-                filterCoaches(localCategory, localSubcategory)
-            } else {
-                // Handle the case where subcategory is null
-                // Perhaps load all coaches in the selected category or some other appropriate action
-                Log.d("CoachList", "Subcategory is null, loading all coaches for category $localCategory")
-                filterCoachesByCategoryOnly(localCategory)
-            }
+        if (localCategory == "대학교" && localSubcategory != null) {
+            // 대학교 카테고리로 필터링할 때는 학교 이름으로 직접 필터링
+            Log.d("CoachList", "Filtering coaches by school: $localSubcategory")
+            filterCoachesBySchool(localSubcategory)
+        } else if (localCategory != null && localSubcategory != null) {
+            // 일반 카테고리로 필터링
+            Log.d("CoachList", "Loading filtered data with category: $localCategory and subcategory: $localSubcategory")
+            filterCoaches(localCategory, localSubcategory)
+        } else if (localCategory != null) {
+            // 서브카테고리가 null인 경우 일반적인 카테고리만 필터링
+            Log.d("CoachList", "Subcategory is null, loading all coaches for category $localCategory")
+            filterCoachesByCategoryOnly(localCategory)
         } else {
+            // 모든 코치 로딩
             loadAllCoaches()
         }
     }
+
+    private fun filterCoachesBySchool(schoolName: String) {
+        val coachInfoRef = database.child("coachInfo")
+        coachInfoRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val filteredCoachUids = mutableSetOf<String>()
+                snapshot.children.forEach { dataSnapshot ->
+                    val coach = dataSnapshot.getValue(CoachDataModel::class.java)
+                    if (coach != null && coach.school == schoolName && coach.uid != null) {
+                        // 여기에서 coach.uid가 null이 아니면 추가
+                        Log.d("CoachList", "Adding coach by school: ${coach.uid}")
+                        filteredCoachUids.add(coach.uid)
+                    }
+                }
+                if (filteredCoachUids.isNotEmpty()) {
+                    loadCoachesByUid(filteredCoachUids)
+                } else {
+                    Log.d("CoachList", "No coaches found for the school: $schoolName")
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("Firebase", "Database error during loading coaches by school: ${error.message}")
+            }
+        })
+    }
+
+
 
 
 

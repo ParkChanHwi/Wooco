@@ -100,17 +100,16 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
     }
 
     class BottomSheet1 : BottomSheetDialogFragment() {
-
         private lateinit var searchButton: Button
         private lateinit var searchInput: EditText
         private lateinit var radioGroup: RadioGroup
         private lateinit var recyclerView: RecyclerView
         private lateinit var database: DatabaseReference
         private val results = mutableListOf<String>()
+        private var filterCriteria = FilterCriteria(category = "대학교")  // 예시로 설정한 카테고리, 필요에 따라 변경
 
         override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
+            inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
             val view = inflater.inflate(R.layout.menti_univ_bottom_sheet, container, false)
@@ -141,7 +140,10 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                 if (selectedRadioButtonId != -1) {
                     val selectedRadioButton = view.findViewById<RadioButton>(selectedRadioButtonId)
                     val selectedText = selectedRadioButton.text.toString()
-                    Toast.makeText(requireContext(), "선택된 항목: $selectedText", Toast.LENGTH_SHORT).show()
+
+                    filterCriteria.subcategory = selectedText
+                    (activity as? FilterCriteriaListener)?.onFilterCriteriaSelected(filterCriteria.category, filterCriteria.subcategory)
+                    dismiss()  // 다이얼로그 닫기
                 } else {
                     Toast.makeText(requireContext(), "항목이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show()
                 }
@@ -185,6 +187,7 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             })
         }
     }
+
 
     class BottomSheet2 : BottomSheetDialogFragment() {
         private var filterCriteria = FilterCriteria(category = "진로/기타고민")
