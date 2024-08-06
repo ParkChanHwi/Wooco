@@ -336,5 +336,4 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
         })
     }
 
-
 }
