@@ -130,7 +130,7 @@ class Menti_coach_introduceActivity : AppCompatActivity() {
                     Log.d(TAG, "Category: $category")
                     val detail = categorySnapshot.child("detail").getValue(String::class.java) ?: ""
                     Log.d(TAG, "detail: $detail")
-                    val coachCategoryDataModel = CoachCategoryDataModel(uid, category, detail)
+                    val coachCategoryDataModel = CoachCategoryDataModel(category, detail)
                     coachCategoryInfoList.add(coachCategoryDataModel)
                 }
 

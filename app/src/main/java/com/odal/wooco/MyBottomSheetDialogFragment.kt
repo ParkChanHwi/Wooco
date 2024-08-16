@@ -260,7 +260,7 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
 
                     // Notify listener (main activity)
-                    val category = "학문 분야"
+                    val category = "전공/과제"
                     val subcategory = selectedTexts.joinToString(", ")
                     (activity as? FilterCriteriaListener)?.onFilterCriteriaSelected(category, subcategory)
                     dismiss()
@@ -272,6 +272,7 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
             return view
         }
     }
+
 
     class BottomSheet4 : BottomSheetDialogFragment() {
 
@@ -308,7 +309,7 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
 
                     // Notify listener (main activity)
-                    val category = "진로 목표"
+                    val category = "면접"
                     val subcategory = selectedTexts.joinToString(", ")
                     (activity as? FilterCriteriaListener)?.onFilterCriteriaSelected(category, subcategory)
                     dismiss()
@@ -362,7 +363,7 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
 
                     // Notify listener (main activity)
-                    val category = "직업 분야"
+                    val category = "자소서"
                     val subcategory = selectedTexts.joinToString(", ")
                     (activity as? FilterCriteriaListener)?.onFilterCriteriaSelected(category, subcategory)
                     dismiss()
@@ -409,7 +410,7 @@ class MyBottomSheetDialogFragment : BottomSheetDialogFragment() {
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
 
                     // Notify listener (main activity)
-                    val category = "자격증/기타"
+                    val category = "자격증"
                     val subcategory = selectedTexts.joinToString(", ")
                     (activity as? FilterCriteriaListener)?.onFilterCriteriaSelected(category, subcategory)
                     dismiss()

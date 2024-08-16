@@ -41,6 +41,7 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
         val chatBtn: ImageView = findViewById(R.id.chat_1)
         val calBtn: ImageView = findViewById(R.id.uiw_date)
         val profileBtn: ImageView = findViewById(R.id.group_513866)
+        val kategoribtn : Button = findViewById(R.id.kategori)
 
         // 벨 버튼 클릭 시 coach_menti_request 이동
         val bellBtn: RelativeLayout = findViewById(R.id.bell)
@@ -79,6 +80,8 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
 
+
+
         // Firebase Database 초기화
         database = FirebaseDatabase.getInstance().reference
 
@@ -112,8 +115,30 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
             val intent = Intent(this, Menti_mypageActivity::class.java)
             startActivity(intent)
         }
+
+        kategoribtn.setOnClickListener {
+            // 필터를 초기화하고 새로운 데이터를 로드합니다.
+            resetFiltersAndReloadData()
+        }
+
+
     }
 
+
+
+// 필터와 데이터를 초기화하고 새로 불러오는 함수
+    private fun resetFiltersAndReloadData() {
+        // 필터 상태 초기화
+        selectedCategory = null
+        selectedSubcategory = null
+
+        // 코치 목록 초기화
+        itemList.clear()
+        coachAdapter.notifyDataSetChanged()
+
+        // 초기 상태로 데이터 재로드
+        loadAllCoaches() // 전체 코치 데이터를 로드하거나, 특정 초기 상태 데이터 로드를 구현
+    }
 
     override fun onFilterCriteriaSelected(category: String, subcategory: String?) {
         selectedCategory = category
