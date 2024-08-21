@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="63dp"
-        android:text="학교 / 회사 :"
+        android:text="카테고리 :"
         android:textStyle="bold"
         />
 
@@ -46,11 +46,10 @@
         android:id="@+id/schoolOrCompanyTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="176dp"
+        android:layout_marginLeft="165dp"
         android:layout_marginTop="63dp"
         android:text="강원대 00학과"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"

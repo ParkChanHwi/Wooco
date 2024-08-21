@@ -16,7 +16,7 @@ class Menti_mypage_pastclassActivityAdapter(private val pastClassList: List<Past
     override fun onBindViewHolder(holder: PastClassViewHolder, position: Int) {
         val pastClassItem = pastClassList[position]
         holder.nicknameTextView.text = "${pastClassItem.coach_receiverName}"
-        holder.schoolOrCompanyTextView.text = "${pastClassItem.schoolOrCompany}"
+        holder.selected_category.text = "${pastClassItem.selected_category}"
         holder.dateTextView.text = "${pastClassItem.reserve_time}"
     }
 
@@ -26,12 +26,12 @@ class Menti_mypage_pastclassActivityAdapter(private val pastClassList: List<Past
 
     class PastClassViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nicknameTextView: TextView = itemView.findViewById(R.id.nicknameTextView)
-        val schoolOrCompanyTextView: TextView = itemView.findViewById(R.id.schoolOrCompanyTextView)
+        val selected_category: TextView = itemView.findViewById(R.id.schoolOrCompanyTextView)
         val dateTextView: TextView = itemView.findViewById(R.id.dateTextView)
 
         init {
             // findViewById 호출 결과를 확인
-            if (nicknameTextView == null || schoolOrCompanyTextView == null || dateTextView == null) {
+            if (nicknameTextView == null || selected_category == null || dateTextView == null) {
                 throw NullPointerException("View references are null in ViewHolder")
             }
         }
