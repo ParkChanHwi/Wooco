@@ -29,6 +29,7 @@
         android:textStyle="bold" />
 
     <View
+        android:id="@+id/line"
         android:layout_width="240dp"
         android:layout_height="1dp"
         android:layout_marginStart="93dp"
