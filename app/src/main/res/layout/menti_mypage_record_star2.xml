@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -38,8 +37,7 @@
         android:layout_height="90dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="80dp"
-        android:background="@drawable/rectangle_9840"
-        />
+        android:background="@drawable/rectangle_9840" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,8 +45,7 @@
         android:layout_marginLeft="140dp"
         android:layout_marginTop="100dp"
         android:textStyle="bold"
-        android:text="별명 :"
-        />
+        android:text="별명 :" />
 
     <TextView
         android:id="@+id/nicknameTextView"
@@ -65,8 +62,7 @@
         android:layout_marginLeft="140dp"
         android:layout_marginTop="123dp"
         android:text="학교 / 회사 :"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/schoolOrCompanyTextView"
@@ -75,8 +71,7 @@
         android:layout_marginLeft="216dp"
         android:layout_marginTop="123dp"
         android:text="강원대 00학과"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <View
         android:layout_width="240dp"
@@ -93,41 +88,57 @@
         android:text="코칭은 어떠셨나요? 별점을 매겨주세요."
         android:textSize="13sp"
         android:textStyle="bold"/>
-    
-    <EditText
+
+    <!-- 별점 ImageView로 변경 -->
+    <ImageView
+        android:id="@+id/star1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="220dp"
-        android:background="@drawable/star_yuna"/>
+        android:src="@drawable/star_yuna"
+        android:clickable="true"
+        android:focusable="true"/>
 
-    <EditText
+    <ImageView
+        android:id="@+id/star2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="113dp"
         android:layout_marginTop="220dp"
-        android:background="@drawable/star_yuna"/>
+        android:src="@drawable/star_yuna"
+        android:clickable="true"
+        android:focusable="true"/>
 
-    <EditText
+    <ImageView
+        android:id="@+id/star3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="178dp"
         android:layout_marginTop="220dp"
-        android:background="@drawable/star_yuna"/>
+        android:src="@drawable/star_yuna"
+        android:clickable="true"
+        android:focusable="true"/>
 
-    <EditText
+    <ImageView
+        android:id="@+id/star4"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="241dp"
         android:layout_marginTop="220dp"
-        android:background="@drawable/star_yuna"/>
+        android:src="@drawable/star_yuna"
+        android:clickable="true"
+        android:focusable="true"/>
 
-    <EditText
+    <ImageView
+        android:id="@+id/star5"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="304dp"
         android:layout_marginTop="220dp"
-        android:background="@drawable/star_yuna"/>
+        android:src="@drawable/star_yuna"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -139,6 +150,7 @@
         android:text="코치의 코칭방식은 어떠셨나요?"/>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/verySatisfiedButton"
         android:layout_width="110dp"
         android:layout_height="40dp"
         android:layout_marginTop="320dp"
@@ -147,7 +159,9 @@
         android:text="아주 만족해요"
         android:textStyle="bold"
         android:background="@drawable/rectangle_9833"/>
+
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/averageButton"
         android:layout_width="110dp"
         android:layout_height="40dp"
         android:layout_marginTop="320dp"
@@ -156,7 +170,9 @@
         android:text="보통이에요"
         android:textStyle="bold"
         android:background="@drawable/rectangle_9833"/>
+
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/dissatisfiedButton"
         android:layout_width="110dp"
         android:layout_height="40dp"
         android:layout_marginTop="320dp"
@@ -174,7 +190,9 @@
         android:textSize="13sp"
         android:textStyle="bold"
         android:text="코치의 채팅 답장 속도는 어떤가요?"/>
+
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/fastResponseButton"
         android:layout_width="110dp"
         android:layout_height="40dp"
         android:layout_marginTop="425dp"
@@ -183,7 +201,9 @@
         android:text="빨라요"
         android:textStyle="bold"
         android:background="@drawable/rectangle_9833"/>
+
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/averageResponseButton"
         android:layout_width="110dp"
         android:layout_height="40dp"
         android:layout_marginTop="425dp"
@@ -192,7 +212,9 @@
         android:text="보통이에요"
         android:textStyle="bold"
         android:background="@drawable/rectangle_9833"/>
+
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/slowResponseButton"
         android:layout_width="110dp"
         android:layout_height="40dp"
         android:layout_marginTop="425dp"
@@ -233,6 +255,5 @@
         android:textStyle="bold"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
-
 
 </RelativeLayout>

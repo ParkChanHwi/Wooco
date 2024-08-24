@@ -64,7 +64,7 @@
         />
 
     <TextView
-        android:id="@+id/dateTextView"
+        android:id="@+id/interestTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="45dp"
@@ -72,20 +72,7 @@
         android:textSize="10sp"
         android:textStyle="bold"
         android:text="2024.06.05 / 20:24"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/star_1"
-        android:layout_marginLeft="324dp"
-        android:layout_marginTop="7dp"/>
-    <TextView
-        android:id="@+id/star_score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:layout_marginLeft="350dp"
-        android:text="4.9"
-        android:textSize="14sp"/>
+
 
     <android.widget.Button
         android:id="@+id/record_star_button"
@@ -95,7 +82,7 @@
         android:layout_marginTop="75dp"
         android:background="@drawable/rectangle_9843"
         android:paddingBottom="8dp"
-        android:text="별점 확인"
+        android:text="별점 등록"
         android:textStyle="bold"
         android:textSize="12sp"/>
 </RelativeLayout>

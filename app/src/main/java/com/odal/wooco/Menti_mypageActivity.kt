@@ -34,7 +34,7 @@ class Menti_mypageActivity : AppCompatActivity() {
         val purchaseBtn: Button = findViewById(R.id.purchase)
         val my_reviewBtn: Button = findViewById(R.id.my_review)
         val my_pastclassBtn: Button = findViewById(R.id.last_c_details)
-
+        val my_review: Button = findViewById(R.id.my_review)
 
         // Firebase Realtime Database에서 UserInfo 이름 및 woocoin_buy 정보 가져오기
         val database = FirebaseDatabase.getInstance()
@@ -92,6 +92,12 @@ class Menti_mypageActivity : AppCompatActivity() {
                 Log.e("Firebase", "Failed to read value.", error.toException())
             }
         })
+
+        my_review.setOnClickListener{
+            val intent = Intent(this, Menti_mypage_record_starActivity::class.java).apply {
+                putExtra("userId", currentUser?.uid)
+            }
+        }
 
         my_pastclassBtn.setOnClickListener {
             val intent = Intent(this, Menti_mypage_pastclassActivity::class.java).apply {
