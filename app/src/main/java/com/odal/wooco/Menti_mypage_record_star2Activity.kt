@@ -2,9 +2,7 @@ package com.odal.wooco
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -12,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 class Menti_mypage_record_star2Activity : AppCompatActivity() {
 
     private var selectedStarRating: String = "0.0" // 선택된 별점 값을 저장할 변수
-    private var selectedSatisfaction: String? = null
-    private var selectedResponseSpeed: String? = null
+    private var selectedSatisfactionButton: Button? = null
+    private var selectedResponseSpeedButton: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,34 +50,28 @@ class Menti_mypage_record_star2Activity : AppCompatActivity() {
 
         // 만족도 버튼 클릭 리스너 설정
         verySatisfiedButton.setOnClickListener {
-            selectSatisfactionButton(verySatisfiedButton, "아주 만족해요")
-            resetButtonBackground(averageButton, dissatisfiedButton)
+            selectSatisfactionButton(verySatisfiedButton)
         }
 
         averageButton.setOnClickListener {
-            selectSatisfactionButton(averageButton, "보통이에요")
-            resetButtonBackground(verySatisfiedButton, dissatisfiedButton)
+            selectSatisfactionButton(averageButton)
         }
 
         dissatisfiedButton.setOnClickListener {
-            selectSatisfactionButton(dissatisfiedButton, "별로에요")
-            resetButtonBackground(verySatisfiedButton, averageButton)
+            selectSatisfactionButton(dissatisfiedButton)
         }
 
         // 답장 속도 버튼 클릭 리스너 설정
         fastResponseButton.setOnClickListener {
-            selectResponseSpeedButton(fastResponseButton, "빨라요")
-            resetButtonBackground(averageResponseButton, slowResponseButton)
+            selectResponseSpeedButton(fastResponseButton)
         }
 
         averageResponseButton.setOnClickListener {
-            selectResponseSpeedButton(averageResponseButton, "보통이에요")
-            resetButtonBackground(fastResponseButton, slowResponseButton)
+            selectResponseSpeedButton(averageResponseButton)
         }
 
         slowResponseButton.setOnClickListener {
-            selectResponseSpeedButton(slowResponseButton, "느려요")
-            resetButtonBackground(fastResponseButton, averageResponseButton)
+            selectResponseSpeedButton(slowResponseButton)
         }
     }
 
@@ -95,12 +87,12 @@ class Menti_mypage_record_star2Activity : AppCompatActivity() {
         }
 
         // 별점에 따라 별 이미지 색상 변경
-        val starImages = listOf<ImageView>(
-            findViewById(R.id.star1),
-            findViewById(R.id.star2),
-            findViewById(R.id.star3),
-            findViewById(R.id.star4),
-            findViewById(R.id.star5)
+        val starImages = listOf(
+            findViewById<ImageView>(R.id.star1),
+            findViewById<ImageView>(R.id.star2),
+            findViewById<ImageView>(R.id.star3),
+            findViewById<ImageView>(R.id.star4),
+            findViewById<ImageView>(R.id.star5)
         )
 
         for (i in starImages.indices) {
@@ -112,22 +104,39 @@ class Menti_mypage_record_star2Activity : AppCompatActivity() {
         }
     }
 
-    private fun selectSatisfactionButton(selectedButton: Button, satisfaction: String) {
-        selectedSatisfaction = satisfaction
-        selectedButton.setBackgroundColor(Color.parseColor("#F89B00"))  // 주황색 배경
-        selectedButton.setTextColor(Color.WHITE)  // 텍스트 색상 변경
+    private fun selectSatisfactionButton(button: Button) {
+        // 선택된 버튼의 배경을 유지하고 다른 버튼의 배경을 초기화
+        selectedSatisfactionButton?.isSelected = false
+        button.isSelected = true
+        selectedSatisfactionButton = button
+
+        resetButtonBackground(
+            findViewById(R.id.verySatisfiedButton),
+            findViewById(R.id.averageButton),
+            findViewById(R.id.dissatisfiedButton)
+        )
+        button.setBackgroundResource(R.drawable.button_background_selector)
     }
 
-    private fun selectResponseSpeedButton(selectedButton: Button, responseSpeed: String) {
-        selectedResponseSpeed = responseSpeed
-        selectedButton.setBackgroundColor(Color.parseColor("#F89B00"))  // 주황색 배경
-        selectedButton.setTextColor(Color.WHITE)  // 텍스트 색상 변경
+    private fun selectResponseSpeedButton(button: Button) {
+        // 선택된 버튼의 배경을 유지하고 다른 버튼의 배경을 초기화
+        selectedResponseSpeedButton?.isSelected = false
+        button.isSelected = true
+        selectedResponseSpeedButton = button
+
+        resetButtonBackground(
+            findViewById(R.id.fastResponseButton),
+            findViewById(R.id.averageResponseButton),
+            findViewById(R.id.slowResponseButton)
+        )
+        button.setBackgroundResource(R.drawable.button_background_selector)
     }
 
     private fun resetButtonBackground(vararg buttons: Button) {
         for (button in buttons) {
-            button.setBackgroundResource(R.drawable.rectangle_9833)  // 기본 배경으로 설정
-            button.setTextColor(Color.BLACK)  // 텍스트 색상 초기화
+            if (!button.isSelected) {
+                button.setBackgroundResource(R.drawable.rectangle_9833)  // 기본 배경으로 설정
+            }
         }
     }
 }

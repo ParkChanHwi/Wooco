@@ -1,0 +1,8 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 버튼이 눌렸을 때 (selected 상태일 때) -->
+    <item android:drawable="@drawable/filledrac9833" android:state_selected="true"/>
+    <item android:drawable="@drawable/filledrac9833" android:state_pressed="true"/>
+
+    <!-- 기본 상태 -->
+    <item android:drawable="@drawable/rectangle_9833"/>
+</selector>

@@ -89,7 +89,7 @@
         android:textSize="13sp"
         android:textStyle="bold"/>
 
-    <!-- 별점 ImageView로 변경 -->
+    <!-- 별점 ImageView들 -->
     <ImageView
         android:id="@+id/star1"
         android:layout_width="50dp"
@@ -149,6 +149,7 @@
         android:textStyle="bold"
         android:text="코치의 코칭방식은 어떠셨나요?"/>
 
+    <!-- 수정된 버튼들 -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/verySatisfiedButton"
         android:layout_width="110dp"
@@ -158,7 +159,7 @@
         android:paddingBottom="10dp"
         android:text="아주 만족해요"
         android:textStyle="bold"
-        android:background="@drawable/rectangle_9833"/>
+        android:background="@drawable/button_background_selector"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/averageButton"
@@ -169,7 +170,7 @@
         android:paddingBottom="10dp"
         android:text="보통이에요"
         android:textStyle="bold"
-        android:background="@drawable/rectangle_9833"/>
+        android:background="@drawable/button_background_selector"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/dissatisfiedButton"
@@ -180,7 +181,7 @@
         android:paddingBottom="10dp"
         android:text="별로에요"
         android:textStyle="bold"
-        android:background="@drawable/rectangle_9833"/>
+        android:background="@drawable/button_background_selector"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -200,7 +201,7 @@
         android:paddingBottom="10dp"
         android:text="빨라요"
         android:textStyle="bold"
-        android:background="@drawable/rectangle_9833"/>
+        android:background="@drawable/button_background_selector"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/averageResponseButton"
@@ -211,7 +212,7 @@
         android:paddingBottom="10dp"
         android:text="보통이에요"
         android:textStyle="bold"
-        android:background="@drawable/rectangle_9833"/>
+        android:background="@drawable/button_background_selector"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/slowResponseButton"
@@ -222,7 +223,7 @@
         android:paddingBottom="10dp"
         android:text="느려요"
         android:textStyle="bold"
-        android:background="@drawable/rectangle_9833"/>
+        android:background="@drawable/button_background_selector"/>
 
     <TextView
         android:layout_width="wrap_content"
