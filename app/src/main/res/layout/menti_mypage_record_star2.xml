@@ -247,6 +247,7 @@
         android:background="@drawable/rectangle_9838"/>
 
     <android.widget.Button
+        android:id="@+id/submit_review_button"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="692dp"

@@ -35,7 +35,7 @@ class Menti_mypage_record_starActivityAdapter(
         // 버튼 클릭 리스너 설정
         holder.recordStarButton.setOnClickListener {
             val intent = Intent(context, Menti_mypage_record_star2Activity::class.java)
-            intent.putExtra("coach_receiverUid", item.coach_uid) // 코치 UID를 전달합니다
+            intent.putExtra("reserveId", item.reserveId) // 코치 UID를 전달합니다
             context.startActivity(intent)
         }
     }

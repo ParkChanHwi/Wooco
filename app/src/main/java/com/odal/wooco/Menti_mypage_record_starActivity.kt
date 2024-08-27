@@ -6,10 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 
 class Menti_mypage_record_starActivity : AppCompatActivity() {
 
@@ -44,7 +41,10 @@ class Menti_mypage_record_starActivity : AppCompatActivity() {
                 val newItems = mutableListOf<PastClassItem>()
                 for (dataSnapshot in snapshot.children) {
                     val pastClassItem = dataSnapshot.getValue(PastClassItem::class.java)
-                    if (pastClassItem != null) {
+                    val visible = dataSnapshot.child("visible").getValue(Int::class.java) ?: 0
+
+                    // visible 값이 0이거나 존재하지 않는 경우만 필터링
+                    if (pastClassItem != null && visible == 0) {
                         newItems.add(pastClassItem)
                     }
                 }

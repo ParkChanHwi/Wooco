@@ -4,5 +4,7 @@ data class PastClassItem(
     val coach_receiverName: String = "",
     val selected_category: String = "",
     val reserve_time: String = "",
-    val coach_uid: String = "" // UID 필드 추가
+    val coach_uid: String = "",
+    val menti_receiverUid: String = "",
+    val reserveId: String = ""
 )
