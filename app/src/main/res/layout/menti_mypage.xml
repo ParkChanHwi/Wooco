@@ -178,18 +178,35 @@
         android:layout_width="match_parent"
         android:layout_height="23dp"
         android:layout_marginTop="369dp"
+        android:text="        별점 매기기"
+        android:textSize="18sp"
+        android:gravity="start"
+        android:background="#FFFBF5"
+        android:stateListAnimator="@null"/>
+
+    <android.widget.Button
+        android:id="@+id/rate_coach"
+        android:layout_width="match_parent"
+        android:layout_height="23dp"
+        android:layout_marginTop="395dp"
         android:text="        별점 기록"
         android:textSize="18sp"
         android:gravity="start"
         android:background="#FFFBF5"
         android:stateListAnimator="@null"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="425dp"
+        android:background="@drawable/rectangle_9853"/>
+
 
 
     <TextView
         android:id="@+id/woocoin"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginTop="410dp"
+        android:layout_marginTop="422dp"
         android:text="     우코인"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -292,7 +309,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="667dp"
         android:background="@drawable/line_9"
-
         />
 
     <ImageView
@@ -342,26 +358,5 @@
         android:clipToOutline="true"
         android:background="@drawable/myimg_none"
         />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </RelativeLayout>

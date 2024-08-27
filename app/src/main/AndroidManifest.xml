@@ -39,6 +39,7 @@
         <activity android:name=".Coach_mypage_woocoin_exchangeActivity" />
         <activity android:name=".Menti_mypage_record_starActivity" />
         <activity android:name=".Menti_mypage_record_star2Activity" />
+        <activity android:name=".Menti_mypage_record_star3Activity" />
         <activity android:name=".Menti_mypage_pastclassActivity" />
 
         <activity android:name=".MainActivity"
