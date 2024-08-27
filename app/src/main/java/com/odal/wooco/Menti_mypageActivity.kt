@@ -94,18 +94,46 @@ class Menti_mypageActivity : AppCompatActivity() {
             }
         })
 
-        my_review.setOnClickListener{
-            val intent = Intent(this, Menti_mypage_record_starActivity::class.java).apply {
-                putExtra("userId", currentUser?.uid)
+        my_review.setOnClickListener {
+            if (currentUser != null) {
+                val intent = Intent(this, Menti_mypage_record_starActivity::class.java).apply {
+                    putExtra("userId", currentUser?.uid)
+                }
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "User ID is missing", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
+        rate_coach.setOnClickListener {
+            val userId = currentUser?.uid
+            Log.d("BUserIDCheck", "currentUser ID: $userId")
+            if (userId != null) {
+                val intent = Intent(this, Menti_mypage_record_star3Activity::class.java).apply {
+                    putExtra("userId", userId)
+                }
+                startActivity(intent)
+            } else {
+                Log.e("BUserIDCheck", "currentUser is null")
+                Toast.makeText(this, "User ID is missing", Toast.LENGTH_SHORT).show()
             }
         }
 
         my_pastclassBtn.setOnClickListener {
-            val intent = Intent(this, Menti_mypage_pastclassActivity::class.java).apply {
-                putExtra("userId", currentUser?.uid)
+            val userId = currentUser?.uid
+            Log.d("CUserIDCheck", "currentUser ID: $userId")
+            if (userId != null) {
+                val intent = Intent(this, Menti_mypage_pastclassActivity::class.java).apply {
+                    putExtra("userId", userId)
+                }
+                startActivity(intent)
+            } else {
+                Log.e("CUserIDCheck", "currentUser is null")
+                Toast.makeText(this, "User ID is missing", Toast.LENGTH_SHORT).show()
             }
-            startActivity(intent)
         }
+
 
         homeBtn.setOnClickListener{
             val intent = Intent(this, CoachList::class.java)
@@ -130,18 +158,6 @@ class Menti_mypageActivity : AppCompatActivity() {
             val intent = Intent(this, Coach_mypageActivity::class.java)
             startActivity(intent)
             finish()
-        }
-
-        my_reviewBtn.setOnClickListener{
-            val intent = Intent(this, Menti_mypage_record_starActivity::class.java)
-            startActivity(intent)
-
-        }
-
-        rate_coach.setOnClickListener{
-            val intent = Intent(this, Menti_mypage_record_star3Activity::class.java)
-            startActivity(intent)
-
         }
 
         findViewById<Button>(R.id.logout).setOnClickListener {
