@@ -1,51 +1,75 @@
 package com.odal.wooco
 
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.firestore.FirebaseFirestore
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 
 class Menti_mypage_record_star3Activity : AppCompatActivity() {
 
-    private lateinit var nicknameTextView: TextView
-    private lateinit var schoolOrCompanyTextView: TextView
-    private lateinit var dateTextView: TextView
-    private lateinit var starScoreTextView: TextView
-    private val db = FirebaseFirestore.getInstance()
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: Menti_mtpage_record_star3Adapter
+    private val database = FirebaseDatabase.getInstance().reference
+    private val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.menti_mypage_record_star_item2)
+        setContentView(R.layout.menti_mypage_recordstar3)
 
-        // View 초기화
-        nicknameTextView = findViewById(R.id.nicknameTextView)
-        schoolOrCompanyTextView = findViewById(R.id.schoolOrCompanyTextView)
-        dateTextView = findViewById(R.id.dateTextView)
-        starScoreTextView = findViewById(R.id.star_score)  // 별점 텍스트뷰
-        // starImageView는 이제 사용하지 않으므로 제거할 수 있습니다.
+        recyclerView = findViewById(R.id.record_star_recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Firestore에서 데이터 가져오기
-        val coachUid = intent.getStringExtra("COACH_UID") // 전달된 코치 UID를 가져옵니다.
-        if (coachUid != null) {
-            db.collection("coaches").document(coachUid)
-                .get()
-                .addOnSuccessListener { document ->
-                    if (document != null) {
-                        // 데이터베이스에서 값을 가져와서 UI에 반영합니다.
-                        nicknameTextView.text = document.getString("nickname") ?: "알 수 없음"
-                        schoolOrCompanyTextView.text = document.getString("schoolOrCompany") ?: "알 수 없음"
-                        dateTextView.text = document.getString("courseDate") ?: "날짜 없음"
-                        starScoreTextView.text = document.getDouble("starScore")?.toString() ?: "0.0"  // 별점 값을 텍스트로 설정
-                    } else {
-                        // 데이터가 없는 경우 처리
-                        nicknameTextView.text = "데이터 없음"
+        val reviewsList = mutableListOf<ReviewItem>()
+        adapter = Menti_mtpage_record_star3Adapter(reviewsList)
+        recyclerView.adapter = adapter
+
+        // 현재 사용자의 UID를 가져옵니다.
+        val currentUserUid = auth.currentUser?.uid
+
+        if (currentUserUid != null) {
+            // Firebase에서 데이터를 가져오기 전, mentiUid 값 출력
+            Log.d("Menti_mypage_record_star3Activity", "Querying for mentiUid: $currentUserUid")
+
+            // reviews 데이터베이스에서 현재 사용자의 UID와 일치하는 리뷰들을 가져옵니다.
+            database.child("reviews")
+                .orderByChild("mentiUid")
+                .equalTo(currentUserUid)
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (!snapshot.exists()) {
+                            // Realtime Database에서 아무 문서도 반환되지 않은 경우
+                            Log.d("Menti_mypage_record_star3Activity", "No reviews found for this user.")
+                        } else {
+                            for (document in snapshot.children) {
+                                Log.d("Menti_mypage_record_star3Activity", "Review found: ${document.key}")
+                                val reviewItem = ReviewItem(
+                                    coachName = document.child("coachName").getValue(String::class.java) ?: "알 수 없음",
+                                    category = document.child("selected_category").getValue(String::class.java) ?: "알 수 없음",
+                                    reviewDate = document.child("reserve_time").getValue(String::class.java) ?: "날짜 없음",
+                                    starScore = document.child("stars").getValue(String::class.java) ?: "0.0"
+                                )
+                                reviewsList.add(reviewItem)
+                            }
+                            adapter.notifyDataSetChanged()
+                        }
                     }
-                }
-                .addOnFailureListener { e ->
-                    // 실패 시 처리
-                    nicknameTextView.text = "데이터 가져오기 실패"
-                }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.e("Menti_mypage_record_star3Activity", "Error fetching reviews: ${error.message}")
+                    }
+                })
+        } else {
+            Log.d("Menti_mypage_record_star3Activity", "CurrentUserUid is null, user might not be authenticated.")
         }
     }
 }
+
+data class ReviewItem(
+    val coachName: String,
+    val category: String,
+    val reviewDate: String,
+    val starScore: String
+)

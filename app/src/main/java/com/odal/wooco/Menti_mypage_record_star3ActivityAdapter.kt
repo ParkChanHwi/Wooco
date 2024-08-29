@@ -1,52 +1,34 @@
 package com.odal.wooco
 
-import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class Menti_mypage_record_star3ActivityAdapter(
-    private val itemList: List<Menti_mypage_record_star3ActivityAdapter.Item>,
-    private val context: Context
-) : RecyclerView.Adapter<Menti_mypage_record_star3ActivityAdapter.ItemViewHolder>() {
+class Menti_mtpage_record_star3Adapter(private val items: List<ReviewItem>) :
+    RecyclerView.Adapter<Menti_mtpage_record_star3Adapter.ViewHolder>() {
 
-    data class Item(
-        val name: String,
-        val school_company: String,
-        val interest: String,
-        val coachUid: String // 코치의 UID를 추가합니다
-    )
-
-    class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nameTextView: TextView = itemView.findViewById(R.id.nicknameTextView)
-        val school_companyTextView: TextView = itemView.findViewById(R.id.schoolOrCompanyTextView)
-        val interestTextView: TextView = itemView.findViewById(R.id.interestTextView)
-        val recordStarButton: Button = itemView.findViewById(R.id.record_star_button)
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val nicknameTextView: TextView = itemView.findViewById(R.id.nicknameTextView)
+        val schoolOrCompanyTextView: TextView = itemView.findViewById(R.id.schoolOrCompanyTextView)
+        val dateTextView: TextView = itemView.findViewById(R.id.dateTextView)
+        val starScoreTextView: TextView = itemView.findViewById(R.id.star_score)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.menti_mypage_record_star_item2, parent, false)
-        return ItemViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.menti_mypage_record_star_item2, parent, false)
+        return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val item = itemList[position]
-        holder.nameTextView.text = item.name
-        holder.school_companyTextView.text = item.school_company
-        holder.interestTextView.text = item.interest
-
-        // 버튼 클릭 리스너 설정
-        holder.recordStarButton.setOnClickListener {
-            val intent = Intent(context, Menti_mypage_record_star2Activity::class.java)
-            intent.putExtra("COACH_UID", item.coachUid) // 코치 UID를 전달합니다
-            context.startActivity(intent)
-        }
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = items[position]
+        holder.nicknameTextView.text = item.coachName
+        holder.schoolOrCompanyTextView.text = item.category
+        holder.dateTextView.text = item.reviewDate
+        holder.starScoreTextView.text = item.starScore
     }
 
-    override fun getItemCount(): Int = itemList.size
+    override fun getItemCount(): Int = items.size
 }
-

@@ -23,6 +23,11 @@ class Menti_mypage_record_star2Activity : AppCompatActivity() {
     private var selectedResponseSpeedButton: Button? = null
     private lateinit var database: FirebaseDatabase
     private lateinit var finishClassRef: DatabaseReference
+    private lateinit var coachUid: String
+    private lateinit var mentiUid: String
+    private lateinit var coachName: String
+    private lateinit var selectedCategory: String
+    private lateinit var reserveTime: String // 예약 시간 필드 추가
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -131,11 +136,14 @@ class Menti_mypage_record_star2Activity : AppCompatActivity() {
     private fun loadReserveInfo(reserveId: String, nicknameTextView: TextView, schoolOrCompanyTextView: TextView) {
         finishClassRef.child(reserveId).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val coachName = snapshot.child("coach_receiverName").getValue(String::class.java)
-                val category = snapshot.child("selected_category").getValue(String::class.java)
+                coachName = snapshot.child("coach_receiverName").getValue(String::class.java) ?: "정보 없음"
+                selectedCategory = snapshot.child("selected_category").getValue(String::class.java) ?: "정보 없음"
+                coachUid = snapshot.child("coach_receiverUid").getValue(String::class.java) ?: "정보 없음"
+                mentiUid = snapshot.child("menti_uid").getValue(String::class.java) ?: "정보 없음"
+                reserveTime = snapshot.child("reserve_time").getValue(String::class.java) ?: "시간 정보 없음" // 예약 시간 가져오기
 
-                nicknameTextView.text = coachName ?: "정보 없음"
-                schoolOrCompanyTextView.text = category ?: "정보 없음"
+                nicknameTextView.text = coachName
+                schoolOrCompanyTextView.text = selectedCategory
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -159,9 +167,9 @@ class Menti_mypage_record_star2Activity : AppCompatActivity() {
         val starImages = listOf(
             findViewById<ImageView>(R.id.star1),
             findViewById<ImageView>(R.id.star2),
-            findViewById<ImageView>(R.id.star3),
-            findViewById<ImageView>(R.id.star4),
-            findViewById<ImageView>(R.id.star5)
+            findViewById(R.id.star3),
+            findViewById(R.id.star4),
+            findViewById(R.id.star5)
         )
 
         for (i in starImages.indices) {
@@ -220,6 +228,11 @@ class Menti_mypage_record_star2Activity : AppCompatActivity() {
         // 새로운 리뷰 데이터 생성
         val reviewData = hashMapOf(
             "reserveId" to reserveId,
+            "coachName" to coachName,
+            "coachUid" to coachUid,
+            "mentiUid" to mentiUid,
+            "selected_category" to selectedCategory,
+            "reserve_time" to reserveTime, // 예약 시간 추가
             "stars" to selectedStarRating,
             "satisfaction" to selectedSatisfactionButton?.text.toString(),
             "responseSpeed" to selectedResponseSpeedButton?.text.toString(),
