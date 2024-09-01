@@ -11,11 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.odal.wooco.datamodels.CoachCategoryDataModel
 import com.odal.wooco.datamodels.CoachDataModel
 import com.odal.wooco.datamodels.ReserveDataModel
@@ -50,34 +46,20 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
             startActivity(intent)
         }
 
-        findViewById<Button>(R.id.kategori1).setOnClickListener {
-            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet1()
-            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
-        }
+        // 필터 버튼들 클릭 시 BottomSheetDialogFragment 표시
+        val filterButtons = listOf(
+            R.id.kategori1 to MyBottomSheetDialogFragment.BottomSheet1(),
+            R.id.kategori2 to MyBottomSheetDialogFragment.BottomSheet2(),
+            R.id.kategori3 to MyBottomSheetDialogFragment.BottomSheet3(),
+            R.id.kategori4 to MyBottomSheetDialogFragment.BottomSheet4(),
+            R.id.kategori5 to MyBottomSheetDialogFragment.BottomSheet5(),
+            R.id.kategori6 to MyBottomSheetDialogFragment.BottomSheet6()
+        )
 
-        findViewById<Button>(R.id.kategori2).setOnClickListener {
-            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet2()
-            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
-        }
-
-        findViewById<Button>(R.id.kategori3).setOnClickListener {
-            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet3()
-            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
-        }
-
-        findViewById<Button>(R.id.kategori4).setOnClickListener {
-            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet4()
-            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
-        }
-
-        findViewById<Button>(R.id.kategori5).setOnClickListener {
-            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet5()
-            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
-        }
-
-        findViewById<Button>(R.id.kategori6).setOnClickListener {
-            val bottomSheet = MyBottomSheetDialogFragment.BottomSheet6()
-            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+        filterButtons.forEach { (buttonId, bottomSheet) ->
+            findViewById<Button>(buttonId).setOnClickListener {
+                bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+            }
         }
 
         // Firebase Database 초기화
@@ -95,6 +77,7 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
         // 초기 데이터 로드 (필터 적용 여부에 따라 다르게 로드)
         loadFilteredData()
 
+        // 네비게이션 버튼들 클릭 시 동작
         homeBtn.setOnClickListener {
             Toast.makeText(this, "현재 화면입니다.", Toast.LENGTH_SHORT).show()
         }
@@ -170,7 +153,6 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
                 snapshot.children.forEach { dataSnapshot ->
                     val coach = dataSnapshot.getValue(CoachDataModel::class.java)
                     if (coach != null && coach.school == schoolName && coach.uid != null) {
-                        // 여기에서 coach.uid가 null이 아니면 추가
                         Log.d("CoachList", "Adding coach by school: ${coach.uid}")
                         filteredCoachUids.add(coach.uid)
                     }
@@ -179,6 +161,8 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
                     loadCoachesByUid(filteredCoachUids)
                 } else {
                     Log.d("CoachList", "No coaches found for the school: $schoolName")
+                    itemList.clear()
+                    coachAdapter.notifyDataSetChanged()
                 }
             }
 
@@ -217,6 +201,8 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
                     loadCoachesByUid(filteredCoachUids)
                 } else {
                     Log.d("CoachList", "No coaches found for the specified filters")
+                    itemList.clear()
+                    coachAdapter.notifyDataSetChanged()
                 }
             }
 
@@ -235,7 +221,7 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
                 itemList.clear()
                 snapshot.children.forEach { dataSnapshot ->
                     val coach = dataSnapshot.getValue(CoachDataModel::class.java)
-                    if (coach != null && coachUids.contains(coach.uid)) {
+                    if (coach != null && coach.uid != null && coachUids.contains(coach.uid)) {
                         coach.starScore = 0.0  // 기본값 0으로 설정
                         itemList.add(coach)
                     }
@@ -252,7 +238,7 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
 
     private fun loadAllCoaches() {
         Log.d("CoachList", "Loading all coaches")
-        database.child("coachInfo").addValueEventListener(object : ValueEventListener {
+        database.child("coachInfo").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 itemList.clear()
                 for (dataSnapshot in snapshot.children) {
@@ -274,46 +260,61 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
 
     private fun calculateStarScoresAndSortCoaches() {
         val reviewsRef = database.child("reviews")
+        val totalCoaches = itemList.size
+        var processedCoaches = 0
 
-        // 모든 코치의 UID를 순회하여 리뷰 데이터에서 평균 별점을 계산
+        if (totalCoaches == 0) {
+            Log.d("CoachList", "No coaches to process for star scores.")
+            coachAdapter.notifyDataSetChanged()
+            return
+        }
+
+        // 각 코치의 평균 별점을 계산
         for (coach in itemList) {
             val coachUid = coach.uid ?: continue
 
-            reviewsRef.orderByChild("coachUid").equalTo(coachUid).addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    var totalStars = 0.0
-                    var reviewCount = 0
+            reviewsRef.orderByChild("coachUid").equalTo(coachUid)
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        var totalStars = 0.0
+                        var reviewCount = 0
 
-                    for (reviewSnapshot in snapshot.children) {
-                        val stars = reviewSnapshot.child("stars").getValue(Any::class.java)
-                        if (stars is Double) {
-                            totalStars += stars
-                            reviewCount++
-                        } else if (stars is String) {
-                            stars.toDoubleOrNull()?.let {
-                                totalStars += it
+                        for (reviewSnapshot in snapshot.children) {
+                            val stars = reviewSnapshot.child("stars").getValue(Double::class.java)
+                            if (stars != null) {
+                                totalStars += stars
                                 reviewCount++
                             }
+                        }
+
+                        if (reviewCount > 0) {
+                            coach.starScore = totalStars / reviewCount
                         } else {
-                            Log.e("CoachList", "Unexpected star rating type: ${stars?.javaClass?.name}")
+                            coach.starScore = 0.0  // 리뷰가 없는 경우 기본값 유지
+                        }
+
+                        processedCoaches++
+                        Log.d("CoachList", "Processed coach UID: $coachUid, Star Score: ${coach.starScore}")
+
+                        // 모든 코치의 별점이 계산되면 정렬하고 어댑터를 업데이트
+                        if (processedCoaches == totalCoaches) {
+                            // 코치 목록을 별점 순으로 내림차순 정렬
+                            itemList.sortByDescending { it.starScore }
+                            coachAdapter.notifyDataSetChanged()
                         }
                     }
 
-                    if (reviewCount > 0) {
-                        coach.starScore = totalStars / reviewCount
-                    } else {
-                        coach.starScore = 0.0  // 리뷰가 없는 경우 기본값 유지
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.e("Firebase", "Error calculating star scores for UID $coachUid: ${error.message}")
+                        processedCoaches++
+
+                        // 에러가 발생해도 다른 코치를 처리하도록 함
+                        if (processedCoaches == totalCoaches) {
+                            itemList.sortByDescending { it.starScore }
+                            coachAdapter.notifyDataSetChanged()
+                        }
                     }
-
-                    // 코치 목록을 별점 순으로 정렬
-                    itemList.sortByDescending { it.starScore }
-                    coachAdapter.notifyDataSetChanged()
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    Log.e("Firebase", "Error calculating star scores: ${error.message}")
-                }
-            })
+                })
         }
     }
 
@@ -378,7 +379,7 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.e("Firebase", "Database error: ${error.message}")
+                Log.e("CoachList", "Database error: ${error.message}")
             }
         })
     }

@@ -49,7 +49,7 @@ class Menti_mypage_record_star3Activity : AppCompatActivity() {
                                     coachName = document.child("coachName").getValue(String::class.java) ?: "알 수 없음",
                                     category = document.child("selected_category").getValue(String::class.java) ?: "알 수 없음",
                                     reviewDate = document.child("reserve_time").getValue(String::class.java) ?: "날짜 없음",
-                                    starScore = document.child("stars").getValue(String::class.java) ?: "0.0"
+                                    starScore = document.child("stars").getValue(Double::class.java) ?: 0.0
                                 )
                                 reviewsList.add(reviewItem)
                             }
@@ -71,5 +71,5 @@ data class ReviewItem(
     val coachName: String,
     val category: String,
     val reviewDate: String,
-    val starScore: String
+    val starScore: Double
 )

@@ -28,6 +28,7 @@ class Menti_mypage_record_star2Activity : AppCompatActivity() {
     private lateinit var coachName: String
     private lateinit var selectedCategory: String
     private lateinit var reserveTime: String // 예약 시간 필드 추가
+    private lateinit var mentiName: String // 멘티 이름 필드 추가
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -141,6 +142,7 @@ class Menti_mypage_record_star2Activity : AppCompatActivity() {
                 coachUid = snapshot.child("coach_receiverUid").getValue(String::class.java) ?: "정보 없음"
                 mentiUid = snapshot.child("menti_uid").getValue(String::class.java) ?: "정보 없음"
                 reserveTime = snapshot.child("reserve_time").getValue(String::class.java) ?: "시간 정보 없음" // 예약 시간 가져오기
+                mentiName = snapshot.child("menti_name").getValue(String::class.java) ?: "이름 없음" // 멘티 이름 가져오기
 
                 nicknameTextView.text = coachName
                 schoolOrCompanyTextView.text = selectedCategory
@@ -225,15 +227,19 @@ class Menti_mypage_record_star2Activity : AppCompatActivity() {
             return
         }
 
+        // String으로 저장된 selectedStarRating을 Double로 변환
+        val starRating = selectedStarRating.toDoubleOrNull() ?: 0.0
+
         // 새로운 리뷰 데이터 생성
         val reviewData = hashMapOf(
             "reserveId" to reserveId,
             "coachName" to coachName,
             "coachUid" to coachUid,
             "mentiUid" to mentiUid,
+            "mentiName" to mentiName, // 멘티 이름 추가
             "selected_category" to selectedCategory,
             "reserve_time" to reserveTime, // 예약 시간 추가
-            "stars" to selectedStarRating,
+            "stars" to starRating,  // Double로 저장
             "satisfaction" to selectedSatisfactionButton?.text.toString(),
             "responseSpeed" to selectedResponseSpeedButton?.text.toString(),
             "reviewText" to reviewText

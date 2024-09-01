@@ -27,7 +27,7 @@ class Menti_mtpage_record_star3Adapter(private val items: List<ReviewItem>) :
         holder.nicknameTextView.text = item.coachName
         holder.schoolOrCompanyTextView.text = item.category
         holder.dateTextView.text = item.reviewDate
-        holder.starScoreTextView.text = item.starScore
+        holder.starScoreTextView.text = item.starScore.toString() // Double 값을 String으로 변환하여 표시
     }
 
     override fun getItemCount(): Int = items.size

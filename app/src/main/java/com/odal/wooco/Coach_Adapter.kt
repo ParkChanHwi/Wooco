@@ -10,7 +10,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.odal.wooco.datamodels.CoachDataModel
 
-class Coach_Adapter(private val itemList: List<CoachDataModel>, private val context: Context) : RecyclerView.Adapter<Coach_Adapter.ItemViewHolder>() {
+class Coach_Adapter(
+    private val itemList: List<CoachDataModel>,
+    private val context: Context
+) : RecyclerView.Adapter<Coach_Adapter.ItemViewHolder>() {
 
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nicknameTextView: TextView = itemView.findViewById(R.id.nicknameTextView)
@@ -21,7 +24,8 @@ class Coach_Adapter(private val itemList: List<CoachDataModel>, private val cont
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.menti_coachlist_item, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.menti_coachlist_item, parent, false)
         return ItemViewHolder(view)
     }
 
@@ -30,7 +34,9 @@ class Coach_Adapter(private val itemList: List<CoachDataModel>, private val cont
         holder.nicknameTextView.text = item.name
         holder.schoolOrCompanyTextView.text = item.school
         holder.interestTextView.text = item.interest
-        holder.starScoreTextView.text = item.starScore.toString() // 별점 표시
+
+        // 별점을 소수점 첫째 자리까지만 표시 (예: 4.5)
+        holder.starScoreTextView.text = String.format("%.1f", item.starScore)
 
         holder.itemLayout.setOnClickListener {
             val uid = item.uid
