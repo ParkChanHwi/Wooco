@@ -41,7 +41,7 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
         val chatBtn: ImageView = findViewById(R.id.chat_1)
         val calBtn: ImageView = findViewById(R.id.uiw_date)
         val profileBtn: ImageView = findViewById(R.id.group_513866)
-        val kategoribtn : Button = findViewById(R.id.kategori)
+        val kategoribtn: Button = findViewById(R.id.kategori)
 
         // 벨 버튼 클릭 시 coach_menti_request 이동
         val bellBtn: RelativeLayout = findViewById(R.id.bell)
@@ -79,8 +79,6 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
             val bottomSheet = MyBottomSheetDialogFragment.BottomSheet6()
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
-
-
 
         // Firebase Database 초기화
         database = FirebaseDatabase.getInstance().reference
@@ -120,13 +118,9 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
             // 필터를 초기화하고 새로운 데이터를 로드합니다.
             resetFiltersAndReloadData()
         }
-
-
     }
 
-
-
-// 필터와 데이터를 초기화하고 새로 불러오는 함수
+    // 필터와 데이터를 초기화하고 새로 불러오는 함수
     private fun resetFiltersAndReloadData() {
         // 필터 상태 초기화
         selectedCategory = null
@@ -194,13 +188,8 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
         })
     }
 
-
-
-
-
-
     private fun filterCoaches(category: String, subcategory: String) {
-        val coachCategoryRef = database.child("coachCategoryRef")// 수정된 경로
+        val coachCategoryRef = database.child("coachCategoryRef") // 수정된 경로
 
         Log.d("CoachList", "Querying database at path: coachCategoryRef")
         coachCategoryRef.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -229,19 +218,13 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
                 } else {
                     Log.d("CoachList", "No coaches found for the specified filters")
                 }
-
-                Log.d("CoachList", "Filtered coach UIDs: $filteredCoachUids")
-                loadCoachesByUid(filteredCoachUids)
             }
 
             override fun onCancelled(error: DatabaseError) {
                 Log.e("Firebase", "Database error: ${error.message}")
             }
         })
-
     }
-
-
 
     private fun loadCoachesByUid(coachUids: Set<String>) {
         val coachInfoRef = database.child("coachInfo")
@@ -253,12 +236,12 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
                 snapshot.children.forEach { dataSnapshot ->
                     val coach = dataSnapshot.getValue(CoachDataModel::class.java)
                     if (coach != null && coachUids.contains(coach.uid)) {
-                        Log.d("CoachList", "Adding coach to list: ${coach.uid}")
+                        coach.starScore = 0.0  // 기본값 0으로 설정
                         itemList.add(coach)
                     }
                 }
-                Log.d("CoachList", "Loaded coaches: $itemList")
-                coachAdapter.notifyDataSetChanged()
+                // 코치 목록을 별점 순으로 정렬 및 업데이트
+                calculateStarScoresAndSortCoaches()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -266,7 +249,6 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
             }
         })
     }
-
 
     private fun loadAllCoaches() {
         Log.d("CoachList", "Loading all coaches")
@@ -276,12 +258,12 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
                 for (dataSnapshot in snapshot.children) {
                     val coach = dataSnapshot.getValue(CoachDataModel::class.java)
                     if (coach != null) {
-                        Log.d("CoachList", "Adding coach to list: ${coach.uid}")
+                        coach.starScore = 0.0  // 기본값 0으로 설정
                         itemList.add(coach)
                     }
                 }
-                Log.d("CoachList", "Loaded all coaches: $itemList")
-                coachAdapter.notifyDataSetChanged()
+                // 코치 목록을 별점 순으로 정렬 및 업데이트
+                calculateStarScoresAndSortCoaches()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -290,6 +272,50 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
         })
     }
 
+    private fun calculateStarScoresAndSortCoaches() {
+        val reviewsRef = database.child("reviews")
+
+        // 모든 코치의 UID를 순회하여 리뷰 데이터에서 평균 별점을 계산
+        for (coach in itemList) {
+            val coachUid = coach.uid ?: continue
+
+            reviewsRef.orderByChild("coachUid").equalTo(coachUid).addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    var totalStars = 0.0
+                    var reviewCount = 0
+
+                    for (reviewSnapshot in snapshot.children) {
+                        val stars = reviewSnapshot.child("stars").getValue(Any::class.java)
+                        if (stars is Double) {
+                            totalStars += stars
+                            reviewCount++
+                        } else if (stars is String) {
+                            stars.toDoubleOrNull()?.let {
+                                totalStars += it
+                                reviewCount++
+                            }
+                        } else {
+                            Log.e("CoachList", "Unexpected star rating type: ${stars?.javaClass?.name}")
+                        }
+                    }
+
+                    if (reviewCount > 0) {
+                        coach.starScore = totalStars / reviewCount
+                    } else {
+                        coach.starScore = 0.0  // 리뷰가 없는 경우 기본값 유지
+                    }
+
+                    // 코치 목록을 별점 순으로 정렬
+                    itemList.sortByDescending { it.starScore }
+                    coachAdapter.notifyDataSetChanged()
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e("Firebase", "Error calculating star scores: ${error.message}")
+                }
+            })
+        }
+    }
 
     private fun filterCoachesByCategoryOnly(category: String) {
         val coachCategoryRef = database.child("coachCategoryRef")
@@ -312,10 +338,6 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
             }
         })
     }
-
-
-
-
 
     private fun moveToFinishClassInfoForPastReservations() {
         val reserveInfoRef = database.child("reserveInfo")
@@ -360,5 +382,4 @@ class CoachList : AppCompatActivity(), MyBottomSheetDialogFragment.FilterCriteri
             }
         })
     }
-
 }

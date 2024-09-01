@@ -10,20 +10,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.odal.wooco.datamodels.CoachDataModel
 
-class Coach_Adapter(val itemList: List<CoachDataModel>, val context: Context) : RecyclerView.Adapter<Coach_Adapter.ItemViewHolder>() {
-
-
-    data class Item(
-        val nickname: String,
-        val schoolOrCompany: String,
-        val interest: String,
-        val score: String
-    )
+class Coach_Adapter(private val itemList: List<CoachDataModel>, private val context: Context) : RecyclerView.Adapter<Coach_Adapter.ItemViewHolder>() {
 
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nicknameTextView: TextView = itemView.findViewById(R.id.nicknameTextView)
         val schoolOrCompanyTextView: TextView = itemView.findViewById(R.id.schoolOrCompanyTextView)
         val interestTextView: TextView = itemView.findViewById(R.id.interestTextView)
+        val starScoreTextView: TextView = itemView.findViewById(R.id.star_score) // 별점 TextView
         val itemLayout: RelativeLayout = itemView.findViewById(R.id.coach_item)
     }
 
@@ -37,6 +30,7 @@ class Coach_Adapter(val itemList: List<CoachDataModel>, val context: Context) : 
         holder.nicknameTextView.text = item.name
         holder.schoolOrCompanyTextView.text = item.school
         holder.interestTextView.text = item.interest
+        holder.starScoreTextView.text = item.starScore.toString() // 별점 표시
 
         holder.itemLayout.setOnClickListener {
             val uid = item.uid
@@ -44,35 +38,16 @@ class Coach_Adapter(val itemList: List<CoachDataModel>, val context: Context) : 
             val school = item.school
             val interest = item.interest
 
-            // Menti_coach_introduceActivity3로 가는 Intent
-            val intent3 = Intent(context, Menti_coach_introduceActivity3::class.java).apply {
+            // Menti_coach_introduceActivity1로 가는 Intent (우선 이 Intent만 사용)
+            val intent = Intent(context, Menti_coach_introduceActivity::class.java).apply {
                 putExtra("uid", uid)
                 putExtra("name", name)
                 putExtra("school", school)
                 putExtra("interest", interest)
             }
-            context.startActivity(intent3)
-
-            // Menti_coach_introduceActivity2로 가는 Intent
-            val intent2 = Intent(context, Menti_coach_introduceActivity2::class.java).apply {
-                putExtra("uid", uid)
-                putExtra("name", name)
-                putExtra("school", school)
-                putExtra("interest", interest)
-            }
-            context.startActivity(intent2)
-
-            // Menti_coach_introduceActivity1로 가는 Intent
-            val intent1 = Intent(context, Menti_coach_introduceActivity::class.java).apply {
-                putExtra("uid", uid)
-                putExtra("name", name)
-                putExtra("school", school)
-                putExtra("interest", interest)
-            }
-            context.startActivity(intent1)
+            context.startActivity(intent)
         }
     }
-
 
     override fun getItemCount(): Int = itemList.size
 }
