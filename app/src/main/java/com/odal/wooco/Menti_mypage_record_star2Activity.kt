@@ -85,6 +85,11 @@ class Menti_mypage_record_star2Activity : AppCompatActivity() {
         val averageResponseButton: Button = findViewById(R.id.averageResponseButton)
         val slowResponseButton: Button = findViewById(R.id.slowResponseButton)
 
+
+        val ArrowImageView: ImageView = findViewById(R.id.ArrowImageView)
+        ArrowImageView.setOnClickListener {
+            finish()
+        }
         // 만족도 버튼 클릭 리스너 설정
         verySatisfiedButton.setOnClickListener {
             selectSatisfactionButton(verySatisfiedButton)
