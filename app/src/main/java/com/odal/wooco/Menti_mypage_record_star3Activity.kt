@@ -1,7 +1,9 @@
 package com.odal.wooco
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +30,11 @@ class Menti_mypage_record_star3Activity : AppCompatActivity() {
 
         // 현재 사용자의 UID를 가져옵니다.
         val currentUserUid = auth.currentUser?.uid
+
+        val ArrowImageView: ImageView = findViewById(R.id.ArrowImageView)
+        ArrowImageView.setOnClickListener {
+            finish()
+        }
 
         if (currentUserUid != null) {
             // Firebase에서 데이터를 가져오기 전, mentiUid 값 출력

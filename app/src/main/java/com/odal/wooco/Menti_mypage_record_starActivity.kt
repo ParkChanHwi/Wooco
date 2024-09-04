@@ -1,7 +1,9 @@
 package com.odal.wooco
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +26,11 @@ class Menti_mypage_record_starActivity : AppCompatActivity() {
         recordStarRecyclerView.adapter = recordStarAdapter
 
         val userId = intent.getStringExtra("userId")
+
+        val ArrowImageView: ImageView = findViewById(R.id.ArrowImageView)
+        ArrowImageView.setOnClickListener {
+           finish()
+        }
 
         if (userId != null) {
             fetchPastClassData(userId)
